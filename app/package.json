@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "package": "electron-packager ./ 'test' --platform=win32 --arch=x64 --icon=./djangoapp/frontend/dist/static/image/icon.png --out=./packaged --overwrite"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "electron": "^7.1.7",
+    "electron-packager": "^14.1.1",
     "python-shell": "^1.0.8"
   }
 }

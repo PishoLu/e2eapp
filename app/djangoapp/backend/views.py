@@ -58,5 +58,5 @@ def send_message():
 # 首页初始化
 # 获取好友列表
 # 尝试获取好友存活信息
-def init():
+def index_init():
     pass
