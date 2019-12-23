@@ -20,17 +20,17 @@ def get_friends_lsit():
     pass
 
 
-# 获取存活信息
+# 返回自己的存活信息
 def get_live(requests):
     pass
 
 
-# 获取公钥
+# 返回自己的公钥
 def get_pubs():
     pass
 
 
-# 接收消息
+# 接收别人发来的消息
 def get_message():
     pass
 
@@ -50,7 +50,7 @@ def others_live():
     pass
 
 
-# 发送消息
+# 发送消息给其他人
 def send_message():
     pass
 

@@ -10,7 +10,7 @@ function createWindow() {
         height: 600
     })
     // 加载 "templates/flask_welcome.html"
-    win.loadURL("http://127.0.0.1:8000/")
+    win.loadURL("http://127.0.0.1:8000")
 }
 
 
@@ -28,8 +28,6 @@ PythonShell.run('djangoapp/manage.py', options, function (err, results) {
     // results is an array consisting of messages collected during execution
     console.log('results: %j', results);
 });
-
-
 
 
 // 启动
