@@ -12,6 +12,8 @@ class linked:
 
 
 linked_list = []
+alive_list = []
+friends = []
 
 
 # 获取存活信息
@@ -34,6 +36,16 @@ def start_X3DH():
     pass
 
 
-# 从数据库过滤某IP的
+# 从数据库过滤某IP的消息
 def filter_messages():
+    pass
+
+
+# 获取好友列表的存活情况
+def others_live():
+    pass
+
+
+# 发送消息
+def send_message():
     pass

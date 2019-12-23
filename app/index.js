@@ -19,13 +19,10 @@ const {
     PythonShell
 } = require("python-shell")
 
-
-
 let options = {
     mode: 'text',
     args: ['runserver', '8000']
 };
-
 PythonShell.run('djangoapp/manage.py', options, function (err, results) {
     if (err) throw err;
     // results is an array consisting of messages collected during execution
