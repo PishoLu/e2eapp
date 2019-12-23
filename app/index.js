@@ -21,7 +21,7 @@ const {
 
 let options = {
     mode: 'text',
-    args: ['runserver', '8000']
+    args: ['runserver', '0.0.0.0:8000']
 };
 PythonShell.run('djangoapp/manage.py', options, function (err, results) {
     if (err) throw err;

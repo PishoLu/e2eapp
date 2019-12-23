@@ -41,3 +41,15 @@ class messages(models.Model):
         if "_sa_instance_state" in dict:
             del dict["_sa_instance_state"]
         return dict
+
+
+class friends(models.Model):
+    IP = models.CharField(max_length=15, primary_key=True)
+    Port = models.IntegerField()
+    remark = models.CharField(max_length=20, null=True)
+
+    def to_json(self):
+        dict = self.__dict__
+        if "_sa_instance_state" in dict:
+            del dict["_sa_instance_state"]
+        return dict

@@ -13,7 +13,11 @@ class linked:
 
 linked_list = []
 alive_list = []
-friends = []
+
+
+# 获取好友列表
+def get_friends_lsit():
+    pass
 
 
 # 获取存活信息
@@ -48,4 +52,11 @@ def others_live():
 
 # 发送消息
 def send_message():
+    pass
+
+
+# 首页初始化
+# 获取好友列表
+# 尝试获取好友存活信息
+def init():
     pass
