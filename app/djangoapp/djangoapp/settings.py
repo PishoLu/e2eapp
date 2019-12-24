@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'w7mqo$q1@#a+k%-=m^5m8!4s_mugxxa9xpm1t+@$&!y-342ud$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'djangoapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'frontend/dist')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates/dist')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,5 +120,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "frontend/dist/static")
+    os.path.join(BASE_DIR, "templates/dist/static")
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'templates')

@@ -3,3 +3,6 @@ node_modules/
 __pycache__/
 ~$$Design.~vsdx
 .vscode/
+app/djangoapp/dist/
+app/djangoapp/build/
+app/djangoapp/templates/
