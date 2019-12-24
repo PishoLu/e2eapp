@@ -8,7 +8,9 @@ class linked:
     def __init__(self):
         self.fromIP = ""
         self.fromPort = 0
-        self.userinfo = user()
+        self.userinfo = user()  # 连接的当前使用的密钥对象F
+        self.kdf_in = ""  # 连接的当前使用的kdf输入
+        self.kdf_dh = ""  # 连接的当前使用的kdf dh输入
 
 
 linked_list = []
