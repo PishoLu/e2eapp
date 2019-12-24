@@ -13,6 +13,6 @@
   "devDependencies": {
     "electron": "^7.1.7",
     "electron-packager": "^14.1.1",
-    "python-shell": "^1.0.8",
+    "python-shell": "^1.0.8"
   }
 }
