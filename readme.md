@@ -15,3 +15,5 @@
 
 然后 Django 所需的库需要用 Python 下载
 
+### 注意事项
+Django 关闭 Debug 模式后可能会找不到静态文件

@@ -10,7 +10,7 @@ function createWindow() {
         height: 600
     })
     // 加载 "templates/flask_welcome.html"
-    win.loadURL("http://127.0.0.1:8000")
+    win.loadURL("http://127.0.0.1:8000/")
 }
 
 
@@ -21,7 +21,7 @@ const {
 
 let options = {
     mode: 'text',
-    args: ['runserver', '0.0.0.0:8000']
+    args: ['runserver', '8000']
 };
 PythonShell.run('djangoapp/manage.py', options, function (err, results) {
     if (err) throw err;

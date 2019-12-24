@@ -16,17 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic.base import TemplateView
-from django.contrib import admin
-from django.urls import path, include
-
-from django.conf.urls import url
-from django.views.static import serve
-# from .settings import STATIC_ROOT
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name="index.html")),
     path('apis/', include('backend.urls')),
-    # url(r'^static/(?P<path>.*)$', serve, {'document_root': STATIC_ROOT}),
 ]
