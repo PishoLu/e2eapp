@@ -5,7 +5,7 @@ import json
 
 
 class user(models.Model):
-    # userid = models.IntegerField(primary_key=True, unique=True)
+    userid = models.IntegerField(primary_key=True, unique=True)
     IdentityPub = models.CharField(max_length=64, null=True)
     SignedPub = models.CharField(max_length=64, null=True)
     OneTimePub = models.CharField(max_length=64, null=True)
@@ -25,13 +25,8 @@ class user(models.Model):
 
 
 class messages(models.Model):
-    # fromUserid = models.IntegerField(primary_key=True)
-    # toUserid = models.IntegerField()
-
-    fromIP = models.CharField(max_length=15, primary_key=True)
-    toIP = models.CharField(max_length=15)
-    fromPort = models.IntegerField()
-    toPort = models.IntegerField()
+    fromUserid = models.IntegerField(primary_key=True)
+    toUserid = models.IntegerField()
 
     date = models.DateTimeField()
     plaintext = models.CharField(max_length=2048)
@@ -44,7 +39,8 @@ class messages(models.Model):
 
 
 class friends(models.Model):
-    IP = models.CharField(max_length=15, primary_key=True)
+    urerid = models.IntegerField(primary_key=True)
+    IP = models.CharField(max_length=15)
     Port = models.IntegerField()
     remark = models.CharField(max_length=20, null=True)
 

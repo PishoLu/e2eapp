@@ -11,6 +11,7 @@ class linked:
         self.userinfo = user()  # 连接的当前使用的密钥对象F
         self.kdf_in = ""  # 连接的当前使用的kdf输入
         self.kdf_dh = ""  # 连接的当前使用的kdf dh输入
+        self.status = 0
 
 
 linked_list = []
