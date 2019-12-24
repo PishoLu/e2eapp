@@ -3,7 +3,7 @@
 - Electron 项目包
 - Electron 相关 Node 库
   - Django 后端
-    - Vue 前端![img](file:///C:\Users\Pisho\AppData\Local\Temp\SGPicFaceTpBq\10552\006C8F42.png)
+    - Vue 前端（生成静态文件给 Django 使用）
     - Vue相关 Node 库
   - Django 静态文件夹
 
