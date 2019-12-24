@@ -5,4 +5,3 @@ __pycache__/
 .vscode/
 app/djangoapp/dist/
 app/djangoapp/build/
-app/djangoapp/templates/
