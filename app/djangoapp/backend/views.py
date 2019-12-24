@@ -18,17 +18,12 @@ linked_list = []
 alive_list = []
 
 
-# 获取好友列表
-def get_friends_lsit():
-    pass
-
-
 # 返回自己的存活信息
 def get_live(requests):
     pass
 
 
-# 返回自己的公钥
+# 返回自己的公钥，服务器的信息也是包括公钥信息，所以可以用来互相对照。
 def get_pubs():
     pass
 
@@ -38,7 +33,7 @@ def get_message():
     pass
 
 
-# 开始连接，将连接对象存到列表中
+# 开始连接，将连接对象存到列表中，如果没有两个kdf就开始X3DH获取到kdf初始值。
 def start_X3DH():
     pass
 
@@ -62,4 +57,9 @@ def send_message():
 # 获取好友列表
 # 尝试获取好友存活信息
 def index_init():
+    pass
+
+
+# 登陆到服务器，获取好友列表即登陆IP信息。在初始化之前登陆。登录后初始化获取好友的存活信息。返回给前端列表
+def login():
     pass
