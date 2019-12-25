@@ -1,5 +1,7 @@
 import json
 import logging
+import requests
+import os
 
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -19,7 +21,9 @@ class linked():
 
 linked_list = []  # 已连接的好友列表
 alive_list = []  # 存活的好友列表
-log_path = "./log/"
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+log_path = BASE_DIR+"/log/"
 
 
 # 日志类
@@ -39,9 +43,7 @@ logger = Logger()
 # 返回自己的存活信息
 def get_live(request):
     if request.method == "GET":
-        get_data = json.loads(request.body)
-        info_msg = str(get_data["fromip"]+":"+get_data["fromport"])
-        logger.getlogger().info(info_msg)
+        logger.getlogger().info(request.META["REMOTE_ADDR"])
         result = {"code": 1, "data": "", "result": "存活"}
         return HttpResponse(json.dumps(result))
     else:
@@ -112,3 +114,9 @@ def login(request):
         pass
     else:
         post_data = json.loads(request.body)
+        userid = post_data["userid"]
+        password = post_data["password"]
+        payload = {"userid": userid, "password": password}
+        login_to_host = requests.post(
+            "http:/127.0.0.1:8888/apis/login", data=json.dumps(payload))
+        print(login_to_host.text)

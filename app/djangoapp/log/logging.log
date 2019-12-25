@@ -1,0 +1,150 @@
+2019-57-25 15:57:03-get_live-INFO-127.0.0.1:8000
+2019-57-25 15:57:09-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-57-25 15:57:09-__init__-DEBUG-Using selector: SelectSelector
+2019-57-25 15:57:16-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-57-25 15:57:16-__init__-DEBUG-Using selector: SelectSelector
+2019-57-25 15:57:18-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-57-25 15:57:18-__init__-DEBUG-Using selector: SelectSelector
+2019-57-25 15:57:21-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-57-25 15:57:21-__init__-DEBUG-Using selector: SelectSelector
+2019-57-25 15:57:24-get_live-INFO-127.0.0.1:8000
+2019-58-25 15:58:26-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-58-25 15:58:26-__init__-DEBUG-Using selector: SelectSelector
+2019-58-25 15:58:30-get_live-INFO-127.0.0.1
+2019-58-25 15:58:41-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-58-25 15:58:41-__init__-DEBUG-Using selector: SelectSelector
+2019-59-25 15:59:21-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-59-25 15:59:21-__init__-DEBUG-Using selector: SelectSelector
+2019-59-25 15:59:36-__init__-DEBUG-Using selector: SelectSelector
+2019-07-25 16:07:50-log_response-WARNING-Not Found: /apis/login
+2019-08-25 16:08:11-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\urls.py changed, reloading.
+2019-08-25 16:08:11-__init__-DEBUG-Using selector: SelectSelector
+2019-08-25 16:08:18-__init__-DEBUG-Using selector: SelectSelector
+2019-08-25 16:08:22-log_response-ERROR-Internal Server Error: /apis/login
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view backend.views.login didn't return an HttpResponse object. It returned None instead.
+2019-08-25 16:08:26-log_response-ERROR-Internal Server Error: /apis/login
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 118, in login
+    "http:/127.0.0.1:8888/apis/login", data=json.dumps(payload))
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\sessions.py", line 519, in request
+    prep = self.prepare_request(req)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\sessions.py", line 462, in prepare_request
+    hooks=merge_hooks(request.hooks, self.hooks),
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\models.py", line 313, in prepare
+    self.prepare_url(url, params)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\models.py", line 390, in prepare_url
+    raise InvalidURL("Invalid URL %r: No host supplied" % url)
+requests.exceptions.InvalidURL: Invalid URL 'http:/127.0.0.1:8888/apis/login': No host supplied
+2019-09-25 16:09:03-log_response-ERROR-Internal Server Error: /apis/login
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 118, in login
+    "http:/127.0.0.1:8888/apis/login", data=json.dumps(payload))
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\sessions.py", line 519, in request
+    prep = self.prepare_request(req)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\sessions.py", line 462, in prepare_request
+    hooks=merge_hooks(request.hooks, self.hooks),
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\models.py", line 313, in prepare
+    self.prepare_url(url, params)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\models.py", line 390, in prepare_url
+    raise InvalidURL("Invalid URL %r: No host supplied" % url)
+requests.exceptions.InvalidURL: Invalid URL 'http:/127.0.0.1:8888/apis/login': No host supplied
+2019-10-25 16:10:35-log_response-ERROR-Internal Server Error: /apis/login
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 118, in login
+    "http:/127.0.0.1:8888/apis/login", data=json.dumps(payload))
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\sessions.py", line 519, in request
+    prep = self.prepare_request(req)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\sessions.py", line 462, in prepare_request
+    hooks=merge_hooks(request.hooks, self.hooks),
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\models.py", line 313, in prepare
+    self.prepare_url(url, params)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\models.py", line 390, in prepare_url
+    raise InvalidURL("Invalid URL %r: No host supplied" % url)
+requests.exceptions.InvalidURL: Invalid URL 'http:/127.0.0.1:8888/apis/login': No host supplied
+2019-10-25 16:10:57-log_response-WARNING-Not Found: /apis/login/
+2019-11-25 16:11:13-log_response-ERROR-Internal Server Error: /apis/login
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 118, in login
+    "http:/127.0.0.1:8888/apis/login", data=json.dumps(payload))
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\sessions.py", line 519, in request
+    prep = self.prepare_request(req)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\sessions.py", line 462, in prepare_request
+    hooks=merge_hooks(request.hooks, self.hooks),
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\models.py", line 313, in prepare
+    self.prepare_url(url, params)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\models.py", line 390, in prepare_url
+    raise InvalidURL("Invalid URL %r: No host supplied" % url)
+requests.exceptions.InvalidURL: Invalid URL 'http:/127.0.0.1:8888/apis/login': No host supplied
+2019-12-25 16:12:52-log_response-ERROR-Internal Server Error: /apis/login
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 118, in login
+    "http:/127.0.0.1:8888/apis/login", data=json.dumps(payload))
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\api.py", line 116, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\sessions.py", line 519, in request
+    prep = self.prepare_request(req)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\sessions.py", line 462, in prepare_request
+    hooks=merge_hooks(request.hooks, self.hooks),
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\models.py", line 313, in prepare
+    self.prepare_url(url, params)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\requests\models.py", line 390, in prepare_url
+    raise InvalidURL("Invalid URL %r: No host supplied" % url)
+requests.exceptions.InvalidURL: Invalid URL 'http:/127.0.0.1:8888/apis/login': No host supplied
+2019-13-25 16:13:10-__init__-DEBUG-Using selector: SelectSelector
+2019-21-25 16:21:01-log_response-WARNING-Not Found: /favicon.ico
+2019-21-25 16:21:06-__init__-DEBUG-Using selector: SelectSelector
+2019-32-25 16:32:15-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-32-25 16:32:15-__init__-DEBUG-Using selector: SelectSelector

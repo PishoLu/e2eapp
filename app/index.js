@@ -9,7 +9,6 @@ function createWindow() {
         width: 800,
         height: 600
     })
-    // 加载 "templates/flask_welcome.html"
     win.loadURL("http://127.0.0.1:8000")
 }
 
