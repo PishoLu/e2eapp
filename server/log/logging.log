@@ -1,0 +1,116 @@
+2019-38-25 16:38:34-log_response-WARNING-Forbidden (CSRF cookie not set.): /apis/login
+2019-40-25 16:40:04-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-40-25 16:40:04-__init__-DEBUG-Using selector: SelectSelector
+2019-40-25 16:40:07-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-40-25 16:40:07-__init__-DEBUG-Using selector: SelectSelector
+2019-40-25 16:40:09-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-40-25 16:40:09-__init__-DEBUG-Using selector: SelectSelector
+2019-41-25 16:41:58-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-41-25 16:41:58-__init__-DEBUG-Using selector: SelectSelector
+2019-43-25 16:43:01-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-43-25 16:43:01-__init__-DEBUG-Using selector: SelectSelector
+2019-43-25 16:43:32-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-43-25 16:43:32-__init__-DEBUG-Using selector: SelectSelector
+2019-43-25 16:43:35-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-43-25 16:43:35-__init__-DEBUG-Using selector: SelectSelector
+2019-46-25 16:46:16-log_response-WARNING-Forbidden (CSRF token missing or incorrect.): /apis/get_token
+2019-46-25 16:46:28-log_response-ERROR-Internal Server Error: /apis/get_token
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 50, in get_token
+    get_token(request)
+  File "D:\Study\School\e2e\server\backend\views.py", line 50, in get_token
+    get_token(request)
+  File "D:\Study\School\e2e\server\backend\views.py", line 50, in get_token
+    get_token(request)
+  [Previous line repeated 956 more times]
+  File "D:\Study\School\e2e\server\backend\views.py", line 49, in get_token
+    if request.method == "GET":
+RecursionError: maximum recursion depth exceeded in comparison
+2019-47-25 16:47:25-log_response-ERROR-Internal Server Error: /apis/get_token
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 50, in get_token
+    get_token(request)
+  File "D:\Study\School\e2e\server\backend\views.py", line 50, in get_token
+    get_token(request)
+  File "D:\Study\School\e2e\server\backend\views.py", line 50, in get_token
+    get_token(request)
+  [Previous line repeated 956 more times]
+  File "D:\Study\School\e2e\server\backend\views.py", line 49, in get_token
+    if request.method == "GET":
+RecursionError: maximum recursion depth exceeded in comparison
+2019-48-25 16:48:27-log_response-ERROR-Internal Server Error: /apis/get_token
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 50, in get_token
+    get_token(request)
+  File "D:\Study\School\e2e\server\backend\views.py", line 50, in get_token
+    get_token(request)
+  File "D:\Study\School\e2e\server\backend\views.py", line 50, in get_token
+    get_token(request)
+  [Previous line repeated 956 more times]
+  File "D:\Study\School\e2e\server\backend\views.py", line 49, in get_token
+    if request.method == "GET":
+RecursionError: maximum recursion depth exceeded in comparison
+2019-49-25 16:49:26-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-49-25 16:49:26-__init__-DEBUG-Using selector: SelectSelector
+2019-49-25 16:49:33-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-49-25 16:49:33-__init__-DEBUG-Using selector: SelectSelector
+2019-49-25 16:49:53-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-49-25 16:49:53-__init__-DEBUG-Using selector: SelectSelector
+2019-49-25 16:49:56-trigger_reload-INFO-D:\Study\School\e2e\server\backend\urls.py changed, reloading.
+2019-49-25 16:49:56-__init__-DEBUG-Using selector: SelectSelector
+2019-49-25 16:49:59-trigger_reload-INFO-D:\Study\School\e2e\server\backend\urls.py changed, reloading.
+2019-49-25 16:49:59-__init__-DEBUG-Using selector: SelectSelector
+2019-52-25 16:52:06-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-52-25 16:52:06-__init__-DEBUG-Using selector: SelectSelector
+2019-01-25 17:01:32-log_response-WARNING-Forbidden (CSRF cookie not set.): /apis/login
+2019-01-25 17:01:51-log_response-WARNING-Forbidden (CSRF cookie not set.): /apis/login
+2019-03-25 17:03:24-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-03-25 17:03:24-__init__-DEBUG-Using selector: SelectSelector
+2019-03-25 17:03:29-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-03-25 17:03:29-__init__-DEBUG-Using selector: SelectSelector
+2019-04-25 17:04:11-log_response-ERROR-Internal Server Error: /apis/gettoken
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view backend.views.gettoken didn't return an HttpResponse object. It returned None instead.
+2019-04-25 17:04:50-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-04-25 17:04:50-__init__-DEBUG-Using selector: SelectSelector
+2019-04-25 17:04:55-log_response-ERROR-Internal Server Error: /apis/gettoken
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view backend.views.gettoken didn't return an HttpResponse object. It returned None instead.
+2019-05-25 17:05:38-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-05-25 17:05:38-__init__-DEBUG-Using selector: SelectSelector
+2019-05-25 17:05:49-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-05-25 17:05:49-__init__-DEBUG-Using selector: SelectSelector
+2019-05-25 17:05:54-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-05-25 17:05:54-__init__-DEBUG-Using selector: SelectSelector
+2019-06-25 17:06:38-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-06-25 17:06:38-__init__-DEBUG-Using selector: SelectSelector
+2019-06-25 17:06:43-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-06-25 17:06:43-__init__-DEBUG-Using selector: SelectSelector
+2019-07-25 17:07:57-log_response-WARNING-Forbidden (CSRF cookie not set.): /apis/login
+2019-08-25 17:08:29-log_response-WARNING-Forbidden (CSRF cookie not set.): /apis/login

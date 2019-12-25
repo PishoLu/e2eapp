@@ -1,10 +1,14 @@
-from django.shortcuts import render
-from django.http import HttpResponse
 import json
 import logging
+
+from django.http import HttpResponse
+from django.middleware.csrf import get_token
+from django.shortcuts import render
+
 # Create your views here.
 
-log_path = "./log/"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+log_path = BASE_DIR+"/log/"
 
 
 # 日志类
@@ -34,11 +38,21 @@ def login(request):
     else:
         post_data = json.loads(request.body)
         print(post_data)
-        return HttpResponse(1)
+        result = {"code": 1, "data": "", "result": "登录成功！"}
+        return HttpResponse(json.dumps(result))
 
 
 def register(request):
     if request.method == "GET":
         pass
+    else:
+        pass
+
+
+def gettoken(request):
+    if request.method == "GET":
+        token = get_token(request)
+        result = {"code": 1, "data": token, "result": "Token 获取成功!"}
+        return HttpResponse(json.dumps(result))
     else:
         pass

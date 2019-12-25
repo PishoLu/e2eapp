@@ -5,8 +5,9 @@ import os
 
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.middleware.csrf import get_token
 
-from .models import user
+from .models import user, messages, friends
 
 
 class linked():
@@ -108,15 +109,23 @@ def index_init(request):
         pass
 
 
-# 登陆到服务器，获取好友列表即登陆IP信息。在初始化之前登陆。登录后初始化获取好友的存活信息。返回给前端列表
+# 登陆到服务器，获取好友列表即登陆IP信息。在初始化之前登陆。登录后初始化获取好友的存活信息。返回给前端列表,由于csrf的原因，登录和注册都交给前端完成，通过axios提交登录注册请求
 def login(request):
     if request.method == "GET":
         pass
     else:
-        post_data = json.loads(request.body)
-        userid = post_data["userid"]
-        password = post_data["password"]
-        payload = {"userid": userid, "password": password}
-        login_to_host = requests.post(
-            "http:/127.0.0.1:8888/apis/login", data=json.dumps(payload))
-        print(login_to_host.text)
+        pass
+
+
+# 注册功能可以交给前端完成也可以前端发到后端再注册
+def register(request):
+    pass
+
+
+def gettoken(request):
+    if request.method == "GET":
+        get_token(request)
+        result = {"code": 1, "data": "", "result": "Token 获取成功!"}
+        return HttpResponse(json.dumps(result))
+    else:
+        pass
