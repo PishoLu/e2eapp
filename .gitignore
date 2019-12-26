@@ -7,3 +7,5 @@ app/djangoapp/dist/
 app/djangoapp/build/
 test.py
 test2.py
+env/
+app/djangoapp/backend/migrations/

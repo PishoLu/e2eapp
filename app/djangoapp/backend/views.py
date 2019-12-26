@@ -1,12 +1,14 @@
 import json
 import logging
-import requests
+import requests  # 最好不用这个，让前端作为两个后端的跳板
 import os
 
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.middleware.csrf import get_token
 
+from cryptography.hazmat.primitives.asymmetric.x25519 import (
+    X25519PrivateKey, X25519PublicKey)
 from .models import user, messages, friends
 
 
@@ -109,12 +111,31 @@ def index_init(request):
         pass
 
 
-# 登陆到服务器，获取好友列表即登陆IP信息。在初始化之前登陆。登录后初始化获取好友的存活信息。返回给前端列表,由于csrf的原因，登录和注册都交给前端完成，通过axios提交登录注册请求
-def login(request):
+# 登陆到服务器，获取好友列表即登陆IP信息。在初始化之前登陆。登录后初始化获取好友的存活信息。返回给前端列表,由于csrf的原因，登录和注册都交给前端完成，通过axios提交登录注册请求.
+# 这里的登录是前端将登录成功的userid发送过来完成密钥初始化的。
+# 登录是先账号密码服务器验证登录，然后后端生成新的密钥对返回给前端，前端再将服务器上的密钥对更新完成登录。
+def create_new_keyspair(request):
     if request.method == "GET":
         pass
     else:
-        pass
+        post_data = json.dumps(request.body)
+        if(post_data["userid"]):
+            myself = user()
+            myself.userid=post_data["userid"]
+            myself.IdentityPri = X25519PrivateKey.generate()
+            myself.IdentityPub = myself.IdentityPri.public_key()
+            myself.SignedPri = X25519PrivateKey.generate()
+            myself.SignedPub = myself.SignedPri.public_key()
+            myself.OneTimePri = X25519PrivateKey.generate()
+            myself.OneTimePub = myself.OneTimePri.public_key()
+            myself.EphemeralPri = X25519PrivateKey.generate()
+            myself.EphemeralPub = myself.EphemeralPri.public_key()
+
+            result = {"code": 1, "data": myself.to_json(), "result": "生成新的密钥对"}
+            return HttpResponse(json.dumps(result))
+        else:
+            result = {"code": -1, "data": "", "result": "需要提供userid"}
+            return HttpResponse(json.dumps(result))
 
 
 # 注册功能可以交给前端完成也可以前端发到后端再注册

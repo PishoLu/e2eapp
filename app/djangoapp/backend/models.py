@@ -43,7 +43,8 @@ class friends(models.Model):
     IP = models.CharField(max_length=15)
     Port = models.IntegerField()
     remark = models.CharField(max_length=20, null=True)
-    status = models.IntegerField()  # 状态码，可以拉黑名单用
+    status = models.IntegerField(default=1)  # 状态码，可以拉黑名单用
+    group = models.CharField(max_length=20, null=True)
 
     def to_json(self):
         dict = self.__dict__
