@@ -9,3 +9,4 @@ test.py
 test2.py
 env/
 app/djangoapp/backend/migrations/
+server/envserver/
