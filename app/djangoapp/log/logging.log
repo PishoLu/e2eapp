@@ -190,3 +190,66 @@ TypeError: Object of type bytes is not JSON serializable
 2019-29-27 17:29:07-__init__-DEBUG-Using selector: SelectSelector
 2019-29-27 17:29:13-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
 2019-29-27 17:29:13-__init__-DEBUG-Using selector: SelectSelector
+2019-29-27 17:29:17-log_response-ERROR-Internal Server Error: /apis/create_new_keyspair
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 155, in create_new_keyspair
+    return JsonResponse(result)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\http\response.py", line 587, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\serializers\json.py", line 104, in default
+    return super().default(o)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bytes is not JSON serializable
+2019-31-27 17:31:57-log_response-ERROR-Internal Server Error: /apis/create_new_keyspair
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 155, in create_new_keyspair
+    return JsonResponse(result)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\http\response.py", line 587, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\serializers\json.py", line 104, in default
+    return super().default(o)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bytes is not JSON serializable
+2019-32-27 17:32:13-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-32-27 17:32:13-__init__-DEBUG-Using selector: SelectSelector
+2019-32-27 17:32:55-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-32-27 17:32:55-__init__-DEBUG-Using selector: SelectSelector
+2019-32-27 17:32:58-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-32-27 17:32:58-__init__-DEBUG-Using selector: SelectSelector
+2019-33-27 17:33:26-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-33-27 17:33:26-__init__-DEBUG-Using selector: SelectSelector
+2019-33-27 17:33:28-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-33-27 17:33:28-__init__-DEBUG-Using selector: SelectSelector
+2019-33-27 17:33:39-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-33-27 17:33:39-__init__-DEBUG-Using selector: SelectSelector
+2019-34-27 17:34:50-__init__-DEBUG-Using selector: SelectSelector

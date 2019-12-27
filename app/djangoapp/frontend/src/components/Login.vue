@@ -72,7 +72,7 @@ import sha256 from "js-sha256"
         this.isreg = 1;
       },
       Login(){
-        axios.get("http://127.0.0.1:8888/apis/user"+this.ruleForm.userid,{
+        axios.get("http://127.0.0.1:8888/apis/user/"+this.ruleForm.userid,{
           password:sha256(this.ruleForm.password)
         }).then((response)=>{
           if(reponse.data["code"]){
@@ -85,7 +85,12 @@ import sha256 from "js-sha256"
         })
       },
       Register(){
-        axios.get("http://127.0.0.1:8000/apis/create_new_keyspair")
+        axios.get("http://127.0.0.1:8000/apis/gettoken/").then((reponse)=>{
+          axios.post("http://127.0.0.1:8000/apis/create_new_keyspair/").then((reponse)=>{
+            data=reponse.data["data"]
+            console.log(data)
+          })
+        })
       }
     }
   };

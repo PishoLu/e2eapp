@@ -1,23 +1,22 @@
+import binascii
 import json
 import logging
 import os
 
 import requests  # 最好不用这个，让前端作为两个后端的跳板
+from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric.x25519 import (
     X25519PrivateKey, X25519PublicKey)
 from django.http import JsonResponse
 from django.middleware.csrf import get_token
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework import generics, mixins, status, viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from django.views.decorators.csrf import csrf_exempt
-
 
 from .models import friends, messages, user
 from .serializers import UserSerializer
-from cryptography.hazmat.primitives import serialization
-import binascii
 
 
 class linked():
@@ -113,6 +112,7 @@ def send_message(request):
 # 这里的登录是前端将登录成功的userid发送过来完成密钥初始化的。
 # 登录是先账号密码服务器验证登录，然后后端生成新的密钥对返回给前端，前端再将服务器上的密钥对更新完成登录。
 @csrf_exempt
+@api_view(["GET", "POST"])
 def create_new_keyspair(request):
     if request.method == "GET":
         pass
@@ -155,6 +155,7 @@ def create_new_keyspair(request):
         return JsonResponse(result)
 
 
+@api_view(["GET"])
 def gettoken(request):
     if request.method == "GET":
         get_token(request)
