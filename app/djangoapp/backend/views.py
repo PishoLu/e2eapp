@@ -8,19 +8,12 @@ from cryptography.hazmat.primitives.asymmetric.x25519 import (
 from django.http import JsonResponse
 from django.middleware.csrf import get_token
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import generics, mixins, status, viewsets
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 from .models import friends, messages, user
 from .serializers import UserSerializer
-
-from rest_framework.decorators import api_view
-from rest_framework import status
-
-from rest_framework.response import Response
-
-from rest_framework import generics
-
-from rest_framework import mixins
 
 
 class linked():
