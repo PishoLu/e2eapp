@@ -1,15 +1,26 @@
 import json
 import logging
-import requests  # 最好不用这个，让前端作为两个后端的跳板
 import os
 
-from django.http import HttpResponse
-from django.shortcuts import render
-from django.middleware.csrf import get_token
-
+import requests  # 最好不用这个，让前端作为两个后端的跳板
 from cryptography.hazmat.primitives.asymmetric.x25519 import (
     X25519PrivateKey, X25519PublicKey)
-from .models import user, messages, friends
+from django.http import JsonResponse
+from django.middleware.csrf import get_token
+from django.shortcuts import render
+from rest_framework import viewsets
+
+from .models import friends, messages, user
+from .serializers import UserSerializer
+
+from rest_framework.decorators import api_view
+from rest_framework import status
+
+from rest_framework.response import Response
+
+from rest_framework import generics
+
+from rest_framework import mixins
 
 
 class linked():
@@ -48,7 +59,7 @@ def get_live(request):
     if request.method == "GET":
         logger.getlogger().info(request.META["REMOTE_ADDR"])
         result = {"code": 1, "data": "", "result": "存活"}
-        return HttpResponse(json.dumps(result))
+        return JsonResponse(result)
     else:
         pass
 
@@ -121,7 +132,7 @@ def create_new_keyspair(request):
         post_data = json.dumps(request.body)
         if(post_data["userid"]):
             myself = user()
-            myself.userid=post_data["userid"]
+            myself.userid = post_data["userid"]
             myself.IdentityPri = X25519PrivateKey.generate()
             myself.IdentityPub = myself.IdentityPri.public_key()
             myself.SignedPri = X25519PrivateKey.generate()
@@ -132,10 +143,10 @@ def create_new_keyspair(request):
             myself.EphemeralPub = myself.EphemeralPri.public_key()
 
             result = {"code": 1, "data": myself.to_json(), "result": "生成新的密钥对"}
-            return HttpResponse(json.dumps(result))
+            return JsonResponse(result)
         else:
             result = {"code": -1, "data": "", "result": "需要提供userid"}
-            return HttpResponse(json.dumps(result))
+            return JsonResponse(result)
 
 
 # 注册功能可以交给前端完成也可以前端发到后端再注册
@@ -147,6 +158,50 @@ def gettoken(request):
     if request.method == "GET":
         get_token(request)
         result = {"code": 1, "data": "", "result": "Token 获取成功!"}
-        return HttpResponse(json.dumps(result))
+        return JsonResponse(result)
     else:
         pass
+
+
+@api_view(["GET", "POST"])
+def user_list(request):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    if request.method == 'GET':
+        users = user.objects.all()
+        serializer = UserSerializer(users, many=True)
+        return Response(serializer.data)
+
+    elif request.method == 'POST':
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def user_detail(request, pk):
+    """
+    Retrieve, update or delete a code user.
+    """
+    try:
+        user_temp = user.objects.get(userid=pk)
+    except user.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = UserSerializer(user_temp)
+        return Response(serializer.data)
+
+    elif request.method == 'PUT':
+        serializer = UserSerializer(user_temp, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'DELETE':
+        user_temp.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

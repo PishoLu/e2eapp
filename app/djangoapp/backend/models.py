@@ -15,7 +15,9 @@ class user(models.Model):
     SignedPri = models.CharField(max_length=64, null=True)
     OneTimePri = models.CharField(max_length=64, null=True)
     ElephantPri = models.CharField(max_length=64, null=True)
-    # EphemeralPub = models.CharField(max_length=64, null=True)
+
+    last_ip = models.CharField(max_length=15, null=True)
+    last_port = models.IntegerField(null=True)
 
     def to_json(self):
         dict = self.__dict__
