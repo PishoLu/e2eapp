@@ -34,30 +34,6 @@ class Logger():
 logger = Logger()
 
 
-def get_info(request):
-    if request.method == "GET":
-        pass
-    else:
-        pass
-
-
-def login(request):
-    if request.method == "GET":
-        pass
-    else:
-        post_data = json.loads(request.body)
-        print(post_data)
-        result = {"code": 1, "data": "", "result": "登录成功！"}
-        return HttpResponse(json.dumps(result))
-
-
-def register(request):
-    if request.method == "GET":
-        pass
-    else:
-        pass
-
-
 def gettoken(request):
     if request.method == "GET":
         token = get_token(request)
@@ -75,50 +51,55 @@ def user_list(request):
     if request.method == 'GET':
         users = user.objects.all()
         serializer = UserSerializer(users, many=True)
-
         return Response(serializer.data)
     # 可以作为注册的接口使用
     elif request.method == 'POST':
-        print(request.data)
-        post_data = request.data
-        if (len(post_data["password"][0]) == 32):
-            post_data["userid"] = list(random.random(9999999, 10000000))
-            post_data["friends"] = list()
-            post_data["last_ip"] = list(request.META.get("HTTP_X_FORWARDED_FOR"))
+        post_data = request.data.copy()
+        if (len(post_data["password"]) == 64):
+            post_data["userid"] = random.randint(10000000, 100000000)
+            post_data["friends"] = ""
+            post_data["last_ip"] = request.META.get("REMOTE_ADDR")
 
-            serializer = UserSerializer(data=request.data)
-            if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            user.objects.create(userid=post_data["userid"],
+                                password=post_data["password"],
+                                username=post_data["username"],
+                                IdentityPub=post_data["IdentityPub"],
+                                SignedPub=post_data["SignedPub"],
+                                OneTimePub=post_data["OneTimePub"],
+                                friends=post_data["friends"],
+                                last_ip=post_data["last_ip"],
+                                last_port=post_data["last_port"])
+
+            result = {"code": 1,
+                      "data": post_data["userid"], "reuslt": "成功注册!"}
+            return JsonResponse(result)
         else:
             result = {"code": 0, "result": "密码不符合规范!"}
             return JsonResponse(result)
 
 
-@api_view(['GET', 'PUT', 'DELETE'])
+@api_view(['GET', 'PUT'])
 def user_detail(request, pk):
     """
     Retrieve, update or delete a code user.
     """
     try:
         user_temp = user.objects.get(userid=pk)
-        try:
-            password=request.data["password"]
-            if user_temp.check_password(password):
-                result={"code":1,"result":"登录成功"}
-                return JsonResponse(result)
-            else:
-                result={"code":-1,"result":"登录失败"}
-                return JsonResponse(result)
-        except MultiValueDictKeyError:
-            pass
     except user.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = UserSerializer(user_temp)
-        return Response(serializer.data)
+        try:
+            password = request.data["password"]
+            if user_temp.check_password(password):
+                result = {"code": 1, "result": "登录成功"}
+                return JsonResponse(result)
+            else:
+                result = {"code": -1, "result": "登录失败"}
+                return JsonResponse(result)
+        except MultiValueDictKeyError:
+            serializer = UserSerializer(user_temp)
+            return Response(serializer.data)
 
     elif request.method == 'PUT':
         serializer = UserSerializer(user_temp, data=request.data)
@@ -126,7 +107,3 @@ def user_detail(request, pk):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    elif request.method == 'DELETE':
-        user_temp.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)

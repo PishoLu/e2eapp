@@ -6,6 +6,7 @@ import json
 
 class user(models.Model):
     userid = models.IntegerField(primary_key=True, unique=True)
+    username = models.CharField(max_length=20, null=True)
     IdentityPub = models.CharField(max_length=64, null=True)
     SignedPub = models.CharField(max_length=64, null=True)
     OneTimePub = models.CharField(max_length=64, null=True)

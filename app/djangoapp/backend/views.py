@@ -11,9 +11,13 @@ from django.shortcuts import render
 from rest_framework import generics, mixins, status, viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.views.decorators.csrf import csrf_exempt
+
 
 from .models import friends, messages, user
 from .serializers import UserSerializer
+from cryptography.hazmat.primitives import serialization
+import binascii
 
 
 class linked():
@@ -105,41 +109,50 @@ def send_message(request):
         pass
 
 
-# 首页初始化
-# 获取好友列表
-# 尝试获取好友存活信息
-def index_init(request):
-    if request.method == "GET":
-        pass
-    else:
-        pass
-
-
 # 登陆到服务器，获取好友列表即登陆IP信息。在初始化之前登陆。登录后初始化获取好友的存活信息。返回给前端列表,由于csrf的原因，登录和注册都交给前端完成，通过axios提交登录注册请求.
 # 这里的登录是前端将登录成功的userid发送过来完成密钥初始化的。
 # 登录是先账号密码服务器验证登录，然后后端生成新的密钥对返回给前端，前端再将服务器上的密钥对更新完成登录。
+@csrf_exempt
 def create_new_keyspair(request):
     if request.method == "GET":
         pass
     else:
-        post_data = json.dumps(request.body)
-        if(post_data["userid"]):
-            myself = user()
-            myself.userid = post_data["userid"]
-            myself.IdentityPri = X25519PrivateKey.generate()
-            myself.IdentityPub = myself.IdentityPri.public_key()
-            myself.SignedPri = X25519PrivateKey.generate()
-            myself.SignedPub = myself.SignedPri.public_key()
-            myself.OneTimePri = X25519PrivateKey.generate()
-            myself.OneTimePub = myself.OneTimePri.public_key()
-            myself.EphemeralPri = X25519PrivateKey.generate()
-            myself.EphemeralPub = myself.EphemeralPri.public_key()
-
-            result = {"code": 1, "data": myself.to_json(), "result": "生成新的密钥对"}
-            return JsonResponse(result)
-        else:
-            result = {"code": -1, "data": "", "result": "需要提供userid"}
-            return JsonResponse(result)
+        pubs = {}
+        pubs["IdentityPri"] = X25519PrivateKey.generate()
+        pubs["IdentityPub"] = pubs["IdentityPri"].public_key()
+        pubs["SignedPri"] = X25519PrivateKey.generate()
+        pubs["SignedPub"] = pubs["SignedPri"].public_key()
+        pubs["OneTimePri"] = X25519PrivateKey.generate()
+        pubs["OneTimePub"] = pubs["OneTimePri"].public_key()
+        pubs["IdentityPri"] = binascii.hexlify(pubs["IdentityPri"].private_bytes(
+            encoding=serialization.Encoding.Raw,
+            format=serialization.PrivateFormat.Raw,
+            encryption_algorithm=serialization.NoEncryption()
+        )).decode("unicode_escape")
+        pubs["SignedPri"] = binascii.hexlify(pubs["SignedPri"].private_bytes(
+            encoding=serialization.Encoding.Raw,
+            format=serialization.PrivateFormat.Raw,
+            encryption_algorithm=serialization.NoEncryption()
+        )).decode("unicode_escape")
+        pubs["OneTimePri"] = binascii.hexlify(pubs["OneTimePri"].private_bytes(
+            encoding=serialization.Encoding.Raw,
+            format=serialization.PrivateFormat.Raw,
+            encryption_algorithm=serialization.NoEncryption()
+        )).decode("unicode_escape")
+        pubs["IdentityPub"] = binascii.hexlify(pubs["IdentityPub"].public_bytes(
+            encoding=serialization.Encoding.Raw,
+            format=serialization.PublicFormat.Raw
+        )).decode("unicode_escape")
+        pubs["SignedPub"] = binascii.hexlify(pubs["SignedPub"].public_bytes(
+            encoding=serialization.Encoding.Raw,
+            format=serialization.PublicFormat.Raw
+        )).decode("unicode_escape")
+        pubs["OneTimePub"] = binascii.hexlify(pubs["OneTimePub"].public_bytes(
+            encoding=serialization.Encoding.Raw,
+            format=serialization.PublicFormat.Raw
+        )).decode("unicode_escape")
+        result = {"code": 1, "data": pubs, "result": "生成新的密钥对"}
+        return JsonResponse(result)
 
 
 def gettoken(request):

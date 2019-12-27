@@ -30,3 +30,5 @@ class user(models.Model):
             return 1
         else:
             return 0
+
+
