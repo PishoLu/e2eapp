@@ -53,8 +53,3 @@ class friends(models.Model):
         if "_sa_instance_state" in dict:
             del dict["_sa_instance_state"]
         return dict
-
-
-owner = models.ForeignKey(
-    'auth.User', related_name='snippets', on_delete=models.CASCADE)
-highlighted = models.TextField()
