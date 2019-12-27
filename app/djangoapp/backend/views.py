@@ -142,11 +142,6 @@ def create_new_keyspair(request):
             return JsonResponse(result)
 
 
-# 注册功能可以交给前端完成也可以前端发到后端再注册
-def register(request):
-    pass
-
-
 def gettoken(request):
     if request.method == "GET":
         get_token(request)

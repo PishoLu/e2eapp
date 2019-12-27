@@ -7,11 +7,16 @@ from django.db import models
 class user(models.Model):
     userid = models.IntegerField(primary_key=True, unique=True)
     password = models.CharField(max_length=64)
+
     IdentityPub = models.CharField(max_length=64, null=True)
     SignedPub = models.CharField(max_length=64, null=True)
     OneTimePub = models.CharField(max_length=64, null=True)
     ElephantPub = models.CharField(max_length=64, null=True)
+
     friends = models.CharField(max_length=2048, null=True)
+
+    last_ip = models.CharField(max_length=15, null=True)
+    last_port = models.IntegerField(null=True)
 
     def to_json(self):
         dict = self.__dict__
