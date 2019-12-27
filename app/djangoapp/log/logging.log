@@ -253,3 +253,4 @@ TypeError: Object of type bytes is not JSON serializable
 2019-33-27 17:33:39-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
 2019-33-27 17:33:39-__init__-DEBUG-Using selector: SelectSelector
 2019-34-27 17:34:50-__init__-DEBUG-Using selector: SelectSelector
+2019-36-27 17:36:11-log_response-WARNING-Not Found: /apis/get_token

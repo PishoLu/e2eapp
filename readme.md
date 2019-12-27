@@ -48,6 +48,13 @@ Django 关闭 Debug 模式后可能会找不到静态文件
 
 注册：/apis/user/ **POST**
 
+| 字段     | 备注                   |
+| -------- | ---------------------- |
+| username |                        |
+| password | 前端对password完成hash |
+
+服务器随机生成userid并返回，
+
 登录：/apis/user/userid **GET**
 
 | 字段     | 备注 |
@@ -55,3 +62,8 @@ Django 关闭 Debug 模式后可能会找不到静态文件
 | userid   |      |
 | password |      |
 
+登录后在主页操作
+
+好友：
+
+- 获取好友列表：服务器/apis/user
