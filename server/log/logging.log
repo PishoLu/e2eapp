@@ -114,3 +114,150 @@ ValueError: The view backend.views.gettoken didn't return an HttpResponse object
 2019-06-25 17:06:43-__init__-DEBUG-Using selector: SelectSelector
 2019-07-25 17:07:57-log_response-WARNING-Forbidden (CSRF cookie not set.): /apis/login
 2019-08-25 17:08:29-log_response-WARNING-Forbidden (CSRF cookie not set.): /apis/login
+2019-49-27 13:49:21-trigger_reload-INFO-D:\Study\School\e2e\server\backend\urls.py changed, reloading.
+2019-49-27 13:49:21-__init__-DEBUG-Using selector: SelectSelector
+2019-49-27 13:49:25-log_response-ERROR-Internal Server Error: /apis/user
+Traceback (most recent call last):
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\django\db\backends\sqlite3\base.py", line 396, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such column: backend_user.last_ip
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 76, in user_list
+    return Response(serializer.data)
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\rest_framework\serializers.py", line 760, in data
+    ret = super().data
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\rest_framework\serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\rest_framework\serializers.py", line 678, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\django\db\models\query.py", line 276, in __iter__
+    self._fetch_all()
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\django\db\models\query.py", line 1261, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\django\db\models\query.py", line 57, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\django\db\models\sql\compiler.py", line 1137, in execute_sql
+    cursor.execute(sql, params)
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\django\db\backends\sqlite3\base.py", line 396, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such column: backend_user.last_ip
+2019-49-27 13:49:33-__init__-DEBUG-Using selector: SelectSelector
+2019-49-27 13:49:48-__init__-DEBUG-Using selector: SelectSelector
+2019-49-27 13:49:55-__init__-DEBUG-Using selector: SelectSelector
+2019-51-27 13:51:20-log_response-WARNING-Unsupported Media Type: /apis/user
+2019-52-27 13:52:22-log_response-WARNING-Bad Request: /apis/user
+2019-52-27 13:52:53-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-52-27 13:52:53-__init__-DEBUG-Using selector: SelectSelector
+2019-53-27 13:53:07-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-53-27 13:53:07-__init__-DEBUG-Using selector: SelectSelector
+2019-53-27 13:53:36-log_response-WARNING-Bad Request: /apis/user
+2019-53-27 13:53:41-log_response-WARNING-Bad Request: /apis/user
+2019-53-27 13:53:57-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-53-27 13:53:57-__init__-DEBUG-Using selector: SelectSelector
+2019-53-27 13:53:58-log_response-WARNING-Bad Request: /apis/user
+2019-55-27 13:55:23-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-55-27 13:55:23-__init__-DEBUG-Using selector: SelectSelector
+2019-10-27 14:10:42-__init__-DEBUG-Using selector: SelectSelector
+2019-11-27 14:11:21-__init__-DEBUG-Using selector: SelectSelector
+2019-11-27 14:11:28-__init__-DEBUG-Using selector: SelectSelector
+2019-11-27 14:11:51-log_response-ERROR-Internal Server Error: /apis/user/1
+Traceback (most recent call last):
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\django\utils\datastructures.py", line 76, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'password'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 106, in user_detail
+    password=request.data["password"]
+  File "D:\Study\School\e2e\server\envserver\lib\site-packages\django\utils\datastructures.py", line 78, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'password'
+2019-12-27 14:12:58-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-12-27 14:12:58-__init__-DEBUG-Using selector: SelectSelector
+2019-13-27 14:13:58-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-13-27 14:13:58-__init__-DEBUG-Using selector: SelectSelector
+2019-14-27 14:14:37-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-14-27 14:14:37-__init__-DEBUG-Using selector: SelectSelector
+2019-14-27 14:14:43-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-14-27 14:14:43-__init__-DEBUG-Using selector: SelectSelector
+2019-14-27 14:14:57-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-14-27 14:14:57-__init__-DEBUG-Using selector: SelectSelector
+2019-15-27 14:15:37-trigger_reload-INFO-D:\Study\School\e2e\server\backend\serializers.py changed, reloading.
+2019-15-27 14:15:37-__init__-DEBUG-Using selector: SelectSelector
+2019-19-27 14:19:52-trigger_reload-INFO-D:\Study\School\e2e\server\backend\models.py changed, reloading.
+2019-19-27 14:19:52-__init__-DEBUG-Using selector: SelectSelector
+2019-21-27 14:21:12-trigger_reload-INFO-D:\Study\School\e2e\server\backend\models.py changed, reloading.
+2019-21-27 14:21:12-__init__-DEBUG-Using selector: SelectSelector
+2019-21-27 14:21:44-trigger_reload-INFO-D:\Study\School\e2e\server\backend\models.py changed, reloading.
+2019-21-27 14:21:44-__init__-DEBUG-Using selector: SelectSelector
+2019-21-27 14:21:52-trigger_reload-INFO-D:\Study\School\e2e\server\backend\models.py changed, reloading.
+2019-21-27 14:21:52-__init__-DEBUG-Using selector: SelectSelector
+2019-22-27 14:22:17-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-22-27 14:22:17-__init__-DEBUG-Using selector: SelectSelector
+2019-23-27 14:23:06-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-23-27 14:23:06-__init__-DEBUG-Using selector: SelectSelector
+2019-23-27 14:23:18-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-23-27 14:23:18-__init__-DEBUG-Using selector: SelectSelector
+2019-23-27 14:23:54-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-23-27 14:23:54-__init__-DEBUG-Using selector: SelectSelector
+2019-25-27 14:25:58-__init__-DEBUG-Using selector: SelectSelector
+2019-26-27 14:26:03-__init__-DEBUG-Using selector: SelectSelector
