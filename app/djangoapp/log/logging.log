@@ -254,3 +254,135 @@ TypeError: Object of type bytes is not JSON serializable
 2019-33-27 17:33:39-__init__-DEBUG-Using selector: SelectSelector
 2019-34-27 17:34:50-__init__-DEBUG-Using selector: SelectSelector
 2019-36-27 17:36:11-log_response-WARNING-Not Found: /apis/get_token
+2019-20-28 17:20:29-log_response-WARNING-Not Found: /favicon.ico
+2019-20-28 17:20:53-__init__-DEBUG-Using selector: SelectSelector
+2019-21-28 17:21:27-__init__-DEBUG-Using selector: SelectSelector
+2019-23-28 17:23:05-log_response-ERROR-Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 145, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 143, in _get_response
+    response = response.render()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\template\response.py", line 81, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\template\response.py", line 63, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(', '.join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: index.html
+2019-23-28 17:23:09-log_response-ERROR-Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 145, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 143, in _get_response
+    response = response.render()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\template\response.py", line 81, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\template\response.py", line 63, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(', '.join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: index.html
+2019-23-28 17:23:13-log_response-ERROR-Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 145, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 143, in _get_response
+    response = response.render()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\template\response.py", line 81, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\template\response.py", line 63, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(', '.join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: index.html
+2019-23-28 17:23:55-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\djangoapp\settings.py changed, reloading.
+2019-23-28 17:23:55-__init__-DEBUG-Using selector: SelectSelector
+2019-24-28 17:24:00-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\djangoapp\settings.py changed, reloading.
+2019-24-28 17:24:00-__init__-DEBUG-Using selector: SelectSelector
+2019-24-28 17:24:04-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\djangoapp\settings.py changed, reloading.
+2019-24-28 17:24:04-__init__-DEBUG-Using selector: SelectSelector
+2019-24-28 17:24:06-__init__-DEBUG-Using selector: SelectSelector
+2019-26-28 17:26:35-__init__-DEBUG-Using selector: SelectSelector
+2019-27-28 17:27:26-log_response-WARNING-Forbidden: /apis/create_new_keyspair
+2019-27-28 17:27:49-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\urls.py changed, reloading.
+2019-27-28 17:27:49-__init__-DEBUG-Using selector: SelectSelector
+2019-27-28 17:27:52-log_response-ERROR-Internal Server Error: /apis/create_new_keyspair
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\utils\deprecation.py", line 93, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\middleware\common.py", line 54, in process_request
+    path = self.get_full_path_with_slash(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\middleware\common.py", line 94, in get_full_path_with_slash
+    'url': request.get_host() + new_path,
+RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to 127.0.0.1:8000/apis/create_new_keyspair/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+2019-27-28 17:27:58-log_response-ERROR-Internal Server Error: /apis/create_new_keyspair
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\utils\deprecation.py", line 93, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\middleware\common.py", line 54, in process_request
+    path = self.get_full_path_with_slash(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\middleware\common.py", line 94, in get_full_path_with_slash
+    'url': request.get_host() + new_path,
+RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to 127.0.0.1:8000/apis/create_new_keyspair/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+2019-30-28 17:30:00-__init__-DEBUG-Using selector: SelectSelector
+2019-31-28 17:31:56-log_response-ERROR-Internal Server Error: /apis/create_new_keyspair
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\utils\deprecation.py", line 93, in __call__
+    response = self.process_request(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\middleware\common.py", line 54, in process_request
+    path = self.get_full_path_with_slash(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\middleware\common.py", line 94, in get_full_path_with_slash
+    'url': request.get_host() + new_path,
+RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to 127.0.0.1:8000/apis/create_new_keyspair/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+2019-32-28 17:32:27-__init__-DEBUG-Using selector: SelectSelector
+2019-33-28 17:33:16-log_response-WARNING-Forbidden: /apis/create_new_keyspair/
+2019-34-28 17:34:11-log_response-ERROR-Internal Server Error: /apis/create_new_keyspair/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 507, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 422, in finalize_response
+    % type(response)
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'NoneType'>`
+2019-34-28 17:34:30-log_response-WARNING-Forbidden: /apis/create_new_keyspair/
+2019-35-28 17:35:25-log_response-WARNING-Forbidden: /apis/create_new_keyspair/
+2019-37-28 17:37:44-__init__-DEBUG-Using selector: SelectSelector
+2019-40-28 17:40:46-__init__-DEBUG-Using selector: SelectSelector
+2019-42-28 17:42:32-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\djangoapp\settings.py changed, reloading.
+2019-42-28 17:42:32-__init__-DEBUG-Using selector: SelectSelector
+2019-42-28 17:42:43-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\djangoapp\settings.py changed, reloading.
+2019-42-28 17:42:43-__init__-DEBUG-Using selector: SelectSelector
+2019-42-28 17:42:47-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\djangoapp\settings.py changed, reloading.
+2019-42-28 17:42:47-__init__-DEBUG-Using selector: SelectSelector
+2019-43-28 17:43:19-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\djangoapp\settings.py changed, reloading.
+2019-43-28 17:43:19-__init__-DEBUG-Using selector: SelectSelector

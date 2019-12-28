@@ -10,6 +10,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
+from django.views.decorators.csrf import csrf_exempt
 from .models import user
 from .serializers import UserSerializer
 
@@ -43,6 +44,7 @@ def gettoken(request):
         pass
 
 
+@csrf_exempt
 @api_view(["GET", "POST"])
 def user_list(request):
     """
@@ -78,7 +80,8 @@ def user_list(request):
             return JsonResponse(result)
 
 
-@api_view(['GET', 'PUT'])
+@csrf_exempt
+@api_view(['GET', 'POST', 'PUT'])
 def user_detail(request, pk):
     """
     Retrieve, update or delete a code user.
@@ -88,7 +91,7 @@ def user_detail(request, pk):
     except user.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
-    if request.method == 'GET':
+    if request.method == 'POST':
         try:
             password = request.data["password"]
             if user_temp.check_password(password):
@@ -107,3 +110,7 @@ def user_detail(request, pk):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'GET':
+        serializer = UserSerializer(user_temp)
+        return Response(serializer.data)

@@ -10,5 +10,5 @@ urlpatterns = [
     path("gettoken/", views.gettoken),
     path('user/', views.user_list),
     path('user/<int:pk>', views.user_detail),
-    path('create_new_keyspair', views.create_new_keyspair)
+    path('create_new_keyspair/', views.create_new_keyspair)
 ]

@@ -568,3 +568,308 @@ AttributeError: 'Manager' object has no attribute 'creat'
 2019-12-27 15:12:12-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
 2019-12-27 15:12:12-__init__-DEBUG-Using selector: SelectSelector
 2019-12-27 15:12:15-__init__-DEBUG-Using selector: SelectSelector
+2019-06-28 17:06:22-__init__-DEBUG-Using selector: SelectSelector
+2019-08-28 17:08:19-log_response-WARNING-Not Found: /apis/user/
+2019-08-28 17:08:25-log_response-WARNING-Not Found: /apis/gettoken/
+2019-09-28 17:09:03-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-09-28 17:09:03-__init__-DEBUG-Using selector: SelectSelector
+2019-09-28 17:09:19-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-09-28 17:09:19-__init__-DEBUG-Using selector: SelectSelector
+2019-09-28 17:09:24-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-09-28 17:09:24-__init__-DEBUG-Using selector: SelectSelector
+2019-09-28 17:09:26-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-09-28 17:09:26-__init__-DEBUG-Using selector: SelectSelector
+2019-09-28 17:09:32-log_response-WARNING-Not Found: /apis/gettoken/
+2019-09-28 17:09:42-log_response-WARNING-Not Found: /apis/gettoken/
+2019-09-28 17:09:42-log_response-WARNING-Not Found: /favicon.ico
+2019-09-28 17:09:45-log_response-WARNING-Not Found: /apis/gettoken
+2019-10-28 17:10:12-trigger_reload-INFO-D:\Study\School\e2e\server\backend\urls.py changed, reloading.
+2019-10-28 17:10:12-__init__-DEBUG-Using selector: SelectSelector
+2019-10-28 17:10:47-log_response-WARNING-Not Found: /apis/gettoken/
+2019-10-28 17:10:57-log_response-WARNING-Not Found: /apis/gettoken/
+2019-11-28 17:11:06-log_response-WARNING-Not Found: /apis/gettoken/
+2019-58-28 17:58:15-log_response-WARNING-Not Found: /apis/user/
+2019-58-28 17:58:31-__init__-DEBUG-Using selector: SelectSelector
+2019-00-28 18:00:03-log_response-WARNING-Not Found: /apis/user/
+2019-00-28 18:00:10-log_response-WARNING-Not Found: /apis/user/
+2019-01-28 18:01:11-trigger_reload-INFO-D:\Study\School\e2e\server\backend\urls.py changed, reloading.
+2019-01-28 18:01:11-__init__-DEBUG-Using selector: SelectSelector
+2019-01-28 18:01:14-trigger_reload-INFO-D:\Study\School\e2e\server\backend\urls.py changed, reloading.
+2019-01-28 18:01:14-__init__-DEBUG-Using selector: SelectSelector
+2019-11-28 18:11:42-log_response-ERROR-Internal Server Error: /apis/user/87769203
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 96, in user_detail
+    password = request.data["password"]
+KeyError: 'password'
+2019-16-28 18:16:45-log_response-ERROR-Internal Server Error: /apis/user/85119178
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 96, in user_detail
+    password = request.data["password"]
+KeyError: 'password'
+2019-17-28 18:17:32-log_response-ERROR-Internal Server Error: /apis/user/85119178
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 96, in user_detail
+    password = request.data["password"]
+KeyError: 'password'
+2019-19-28 18:19:25-log_response-ERROR-Internal Server Error: /apis/user/85119178
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 96, in user_detail
+    password = request.data["password"]
+KeyError: 'password'
+2019-19-28 18:19:38-log_response-WARNING-Method Not Allowed: /apis/user/85119178
+2019-20-28 18:20:01-log_response-ERROR-Internal Server Error: /apis/user/85119178
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 96, in user_detail
+    password = request.data["password"]
+KeyError: 'password'
+2019-20-28 18:20:29-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-20-28 18:20:29-__init__-DEBUG-Using selector: SelectSelector
+2019-21-28 18:21:23-log_response-ERROR-Internal Server Error: /apis/user/85119178
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 96, in user_detail
+    password = request.data["password"]
+KeyError: 'password'
+2019-22-28 18:22:19-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-22-28 18:22:19-__init__-DEBUG-Using selector: SelectSelector
+2019-22-28 18:22:28-log_response-ERROR-Internal Server Error: /apis/user/85119178
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 97, in user_detail
+    password = request.data["password"]
+KeyError: 'password'
+2019-22-28 18:22:57-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-22-28 18:22:57-__init__-DEBUG-Using selector: SelectSelector
+2019-23-28 18:23:02-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-23-28 18:23:02-__init__-DEBUG-Using selector: SelectSelector
+2019-23-28 18:23:09-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-23-28 18:23:09-__init__-DEBUG-Using selector: SelectSelector
+2019-23-28 18:23:14-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-23-28 18:23:14-__init__-DEBUG-Using selector: SelectSelector
+2019-24-28 18:24:49-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-24-28 18:24:49-__init__-DEBUG-Using selector: SelectSelector
+2019-25-28 18:25:20-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-25-28 18:25:20-__init__-DEBUG-Using selector: SelectSelector
+2019-25-28 18:25:32-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-25-28 18:25:32-__init__-DEBUG-Using selector: SelectSelector
+2019-25-28 18:25:35-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-25-28 18:25:35-__init__-DEBUG-Using selector: SelectSelector
+2019-25-28 18:25:38-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-25-28 18:25:38-__init__-DEBUG-Using selector: SelectSelector
+2019-25-28 18:25:47-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-25-28 18:25:47-__init__-DEBUG-Using selector: SelectSelector
+2019-25-28 18:25:53-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-25-28 18:25:53-__init__-DEBUG-Using selector: SelectSelector
+2019-25-28 18:25:57-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-25-28 18:25:57-__init__-DEBUG-Using selector: SelectSelector
+2019-27-28 18:27:06-trigger_reload-INFO-D:\Study\School\e2e\server\backend\models.py changed, reloading.
+2019-27-28 18:27:06-__init__-DEBUG-Using selector: SelectSelector
+2019-27-28 18:27:21-trigger_reload-INFO-D:\Study\School\e2e\server\backend\models.py changed, reloading.
+2019-27-28 18:27:21-__init__-DEBUG-Using selector: SelectSelector
+2019-28-28 18:28:28-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-28-28 18:28:28-__init__-DEBUG-Using selector: SelectSelector
+2019-28-28 18:28:36-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-28-28 18:28:36-__init__-DEBUG-Using selector: SelectSelector
+2019-29-28 18:29:00-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-29-28 18:29:00-__init__-DEBUG-Using selector: SelectSelector
+2019-31-28 18:31:25-log_response-WARNING-Not Found: /apis/user/85119178
+2019-31-28 18:31:57-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-31-28 18:31:57-__init__-DEBUG-Using selector: SelectSelector
+2019-32-28 18:32:07-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-32-28 18:32:07-__init__-DEBUG-Using selector: SelectSelector
+2019-32-28 18:32:11-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-32-28 18:32:11-__init__-DEBUG-Using selector: SelectSelector
+2019-32-28 18:32:13-log_response-WARNING-Not Found: /apis/user/85119178
+2019-32-28 18:32:31-log_response-WARNING-Not Found: /apis/user/85119178
+2019-32-28 18:32:39-log_response-ERROR-Internal Server Error: /apis/user/33427729
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\utils\datastructures.py", line 76, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'password'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 96, in user_detail
+    password = request.data["password"]
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\utils\datastructures.py", line 78, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'password'
+2019-32-28 18:32:48-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-32-28 18:32:48-__init__-DEBUG-Using selector: SelectSelector
+2019-32-28 18:32:51-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-32-28 18:32:51-__init__-DEBUG-Using selector: SelectSelector
