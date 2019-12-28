@@ -89,7 +89,8 @@ def user_detail(request, pk):
     try:
         user_temp = user.objects.get(userid=pk)
     except user.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+        result = {"code": -1, "result": "未找到相关信息"}
+        return JsonResponse(result)
 
     if request.method == 'POST':
         try:
