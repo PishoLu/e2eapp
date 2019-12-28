@@ -14,8 +14,6 @@ class user(models.Model):
     SignedPub = models.CharField(max_length=64, null=True)
     OneTimePub = models.CharField(max_length=64, null=True)
 
-    friends = models.CharField(max_length=2048, null=True)
-
     last_ip = models.CharField(max_length=15, null=True)
     last_port = models.IntegerField(null=True)
 

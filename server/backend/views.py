@@ -45,17 +45,10 @@ def gettoken(request):
 
 
 @csrf_exempt
-@api_view(["GET", "POST"])
+@api_view(["POST"])
 def user_list(request):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    if request.method == 'GET':
-        users = user.objects.all()
-        serializer = UserSerializer(users, many=True)
-        return Response(serializer.data)
-    # 可以作为注册的接口使用
-    elif request.method == 'POST':
+    # 注册接口
+    if request.method == 'POST':
         post_data = request.data.copy()
         if (len(post_data["password"]) == 64):
             post_data["userid"] = random.randint(10000000, 100000000)
@@ -83,15 +76,12 @@ def user_list(request):
 @csrf_exempt
 @api_view(['GET', 'POST', 'PUT'])
 def user_detail(request, pk):
-    """
-    Retrieve, update or delete a code user.
-    """
     try:
         user_temp = user.objects.get(userid=pk)
     except user.DoesNotExist:
         result = {"code": -1, "result": "未找到相关信息"}
         return JsonResponse(result)
-
+# 登录接口
     if request.method == 'POST':
         try:
             password = request.data["password"]
@@ -104,14 +94,20 @@ def user_detail(request, pk):
         except MultiValueDictKeyError:
             serializer = UserSerializer(user_temp)
             return Response(serializer.data)
-
+# 更新信息（还没修改）
     elif request.method == 'PUT':
         serializer = UserSerializer(user_temp, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+# 通过该方法可以查询目标是否为好友以及目标其他的可被访问的信息（用户名，用户ID，公钥，上次的IP，上次的端口）
     elif request.method == 'GET':
         serializer = UserSerializer(user_temp)
+        # seriadata = serializer.data
+        # request_id = request.COOKIES["logining_userid"]
+        # if(request_id in seriadata["friends"]):
+        #     seriadata["friends"] = "is_friend"
+        # else:
+        #     seriadata["friends"] = "not_friend"
         return Response(serializer.data)

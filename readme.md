@@ -26,11 +26,12 @@ Django 关闭 Debug 模式后可能会找不到静态文件
 | 接口名          | 方法 | 字段             | 返回值                       | 备注                                                         |
 | --------------- | ---- | ---------------- | ---------------------------- | ------------------------------------------------------------ |
 | get_live        | GET  | 无               | 存活返回 1，不存活无法返回   |                                                              |
-| get_pubs        | GET  | 无               | 返回自己的三种公钥           |                                                              |
 | get_message     | POST | message<br />pub | 成功接收返回1                | 该接口接收密文和公钥并解密保存到数据库。                     |
-| start_X3DH      | POST | pubs             | 完成X3DH返回1，未完成返回0   | 该接口通过双方交互公钥完成密钥认证并将对方添加到已连接的列表初始化KDF输入 |
 | filter_messages | GET  | id，num          | 通过ID查询该ID下的所有消息   | num是上一次查询的末尾记录数。防止重复消息                    |
 | others_live     | GET  | 无               | 返回自己的所有好友的存活信息 | 后端先访问服务器更新好友列表然后再逐个访问是否存活并返回存活信息 |
+| decrypt_message | POST | 目标ID，密文     | 返回解密的明文               | 通过密钥解密                                                 |
+| encrypt_message | POST | 目标ID，明文     | 返回加密的密文               | 查询是否连接X3DH，返回加密密文。                             |
+| sotre_message   | POST | 目标ID，明文     | 无                           | 保存消息到数据库                                             |
 
 
 
@@ -38,9 +39,8 @@ Django 关闭 Debug 模式后可能会找不到静态文件
 
 | 接口名  | 方法 | 字段                   | 返回值                               | 备注           |
 | ------- | ---- | ---------------------- | ------------------------------------ | -------------- |
-| user/   | GET  | 无                     | 返回所有 user 的信息                 | 后期不会使用了 |
-| user/pk | GET  | 无                     | 返回该 userid 下的可被他人访问的信息 |                |
-| user/pk | GET  | password               | 对比 password 返回结果               | 登录接口       |
+| user/pk | GET  | 无                     | 返回该 userid 下的可被他人访问的信息 | 返回是否为好友 |
+| user/pk | POST | password               | 对比 password 返回结果               | 登录接口       |
 | user/   | POST | username,password,pubs | 注册结果                             | 注册接口       |
 | user/pk | PUT  | username,pubs          | 更新 username 或者 pub               |                |
 

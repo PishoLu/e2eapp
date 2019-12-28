@@ -30,7 +30,7 @@ class linked():
 
 
 linked_list = []  # 已连接的好友列表
-alive_list = []  # 存活的好友列表
+wite_list = []  # 等待被添加的好友列表(只有双方在线的时候才能正常添加)
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 log_path = BASE_DIR+"/log/"
@@ -60,22 +60,6 @@ def get_live(request):
         pass
 
 
-# 返回自己的公钥，服务器的信息也是包括公钥信息，所以可以用来互相对照。
-def get_pubs(request):
-    if request.method == "GET":
-        pass
-    else:
-        pass
-
-
-# 接收别人发来的消息
-def get_message(request):
-    if request.method == "GET":
-        pass
-    else:
-        pass
-
-
 # 开始连接，将连接对象存到列表中，如果没有两个kdf就开始X3DH获取到kdf初始值。
 def start_X3DH(request):
     if request.method == "GET":
@@ -84,7 +68,16 @@ def start_X3DH(request):
         pass
 
 
-# 从数据库过滤某IP的消息
+# 该接口接收他人发送的消息
+# 可以整合添加好友
+def get_message(request):
+    if request.method == "GET":
+        pass
+    else:
+        pass
+
+
+# 从数据库过滤消息
 def filter_messages(request):
     if request.method == "GET":
         pass
@@ -92,16 +85,34 @@ def filter_messages(request):
         pass
 
 
-# 获取好友列表的存活情况
-def others_live(request):
+# 获取好友列表
+def friends_list(request):
     if request.method == "GET":
         pass
     else:
         pass
 
 
-# 发送消息给其他人
-def send_message(request):
+# 保存发送和接收的消息
+def sotre_message(request):
+    if request.method == "GET":
+        pass
+    else:
+        pass
+
+
+# 返回解密消息
+# 参数：对方的ID，对方发来的消息
+def decrypt_message(request):
+    if request.method == "GET":
+        pass
+    else:
+        pass
+
+
+# 返回加密药效
+# 参数：对方的ID，我要发送的消息
+def encrypt_message(request):
     if request.method == "GET":
         pass
     else:
