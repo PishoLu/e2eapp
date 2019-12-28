@@ -101,6 +101,14 @@ def sotre_message(request):
         pass
 
 
+# 保存user类相关信息
+def sotre_user(request):
+    if request.method == "GET":
+        pass
+    else:
+        pass
+
+
 # 返回解密消息
 # 参数：对方的ID，对方发来的消息
 def decrypt_message(request):

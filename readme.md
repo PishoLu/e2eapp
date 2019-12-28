@@ -23,17 +23,16 @@ Django 关闭 Debug 模式后可能会找不到静态文件
 
 ## 客户端接口
 
-| 接口名          | 方法 | 字段             | 返回值                       | 备注                                                         |
-| --------------- | ---- | ---------------- | ---------------------------- | ------------------------------------------------------------ |
-| get_live        | GET  | 无               | 存活返回 1，不存活无法返回   |                                                              |
-| get_message     | POST | message<br />pub | 成功接收返回1                | 该接口接收密文和公钥并解密保存到数据库。                     |
-| filter_messages | GET  | id，num          | 通过ID查询该ID下的所有消息   | num是上一次查询的末尾记录数。防止重复消息                    |
-| others_live     | GET  | 无               | 返回自己的所有好友的存活信息 | 后端先访问服务器更新好友列表然后再逐个访问是否存活并返回存活信息 |
-| decrypt_message | POST | 目标ID，密文     | 返回解密的明文               | 通过密钥解密                                                 |
-| encrypt_message | POST | 目标ID，明文     | 返回加密的密文               | 查询是否连接X3DH，返回加密密文。                             |
-| sotre_message   | POST | 目标ID，明文     | 无                           | 保存消息到数据库                                             |
-
-
+| 接口名          | 方法 | 字段                 | 返回值                     | 备注                                                   |
+| --------------- | ---- | -------------------- | -------------------------- | ------------------------------------------------------ |
+| get_live        | GET  | 无                   | 存活返回 1，不存活无法返回 |                                                        |
+| get_message     | POST | message<br />pub     | 成功接收返回1              | 该接口接收密文并解密保存到数据库。通过操作可以添加好友 |
+| filter_messages | GET  | id，num              | 通过ID查询该ID下的所有消息 | num是上一次查询的末尾记录数。防止重复消息              |
+| friends_list    | GET  | 无                   | 返回自己的所有好友信息     | 返回好友列表让前端去完成存活确认                       |
+| decrypt_message | POST | 目标ID，密文         | 返回解密的明文             | 通过密钥解密                                           |
+| encrypt_message | POST | 目标ID，明文         | 返回加密的密文             | 查询是否连接X3DH，返回加密密文。                       |
+| sotre_message   | POST | 目标ID，明文         | 无                         | 保存消息到数据库                                       |
+| sotre_user      | POST | 目标信息或自身的信息 | 无                         | 保存User类信息                                         |
 
 ## 服务器接口
 
@@ -42,7 +41,7 @@ Django 关闭 Debug 模式后可能会找不到静态文件
 | user/pk | GET  | 无                     | 返回该 userid 下的可被他人访问的信息 | 返回是否为好友 |
 | user/pk | POST | password               | 对比 password 返回结果               | 登录接口       |
 | user/   | POST | username,password,pubs | 注册结果                             | 注册接口       |
-| user/pk | PUT  | username,pubs          | 更新 username 或者 pub               |                |
+| user/pk | PUT  | username,pubs          | 更新 username，pub                   |                |
 
 ## 前端逻辑
 
