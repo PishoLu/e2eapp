@@ -16,15 +16,17 @@
         </el-row>
       </div>
     </div>
-    <div class="r-up" v-if="!r_up_type">
-      <ul id="content" v-for="(item,index) in message_list" :key="index">
-        <li>{{item}}</li>
-      </ul>
-    </div>
-    <div class="r-dn">
-      <textarea name="" id="" cols="66" rows="20" placeholder="在这里输入" v-model="inputmsg" />
-      <div class="sub_button">
-        <button @click="send_message()">发送</button>
+    <div class="right">
+      <div class="r-up" v-if="!r_up_type">
+        <ul id="content" v-for="(item,index) in message_list" :key="index">
+          <li>{{item}}</li>
+        </ul>
+      </div>
+      <div class="r-dn">
+        <textarea name="" id="" cols="66" rows="20" placeholder="在这里输入" v-model="inputmsg" />
+        <div class="sub_button">
+          <button @click="send_message()">发送</button>
+        </div>
       </div>
     </div>
   </div>
@@ -55,6 +57,10 @@
     },
     created: function () {
       var logging_cookie=this.$cookies.get("logining_userid");
+      // if(logging_cookie){
+      // }else{
+      //   this.$router.push("/")
+      // }
       // 获取好友列表
       // 根据好友列表探查好友的存活
       // 或许可以获取所有的消息记录
@@ -81,12 +87,15 @@
 </script>
 <style scoped>
   #app {
-    width: 1000px;
     margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    border: 1px solid red;
+    position: fixed;
   }
 
   .friend-item{
-    width: 200px
+    width: auto;
   }
 
   .left{
@@ -94,8 +103,12 @@
     width: 20%;
   }
 
+  .right{
+    width: 80%;
+  }
+
   .left_down {
-    height: 760px;
+    height: auto;
     float: left;
     text-align: left;
   }
@@ -109,15 +122,15 @@
   .r-up {
     border: 1px solid yellow;
     width: 79%;
-    height: 600px;
     float: right;
+    position: relative;
   }
 
   .r-dn {
     border: 1px solid deepskyblue;
     width: 79%;
-    height: 200px;
     float: right;
+    position: relative;
   }
 
   .r-dn textarea {
