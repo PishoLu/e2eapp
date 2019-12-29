@@ -1,20 +1,36 @@
 <template>
   <div id="app">
-    <div class="left">
-      <ul v-for="(item,index) in friend_list" :key="index">
-        <a href="#">{{item.id+item.name}}</a>
-      </ul>
+    <div>
+    <div class="left_up">
+      <el-input v-model="input" placeholder="请输入内容"></el-input>
     </div>
-    <div class="r-up">
-      <h3>聊天详情</h3>
+    <div class="left_down">
+      <el-row class="tac">
+        <el-col :span="24">
+          <el-menu default-active="1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
+            background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+            <el-submenu index="1">
+              <template slot="title">
+                <span>好友列表</span>
+              </template>
+              <el-menu-item-group v-for="(item,index) in friends_list" :key="index">
+                <el-menu-item @click="excheng_obj(item.id)">{{item.username}}</el-menu-item>
+              </el-menu-item-group>
+            </el-submenu>
+          </el-menu>
+        </el-col>
+      </el-row>
+    </div>
+    </div>
+    <div class="r-up" v-if="!r_up_type">
       <ul id="content" v-for="(item,index) in message_list" :key="index">
         <li>{{item}}</li>
       </ul>
     </div>
     <div class="r-dn">
-      <textarea name="" id="" cols="66" rows="20" placeholder="在这里输入" v-model="inputmsg"/>
+      <textarea name="" id="" cols="66" rows="20" placeholder="在这里输入" v-model="inputmsg" />
       <div class="sub_button">
-        <button @click="submit">发送</button>
+        <button @click="send_message()">发送</button>
       </div>
     </div>
   </div>
@@ -27,30 +43,41 @@
       return {
         message_list: [],
         inputmsg: '',
-        friend_list: [
-          {
-            id: 1,
-            name: '张三',
-          },
-          {
-            id: 2,
-            name: '李四',
-          },
-          {
-            id: 3,
-            name: '王五',
-          },
-        ]
+        friends_list: [{
+          "id":23424234,
+          "username":"test"
+        },{
+          "id":23423423,
+          "username":"test2"
+        }],
+        cruent_obj_id:0,
+        // message区域可以分作几类，用于呈现不同的类型的消息。比如查询好友所得的消息，以及聊天记录的消息
+        r_up_type:0
       }
     },
     methods: {
-      submit: function () {
+      handleOpen(key, keyPath) {
+        console.log(key, keyPath);
+      },
+      handleClose(key, keyPath) {
+        console.log(key, keyPath);
+      },
+      send_message() {
         this.list.push(this.inputmsg);
         this.inputmsg = ''
+      },
+      excheng_obj(id){
+        console.log(id)
+        this.cruent_obj_id=id
+      },
+      get_messages(){
+        console.log("tets")
       }
     },
     watch:{
-
+      cruent_obj_id:function(val, newval){
+        console.log("watch me")
+      }
     }
   }
 </script>
@@ -60,12 +87,20 @@
     margin: 0 auto;
   }
 
-  .left {
+  .left_down {
     border: 1px solid pink;
     width: 20%;
-    height: 800px;
+    height: 760px;
     float: left;
     text-align: left;
+  }
+
+  .left_up{
+    border: 1px solid blue;
+    background-color: rgb(71, 79, 85);
+    height: 40px;
+    text-align: left;
+    width: 20%;
   }
 
   .r-up {
