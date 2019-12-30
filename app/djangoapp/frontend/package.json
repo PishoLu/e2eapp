@@ -49,6 +49,7 @@
     "url-loader": "^0.5.8",
     "vue-cookie": "^1.1.4",
     "vue-cookies": "^1.6.1",
+    "vue-infinite-scroll": "^2.0.2",
     "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.5.2",

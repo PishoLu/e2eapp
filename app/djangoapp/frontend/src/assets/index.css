@@ -1,0 +1,150 @@
+#app {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+#left {
+  width: 160px;
+  height: 100%;
+  position: fixed;
+  background-color: rgb(84, 92, 100)
+}
+
+#right {
+  width: calc(100% - 160px);
+  height: 100%;
+  position: relative;
+  float: right;
+}
+
+#search_line {
+  width: 100%;
+  height: 40px;
+}
+
+.search_table_title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.search_table_itme {
+  text-align: center;
+  position: relative;
+  height: 44px;
+  line-height: 44px;
+  width: auto;
+
+}
+
+.dividing_line {
+  letter-spacing: -1px;
+  color: #ddd;
+}
+
+
+#friends_list {
+  width: 100%;
+  height: 96%;
+}
+
+
+#show_window {
+  width: auto;
+  height: 100%;
+  position: relative;
+  /* background-color: rgb(247, 247, 247) */
+}
+
+#show_message {
+  width: auto;
+  height: 60%;
+  position: relative;
+  margin: 5px;
+  padding: 10px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.show_message_date {
+  text-align: left;
+  font-size: 10px;
+}
+
+.show_message_text {
+  text-align: left;
+  width: 15%;
+  height: auto;
+  margin: 10px 0px;
+  background-color: rgb(25, 187, 25);
+  border-bottom-color: rgb(25, 187, 25);
+  /*为了给after伪元素自动继承*/
+  color: #fff;
+  font-size: 15px;
+  font-family: Arial;
+  line-height: 18px;
+  padding: 5px 12px 5px 12px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  position: relative;
+  word-break: break-all;
+}
+
+.show_message_date_self {
+  font-size: 10px;
+  text-align: right;
+}
+
+.show_message_text_self {
+  text-align: left;
+  width: 15%;
+  height: auto;
+  margin: 10px 0px;
+  background-color: rgb(13, 0, 128);
+  border-bottom-color: rgb(13, 0, 128);
+  /*为了给after伪元素自动继承*/
+  color: #fff;
+  font-size: 15px;
+  font-family: Arial;
+  line-height: 18px;
+  padding: 5px 12px 5px 12px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  position: relative;
+  word-break: break-all;
+  left: 85%;
+}
+
+#input_box {
+  width: auto;
+  height: 35%;
+  position: relative;
+  margin: 5px;
+  padding: 5px;
+
+}
+
+#textarea_box {
+  width: 100%;
+  height: 80%;
+  resize: none;
+  position: relative;
+}
+
+#submit_button {
+  width: 100%;
+  height: 18%;
+  position: relative;
+}
+
+#button {
+  width: 80px;
+  height: 30px;
+  position: relative;
+  top: calc((100% - 30px)/2);
+  vertical-align: middle;
+  left: calc(50% - 60px);
+  text-align: center;
+
+}

@@ -1,19 +1,46 @@
 <template>
   <div id="app">
-    <el-dialog title="搜索结果" :visible.sync="dialogTableVisible" :modal-append-to-body='false'>
-      <el-table :data="search_result">  
-        <el-table-column property="id" label="ID" width="150"></el-table-column>
-        <el-table-column property="username" label="username" width="200"></el-table-column>
-        <!-- 添加操作按钮，不行就还是放show_window里面输出但是太麻烦 -->
-        <el-button type="primary">添加</el-button>
-      </el-table>
+    <el-dialog title="搜索结果" :visible.sync="dialogFormVisible" :modal-append-to-body='false'>
+      <el-row>
+        <el-col :span="8">
+          <div class="search_table_title">ID</div>
+        </el-col>
+        <el-col :span="8">
+          <div class="search_table_title">Username</div>
+        </el-col>
+        <el-col :span="8">
+          <div class="search_table_title"></div>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col :span="24">
+          <el-divider></el-divider>        
+        </el-col>
+      </el-row>
+      <el-row v-for="(item, index) in search_result" :key="index">
+        <el-col :span="8">
+          <div class="search_table_itme">{{item.id}}</div>
+        </el-col>
+        <el-col :span="8">
+          <div class="search_table_itme">{{item.username}}</div>
+        </el-col>
+        <el-col :span="8">
+          <div class="search_table_itme">
+            <el-button type="primary" @click="add_friend(item.id)">添加</el-button>
+          </div>
+        </el-col>
+        <el-col :span="24">
+          <el-divider></el-divider>     
+        </el-col>
+      </el-row>
     </el-dialog>
     <div id="left">
       <div id="search_line" class=".col-md-3">
-        <el-input v-model="search_input" placeholder="请输入内容" @keyup.enter.native="search_friend" required="required"></el-input>
+        <el-input v-model="search_input" placeholder="请输入内容" @keyup.enter.native="search_friend" required="required"
+          clearable></el-input>
       </div>
       <div id="friends_list">
-        <el-row class="tac"> 
+        <el-row class="tac">
           <el-col :span="24">
             <el-menu default-active="1" default-open="1" class="el-menu" background-color="#545c64" text-color="#fff"
               active-text-color="#ffd04b">
@@ -27,15 +54,21 @@
     </div>
     <div id="right">
       <div id="show_window" v-if="cruent_obj_id">
-        <div id="show_message">
-          <!-- 按照el-col布局来 -->
+        <div id="show_message" >
+          <el-row v-for="(item,index) in message_list" :key="index">
+            <el-col :span="24" v-if="item.toUserid==logging_in"><div class="show_message_date">{{ item.date }}</div></el-col>
+            <el-col :span="24" v-if="item.fromUserid==logging_in"><div class="show_message_date_self">{{item.date}}</div></el-col>
+            <el-col :span="24" v-if="item.toUserid==logging_in"><div class="show_message_text">{{ item.plaintext }}</div></el-col>
+            <el-col :span="24" v-if="item.fromUserid==logging_in"><div class="show_message_text_self">{{item.plaintext}}</div></el-col>
+          </el-row>
         </div>
         <div id="input_box">
-          <el-input class="textarea_box" type="textarea" :rows="10" name="" cols="66"  placeholder="在这里输入" v-model="msg_input" autofocus></el-input>
+          <textarea type="textarea" id="textarea_box" name="" cols="50" placeholder="在这里输入"
+            v-model="msg_input" autofocus></textarea>
           <div id="submit_button">
-            <el-button type="primary" id="button">发送</el-button>
+            <el-button type="primary" id="button" @click="send_message()">发送</el-button>
           </div>
-        </div>  
+        </div>
       </div>
     </div>
   </div>
@@ -46,30 +79,117 @@
     name: 'friend',
     data() {
       return {
-        message_list: [],
-        search_input:"",
-        msg_input: '',
-        dialogTableVisible: false,
-        friends_list: [{
-          "id":23424234,
-          "username":"test",
-          "last_ip":"",
-          "last_port":0
+        count:20,
+        loading: false,
+        logging_in:234234234,
+        message_num:10,
+        // 该list只是对应目标的消息记录。通过侧边栏更新
+        message_list: [{
+          "fromUserid":23423434,
+          "toUserid":234234234,
+          "date":"2019年12月30日15:37:31",
+          "plaintext":"testmessage1"
         },{
-          "id":23423423,
-          "username":"test2",
-          "last_ip":"",
-          "last_port":0
+          "fromUserid":23423434,
+          "toUserid":234234234,
+          "date":"2019年12月30日15:37:32",
+          "plaintext":"testmessage2"
+        },{
+          "fromUserid":23423434,
+          "toUserid":234234234,
+          "date":"2019年12月30日15:37:32",
+          "plaintext":"testmessage2"
+        },{
+          "fromUserid":23423434,
+          "toUserid":234234234,
+          "date":"2019年12月30日15:37:32",
+          "plaintext":"testmessage2"
+        },{
+          "fromUserid":23423434,
+          "toUserid":234234234,
+          "date":"2019年12月30日15:37:32",
+          "plaintext":"testmessage2"
+        },{
+          "fromUserid":23423434,
+          "toUserid":234234234,
+          "date":"2019年12月30日15:37:32",
+          "plaintext":"testmessage2"
+        },{
+          "fromUserid":23423434,
+          "toUserid":234234234,
+          "date":"2019年12月30日15:37:32",
+          "plaintext":"testmessage2"
+        },{
+          "fromUserid":23423434,
+          "toUserid":234234234,
+          "date":"2019年12月30日15:37:32",
+          "plaintext":"testmessage2"
+        },{
+          "fromUserid":234234234,
+          "toUserid":23423434,
+          "date":"2019年12月30日15:37:33",
+          "plaintext":"testmessage3"
+        },{
+          "fromUserid":234234234,
+          "toUserid":23423434,
+          "date":"2019年12月30日15:37:33",
+          "plaintext":"testmessage3"
+        },{
+          "fromUserid":234234234,
+          "toUserid":23423434,
+          "date":"2019年12月30日15:37:33",
+          "plaintext":"testmessage3"
+        },{
+          "fromUserid":234234234,
+          "toUserid":23423434,
+          "date":"2019年12月30日15:37:33",
+          "plaintext":"testmessage3"
+        },{
+          "fromUserid":234234234,
+          "toUserid":23423434,
+          "date":"2019年12月30日15:37:33",
+          "plaintext":"testmessage3"
+        },{
+          "fromUserid":234234234,
+          "toUserid":23423434,
+          "date":"2019年12月30日15:37:33",
+          "plaintext":"testmessage3"
+        },{
+          "fromUserid":234234234,
+          "toUserid":23423434,
+          "date":"2019年12月30日15:37:33",
+          "plaintext":"testmessage3"
+        },],
+        search_input: "",
+        msg_input: '',
+        dialogFormVisible: false,
+        friends_list: [{
+          "id": 23424234,
+          "username": "test",
+          "last_ip": "",
+          "last_port": 0
+        }, {
+          "id": 23423423,
+          "username": "test2",
+          "last_ip": "",
+          "last_port": 0
         }],
-        search_result:[{
-          "id":234234234,
-          "username":"test3",
+        search_result: [{
+          "id": 234234234,
+          "username": "test3",
+          "last_ip": "",
+          "last_port": 0
+        }, {
+          "id": 234234123,
+          "username": "test4",
+          "last_ip": "",
+          "last_port": 0
         }],
-        cruent_obj_id:0,
+        cruent_obj_id: 0,
       }
     },
     created: function () {
-      var logging_cookie=this.$cookies.get("logining_userid");
+      var logging_cookie = this.$cookies.get("logining_userid");
       // if(logging_cookie){
       // }else{
       //   this.$router.push("/")
@@ -78,109 +198,35 @@
       // 根据好友列表探查好友的存活
       // 或许可以获取所有的消息记录
     },
+    computed: {
+    },
     methods: {
+      // 发送明文给后端加密再发送到目标的IP和端口的api
       send_message() {
         this.list.push(this.inputmsg);
         this.inputmsg = ''
       },
-      excheng_obj(id){
+      // 切换当前对话目标，获取该目标的消息
+      excheng_obj(id) {
         console.log(id)
-        this.cruent_obj_id=id
+        this.cruent_obj_id = id
       },
-      get_messages(){
-        console.log("tets")
+      // 对应搜索栏，启动搜索
+      search_friend() {
+        this.dialogFormVisible = true
       },
-      search_friend(){
-        this.dialogTableVisible=true
-      }
+      // 对应搜索栏的结果添加好友操作
+      add_friend(tar_id) {
+
+      },
     },
-    watch:{
-      cruent_obj_id:function(val, newval){
+    watch: {
+      cruent_obj_id: function (val, newval) {
         console.log("watch me")
       }
     }
   }
+
 </script>
-<style scoped>
-    #app {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      border: 1px solid blue;
-    }
-
-    #left {
-      width: 160px;
-      height: 100%;
-      border: 1px solid red;
-      position: fixed;
-    }
-
-    #right {
-      width: calc(100% - 160px);
-      height: 100%;
-      border: 1px solid rgb(240, 8, 201);
-      position: relative;
-      float: right;
-    }
-
-    #search_line {
-      width: 100%;
-      height: 35px;
-      border: 1px solid rgb(121, 121, 255);
-    }
-
-    #friends_list {
-      width: 100%;
-      height: 96%;
-      border: 1px solid green;
-    }
-
-
-    #show_window {
-      width: auto;
-      height: 100%;
-      border: 1px solid brown;
-      position: relative;
-    }
-
-    #show_message{
-      width: auto;
-      height: 65%;
-      border: 1px solid pink;
-      position: relative;
-      margin: 5px;
-      padding: 5px;
-    }
-
-    #input_box {
-      width: auto;
-      height: 35%;
-      border: 1px solid purple;
-      position: relative;
-      margin: 5px;
-      padding: 5px;
-    }
-
-    #textarea_box{
-      width: 100%;
-      height: 60%;
-      position: relative;
-    }
-
-    #submit_button {
-      border: 1px solid rgb(230, 255, 7);
-      width: 100%;
-      height: 20%;
-      position: relative;
-    }
-
-    #button {
-      width: 80px;
-      height: 30px;
-      position: relative;
-      text-align: center;
-      left: 45%;
-      top: 25%;
-    }
+<style scoped src="../assets/index.css">
 </style>
