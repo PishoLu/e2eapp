@@ -4,6 +4,7 @@
       <el-table :data="search_result">  
         <el-table-column property="id" label="ID" width="150"></el-table-column>
         <el-table-column property="username" label="username" width="200"></el-table-column>
+        <!-- 添加操作按钮，不行就还是放show_window里面输出但是太麻烦 -->
         <el-button type="primary">添加</el-button>
       </el-table>
     </el-dialog>
@@ -27,6 +28,7 @@
     <div id="right">
       <div id="show_window" v-if="cruent_obj_id">
         <div id="show_message">
+          <!-- 按照el-col布局来 -->
         </div>
         <div id="input_box">
           <el-input class="textarea_box" type="textarea" :rows="10" name="" cols="66"  placeholder="在这里输入" v-model="msg_input" autofocus></el-input>
