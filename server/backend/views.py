@@ -6,13 +6,9 @@ import random
 from django.http import HttpResponse, JsonResponse
 from django.middleware.csrf import get_token
 from django.utils.datastructures import MultiValueDictKeyError
-from rest_framework import status
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
 
 from django.views.decorators.csrf import csrf_exempt
 from .models import user
-from .serializers import UserSerializer
 
 # Create your views here.
 
@@ -41,11 +37,11 @@ def gettoken(request):
         result = {"code": 1, "data": token, "result": "Token 获取成功!"}
         return HttpResponse(json.dumps(result))
     else:
-        pass
+        result = {"code": -1, "result": "请求方式有误!"}
+        return JsonResponse(result)
 
 
-@csrf_exempt
-@api_view(["POST"])
+# @csrf_exempt
 def user_list(request):
     # 注册接口
     if request.method == 'POST':
@@ -66,17 +62,22 @@ def user_list(request):
         else:
             result = {"code": 0, "result": "密码不符合规范!"}
             return JsonResponse(result)
+    else:
+        result = {"code": -1, "result": "请求方式有误!"}
+        return JsonResponse(result)
 
 
-@csrf_exempt
-@api_view(['GET', 'POST', 'PUT'])
+# @csrf_exempt
 def user_detail(request, pk):
     try:
-        user_temp = user.objects.get(userid=pk)
+        user_temp = []
+        user_temp_t = user.objects.filter(userid=pk)
+        for i in user_temp_t:
+            user_temp.append(i.to_json())
     except user.DoesNotExist:
-        result = {"code": -1, "result": "未找到相关信息"}
+        result = {"code": -1, "result": "该用户不存在"}
         return JsonResponse(result)
-# 登录接口
+    # 登录接口
     if request.method == 'POST':
         try:
             password = request.data["password"]
@@ -87,22 +88,17 @@ def user_detail(request, pk):
                 result = {"code": -1, "result": "登录失败"}
                 return JsonResponse(result)
         except MultiValueDictKeyError:
-            serializer = UserSerializer(user_temp)
-            return Response(serializer.data)
-# 更新信息（还没修改）
+            result = {"code": 1, "data": user_temp,
+                      "result": "该用户的信息。"}
+            return JsonResponse(result)
+    # 更新信息（还没修改）
     elif request.method == 'PUT':
-        serializer = UserSerializer(user_temp, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-# 通过该方法可以查询目标是否为好友以及目标其他的可被访问的信息（用户名，用户ID，公钥，上次的IP，上次的端口）
+        pass
+        # 通过该方法可以查询目标是否为好友以及目标其他的可被访问的信息（用户名，用户ID，公钥，上次的IP，上次的端口）
     elif request.method == 'GET':
-        serializer = UserSerializer(user_temp)
-        # seriadata = serializer.data
-        # request_id = request.COOKIES["logining_userid"]
-        # if(request_id in seriadata["friends"]):
-        #     seriadata["friends"] = "is_friend"
-        # else:
-        #     seriadata["friends"] = "not_friend"
-        return Response(serializer.data)
+        result = {"code": 1, "data": user_temp,
+                  "result": "该用户的信息。"}
+        return JsonResponse(result)
+    else:
+        result = {"code": -1, "result": "请求方式有误!"}
+        return JsonResponse(result)

@@ -57,10 +57,10 @@ def start_X3DH(request):
 # 保存发送和接收的消息
 def sotre_message(request):
     if request.method == "POST":
-        message_temp = request.POST.dict()
+        post_data = request.POST.dict()
         try:
             new_message = messages(
-                fromUserid=message_temp["fromUserid"], toUserid=message_temp["toUserid"], plaintext=message_temp["plaintext"])
+                fromUserid=post_data["fromUserid"], toUserid=post_data["toUserid"], plaintext=post_data["plaintext"])
             new_message.save()
             result = {"code": 1, "result": "添加成功"}
             return JsonResponse(result)
@@ -99,14 +99,14 @@ def filter_messages(request, pk):
 # 保存user类相关信息
 def sotre_user(request):
     if request.method == "POST":
-        message_temp = request.POST.dict()
+        post_data = request.POST.dict()
         try:
             new_user = user(
-                userid=message_temp["userid"], username=message_temp["username"],
-                IdentityPub=message_temp["IdentityPub"], SignedPub=message_temp["SignedPub"],
-                OneTimePub=message_temp["OneTimePub"], ElephantPub=message_temp["ElephantPub"],
-                IdentityPri=message_temp["IdentityPri"], SignedPri=message_temp["SignedPri"],
-                OneTimePri=message_temp["OneTimePri"], ElephantPri=message_temp["ElephantPri"])
+                userid=post_data["userid"], username=post_data["username"],
+                IdentityPub=post_data["IdentityPub"], SignedPub=post_data["SignedPub"],
+                OneTimePub=post_data["OneTimePub"], ElephantPub=post_data["ElephantPub"],
+                IdentityPri=post_data["IdentityPri"], SignedPri=post_data["SignedPri"],
+                OneTimePri=post_data["OneTimePri"], ElephantPri=post_data["ElephantPri"])
             new_user.save()
             result = {"code": 1, "result": "添加成功！"}
             return JsonResponse(result)
@@ -124,7 +124,7 @@ def get_user(request, pk):
         user_temp_t = user.objects.filter(userid=pk)
         for i in user_temp_t:
             user_temp.append(i.to_json())
-    except messages.DoesNotExist:
+    except user.DoesNotExist:
         result = {"code": -1, "result": "该用户不存在"}
         return JsonResponse(result)
 
@@ -140,11 +140,11 @@ def get_user(request, pk):
 # 保存friend类相关信息
 def sotre_friend(request):
     if request.method == "POST":
-        message_temp = request.POST.dict()
+        post_data = request.POST.dict()
         try:
             new_user = friends(
-                userid=message_temp["userid"], username=message_temp["username"],
-                remark=message_temp["remark"], status=message_temp["status"])
+                userid=post_data["userid"], username=post_data["username"],
+                remark=post_data["remark"], status=post_data["status"])
             new_user.save()
             result = {"code": 1, "result": "添加成功！"}
             return JsonResponse(result)
@@ -164,7 +164,7 @@ def friends_list(request):
         print(friends_temp_t)
         for i in friends_temp_t:
             friends_temp.append(i.to_json())
-    except messages.DoesNotExist:
+    except friends.DoesNotExist:
         result = {"code": -1, "result": "该用户不存在"}
         return JsonResponse(result)
 

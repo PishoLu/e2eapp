@@ -79,3 +79,15 @@ KeyError: 'urerid'
 2019-32-30 23:32:55-__init__-DEBUG-Using selector: SelectSelector
 2019-32-30 23:32:59-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
 2019-32-30 23:32:59-__init__-DEBUG-Using selector: SelectSelector
+2019-36-30 23:36:59-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-36-30 23:36:59-__init__-DEBUG-Using selector: SelectSelector
+2019-37-30 23:37:03-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-37-30 23:37:03-__init__-DEBUG-Using selector: SelectSelector
+2019-37-30 23:37:43-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-37-30 23:37:43-__init__-DEBUG-Using selector: SelectSelector
+2019-38-30 23:38:10-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-38-30 23:38:10-__init__-DEBUG-Using selector: SelectSelector
+2019-39-30 23:39:57-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-39-30 23:39:57-__init__-DEBUG-Using selector: SelectSelector
+2019-40-30 23:40:03-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-40-30 23:40:03-__init__-DEBUG-Using selector: SelectSelector
