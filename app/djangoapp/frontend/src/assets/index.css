@@ -142,9 +142,8 @@
   width: 100px;
   height: 40px;
   position: relative;
-  top: 10px;
+  top: 5px;
   vertical-align: middle;
   left: calc(50% - 60px);
   text-align: center;
-
 }
