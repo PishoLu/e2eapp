@@ -15,7 +15,7 @@ class MessagesSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('fromUserid', 'toUserid', 'date', 'plaintext')
 
 
-class MessagesSerializer(serializers.HyperlinkedModelSerializer):
+class FriendsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = friends
         fields = ('urerid', 'IP', 'Port', 'remark', 'status', 'group')

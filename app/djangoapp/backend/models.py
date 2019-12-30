@@ -17,9 +17,6 @@ class user(models.Model):
     OneTimePri = models.CharField(max_length=64, null=True)
     ElephantPri = models.CharField(max_length=64, null=True)
 
-    last_ip = models.CharField(max_length=15, null=True)
-    last_port = models.IntegerField(null=True)
-
     def to_json(self):
         dict = self.__dict__
         if "_sa_instance_state" in dict:
@@ -28,10 +25,11 @@ class user(models.Model):
 
 
 class messages(models.Model):
-    fromUserid = models.IntegerField(primary_key=True)
+    message_id = models.AutoField(primary_key=True)
+    fromUserid = models.IntegerField()
     toUserid = models.IntegerField()
 
-    date = models.DateTimeField()
+    date = models.DateTimeField(auto_now_add=True)
     plaintext = models.CharField(max_length=2048)
 
     def to_json(self):
@@ -43,8 +41,6 @@ class messages(models.Model):
 
 class friends(models.Model):
     urerid = models.IntegerField(primary_key=True)
-    IP = models.CharField(max_length=15)
-    Port = models.IntegerField()
     remark = models.CharField(max_length=20, null=True)
     status = models.IntegerField(default=1)  # 状态码，可以拉黑名单用
     group = models.CharField(max_length=20, null=True)

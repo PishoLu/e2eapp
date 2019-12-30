@@ -14,9 +14,6 @@ class user(models.Model):
     SignedPub = models.CharField(max_length=64, null=True)
     OneTimePub = models.CharField(max_length=64, null=True)
 
-    last_ip = models.CharField(max_length=15, null=True)
-    last_port = models.IntegerField(null=True)
-
     def to_json(self):
         dict = self.__dict__
         if "_sa_instance_state" in dict:
@@ -28,3 +25,17 @@ class user(models.Model):
             return 1
         else:
             return 0
+
+
+class messages(models.Model):
+    fromUserid = models.IntegerField()
+    toUserid = models.IntegerField()
+
+    date = models.DateTimeField(auto_now_add=True)
+    ciphertext = models.CharField(max_length=2048)
+
+    def to_json(self):
+        dict = self.__dict__
+        if "_sa_instance_state" in dict:
+            del dict["_sa_instance_state"]
+        return dict

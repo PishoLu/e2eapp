@@ -16,20 +16,10 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from .models import friends, messages, user
-from .serializers import UserSerializer
+from .serializers import UserSerializer, MessagesSerializer, FriendsSerializer
+import sqlite3
 
 
-class linked():
-    def __init__(self):
-        self.fromIP = ""
-        self.fromPort = 0
-        self.userinfo = user()  # 连接的当前使用的密钥对象F
-        self.kdf_in = ""  # 连接的当前使用的kdf输入
-        self.kdf_dh = ""  # 连接的当前使用的kdf dh输入
-        self.status = 0
-
-
-linked_list = []  # 已连接的好友列表
 wite_list = []  # 等待被添加的好友列表(只有双方在线的时候才能正常添加)
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -68,41 +58,80 @@ def start_X3DH(request):
         pass
 
 
-# 该接口接收他人发送的消息
-# 可以整合添加好友
-def get_message(request):
-    if request.method == "GET":
-        pass
-    else:
-        pass
+@api_view(["POST"])
+# 保存发送和接收的消息
+def sotre_message(request):
+    if request.method == "POST":
+        print(request.data)
+        serializer = MessagesSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+@csrf_exempt
+@api_view(["GET"])
 # 从数据库过滤消息
-def filter_messages(request):
+def filter_messages(request, pk):
+    try:
+        print(pk)
+        # messages_temp_from = messages.objects.filter(
+        #     fromUserid=pk)
+        messages_temp_to = messages.objects.filter(toUserid=pk)
+        # print(messages_temp_from)
+        print(messages_temp_to)
+    except messages.DoesNotExist:
+        result = {"code": -1, "result": "该用户不存在"}
+        return JsonResponse(result)
+
+    if request.method == 'GET':
+        # serializer_from = MessagesSerializer(messages_temp_from)
+        serializer_to = MessagesSerializer(messages_temp_to)
+
+        result = {"code": 1, "data": [serializer_to.data],
+                  "result": "与该用户的来往记录。"}
+        return JsonResponse(result)
+
+
+@api_view(["POST"])
+# 保存user类相关信息
+def sotre_user(request):
+    if request.method == "POST":
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(["GET"])
+def get_user(request, pk):
     if request.method == "GET":
-        pass
-    else:
-        pass
+        try:
+            user_temp = user.objects.get(userid=pk)
+        except user.DoesNotExist:
+            result = {"code": -1, "result": "该用户不存在"}
+            return JsonResponse(result)
+
+        if request.method == 'GET':
+            serializer = UserSerializer(user_temp)
+            return Response(serializer.data)
+
+
+@api_view(["POST"])
+# 保存friend类相关信息
+def sotre_friend(request):
+    if request.method == "POST":
+        serializer = FriendsSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 # 获取好友列表
 def friends_list(request):
-    if request.method == "GET":
-        pass
-    else:
-        pass
-
-
-# 保存发送和接收的消息
-def sotre_message(request):
-    if request.method == "GET":
-        pass
-    else:
-        pass
-
-
-# 保存user类相关信息
-def sotre_user(request):
     if request.method == "GET":
         pass
     else:
@@ -184,45 +213,45 @@ def gettoken(request):
         pass
 
 
-@api_view(["GET", "POST"])
-def user_list(request):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    if request.method == 'GET':
-        users = user.objects.all()
-        serializer = UserSerializer(users, many=True)
-        return Response(serializer.data)
+# @api_view(["GET", "POST"])
+# def user_list(request):
+#     """
+#     API endpoint that allows users to be viewed or edited.
+#     """
+#     if request.method == 'GET':
+#         users = user.objects.all()
+#         serializer = UserSerializer(users, many=True)
+#         return Response(serializer.data)
 
-    elif request.method == 'POST':
-        serializer = UserSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#     elif request.method == 'POST':
+#         serializer = UserSerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['GET', 'PUT', 'DELETE'])
-def user_detail(request, pk):
-    """
-    Retrieve, update or delete a code user.
-    """
-    try:
-        user_temp = user.objects.get(userid=pk)
-    except user.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+# @api_view(['GET', 'PUT', 'DELETE'])
+# def user_detail(request, pk):
+#     """
+#     Retrieve, update or delete a code user.
+#     """
+#     try:
+#         user_temp = user.objects.get(userid=pk)
+#     except user.DoesNotExist:
+#         return Response(status=status.HTTP_404_NOT_FOUND)
 
-    if request.method == 'GET':
-        serializer = UserSerializer(user_temp)
-        return Response(serializer.data)
+#     if request.method == 'GET':
+#         serializer = UserSerializer(user_temp)
+#         return Response(serializer.data)
 
-    elif request.method == 'PUT':
-        serializer = UserSerializer(user_temp, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#     elif request.method == 'PUT':
+#         serializer = UserSerializer(user_temp, data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    elif request.method == 'DELETE':
-        user_temp.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+#     elif request.method == 'DELETE':
+#         user_temp.delete()
+#         return Response(status=status.HTTP_204_NO_CONTENT)

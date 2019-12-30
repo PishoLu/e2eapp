@@ -52,18 +52,13 @@ def user_list(request):
         post_data = request.data.copy()
         if (len(post_data["password"]) == 64):
             post_data["userid"] = random.randint(10000000, 100000000)
-            post_data["friends"] = ""
-            post_data["last_ip"] = request.META.get("REMOTE_ADDR")
 
             user.objects.create(userid=post_data["userid"],
                                 password=post_data["password"],
                                 username=post_data["username"],
                                 IdentityPub=post_data["IdentityPub"],
                                 SignedPub=post_data["SignedPub"],
-                                OneTimePub=post_data["OneTimePub"],
-                                friends=post_data["friends"],
-                                last_ip=post_data["last_ip"],
-                                last_port=post_data["last_port"])
+                                OneTimePub=post_data["OneTimePub"])
 
             result = {"code": 1,
                       "data": post_data["userid"], "reuslt": "成功注册!"}

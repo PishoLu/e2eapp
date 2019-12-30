@@ -189,8 +189,8 @@
       }
     },
     created: function () {
-      var logging_cookie = this.$cookies.get("logining_userid");
-      // if(logging_cookie){
+      this.logging_in = this.$cookies.get("logining_userid");
+      // if(this.logging_in){
       // }else{
       //   this.$router.push("/")
       // }
