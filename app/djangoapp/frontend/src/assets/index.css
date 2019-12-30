@@ -59,7 +59,7 @@
 
 #show_message {
   width: auto;
-  height: 60%;
+  height: 55%;
   position: relative;
   margin: 5px;
   padding: 10px;
@@ -139,10 +139,10 @@
 }
 
 #button {
-  width: 80px;
-  height: 30px;
+  width: 100px;
+  height: 40px;
   position: relative;
-  top: calc((100% - 30px)/2);
+  top: 10px;
   vertical-align: middle;
   left: calc(50% - 60px);
   text-align: center;
