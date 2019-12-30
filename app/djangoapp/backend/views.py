@@ -11,9 +11,6 @@ from django.http import JsonResponse
 from django.middleware.csrf import get_token
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework import generics, mixins, status, viewsets
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
 
 from .models import friends, messages, user
 import sqlite3
@@ -57,29 +54,34 @@ def start_X3DH(request):
         pass
 
 
-@api_view(["POST"])
 # 保存发送和接收的消息
 def sotre_message(request):
     if request.method == "POST":
-        pass
-        # print(request.data)
-        # serializer = MessagesSerializer(data=request.data)
-        # if serializer.is_valid():
-        #     serializer.save()
-        #     return Response(serializer.data, status=status.HTTP_201_CREATED)
-        # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        message_temp = request.POST.dict()
+        try:
+            new_message = messages(
+                fromUserid=message_temp["fromUserid"], toUserid=message_temp["toUserid"], plaintext=message_temp["plaintext"])
+            new_message.save()
+            result = {"code": 1, "result": "添加成功"}
+            return JsonResponse(result)
+        except:
+            result = {"code": -1, "result": "添加失败！"}
+            return JsonResponse(result)
+    else:
+        result = {"code": -1, "result": "请求方式有误!"}
+        return JsonResponse(result)
 
 
-@csrf_exempt
-@api_view(["GET"])
 # 从数据库过滤消息
 def filter_messages(request, pk):
     try:
         messages_temp = []
-        # messages_temp_from = messages.objects.filter(
-        #     fromUserid_t=pk)
+        messages_temp_from = messages.objects.filter(
+            fromUserid=pk)
         messages_temp_to = messages.objects.filter(toUserid=pk)
         for i in messages_temp_to:
+            messages_temp.append(i.to_json())
+        for i in messages_temp_from:
             messages_temp.append(i.to_json())
     except messages.DoesNotExist:
         result = {"code": -1, "result": "该用户不存在"}
@@ -89,53 +91,90 @@ def filter_messages(request, pk):
         result = {"code": 1, "data": messages_temp,
                   "result": "与该用户的来往记录。"}
         return JsonResponse(result)
+    elif request.method == 'POST':
+        result = {"code": -1, "result": "请求方式有误!"}
+        return JsonResponse(result)
 
 
-@api_view(["POST"])
 # 保存user类相关信息
 def sotre_user(request):
     if request.method == "POST":
-        pass
-        # serializer = UserSerializer(data=request.data)
-        # if serializer.is_valid():
-        #     serializer.save()
-        #     return Response(serializer.data, status=status.HTTP_201_CREATED)
-        # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        message_temp = request.POST.dict()
+        try:
+            new_user = user(
+                userid=message_temp["userid"], username=message_temp["username"],
+                IdentityPub=message_temp["IdentityPub"], SignedPub=message_temp["SignedPub"],
+                OneTimePub=message_temp["OneTimePub"], ElephantPub=message_temp["ElephantPub"],
+                IdentityPri=message_temp["IdentityPri"], SignedPri=message_temp["SignedPri"],
+                OneTimePri=message_temp["OneTimePri"], ElephantPri=message_temp["ElephantPri"])
+            new_user.save()
+            result = {"code": 1, "result": "添加成功！"}
+            return JsonResponse(result)
+        except:
+            result = {"code": -1, "result": "添加失败！"}
+            return JsonResponse(result)
+    else:
+        result = {"code": -1, "result": "请求方式有误!"}
+        return JsonResponse(result)
 
 
-@api_view(["GET"])
 def get_user(request, pk):
-    if request.method == "GET":
-        pass
-        # try:
-        #     user_temp = user.objects.get(userid=pk)
-        # except user.DoesNotExist:
-        #     result = {"code": -1, "result": "该用户不存在"}
-        #     return JsonResponse(result)
+    try:
+        user_temp = []
+        user_temp_t = user.objects.filter(userid=pk)
+        for i in user_temp_t:
+            user_temp.append(i.to_json())
+    except messages.DoesNotExist:
+        result = {"code": -1, "result": "该用户不存在"}
+        return JsonResponse(result)
 
-        # if request.method == 'GET':
-        #     serializer = UserSerializer(user_temp)
-        #     return Response(serializer.data)
+    if request.method == 'GET':
+        result = {"code": 1, "data": user_temp,
+                  "result": "该用户的信息。"}
+        return JsonResponse(result)
+    elif request.method == 'POST':
+        result = {"code": -1, "result": "请求方式有误!"}
+        return JsonResponse(result)
 
 
-@api_view(["POST"])
 # 保存friend类相关信息
 def sotre_friend(request):
     if request.method == "POST":
-        pass
-        # serializer = FriendsSerializer(data=request.data)
-        # if serializer.is_valid():
-        #     serializer.save()
-        #     return Response(serializer.data, status=status.HTTP_201_CREATED)
-        # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        message_temp = request.POST.dict()
+        try:
+            new_user = friends(
+                userid=message_temp["userid"], username=message_temp["username"],
+                remark=message_temp["remark"], status=message_temp["status"])
+            new_user.save()
+            result = {"code": 1, "result": "添加成功！"}
+            return JsonResponse(result)
+        except:
+            result = {"code": -1, "result": "添加失败！"}
+            return JsonResponse(result)
+    else:
+        result = {"code": -1, "result": "请求方式有误!"}
+        return JsonResponse(result)
 
 
 # 获取好友列表
 def friends_list(request):
-    if request.method == "GET":
-        pass
-    else:
-        pass
+    try:
+        friends_temp = []
+        friends_temp_t = friends.objects.all()
+        print(friends_temp_t)
+        for i in friends_temp_t:
+            friends_temp.append(i.to_json())
+    except messages.DoesNotExist:
+        result = {"code": -1, "result": "该用户不存在"}
+        return JsonResponse(result)
+
+    if request.method == 'GET':
+        result = {"code": 1, "data": friends_temp,
+                  "result": "好友列表"}
+        return JsonResponse(result)
+    elif request.method == 'POST':
+        result = {"code": -1, "result": "请求方式有误!"}
+        return JsonResponse(result)
 
 
 # 返回解密消息
@@ -160,7 +199,6 @@ def encrypt_message(request):
 # 这里的登录是前端将登录成功的userid发送过来完成密钥初始化的。
 # 登录是先账号密码服务器验证登录，然后后端生成新的密钥对返回给前端，前端再将服务器上的密钥对更新完成登录。
 @csrf_exempt
-@api_view(["GET", "POST"])
 def create_new_keyspair(request):
     if request.method == "GET":
         pass
@@ -203,7 +241,6 @@ def create_new_keyspair(request):
         return JsonResponse(result)
 
 
-@api_view(["GET"])
 def gettoken(request):
     if request.method == "GET":
         get_token(request)
