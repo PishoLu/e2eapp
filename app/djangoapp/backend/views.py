@@ -16,7 +16,6 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from .models import friends, messages, user
-from .serializers import UserSerializer, MessagesSerializer, FriendsSerializer
 import sqlite3
 
 
@@ -62,12 +61,13 @@ def start_X3DH(request):
 # 保存发送和接收的消息
 def sotre_message(request):
     if request.method == "POST":
-        print(request.data)
-        serializer = MessagesSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        pass
+        # print(request.data)
+        # serializer = MessagesSerializer(data=request.data)
+        # if serializer.is_valid():
+        #     serializer.save()
+        #     return Response(serializer.data, status=status.HTTP_201_CREATED)
+        # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @csrf_exempt
@@ -75,21 +75,18 @@ def sotre_message(request):
 # 从数据库过滤消息
 def filter_messages(request, pk):
     try:
-        print(pk)
+        messages_temp = []
         # messages_temp_from = messages.objects.filter(
-        #     fromUserid=pk)
+        #     fromUserid_t=pk)
         messages_temp_to = messages.objects.filter(toUserid=pk)
-        # print(messages_temp_from)
-        print(messages_temp_to)
+        for i in messages_temp_to:
+            messages_temp.append(i.to_json())
     except messages.DoesNotExist:
         result = {"code": -1, "result": "该用户不存在"}
         return JsonResponse(result)
 
     if request.method == 'GET':
-        # serializer_from = MessagesSerializer(messages_temp_from)
-        serializer_to = MessagesSerializer(messages_temp_to)
-
-        result = {"code": 1, "data": [serializer_to.data],
+        result = {"code": 1, "data": messages_temp,
                   "result": "与该用户的来往记录。"}
         return JsonResponse(result)
 
@@ -98,36 +95,39 @@ def filter_messages(request, pk):
 # 保存user类相关信息
 def sotre_user(request):
     if request.method == "POST":
-        serializer = UserSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        pass
+        # serializer = UserSerializer(data=request.data)
+        # if serializer.is_valid():
+        #     serializer.save()
+        #     return Response(serializer.data, status=status.HTTP_201_CREATED)
+        # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(["GET"])
 def get_user(request, pk):
     if request.method == "GET":
-        try:
-            user_temp = user.objects.get(userid=pk)
-        except user.DoesNotExist:
-            result = {"code": -1, "result": "该用户不存在"}
-            return JsonResponse(result)
+        pass
+        # try:
+        #     user_temp = user.objects.get(userid=pk)
+        # except user.DoesNotExist:
+        #     result = {"code": -1, "result": "该用户不存在"}
+        #     return JsonResponse(result)
 
-        if request.method == 'GET':
-            serializer = UserSerializer(user_temp)
-            return Response(serializer.data)
+        # if request.method == 'GET':
+        #     serializer = UserSerializer(user_temp)
+        #     return Response(serializer.data)
 
 
 @api_view(["POST"])
 # 保存friend类相关信息
 def sotre_friend(request):
     if request.method == "POST":
-        serializer = FriendsSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        pass
+        # serializer = FriendsSerializer(data=request.data)
+        # if serializer.is_valid():
+        #     serializer.save()
+        #     return Response(serializer.data, status=status.HTTP_201_CREATED)
+        # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 # 获取好友列表

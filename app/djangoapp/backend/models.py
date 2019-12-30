@@ -21,6 +21,8 @@ class user(models.Model):
         dict = self.__dict__
         if "_sa_instance_state" in dict:
             del dict["_sa_instance_state"]
+        if "_state" in dict:
+            del dict["_state"]
         return dict
 
 
@@ -36,6 +38,8 @@ class messages(models.Model):
         dict = self.__dict__
         if "_sa_instance_state" in dict:
             del dict["_sa_instance_state"]
+        if "_state" in dict:
+            del dict["_state"]
         return dict
 
 
@@ -49,4 +53,6 @@ class friends(models.Model):
         dict = self.__dict__
         if "_sa_instance_state" in dict:
             del dict["_sa_instance_state"]
+        if "_state" in dict:
+            del dict["_state"]
         return dict

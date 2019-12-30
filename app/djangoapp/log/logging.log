@@ -1838,3 +1838,589 @@ The serializer field might be named incorrectly and not match any attribute or k
 Original exception text was: 'QuerySet' object has no attribute 'fromUserid'.
 2019-26-30 22:26:06-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
 2019-26-30 22:26:06-__init__-DEBUG-Using selector: SelectSelector
+2019-26-30 22:26:09-log_response-ERROR-Internal Server Error: /apis/filter_messages/21342134
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\fields.py", line 454, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\fields.py", line 94, in get_attribute
+    instance = getattr(instance, attr)
+AttributeError: 'QuerySet' object has no attribute 'fromUserid'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 92, in filter_messages
+    result = {"code": 1, "data": [serializer_to.data],
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\serializers.py", line 562, in data
+    ret = super().data
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\serializers.py", line 516, in to_representation
+    attribute = field.get_attribute(instance)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\fields.py", line 487, in get_attribute
+    raise type(exc)(msg)
+AttributeError: Got AttributeError when attempting to get a value for field `fromUserid` on serializer `MessagesSerializer`.
+The serializer field might be named incorrectly and not match any attribute or key on the `QuerySet` instance.
+Original exception text was: 'QuerySet' object has no attribute 'fromUserid'.
+2019-31-30 22:31:56-__init__-DEBUG-Using selector: SelectSelector
+2019-32-30 22:32:02-__init__-DEBUG-Using selector: SelectSelector
+2019-32-30 22:32:35-__init__-DEBUG-Using selector: SelectSelector
+2019-32-30 22:32:39-__init__-DEBUG-Using selector: SelectSelector
+2019-32-30 22:32:42-__init__-DEBUG-Using selector: SelectSelector
+2019-33-30 22:33:06-log_response-ERROR-Internal Server Error: /apis/filter_messages/21342134
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\fields.py", line 454, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\fields.py", line 94, in get_attribute
+    instance = getattr(instance, attr)
+AttributeError: 'QuerySet' object has no attribute 'fromUserid'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 92, in filter_messages
+    result = {"code": 1, "data": [serializer_to.data],
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\serializers.py", line 562, in data
+    ret = super().data
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\serializers.py", line 516, in to_representation
+    attribute = field.get_attribute(instance)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\fields.py", line 487, in get_attribute
+    raise type(exc)(msg)
+AttributeError: Got AttributeError when attempting to get a value for field `fromUserid` on serializer `MessagesSerializer`.
+The serializer field might be named incorrectly and not match any attribute or key on the `QuerySet` instance.
+Original exception text was: 'QuerySet' object has no attribute 'fromUserid'.
+2019-33-30 22:33:52-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\models.py changed, reloading.
+2019-33-30 22:33:52-__init__-DEBUG-Using selector: SelectSelector
+2019-33-30 22:33:56-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\serializers.py changed, reloading.
+2019-33-30 22:33:56-__init__-DEBUG-Using selector: SelectSelector
+2019-33-30 22:33:58-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-33-30 22:33:58-__init__-DEBUG-Using selector: SelectSelector
+2019-34-30 22:34:03-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-34-30 22:34:03-__init__-DEBUG-Using selector: SelectSelector
+2019-34-30 22:34:07-__init__-DEBUG-Using selector: SelectSelector
+2019-34-30 22:34:10-__init__-DEBUG-Using selector: SelectSelector
+2019-34-30 22:34:18-__init__-DEBUG-Using selector: SelectSelector
+2019-34-30 22:34:24-log_response-ERROR-Internal Server Error: /apis/filter_messages/21342134
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\fields.py", line 454, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\fields.py", line 94, in get_attribute
+    instance = getattr(instance, attr)
+AttributeError: 'QuerySet' object has no attribute 'fromUserid_t'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 92, in filter_messages
+    result = {"code": 1, "data": [serializer_to.data],
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\serializers.py", line 562, in data
+    ret = super().data
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\serializers.py", line 516, in to_representation
+    attribute = field.get_attribute(instance)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\fields.py", line 487, in get_attribute
+    raise type(exc)(msg)
+AttributeError: Got AttributeError when attempting to get a value for field `fromUserid_t` on serializer `MessagesSerializer`.
+The serializer field might be named incorrectly and not match any attribute or key on the `QuerySet` instance.
+Original exception text was: 'QuerySet' object has no attribute 'fromUserid_t'.
+2019-35-30 22:35:22-log_response-WARNING-Bad Request: /apis/sotre_message/
+2019-35-30 22:35:27-log_response-WARNING-Bad Request: /apis/sotre_message/
+2019-35-30 22:35:34-log_response-ERROR-Internal Server Error: /apis/filter_messages/21342134
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\fields.py", line 454, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\fields.py", line 94, in get_attribute
+    instance = getattr(instance, attr)
+AttributeError: 'QuerySet' object has no attribute 'fromUserid_t'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 92, in filter_messages
+    result = {"code": 1, "data": [serializer_to.data],
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\serializers.py", line 562, in data
+    ret = super().data
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\serializers.py", line 516, in to_representation
+    attribute = field.get_attribute(instance)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\fields.py", line 487, in get_attribute
+    raise type(exc)(msg)
+AttributeError: Got AttributeError when attempting to get a value for field `fromUserid_t` on serializer `MessagesSerializer`.
+The serializer field might be named incorrectly and not match any attribute or key on the `QuerySet` instance.
+Original exception text was: 'QuerySet' object has no attribute 'fromUserid_t'.
+2019-35-30 22:35:56-log_response-ERROR-Internal Server Error: /apis/filter_messages/23423424
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\fields.py", line 454, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\fields.py", line 94, in get_attribute
+    instance = getattr(instance, attr)
+AttributeError: 'QuerySet' object has no attribute 'fromUserid_t'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 92, in filter_messages
+    result = {"code": 1, "data": [serializer_to.data],
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\serializers.py", line 562, in data
+    ret = super().data
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\serializers.py", line 260, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\serializers.py", line 516, in to_representation
+    attribute = field.get_attribute(instance)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\fields.py", line 487, in get_attribute
+    raise type(exc)(msg)
+AttributeError: Got AttributeError when attempting to get a value for field `fromUserid_t` on serializer `MessagesSerializer`.
+The serializer field might be named incorrectly and not match any attribute or key on the `QuerySet` instance.
+Original exception text was: 'QuerySet' object has no attribute 'fromUserid_t'.
+2019-36-30 22:36:33-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\djangoapp\settings.py changed, reloading.
+2019-36-30 22:36:33-__init__-DEBUG-Using selector: SelectSelector
+2019-37-30 22:37:06-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-37-30 22:37:06-__init__-DEBUG-Using selector: SelectSelector
+2019-37-30 22:37:25-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-37-30 22:37:25-__init__-DEBUG-Using selector: SelectSelector
+2019-37-30 22:37:29-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-37-30 22:37:29-__init__-DEBUG-Using selector: SelectSelector
+2019-37-30 22:37:36-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-37-30 22:37:36-__init__-DEBUG-Using selector: SelectSelector
+2019-37-30 22:37:50-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-37-30 22:37:50-__init__-DEBUG-Using selector: SelectSelector
+2019-37-30 22:37:55-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-37-30 22:37:55-__init__-DEBUG-Using selector: SelectSelector
+2019-38-30 22:38:03-log_response-ERROR-Internal Server Error: /apis/filter_messages/23423424
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 91, in filter_messages
+    return JsonResponse(result)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\http\response.py", line 587, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\serializers\json.py", line 104, in default
+    return super().default(o)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type QuerySet is not JSON serializable
+2019-38-30 22:38:21-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-38-30 22:38:21-__init__-DEBUG-Using selector: SelectSelector
+2019-38-30 22:38:31-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-38-30 22:38:31-__init__-DEBUG-Using selector: SelectSelector
+2019-38-30 22:38:44-log_response-ERROR-Internal Server Error: /apis/filter_messages/23423424
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 91, in filter_messages
+    return JsonResponse(result)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\http\response.py", line 587, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\serializers\json.py", line 104, in default
+    return super().default(o)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type QuerySet is not JSON serializable
+2019-39-30 22:39:14-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-39-30 22:39:14-__init__-DEBUG-Using selector: SelectSelector
+2019-41-30 22:41:33-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\models.py changed, reloading.
+2019-41-30 22:41:33-__init__-DEBUG-Using selector: SelectSelector
+2019-41-30 22:41:35-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\models.py changed, reloading.
+2019-41-30 22:41:35-__init__-DEBUG-Using selector: SelectSelector
+2019-41-30 22:41:36-__init__-DEBUG-Using selector: SelectSelector
+2019-41-30 22:41:39-__init__-DEBUG-Using selector: SelectSelector
+2019-41-30 22:41:43-__init__-DEBUG-Using selector: SelectSelector
+2019-42-30 22:42:13-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-42-30 22:42:13-__init__-DEBUG-Using selector: SelectSelector
+2019-42-30 22:42:23-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-42-30 22:42:23-__init__-DEBUG-Using selector: SelectSelector
+2019-42-30 22:42:25-log_response-ERROR-Internal Server Error: /apis/filter_messages/23423424
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 90, in filter_messages
+    return JsonResponse(result)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\http\response.py", line 587, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\serializers\json.py", line 104, in default
+    return super().default(o)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type QuerySet is not JSON serializable
+2019-43-30 22:43:17-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-43-30 22:43:17-__init__-DEBUG-Using selector: SelectSelector
+2019-43-30 22:43:29-log_response-ERROR-Internal Server Error: /apis/filter_messages/23423424
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 91, in filter_messages
+    return JsonResponse(result)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\http\response.py", line 587, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\serializers\json.py", line 104, in default
+    return super().default(o)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type QuerySet is not JSON serializable
+2019-43-30 22:43:41-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-43-30 22:43:41-__init__-DEBUG-Using selector: SelectSelector
+2019-43-30 22:43:47-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-43-30 22:43:47-__init__-DEBUG-Using selector: SelectSelector
+2019-43-30 22:43:50-log_response-ERROR-Internal Server Error: /apis/filter_messages/23423424
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 91, in filter_messages
+    return JsonResponse(result)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\http\response.py", line 587, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\serializers\json.py", line 104, in default
+    return super().default(o)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type QuerySet is not JSON serializable
+2019-44-30 22:44:08-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-44-30 22:44:08-__init__-DEBUG-Using selector: SelectSelector
+2019-44-30 22:44:10-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-44-30 22:44:10-__init__-DEBUG-Using selector: SelectSelector
+2019-44-30 22:44:32-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-44-30 22:44:32-__init__-DEBUG-Using selector: SelectSelector
+2019-44-30 22:44:59-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-44-30 22:44:59-__init__-DEBUG-Using selector: SelectSelector
+2019-45-30 22:45:03-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-45-30 22:45:03-__init__-DEBUG-Using selector: SelectSelector
+2019-45-30 22:45:05-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-45-30 22:45:05-__init__-DEBUG-Using selector: SelectSelector
+2019-45-30 22:45:10-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-45-30 22:45:10-__init__-DEBUG-Using selector: SelectSelector
+2019-45-30 22:45:26-log_response-ERROR-Internal Server Error: /apis/filter_messages/23423424
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 92, in filter_messages
+    return JsonResponse(result)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\http\response.py", line 587, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\serializers\json.py", line 104, in default
+    return super().default(o)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type ModelState is not JSON serializable
+2019-46-30 22:46:09-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-46-30 22:46:09-__init__-DEBUG-Using selector: SelectSelector
+2019-46-30 22:46:12-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-46-30 22:46:12-__init__-DEBUG-Using selector: SelectSelector
+2019-46-30 22:46:17-log_response-ERROR-Internal Server Error: /apis/filter_messages/23423424
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\generic\base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 505, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 465, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 476, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\views.py", line 502, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 93, in filter_messages
+    return JsonResponse(result)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\http\response.py", line 587, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\serializers\json.py", line 104, in default
+    return super().default(o)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type ModelState is not JSON serializable
+2019-46-30 22:46:45-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\models.py changed, reloading.
+2019-46-30 22:46:45-__init__-DEBUG-Using selector: SelectSelector
+2019-46-30 22:46:53-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\models.py changed, reloading.
+2019-46-30 22:46:53-__init__-DEBUG-Using selector: SelectSelector
+2019-47-30 22:47:12-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-47-30 22:47:12-__init__-DEBUG-Using selector: SelectSelector
+2019-47-30 22:47:15-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2019-47-30 22:47:15-__init__-DEBUG-Using selector: SelectSelector
+2019-47-30 22:47:24-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\models.py changed, reloading.
+2019-47-30 22:47:24-__init__-DEBUG-Using selector: SelectSelector
