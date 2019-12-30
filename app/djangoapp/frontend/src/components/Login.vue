@@ -57,6 +57,7 @@ import sha256 from "js-sha256"
     },  
     // 查询是否有已登录的账号
     created: function () {
+      this.$cookies.set("logining_userid","test")
       var logging_cookie=this.$cookies.get("logining_userid");
       if(logging_cookie){
         this.$router.push("/index")
@@ -147,7 +148,7 @@ import sha256 from "js-sha256"
   .login-page {
     -webkit-border-radius: 5px;
     border-radius: 5px;
-    margin: 180px auto;
+    margin: 180px auto 0px auto;
     width: 350px;
     padding: 35px 35px 15px;
     background: #fff;

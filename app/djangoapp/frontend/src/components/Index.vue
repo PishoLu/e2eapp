@@ -1,32 +1,39 @@
 <template>
   <div id="app">
-    <div class="left">
-      <div class="left_up">
-        <el-input v-model="input" placeholder="请输入内容"></el-input>
+    <el-dialog title="搜索结果" :visible.sync="dialogTableVisible" :modal-append-to-body='false'>
+      <el-table :data="search_result">  
+        <el-table-column property="id" label="ID" width="150"></el-table-column>
+        <el-table-column property="username" label="username" width="200"></el-table-column>
+        <el-button type="primary">添加</el-button>
+      </el-table>
+    </el-dialog>
+    <div id="left">
+      <div id="search_line" class=".col-md-3">
+        <el-input v-model="search_input" placeholder="请输入内容" @keyup.enter.native="search_friend" required="required"></el-input>
       </div>
-      <div class="left_down">
-        <el-row class="tac">
+      <div id="friends_list">
+        <el-row class="tac"> 
           <el-col :span="24">
-            <el-menu default-active="1" default-open="1" class="el-menu-vertical-demo" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
-                <el-menu-item-group v-for="(item,index) in friends_list" :key="index">
-                  <el-menu-item class="friend-item" @click="excheng_obj(item.id)">{{item.username}}</el-menu-item>
-                </el-menu-item-group>
+            <el-menu default-active="1" default-open="1" class="el-menu" background-color="#545c64" text-color="#fff"
+              active-text-color="#ffd04b">
+              <el-menu-item-group v-for="(item,index) in friends_list" :key="index">
+                <el-menu-item class="friend-item" @click="excheng_obj(item.id)">{{item.username}}</el-menu-item>
+              </el-menu-item-group>
             </el-menu>
           </el-col>
         </el-row>
       </div>
     </div>
-    <div class="right">
-      <div class="r-up" v-if="!r_up_type">
-        <ul id="content" v-for="(item,index) in message_list" :key="index">
-          <li>{{item}}</li>
-        </ul>
-      </div>
-      <div class="r-dn">
-        <textarea name="" id="" cols="66" rows="20" placeholder="在这里输入" v-model="inputmsg" />
-        <div class="sub_button">
-          <button @click="send_message()">发送</button>
+    <div id="right">
+      <div id="show_window" v-if="cruent_obj_id">
+        <div id="show_message">
         </div>
+        <div id="input_box">
+          <el-input class="textarea_box" type="textarea" :rows="10" name="" cols="66"  placeholder="在这里输入" v-model="msg_input" autofocus></el-input>
+          <div id="submit_button">
+            <el-button type="primary" id="button">发送</el-button>
+          </div>
+        </div>  
       </div>
     </div>
   </div>
@@ -38,7 +45,9 @@
     data() {
       return {
         message_list: [],
-        inputmsg: '',
+        search_input:"",
+        msg_input: '',
+        dialogTableVisible: false,
         friends_list: [{
           "id":23424234,
           "username":"test",
@@ -50,9 +59,11 @@
           "last_ip":"",
           "last_port":0
         }],
+        search_result:[{
+          "id":234234234,
+          "username":"test3",
+        }],
         cruent_obj_id:0,
-        // message区域可以分作几类，用于呈现不同的类型的消息。比如查询好友所得的消息，以及聊天记录的消息
-        r_up_type:0
       }
     },
     created: function () {
@@ -76,6 +87,9 @@
       },
       get_messages(){
         console.log("tets")
+      },
+      search_friend(){
+        this.dialogTableVisible=true
       }
     },
     watch:{
@@ -86,71 +100,85 @@
   }
 </script>
 <style scoped>
-  #app {
-    margin: 0 auto;
-    width: 100%;
-    height: 100%;
-    border: 1px solid red;
-    position: fixed;
-  }
+    #app {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      border: 1px solid blue;
+    }
 
-  .friend-item{
-    width: auto;
-  }
+    #left {
+      width: 160px;
+      height: 100%;
+      border: 1px solid red;
+      position: fixed;
+    }
 
-  .left{
-    border: 1px solid pink;
-    width: 20%;
-  }
+    #right {
+      width: calc(100% - 160px);
+      height: 100%;
+      border: 1px solid rgb(240, 8, 201);
+      position: relative;
+      float: right;
+    }
 
-  .right{
-    width: 80%;
-  }
+    #search_line {
+      width: 100%;
+      height: 35px;
+      border: 1px solid rgb(121, 121, 255);
+    }
 
-  .left_down {
-    height: auto;
-    float: left;
-    text-align: left;
-  }
+    #friends_list {
+      width: 100%;
+      height: 96%;
+      border: 1px solid green;
+    }
 
-  .left_up{
-    background-color: rgb(71, 79, 85);
-    height: 40px;
-    text-align: left;
-  }
 
-  .r-up {
-    border: 1px solid yellow;
-    width: 79%;
-    float: right;
-    position: relative;
-  }
+    #show_window {
+      width: auto;
+      height: 100%;
+      border: 1px solid brown;
+      position: relative;
+    }
 
-  .r-dn {
-    border: 1px solid deepskyblue;
-    width: 79%;
-    float: right;
-    position: relative;
-  }
+    #show_message{
+      width: auto;
+      height: 65%;
+      border: 1px solid pink;
+      position: relative;
+      margin: 5px;
+      padding: 5px;
+    }
 
-  .r-dn textarea {
-    resize: none;
-    width: 99%;
-    border: 1px solid blue;
-    height: 80%;
-    float: left;
-  }
+    #input_box {
+      width: auto;
+      height: 35%;
+      border: 1px solid purple;
+      position: relative;
+      margin: 5px;
+      padding: 5px;
+    }
 
-  .sub_button{
-    float: right;
-    height: 19%;
-  }
+    #textarea_box{
+      width: 100%;
+      height: 60%;
+      position: relative;
+    }
 
-  ul {
-    list-style: none;
-  }
+    #submit_button {
+      border: 1px solid rgb(230, 255, 7);
+      width: 100%;
+      height: 20%;
+      position: relative;
+    }
 
-  #content {
-    text-align: right;
-  }
+    #button {
+      width: 80px;
+      height: 30px;
+      position: relative;
+      text-align: center;
+      left: 45%;
+      top: 25%;
+    }
 </style>

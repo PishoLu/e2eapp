@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css"
+    integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+  </script>
+  <style type="text/css">
+    #app {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      border: 2px solid blue;
+    }
+
+    #left {
+      width: 30%;
+      height: 100%;
+      border: 2px solid red;
+      position: fixed;
+    }
+
+    #right {
+      width: 70%;
+      height: 100%;
+      border: 2px solid rgb(240, 8, 201);
+      position: relative;
+      float: right;
+    }
+
+    #search_line {
+      width: 100%;
+      height: 7%;
+      border: 2px solid rgb(121, 121, 255);
+    }
+
+    #friends_list {
+      width: 100%;
+      height: 93%;
+      border: 2px solid green;
+    }
+
+
+    #show_info {
+      width: auto;
+      height: 100%;
+      border: 2px solid brown;
+      position: relative;
+    }
+
+    #input_box {
+      width: auto;
+      height: 30%;
+      border: 2px solid purple;
+      position: relative;
+      top: 70%;
+    }
+
+    #submit_button {
+      border: 2px solid rgb(230, 255, 7);
+      top: 85%;
+      left: 85%;
+      width: 10%;
+      height: 10%;
+      position: relative;
+    }
+
+    #button {
+      width: 100%;
+      height: 100%;
+
+    }
+
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div id="left">
+      <div id="search_line">
+        <el-input v-model="input" placeholder="请输入内容"></el-input>
+      </div>
+      <div id="friends_list">
+      </div>
+    </div>
+    <div id="right">
+      <div id="show_info">
+        <div id="input_box">
+          <div id="submit_button">
+            <button type="submit" id="button">发送</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -6,9 +6,12 @@ const {
 // 创建窗口
 function createWindow() {
     let win = new BrowserWindow({
-        show: false
+        show: false,
+        Width: 800,
+        Height: 600,
+        minWidth: 800,
+        minHeight: 600,
     })
-    win.maximize()
     win.show()
     win.loadURL("http://127.0.0.1:8000")
 }
