@@ -12,7 +12,6 @@
         <el-input type="password" v-model="ruleForm.password" auto-complete="off" placeholder="密码"
           required="required" />
       </el-form-item>
-
       <el-alert title="登录失败！" type="error" v-show="erroralert"></el-alert>
       <el-form-item style="width:100%;">
         <el-button type="primary" style="width:100%;" @click="Login">登录</el-button>
@@ -44,6 +43,7 @@
     data() {
       return {
         isreg: 0,
+        have_pri:0,
         erroralert: 0,
         ruleForm: {
           userid: '',
@@ -86,7 +86,8 @@
         this.ruleFromReg.password = ''
       },
       Login() {
-        axios.get("http://127.0.0.1:8000/apis/")
+        // 检测是否有登录userid的私钥。如果没有需要提供才能登录
+        // axios.get("http://127.0.0.1:8000/apis/")
         axios.post("http://127.0.0.1:8888/apis/user/" + this.ruleForm.userid, {
           "password": sha256(this.ruleForm.password)
         }).then((response) => {
@@ -149,8 +150,6 @@
                 "SignedPri": this.ruleFromReg.SignedPri,
                 "OneTimePri": this.ruleFromReg.OneTimePri,
                 "ElephantPri": "",
-                "last_ip": "localhost",
-                "last_port": 8000
               })
             } else {
               const h = this.$createElement;

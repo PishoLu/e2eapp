@@ -81,116 +81,23 @@
       return {
         count:20,
         loading: false,
-        logging_in:234234234,
+        logining_userid:0,
         message_num:10,
         // 该list只是对应目标的消息记录。通过侧边栏更新
-        message_list: [{
-          "fromUserid":23423434,
-          "toUserid":234234234,
-          "date":"2019年12月30日15:37:31",
-          "plaintext":"testmessage1"
-        },{
-          "fromUserid":23423434,
-          "toUserid":234234234,
-          "date":"2019年12月30日15:37:32",
-          "plaintext":"testmessage2"
-        },{
-          "fromUserid":23423434,
-          "toUserid":234234234,
-          "date":"2019年12月30日15:37:32",
-          "plaintext":"testmessage2"
-        },{
-          "fromUserid":23423434,
-          "toUserid":234234234,
-          "date":"2019年12月30日15:37:32",
-          "plaintext":"testmessage2"
-        },{
-          "fromUserid":23423434,
-          "toUserid":234234234,
-          "date":"2019年12月30日15:37:32",
-          "plaintext":"testmessage2"
-        },{
-          "fromUserid":23423434,
-          "toUserid":234234234,
-          "date":"2019年12月30日15:37:32",
-          "plaintext":"testmessage2"
-        },{
-          "fromUserid":23423434,
-          "toUserid":234234234,
-          "date":"2019年12月30日15:37:32",
-          "plaintext":"testmessage2"
-        },{
-          "fromUserid":23423434,
-          "toUserid":234234234,
-          "date":"2019年12月30日15:37:32",
-          "plaintext":"testmessage2"
-        },{
-          "fromUserid":234234234,
-          "toUserid":23423434,
-          "date":"2019年12月30日15:37:33",
-          "plaintext":"testmessage3"
-        },{
-          "fromUserid":234234234,
-          "toUserid":23423434,
-          "date":"2019年12月30日15:37:33",
-          "plaintext":"testmessage3"
-        },{
-          "fromUserid":234234234,
-          "toUserid":23423434,
-          "date":"2019年12月30日15:37:33",
-          "plaintext":"testmessage3"
-        },{
-          "fromUserid":234234234,
-          "toUserid":23423434,
-          "date":"2019年12月30日15:37:33",
-          "plaintext":"testmessage3"
-        },{
-          "fromUserid":234234234,
-          "toUserid":23423434,
-          "date":"2019年12月30日15:37:33",
-          "plaintext":"testmessage3"
-        },{
-          "fromUserid":234234234,
-          "toUserid":23423434,
-          "date":"2019年12月30日15:37:33",
-          "plaintext":"testmessage3"
-        },{
-          "fromUserid":234234234,
-          "toUserid":23423434,
-          "date":"2019年12月30日15:37:33",
-          "plaintext":"testmessage3"
-        },],
+        message_list: [],
         search_input: "",
         msg_input: '',
         dialogFormVisible: false,
-        friends_list: [{
-          "id": 23424234,
-          "username": "test",
-          "last_ip": "",
-          "last_port": 0
-        }, {
-          "id": 23423423,
-          "username": "test2",
-          "last_ip": "",
-          "last_port": 0
-        }],
-        search_result: [{
-          "id": 234234234,
-          "username": "test3",
-          "last_ip": "",
-          "last_port": 0
-        }, {
-          "id": 234234123,
-          "username": "test4",
-          "last_ip": "",
-          "last_port": 0
-        }],
+        // 好友列表
+        friends_list: [],
+        // 搜索结果
+        search_result: [],
         cruent_obj_id: 0,
       }
     },
     created: function () {
-      this.logging_in = this.$cookies.get("logining_userid");
-      // if(this.logging_in){
+      this.logining_userid = this.$cookies.get("logining_userid");
+      // if(this.logining_userid){
       // }else{
       //   this.$router.push("/")
       // }
