@@ -23,8 +23,6 @@ class user(models.Model):
         return dict
 
     def check_password(self, check_p):
-        print(self.password)
-        print(check_p)
         if self.password == check_p:
             return 1
         else:

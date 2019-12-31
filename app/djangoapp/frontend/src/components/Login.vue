@@ -110,20 +110,20 @@
       },
       Login() {
         axios.get("http://127.0.0.1:8000/apis/get_user/" + this.FormLogin.userid).then((response) => {
-          console.log(response.data["code"]);
+          // console.log(response.data["code"]);
           if (response.data["code"] === 1) {
-            console.log(response.data["data"]["IdentityPri"])
-            if (response.data["data"]["IdentityPri"] !== undefined) {
+            const temp_data=response.data["data"][0]
+            if (typeof temp_data["IdentityPri"] !== "undefined") {
               axios.post("http://127.0.0.1:8888/apis/user/" + this.FormLogin.userid, {
                 "password": sha256(this.FormLogin.password),
               }).then((response) => {
-                console.log(response.data)
+                // console.log(response.data)
                 if (response.data["code"] === 1) {
-                  this.$cookies.set("logining_userid",response.data["data"]["userid"]);
+                  this.$cookies.set("logining_userid",temp_data["userid"]);
                   this.$router.push("/index")
                 } else {
                   this.$notify.error({
-                    title: '服务器获取用户信息失败！',
+                    title: '登录失败！',
                     message: '请重新登录',
                     // type: 'success'
                   });
@@ -197,7 +197,7 @@
           }
         }).then((response) => {
           var pubs = response.data["data"];
-          console.log(response.data["data"]);
+          // console.log(response.data["data"]);
           this.FormReg.IdentityPub = pubs["IdentityPub"];
           this.FormReg.SignedPub = pubs["SignedPub"];
           this.FormReg.OneTimePub = pubs["OneTimePub"];
@@ -211,7 +211,7 @@
             "SignedPub": this.FormReg.SignedPub,
             "OneTimePub": this.FormReg.OneTimePub,
           }).then((response) => {
-            console.log(response.data);
+            // console.log(response.data);
             if (response.data["code"]) {
               const h = this.$createElement;
               this.$notify({
