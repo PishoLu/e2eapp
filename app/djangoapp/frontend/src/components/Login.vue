@@ -1,33 +1,49 @@
 <template>
   <div class="login-container">
-    <el-form :model="ruleForm" status-icon ref="ruleForm2" label-position="left" label-width="0px"
+    <el-dialog title="没有私钥信息，请输入私钥信息！" :visible.sync="dialogFormVisible">
+      <el-form :model="FormPrikey">
+        <el-form-item label="IdentityPri">
+          <el-input v-model="FormPrikey.IdentityPri" autocomplete="off" required="required"></el-input>
+        </el-form-item>
+        <el-form-item label="SignedPri">
+          <el-input v-model="FormPrikey.SignedPri" autocomplete="off" required="required"></el-input>
+        </el-form-item>
+        <el-form-item label="OneTimePri">
+          <el-input v-model="FormPrikey.OneTimePri" autocomplete="off" required="required"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="updated_pri()">确 定</el-button>
+      </div>
+    </el-dialog>
+    <el-form :model="FormLogin" status-icon ref="ruleForm2" label-position="left" label-width="0px"
       class="demo-ruleForm login-page" v-if="!isreg">
       <el-button type="primary" class="login-button-left" @click.native="login">登录</el-button>
       <el-button type="primary" class="login-button-right" @click.native="regis">注册</el-button>
       <el-form-item prop="userid">
-        <el-input type="text" v-model="ruleForm.userid" auto-complete="off" placeholder="请使用注册成功的ID登录"
+        <el-input type="text" v-model="FormLogin.userid" auto-complete="off" placeholder="请使用注册成功的ID登录"
           required="required" />
       </el-form-item>
       <el-form-item prop="password">
-        <el-input type="password" v-model="ruleForm.password" auto-complete="off" placeholder="密码"
+        <el-input type="password" v-model="FormLogin.password" auto-complete="off" placeholder="密码"
           required="required" />
       </el-form-item>
-
       <el-alert title="登录失败！" type="error" v-show="erroralert"></el-alert>
       <el-form-item style="width:100%;">
         <el-button type="primary" style="width:100%;" @click="Login">登录</el-button>
       </el-form-item>
     </el-form>
-    <el-form :model="ruleFromReg" status-icon ref="ruleForm2" label-position="left" label-width="0px"
+    <el-form :model="FormReg" status-icon ref="ruleForm2" label-position="left" label-width="0px"
       class="demo-ruleForm login-page" v-else>
       <el-button type="primary" class="login-button-left" @click="login">登录</el-button>
       <el-button type="primary" class="login-button-right" @click="regis">注册</el-button>
       <el-form-item prop="username">
-        <el-input type="text" v-model="ruleFromReg.username" auto-complete="off" placeholder="用户名"
+        <el-input type="text" v-model="FormReg.username" auto-complete="off" placeholder="用户名"
           required="required" />
       </el-form-item>
       <el-form-item prop="password">
-        <el-input type="password" v-model="ruleFromReg.password" auto-complete="off" placeholder="密码"
+        <el-input type="password" v-model="FormReg.password" auto-complete="off" placeholder="密码"
           required="required" />
       </el-form-item>
       <el-form-item style="width:100%;">
@@ -43,15 +59,16 @@
   export default {
     data() {
       return {
+        dialogFormVisible:false,
         server_csrf:"",
         client_csrf:"",
         isreg: 0,
         erroralert: 0,
-        ruleForm: {
+        FormLogin: {
           userid: '',
           password: '',
         },
-        ruleFromReg: {
+        FormReg: {
           username: '',
           password: '',
           IdentityPub: '',
@@ -62,6 +79,12 @@
           SignedPri: "",
           OneTimePri: ""
         },
+        FormPrikey:{
+          IdentityPri:"",
+          SignedPri:"",
+          OneTimePri:"",
+        },
+        keys:{},
       }
     },
     // 查询是否有已登录的账号
@@ -77,36 +100,68 @@
     methods: {
       login() {
         this.isreg = 0;
-        this.ruleFromReg.username = ''
-        this.ruleFromReg.password = ''
-        this.ruleForm.userid = ''
-        this.ruleForm.password = ''
+        this.FormReg.username = ''
+        this.FormReg.password = ''
+        this.FormLogin.userid = ''
+        this.FormLogin.password = ''
       },
       regis() {
         this.isreg = 1;
-        this.ruleForm.userid = ''
-        this.ruleForm.password = ''
-        this.ruleFromReg.username = ''
-        this.ruleFromReg.password = ''
+        this.FormLogin.userid = ''
+        this.FormLogin.password = ''
+        this.FormReg.username = ''
+        this.FormReg.password = ''
       },
       Login() {
-        // axios.get("http://127.0.0.1:8000/apis/")
-        axios.post("http://127.0.0.1:8888/apis/user/" + this.ruleForm.userid, {
-          "password": sha256(this.ruleForm.password),
-          // headers:{
-          //   withCredentials: true,  // 这里将会发送 Cookie (with it there are: sessionid, csrftoken)
-          //   xsrfCookieName: 'csrftoken',  // default: XSRF-TOKEN
-          //   xsrfHeaderName: 'X-CSRFtoken', 
-          // }
-        }).then((response) => {
-          console.log(response.data)
-          if (response.data["code"]) {
-            this.$cookies.set('logining_userid', this.ruleForm.userid)
-            console.log(this.$cookies)
-            this.erroralert = 0
-            this.$router.push("/index")
-          } else {
-            this.erroralert = 1
+        axios.get("http://127.0.0.1:8000/apis/get_user/"+this.FormLogin.userid).then((response)=>{
+          console.log(response.data["code"])
+          if(response.data["code"]==1){
+            if(response.data["data"]["IdentityPri"]!=""){
+              axios.post("http://127.0.0.1:8888/apis/user/" + this.FormLogin.userid, {
+                "password": sha256(this.FormLogin.password),
+              }).then((response) => {
+                if(response.data["code"]==1){
+                  // 获取到用户登录的username
+                  username_t=response.data["data"]["username"]
+                  // 密码验证正确后将该私钥
+                  axios.post("http://127.0.0.1:8000/apis/store_user",{
+                  userid=this.FormLogin.userid, username=username_t,
+                  IdentityPub=response_data["IdentityPub"], SignedPub=response_data["SignedPub"],
+                  OneTimePub=response_data["OneTimePub"], ElephantPub="",
+                  IdentityPri=response_data["IdentityPri"], SignedPri=response_data["SignedPri"],
+                  OneTimePri=response_data["OneTimePri"], ElephantPri=""
+                  }).then((response)=>{
+                  
+                  })
+                }else{
+                }
+              })
+            }else{
+                  this.dialogFormVisible=true
+            }
+          }else{
+                  this.dialogFormVisible=true
+          }
+        })
+      },
+      updated_pri() {
+        this.dialogFormVisible = false
+        // 先检查私钥的格式是否有误
+        axios.post("http://127.0.0.1:8000/apis/check_pri/",{
+          "IdentityPri":this.FormPrikey.IdentityPri,
+          "SignedPri":this.FormPrikey.SignedPri,
+          "OneTimePri":this.FormPrikey.OneTimePri
+        }).then((response)=>{
+          // console.log(response.data["data"])
+          if(response.data["code"]==1){
+            // 返回的数据包括私钥字符串和公钥字符串
+            this.keys=response.data["data"]
+          }else{
+            this.$notify.error({
+            title: '私钥格式有误！',
+            message: '请重新登录',
+            // type: 'success'
+            });
           }
         })
       },
@@ -118,58 +173,53 @@
         }).then((response) => {
           var pubs = response.data["data"]
           console.log(response.data["data"])
-          this.ruleFromReg.IdentityPub = pubs["IdentityPub"]
-          this.ruleFromReg.SignedPub = pubs["SignedPub"]
-          this.ruleFromReg.OneTimePub = pubs["OneTimePub"]
-          this.ruleFromReg.IdentityPri = pubs["IdentityPri"]
-          this.ruleFromReg.SignedPri = pubs["SignedPri"]
-          this.ruleFromReg.OneTimePri = pubs["OneTimePri"]
+          this.FormReg.IdentityPub = pubs["IdentityPub"]
+          this.FormReg.SignedPub = pubs["SignedPub"]
+          this.FormReg.OneTimePub = pubs["OneTimePub"]
+          this.FormReg.IdentityPri = pubs["IdentityPri"]
+          this.FormReg.SignedPri = pubs["SignedPri"]
+          this.FormReg.OneTimePri = pubs["OneTimePri"]
           axios.post("http://127.0.0.1:8888/apis/user/", {
-            "username": this.ruleFromReg.username,
-            "password": sha256(this.ruleFromReg.password),
-            "IdentityPub": this.ruleFromReg.IdentityPub,
-            "SignedPub": this.ruleFromReg.SignedPub,
-            "OneTimePub": this.ruleFromReg.OneTimePub,
-            "last_port": this.ruleFromReg.Port
+            "username": this.FormReg.username,
+            "password": sha256(this.FormReg.password),
+            "IdentityPub": this.FormReg.IdentityPub,
+            "SignedPub": this.FormReg.SignedPub,
+            "OneTimePub": this.FormReg.OneTimePub,
           }).then((response) => {
             console.log(response.data)
             if (response.data["code"]) {
-              const h = this.$createElement;
               this.$notify({
-                title: '注册成功的ID',
-                message: h('i', {
+              title: '注册成功的ID:',
+              message: h('i', {
                   style: 'color: teal'
                 }, response.data["data"]),
-                duration: 0
+              type: 'success',
+              duration: 0
               });
-              this.isreg = 0;
-              this.ruleForm.userid = ''
-              this.ruleForm.password = ''
-              this.ruleFromReg.username = ''
-              this.ruleFromReg.password = ''
               axios.post("http://127.0.0.1:8000/apis/store_user/", {
                 "userid": response.data["data"],
-                "username": this.ruleFromReg.username,
-                "IdentityPub": this.ruleFromReg.IdentityPub,
-                "SignedPub": this.ruleFromReg.SignedPub,
-                "OneTimePub": this.ruleFromReg.OneTimePub,
+                "username": this.FormReg.username,
+                "IdentityPub": this.FormReg.IdentityPub,
+                "SignedPub": this.FormReg.SignedPub,
+                "OneTimePub": this.FormReg.OneTimePub,
                 "ElephantPub": "",
-                "IdentityPri": this.ruleFromReg.IdentityPri,
-                "SignedPri": this.ruleFromReg.SignedPri,
-                "OneTimePri": this.ruleFromReg.OneTimePri,
+                "IdentityPri": this.FormReg.IdentityPri,
+                "SignedPri": this.FormReg.SignedPri,
+                "OneTimePri": this.FormReg.OneTimePri,
                 "ElephantPri": "",
-                "last_ip": "localhost",
-                "last_port": 8000
               })
+              this.isreg = 0;
+              this.FormLogin.userid = ''
+              this.FormLogin.password = ''
+              this.FormReg.username = ''
+              this.FormReg.password = ''
             } else {
-              const h = this.$createElement;
-              this.$notify({
-                title: '注册失败！',
-                message: h('i', {
-                  style: 'color: teal'
-                }, response.data["请重新注册"]),
+              this.$notify.error({
+              title: '注册失败！',
+              message: '请重新注册',
+              // type: 'success'
               });
-            }
+              }
           })
         })
       }

@@ -50,9 +50,8 @@ def sotre_message(request):
     if request.method == "POST":
         post_data = request.POST.dict()
         try:
-            new_message = messages(
+            messages.objects.creat(
                 fromUserid=post_data["fromUserid"], toUserid=post_data["toUserid"], plaintext=post_data["plaintext"])
-            new_message.save()
             result = {"code": 1, "result": "添加成功"}
             return JsonResponse(result)
         except:
@@ -80,8 +79,13 @@ def filter_messages(request, pk):
         return JsonResponse(result)
 
     if request.method == 'GET':
-        result = {"code": 1, "data": messages_temp,
-                  "result": "与该用户的来往记录。"}
+        if len(messages_temp):
+            result = {"code": 1, "data": messages_temp,
+                      "result": "与该用户的来往记录。"}
+            return JsonResponse(result)
+        else:
+            result = {"code": -1, "result": "该用户不存在"}
+            return JsonResponse(result)
         return JsonResponse(result)
     elif request.method == 'POST':
         result = {"code": -1, "result": "请求方式有误!"}
@@ -90,17 +94,16 @@ def filter_messages(request, pk):
 
 # 保存user类相关信息
 @csrf_exempt
-def sotre_user(request):
+def store_user(request):
     if request.method == "POST":
-        post_data = request.POST.dict()
+        post_data = json.loads(request.body)
+        # print(post_data)
         try:
-            new_user = user(
-                userid=post_data["userid"], username=post_data["username"],
-                IdentityPub=post_data["IdentityPub"], SignedPub=post_data["SignedPub"],
-                OneTimePub=post_data["OneTimePub"], ElephantPub=post_data["ElephantPub"],
-                IdentityPri=post_data["IdentityPri"], SignedPri=post_data["SignedPri"],
-                OneTimePri=post_data["OneTimePri"], ElephantPri=post_data["ElephantPri"])
-            new_user.save()
+            user.objects.create(userid=post_data["userid"], username=post_data["username"],
+                                IdentityPub=post_data["IdentityPub"], SignedPub=post_data["SignedPub"],
+                                OneTimePub=post_data["OneTimePub"], ElephantPub=post_data["ElephantPub"],
+                                IdentityPri=post_data["IdentityPri"], SignedPri=post_data["SignedPri"],
+                                OneTimePri=post_data["OneTimePri"], ElephantPri=post_data["ElephantPri"])
             result = {"code": 1, "result": "添加成功！"}
             return JsonResponse(result)
         except:
@@ -123,9 +126,14 @@ def get_user(request, pk):
         return JsonResponse(result)
 
     if request.method == 'GET':
-        result = {"code": 1, "data": user_temp,
-                  "result": "该用户的信息。"}
-        return JsonResponse(result)
+        if len(user_temp):
+            result = {"code": 1, "data": user_temp,
+                      "result": "该用户的信息。"}
+            return JsonResponse(result)
+        else:
+            result = {"code": -1, "result": "该用户不存在"}
+            return JsonResponse(result)
+
     elif request.method == 'POST':
         result = {"code": -1, "result": "请求方式有误!"}
         return JsonResponse(result)
@@ -137,10 +145,8 @@ def sotre_friend(request):
     if request.method == "POST":
         post_data = request.POST.dict()
         try:
-            new_user = friends(
-                userid=post_data["userid"], username=post_data["username"],
-                remark=post_data["remark"], status=post_data["status"])
-            new_user.save()
+            friends.objects.creat(userid=post_data["userid"], username=post_data["username"],
+                                  remark=post_data["remark"], status=post_data["status"])
             result = {"code": 1, "result": "添加成功！"}
             return JsonResponse(result)
         except:
@@ -149,7 +155,6 @@ def sotre_friend(request):
     else:
         result = {"code": -1, "result": "请求方式有误!"}
         return JsonResponse(result)
-
 
 
 # 获取好友列表
@@ -166,8 +171,13 @@ def friends_list(request):
         return JsonResponse(result)
 
     if request.method == 'GET':
-        result = {"code": 1, "data": friends_temp,
-                  "result": "好友列表"}
+        if len(friends_temp):
+            result = {"code": 1, "data": friends_temp,
+                      "result": "好友列表"}
+            return JsonResponse(result)
+        else:
+            result = {"code": -1, "result": "好友列表为空"}
+            return JsonResponse(result)
         return JsonResponse(result)
     elif request.method == 'POST':
         result = {"code": -1, "result": "请求方式有误!"}
@@ -248,6 +258,36 @@ def gettoken(request):
     else:
         pass
 
+
+@csrf_exempt
+def check_pri(request):
+    if request.method == "POST":
+        post_data = json.loads(request.body)
+        post_data_temp = post_data.copy()
+        try:
+            post_data_temp["IdentityPri"] = X25519PrivateKey.from_private_bytes(
+                binascii.unhexlify(post_data["IdentityPri"].encode("unicode_escape")))
+            post_data_temp["SignedPri"] = X25519PrivateKey.from_private_bytes(
+                binascii.unhexlify(post_data["SignedPri"].encode("unicode_escape")))
+            post_data_temp["OneTimePri"] = X25519PrivateKey.from_private_bytes(
+                binascii.unhexlify(post_data["OneTimePri"].encode("unicode_escape")))
+
+            post_data["IdentityPub"] = binascii.hexlify(post_data_temp["IdentityPri"].public_key().public_bytes(
+                encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape")
+            post_data["SignedPub"] = binascii.hexlify(post_data_temp["SignedPri"].public_key().public_bytes(
+                encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape")
+            post_data["OneTimePub"] = binascii.hexlify(post_data_temp["OneTimePri"].public_key().public_bytes(
+                encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape")
+            # print(post_data)
+            # print(post_data_temp)
+            result = {"code": 1, "data": post_data, "result": "私钥格式正常！"}
+            return JsonResponse(result)
+        except:
+            result = {"code": -1, "result": "私钥格式有误！"}
+            return JsonResponse(result)
+    else:
+        result = {"code": -1, "result": "请求方式有误!"}
+        return JsonResponse(result)
 
 # @api_view(["GET", "POST"])
 # def user_list(request):

@@ -45,7 +45,8 @@ def gettoken(request):
 def user_list(request):
     # 注册接口
     if request.method == 'POST':
-        post_data = request.data.copy()
+        post_data = json.loads(request.body)
+        # print(post_data)
         if (len(post_data["password"]) == 64):
             post_data["userid"] = random.randint(10000000, 100000000)
 
@@ -80,9 +81,10 @@ def user_detail(request, pk):
     # 登录接口
     if request.method == 'POST':
         try:
-            password = request.data["password"]
+            password = request.POST["password"]
             if user_temp.check_password(password):
-                result = {"code": 1, "result": "登录成功"}
+                result = {"code": 1, "data": user_temp.to_json(),
+                          "result": "登录成功"}
                 return JsonResponse(result)
             else:
                 result = {"code": -1, "result": "登录失败"}

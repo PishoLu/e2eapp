@@ -140,6 +140,22 @@ def compare_bytes(A, B):
 if __name__ == '__main__':
     time_begin = time.time()
     mine = User()
+    print(binascii.hexlify(mine.IdentityPub.public_bytes(
+        encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape"))
+    print(binascii.hexlify(mine.SignedPub.public_bytes(
+        encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape"))
+    print(binascii.hexlify(mine.OneTimePub.public_bytes(
+        encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape"))
+    print(binascii.hexlify(mine.IdentityPri.private_bytes(encoding=serialization.Encoding.Raw,
+                                                          format=serialization.PrivateFormat.Raw,
+                                                          encryption_algorithm=serialization.NoEncryption())).decode("unicode_escape"))
+    print(binascii.hexlify(mine.SignedPri.private_bytes(encoding=serialization.Encoding.Raw,
+                                                        format=serialization.PrivateFormat.Raw,
+                                                        encryption_algorithm=serialization.NoEncryption())).decode("unicode_escape"))
+    print(binascii.hexlify(mine.OneTimePri.private_bytes(encoding=serialization.Encoding.Raw,
+                                                         format=serialization.PrivateFormat.Raw,
+                                                         encryption_algorithm=serialization.NoEncryption())).decode("unicode_escape"))
+
     mine_DH = DH()
 
     other = User()
@@ -240,15 +256,18 @@ if __name__ == '__main__':
             binascii.unhexlify(new_message2.s_user_EK.encode("unicode_escape")))
 
         print("身份公钥是否一致：", compare_bytes(
-            s_user_IK.public_bytes(encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw),
+            s_user_IK.public_bytes(
+                encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw),
             mine.IdentityPub.public_bytes(encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)))
         print("临时公钥是否一致：", compare_bytes(
-            s_user_EK.public_bytes(encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw),
+            s_user_EK.public_bytes(
+                encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw),
             mine.EphemeralPub.public_bytes(encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)))
 
         # 通过服务器查询再次确认身份公钥一致
         if compare_bytes(
-                s_user_IK.public_bytes(encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw),
+                s_user_IK.public_bytes(
+                    encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw),
                 mine.IdentityPub.public_bytes(encoding=serialization.Encoding.Raw,
                                               format=serialization.PublicFormat.Raw)):
             mess_node = Message_Node()

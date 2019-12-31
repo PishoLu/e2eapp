@@ -387,3 +387,290 @@ AttributeError: 'ReturnDict' object has no attribute 'data'
 2019-54-31 12:54:22-__init__-DEBUG-Using selector: SelectSelector
 2019-19-31 13:19:58-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
 2019-19-31 13:19:58-__init__-DEBUG-Using selector: SelectSelector
+2019-43-31 13:43:41-log_response-ERROR-Internal Server Error: /apis/user/222222222
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 83, in user_detail
+    password = request.data["password"]
+AttributeError: 'WSGIRequest' object has no attribute 'data'
+2019-45-31 13:45:02-log_response-ERROR-Internal Server Error: /apis/user/222222222
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 83, in user_detail
+    password = request.data["password"]
+AttributeError: 'WSGIRequest' object has no attribute 'data'
+2019-45-31 13:45:28-log_response-ERROR-Internal Server Error: /apis/user/222222222
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 83, in user_detail
+    password = request.data["password"]
+AttributeError: 'WSGIRequest' object has no attribute 'data'
+2019-45-31 13:45:47-log_response-ERROR-Internal Server Error: /apis/user/222222222
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 83, in user_detail
+    password = request.data["password"]
+AttributeError: 'WSGIRequest' object has no attribute 'data'
+2019-47-31 13:47:30-log_response-ERROR-Internal Server Error: /apis/user/111111111
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 83, in user_detail
+    password = request.data["password"]
+AttributeError: 'WSGIRequest' object has no attribute 'data'
+2019-51-31 13:51:22-log_response-ERROR-Internal Server Error: /apis/user/111111111
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 83, in user_detail
+    password = request.data["password"]
+AttributeError: 'WSGIRequest' object has no attribute 'data'
+2019-54-31 13:54:57-log_response-ERROR-Internal Server Error: /apis/user/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 48, in user_list
+    post_data = request.data.copy()
+AttributeError: 'WSGIRequest' object has no attribute 'data'
+2019-55-31 13:55:30-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-55-31 13:55:30-__init__-DEBUG-Using selector: SelectSelector
+2019-55-31 13:55:36-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-55-31 13:55:36-__init__-DEBUG-Using selector: SelectSelector
+2019-55-31 13:55:56-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-55-31 13:55:56-__init__-DEBUG-Using selector: SelectSelector
+2019-56-31 13:56:11-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-56-31 13:56:11-__init__-DEBUG-Using selector: SelectSelector
+2019-56-31 13:56:19-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-56-31 13:56:19-__init__-DEBUG-Using selector: SelectSelector
+2019-56-31 13:56:43-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-56-31 13:56:43-__init__-DEBUG-Using selector: SelectSelector
+2019-57-31 13:57:27-log_response-ERROR-Internal Server Error: /apis/user/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\utils\datastructures.py", line 76, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'password'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 49, in user_list
+    if (len(post_data["password"]) == 64):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\utils\datastructures.py", line 78, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'password'
+2019-58-31 13:58:22-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-58-31 13:58:22-__init__-DEBUG-Using selector: SelectSelector
+2019-58-31 13:58:23-log_response-ERROR-Internal Server Error: /apis/user/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\utils\datastructures.py", line 76, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'password'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 50, in user_list
+    if (len(post_data["password"]) == 64):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\utils\datastructures.py", line 78, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'password'
+2019-59-31 13:59:45-log_response-ERROR-Internal Server Error: /apis/user/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\utils\datastructures.py", line 76, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'password'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 50, in user_list
+    if (len(post_data["password"]) == 64):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\utils\datastructures.py", line 78, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'password'
+2019-01-31 14:01:55-log_response-ERROR-Internal Server Error: /apis/user/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 51, in user_list
+    post_data["userid"] = random.randint(10000000, 100000000)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\http\request.py", line 467, in __setitem__
+    self._assert_mutable()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\http\request.py", line 464, in _assert_mutable
+    raise AttributeError("This QueryDict instance is immutable")
+AttributeError: This QueryDict instance is immutable
+2019-02-31 14:02:48-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-02-31 14:02:48-__init__-DEBUG-Using selector: SelectSelector
+2019-12-31 14:12:33-log_response-ERROR-Internal Server Error: /apis/user/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\utils\datastructures.py", line 76, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'password'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 50, in user_list
+    if (len(post_data["password"]) == 64):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\utils\datastructures.py", line 78, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'password'
+2019-13-31 14:13:26-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-13-31 14:13:26-__init__-DEBUG-Using selector: SelectSelector
+2019-13-31 14:13:30-log_response-ERROR-Internal Server Error: /apis/user/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\utils\datastructures.py", line 76, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'password'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 50, in user_list
+    if (len(post_data["password"]) == 64):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\utils\datastructures.py", line 78, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'password'
+2019-13-31 14:13:47-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-13-31 14:13:47-__init__-DEBUG-Using selector: SelectSelector
+2019-13-31 14:13:49-log_response-ERROR-Internal Server Error: /apis/user/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 50, in user_list
+    if (len(post_data["password"]) == 64):
+TypeError: byte indices must be integers or slices, not str
+2019-14-31 14:14:32-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-14-31 14:14:32-__init__-DEBUG-Using selector: SelectSelector
+2019-14-31 14:14:40-log_response-ERROR-Internal Server Error: /apis/user/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\utils\datastructures.py", line 76, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'password'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 50, in user_list
+    if (len(post_data["password"]) == 64):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\utils\datastructures.py", line 78, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'password'
+2019-16-31 14:16:04-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-16-31 14:16:04-__init__-DEBUG-Using selector: SelectSelector
+2019-16-31 14:16:10-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-16-31 14:16:10-__init__-DEBUG-Using selector: SelectSelector
+2019-16-31 14:16:12-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-16-31 14:16:12-__init__-DEBUG-Using selector: SelectSelector
+2019-31-31 14:31:18-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-31-31 14:31:18-__init__-DEBUG-Using selector: SelectSelector
+2019-09-31 15:09:49-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-09-31 15:09:49-__init__-DEBUG-Using selector: SelectSelector
+2019-09-31 15:09:55-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-09-31 15:09:55-__init__-DEBUG-Using selector: SelectSelector
