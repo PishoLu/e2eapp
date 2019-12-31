@@ -71,17 +71,14 @@ def user_list(request):
 @csrf_exempt
 def user_detail(request, pk):
     try:
-        user_temp = []
-        user_temp_t = user.objects.filter(userid=pk)
-        for i in user_temp_t:
-            user_temp.append(i.to_json())
+        user_temp = user.objects.get(userid=pk)
     except user.DoesNotExist:
         result = {"code": -1, "result": "该用户不存在"}
         return JsonResponse(result)
     # 登录接口
     if request.method == 'POST':
         try:
-            password = request.POST["password"]
+            password = json.loads(request.body)["password"]
             if user_temp.check_password(password):
                 result = {"code": 1, "data": user_temp.to_json(),
                           "result": "登录成功"}
@@ -90,15 +87,14 @@ def user_detail(request, pk):
                 result = {"code": -1, "result": "登录失败"}
                 return JsonResponse(result)
         except MultiValueDictKeyError:
-            result = {"code": 1, "data": user_temp,
-                      "result": "该用户的信息。"}
+            result = {"code": -1, "result": "登录失败"}
             return JsonResponse(result)
     # 更新信息（还没修改）
     elif request.method == 'PUT':
         pass
         # 通过该方法可以查询目标是否为好友以及目标其他的可被访问的信息（用户名，用户ID，公钥，上次的IP，上次的端口）
     elif request.method == 'GET':
-        result = {"code": 1, "data": user_temp,
+        result = {"code": 1, "data": user_temp.to_json(),
                   "result": "该用户的信息。"}
         return JsonResponse(result)
     else:
