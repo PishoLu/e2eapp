@@ -55,10 +55,10 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_WHITELIST = (
-    'http://127.0.0.1:8000',
-    "http://127.0.0.1:8080",
-    "http://localhost:8080"
+    'http://localhost:8080',
+    'http://localhost:8000'
 )
+
 ROOT_URLCONF = 'server.urls'
 
 TEMPLATES = [
@@ -115,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 

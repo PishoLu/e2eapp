@@ -310,3 +310,80 @@ AttributeError: 'ReturnDict' object has no attribute 'data'
 2019-18-30 21:18:06-__init__-DEBUG-Using selector: SelectSelector
 2019-18-30 21:18:30-__init__-DEBUG-Using selector: SelectSelector
 2019-18-30 21:18:33-__init__-DEBUG-Using selector: SelectSelector
+2019-06-31 11:06:49-log_response-WARNING-Forbidden (CSRF cookie not set.): /apis/user/
+2019-08-31 11:08:17-trigger_reload-INFO-D:\Study\School\e2e\server\backend\urls.py changed, reloading.
+2019-08-31 11:08:17-__init__-DEBUG-Using selector: SelectSelector
+2019-17-31 11:17:19-log_response-WARNING-Forbidden (CSRF cookie not set.): /apis/user/
+2019-18-31 11:18:01-log_response-WARNING-Forbidden (CSRF cookie not set.): /apis/user/
+2019-18-31 11:18:36-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-18-31 11:18:36-__init__-DEBUG-Using selector: SelectSelector
+2019-18-31 11:18:40-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-18-31 11:18:40-__init__-DEBUG-Using selector: SelectSelector
+2019-32-31 11:32:43-log_response-WARNING-Not Found: /apis/
+2019-39-31 11:39:10-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-39-31 11:39:10-__init__-DEBUG-Using selector: SelectSelector
+2019-39-31 11:39:25-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-39-31 11:39:25-__init__-DEBUG-Using selector: SelectSelector
+2019-48-31 11:48:08-trigger_reload-INFO-D:\Study\School\e2e\server\server\settings.py changed, reloading.
+2019-48-31 11:48:08-__init__-DEBUG-Using selector: SelectSelector
+2019-48-31 11:48:12-trigger_reload-INFO-D:\Study\School\e2e\server\server\settings.py changed, reloading.
+2019-48-31 11:48:12-__init__-DEBUG-Using selector: SelectSelector
+2019-48-31 11:48:20-trigger_reload-INFO-D:\Study\School\e2e\server\server\settings.py changed, reloading.
+2019-48-31 11:48:20-__init__-DEBUG-Using selector: SelectSelector
+2019-51-31 11:51:47-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-51-31 11:51:47-__init__-DEBUG-Using selector: SelectSelector
+2019-54-31 11:54:30-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-54-31 11:54:30-__init__-DEBUG-Using selector: SelectSelector
+2019-54-31 11:54:32-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-54-31 11:54:32-__init__-DEBUG-Using selector: SelectSelector
+2019-01-31 12:01:03-log_response-WARNING-Forbidden (CSRF cookie not set.): /apis/user/
+2019-08-31 12:08:14-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-08-31 12:08:14-__init__-DEBUG-Using selector: SelectSelector
+2019-08-31 12:08:19-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-08-31 12:08:19-__init__-DEBUG-Using selector: SelectSelector
+2019-08-31 12:08:21-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-08-31 12:08:21-__init__-DEBUG-Using selector: SelectSelector
+2019-08-31 12:08:39-log_response-WARNING-Forbidden (CSRF cookie not set.): /apis/user/
+2019-08-31 12:08:49-log_response-WARNING-Forbidden (CSRF cookie not set.): /apis/user/
+2019-09-31 12:09:25-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-09-31 12:09:25-__init__-DEBUG-Using selector: SelectSelector
+2019-09-31 12:09:28-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-09-31 12:09:28-__init__-DEBUG-Using selector: SelectSelector
+2019-09-31 12:09:58-log_response-WARNING-Not Found: /favicon.ico
+2019-15-31 12:15:04-__init__-DEBUG-Using selector: SelectSelector
+2019-15-31 12:15:47-trigger_reload-INFO-D:\Study\School\e2e\server\server\settings.py changed, reloading.
+2019-15-31 12:15:47-__init__-DEBUG-Using selector: SelectSelector
+2019-15-31 12:15:49-trigger_reload-INFO-D:\Study\School\e2e\server\server\settings.py changed, reloading.
+2019-15-31 12:15:49-__init__-DEBUG-Using selector: SelectSelector
+2019-21-31 12:21:03-trigger_reload-INFO-D:\Study\School\e2e\server\server\settings.py changed, reloading.
+2019-21-31 12:21:03-__init__-DEBUG-Using selector: SelectSelector
+2019-21-31 12:21:13-trigger_reload-INFO-D:\Study\School\e2e\server\server\settings.py changed, reloading.
+2019-21-31 12:21:13-__init__-DEBUG-Using selector: SelectSelector
+2019-21-31 12:21:17-trigger_reload-INFO-D:\Study\School\e2e\server\server\settings.py changed, reloading.
+2019-21-31 12:21:17-__init__-DEBUG-Using selector: SelectSelector
+2019-23-31 12:23:50-log_response-WARNING-Forbidden (CSRF cookie not set.): /apis/user/
+2019-40-31 12:40:12-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-40-31 12:40:12-__init__-DEBUG-Using selector: SelectSelector
+2019-40-31 12:40:15-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-40-31 12:40:15-__init__-DEBUG-Using selector: SelectSelector
+2019-40-31 12:40:17-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-40-31 12:40:17-__init__-DEBUG-Using selector: SelectSelector
+2019-40-31 12:40:20-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-40-31 12:40:20-__init__-DEBUG-Using selector: SelectSelector
+2019-41-31 12:41:04-log_response-WARNING-Forbidden (CSRF cookie not set.): /apis/user/
+2019-41-31 12:41:33-log_response-WARNING-Forbidden (CSRF cookie not set.): /apis/user/
+2019-42-31 12:42:11-log_response-WARNING-Forbidden (CSRF cookie not set.): /apis/user/
+2019-45-31 12:45:19-trigger_reload-INFO-D:\Study\School\e2e\server\server\settings.py changed, reloading.
+2019-45-31 12:45:19-__init__-DEBUG-Using selector: SelectSelector
+2019-52-31 12:52:20-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-52-31 12:52:20-__init__-DEBUG-Using selector: SelectSelector
+2019-52-31 12:52:23-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-52-31 12:52:23-__init__-DEBUG-Using selector: SelectSelector
+2019-52-31 12:52:38-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-52-31 12:52:38-__init__-DEBUG-Using selector: SelectSelector
+2019-54-31 12:54:19-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-54-31 12:54:19-__init__-DEBUG-Using selector: SelectSelector
+2019-54-31 12:54:22-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-54-31 12:54:22-__init__-DEBUG-Using selector: SelectSelector
+2019-19-31 13:19:58-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2019-19-31 13:19:58-__init__-DEBUG-Using selector: SelectSelector

@@ -36,16 +36,6 @@ class Logger():
 logger = Logger()
 
 
-# 返回自己的存活信息
-def get_live(request):
-    if request.method == "GET":
-        logger.getlogger().info(request.META["REMOTE_ADDR"])
-        result = {"code": 1, "data": "", "result": "存活"}
-        return JsonResponse(result)
-    else:
-        pass
-
-
 # 开始连接，将连接对象存到列表中，如果没有两个kdf就开始X3DH获取到kdf初始值。
 def start_X3DH(request):
     if request.method == "GET":
@@ -55,6 +45,7 @@ def start_X3DH(request):
 
 
 # 保存发送和接收的消息
+@csrf_exempt
 def sotre_message(request):
     if request.method == "POST":
         post_data = request.POST.dict()
@@ -73,6 +64,7 @@ def sotre_message(request):
 
 
 # 从数据库过滤消息
+@csrf_exempt
 def filter_messages(request, pk):
     try:
         messages_temp = []
@@ -97,6 +89,7 @@ def filter_messages(request, pk):
 
 
 # 保存user类相关信息
+@csrf_exempt
 def sotre_user(request):
     if request.method == "POST":
         post_data = request.POST.dict()
@@ -118,6 +111,7 @@ def sotre_user(request):
         return JsonResponse(result)
 
 
+@csrf_exempt
 def get_user(request, pk):
     try:
         user_temp = []
@@ -138,6 +132,7 @@ def get_user(request, pk):
 
 
 # 保存friend类相关信息
+@csrf_exempt
 def sotre_friend(request):
     if request.method == "POST":
         post_data = request.POST.dict()
@@ -156,7 +151,9 @@ def sotre_friend(request):
         return JsonResponse(result)
 
 
+
 # 获取好友列表
+@csrf_exempt
 def friends_list(request):
     try:
         friends_temp = []
@@ -179,6 +176,7 @@ def friends_list(request):
 
 # 返回解密消息
 # 参数：对方的ID，对方发来的消息
+@csrf_exempt
 def decrypt_message(request):
     if request.method == "GET":
         pass
@@ -188,6 +186,7 @@ def decrypt_message(request):
 
 # 返回加密药效
 # 参数：对方的ID，我要发送的消息
+@csrf_exempt
 def encrypt_message(request):
     if request.method == "GET":
         pass

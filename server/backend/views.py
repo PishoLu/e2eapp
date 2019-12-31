@@ -33,15 +33,15 @@ logger = Logger()
 
 def gettoken(request):
     if request.method == "GET":
-        token = get_token(request)
-        result = {"code": 1, "data": token, "result": "Token 获取成功!"}
+        get_token(request)
+        result = {"code": 1, "result": "Token 获取成功!"}
         return HttpResponse(json.dumps(result))
     else:
         result = {"code": -1, "result": "请求方式有误!"}
         return JsonResponse(result)
 
 
-# @csrf_exempt
+@csrf_exempt
 def user_list(request):
     # 注册接口
     if request.method == 'POST':
@@ -67,7 +67,7 @@ def user_list(request):
         return JsonResponse(result)
 
 
-# @csrf_exempt
+@csrf_exempt
 def user_detail(request, pk):
     try:
         user_temp = []
