@@ -112,7 +112,8 @@
         axios.get("http://127.0.0.1:8000/apis/get_user/" + this.FormLogin.userid).then((response) => {
           console.log(response.data["code"]);
           if (response.data["code"] === 1) {
-            if (response.data["data"]["IdentityPri"] !== "") {
+            console.log(response.data["data"]["IdentityPri"])
+            if (response.data["data"]["IdentityPri"] !== undefined) {
               axios.post("http://127.0.0.1:8888/apis/user/" + this.FormLogin.userid, {
                 "password": sha256(this.FormLogin.password),
               }).then((response) => {
