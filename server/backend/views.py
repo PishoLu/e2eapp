@@ -94,9 +94,27 @@ def user_detail(request, pk):
         pass
         # 通过该方法可以查询目标是否为好友以及目标其他的可被访问的信息（用户名，用户ID，公钥，上次的IP，上次的端口）
     elif request.method == 'GET':
-        result = {"code": 1, "data": user_temp.to_json(),
+        user_temp_json = user_temp.to_json()
+        user_temp_json.pop("password")
+        result = {"code": 1, "data": user_temp_json,
                   "result": "该用户的信息。"}
         return JsonResponse(result)
+    else:
+        result = {"code": -1, "result": "请求方式有误!"}
+        return JsonResponse(result)
+
+
+# 获取已登录用户的消息（获取后删除服务器数据）
+@csrf_exempt
+def message_detail(request):
+    # 上传消息
+    if request.method == "POST":
+        pass
+    # 获取自己的消息
+    elif request.method == "GET":
+        logining_userid = request.COOKIES["logining_userid"]
+        print(logining_userid)
+        pass
     else:
         result = {"code": -1, "result": "请求方式有误!"}
         return JsonResponse(result)

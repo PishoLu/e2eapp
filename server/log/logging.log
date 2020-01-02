@@ -750,3 +750,173 @@ AttributeError: 'list' object has no attribute 'check_password'
 2019-57-31 15:57:34-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
 2019-57-31 15:57:34-__init__-DEBUG-Using selector: SelectSelector
 2019-27-31 16:27:47-__init__-DEBUG-Using selector: SelectSelector
+2020-12-02 11:12:46-log_response-WARNING-Not Found: /apis/69301269
+2020-13-02 11:13:55-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-13-02 11:13:55-__init__-DEBUG-Using selector: SelectSelector
+2020-14-02 11:14:03-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-14-02 11:14:03-__init__-DEBUG-Using selector: SelectSelector
+2020-14-02 11:14:06-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-14-02 11:14:06-__init__-DEBUG-Using selector: SelectSelector
+2020-14-02 11:14:09-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-14-02 11:14:09-__init__-DEBUG-Using selector: SelectSelector
+2020-14-02 11:14:14-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-14-02 11:14:14-__init__-DEBUG-Using selector: SelectSelector
+2020-14-02 11:14:17-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-14-02 11:14:17-__init__-DEBUG-Using selector: SelectSelector
+2020-14-02 11:14:19-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-14-02 11:14:19-__init__-DEBUG-Using selector: SelectSelector
+2020-14-02 11:14:24-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-14-02 11:14:24-__init__-DEBUG-Using selector: SelectSelector
+2020-14-02 11:14:27-log_response-ERROR-Internal Server Error: /apis/user/69301269
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 97, in user_detail
+    result_data = user_temp.to_json().remove("password")
+AttributeError: 'dict' object has no attribute 'remove'
+2020-14-02 11:14:57-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-14-02 11:14:57-__init__-DEBUG-Using selector: SelectSelector
+2020-15-02 11:15:49-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-15-02 11:15:49-__init__-DEBUG-Using selector: SelectSelector
+2020-15-02 11:15:56-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-15-02 11:15:56-__init__-DEBUG-Using selector: SelectSelector
+2020-16-02 11:16:00-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-16-02 11:16:00-__init__-DEBUG-Using selector: SelectSelector
+2020-16-02 11:16:04-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-16-02 11:16:04-__init__-DEBUG-Using selector: SelectSelector
+2020-16-02 11:16:09-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-16-02 11:16:09-__init__-DEBUG-Using selector: SelectSelector
+2020-16-02 11:16:11-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-16-02 11:16:11-__init__-DEBUG-Using selector: SelectSelector
+2020-16-02 11:16:23-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-16-02 11:16:23-__init__-DEBUG-Using selector: SelectSelector
+2020-25-02 11:25:09-log_response-WARNING-Not Found: /apis/
+2020-26-02 11:26:14-log_response-WARNING-Not Found: /apis/
+2020-28-02 11:28:28-log_response-WARNING-Not Found: /apis/
+2020-30-02 11:30:03-log_response-WARNING-Not Found: /apis/
+2020-30-02 11:30:13-log_response-WARNING-Not Found: /apis/69301269
+2020-13-02 12:13:09-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-13-02 12:13:09-__init__-DEBUG-Using selector: SelectSelector
+2020-13-02 12:13:14-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-13-02 12:13:14-__init__-DEBUG-Using selector: SelectSelector
+2020-13-02 12:13:32-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-13-02 12:13:32-__init__-DEBUG-Using selector: SelectSelector
+2020-13-02 12:13:53-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-13-02 12:13:53-__init__-DEBUG-Using selector: SelectSelector
+2020-14-02 12:14:13-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-14-02 12:14:13-__init__-DEBUG-Using selector: SelectSelector
+2020-14-02 12:14:19-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-14-02 12:14:19-__init__-DEBUG-Using selector: SelectSelector
+2020-14-02 12:14:27-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-14-02 12:14:27-__init__-DEBUG-Using selector: SelectSelector
+2020-14-02 12:14:38-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-14-02 12:14:38-__init__-DEBUG-Using selector: SelectSelector
+2020-14-02 12:14:46-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-14-02 12:14:46-__init__-DEBUG-Using selector: SelectSelector
+2020-16-02 12:16:45-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-16-02 12:16:45-__init__-DEBUG-Using selector: SelectSelector
+2020-17-02 12:17:02-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-17-02 12:17:02-__init__-DEBUG-Using selector: SelectSelector
+2020-17-02 12:17:05-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-17-02 12:17:05-__init__-DEBUG-Using selector: SelectSelector
+2020-22-02 12:22:11-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-22-02 12:22:11-__init__-DEBUG-Using selector: SelectSelector
+2020-22-02 12:22:14-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-22-02 12:22:14-__init__-DEBUG-Using selector: SelectSelector
+2020-22-02 12:22:27-trigger_reload-INFO-D:\Study\School\e2e\server\backend\urls.py changed, reloading.
+2020-22-02 12:22:27-__init__-DEBUG-Using selector: SelectSelector
+2020-22-02 12:22:30-trigger_reload-INFO-D:\Study\School\e2e\server\backend\urls.py changed, reloading.
+2020-22-02 12:22:30-__init__-DEBUG-Using selector: SelectSelector
+2020-22-02 12:22:34-trigger_reload-INFO-D:\Study\School\e2e\server\backend\urls.py changed, reloading.
+2020-22-02 12:22:34-__init__-DEBUG-Using selector: SelectSelector
+2020-23-02 12:23:47-log_response-ERROR-Internal Server Error: /apis/message/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+TypeError: message_datil() missing 1 required positional argument: 'pk'
+2020-24-02 12:24:23-log_response-WARNING-Not Found: /apis/message/82119217
+2020-24-02 12:24:48-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-24-02 12:24:48-__init__-DEBUG-Using selector: SelectSelector
+2020-24-02 12:24:51-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-24-02 12:24:51-__init__-DEBUG-Using selector: SelectSelector
+2020-24-02 12:24:55-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-24-02 12:24:55-__init__-DEBUG-Using selector: SelectSelector
+2020-24-02 12:24:57-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-24-02 12:24:57-__init__-DEBUG-Using selector: SelectSelector
+2020-25-02 12:25:03-trigger_reload-INFO-D:\Study\School\e2e\server\backend\urls.py changed, reloading.
+2020-25-02 12:25:03-__init__-DEBUG-Using selector: SelectSelector
+2020-25-02 12:25:06-trigger_reload-INFO-D:\Study\School\e2e\server\backend\urls.py changed, reloading.
+2020-25-02 12:25:06-__init__-DEBUG-Using selector: SelectSelector
+2020-25-02 12:25:12-trigger_reload-INFO-D:\Study\School\e2e\server\backend\urls.py changed, reloading.
+2020-25-02 12:25:12-__init__-DEBUG-Using selector: SelectSelector
+2020-25-02 12:25:27-log_response-ERROR-Internal Server Error: /apis/message/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view backend.views.message_list didn't return an HttpResponse object. It returned None instead.
+2020-25-02 12:25:41-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-25-02 12:25:41-__init__-DEBUG-Using selector: SelectSelector
+2020-25-02 12:25:45-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-25-02 12:25:45-__init__-DEBUG-Using selector: SelectSelector
+2020-25-02 12:25:48-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-25-02 12:25:48-__init__-DEBUG-Using selector: SelectSelector
+2020-25-02 12:25:52-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-25-02 12:25:52-__init__-DEBUG-Using selector: SelectSelector
+2020-25-02 12:25:57-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-25-02 12:25:57-__init__-DEBUG-Using selector: SelectSelector
+2020-26-02 12:26:04-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-26-02 12:26:04-__init__-DEBUG-Using selector: SelectSelector
+2020-26-02 12:26:06-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-26-02 12:26:06-__init__-DEBUG-Using selector: SelectSelector
+2020-26-02 12:26:10-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-26-02 12:26:10-__init__-DEBUG-Using selector: SelectSelector
+2020-26-02 12:26:26-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-26-02 12:26:26-__init__-DEBUG-Using selector: SelectSelector
+2020-26-02 12:26:36-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-26-02 12:26:36-__init__-DEBUG-Using selector: SelectSelector
+2020-26-02 12:26:39-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-26-02 12:26:39-__init__-DEBUG-Using selector: SelectSelector
+2020-26-02 12:26:42-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-26-02 12:26:42-__init__-DEBUG-Using selector: SelectSelector
+2020-26-02 12:26:45-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-26-02 12:26:45-__init__-DEBUG-Using selector: SelectSelector
+2020-35-02 12:35:30-log_response-ERROR-Internal Server Error: /apis/message/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    "returned None instead." % (callback.__module__, view_name)
+ValueError: The view backend.views.message_list didn't return an HttpResponse object. It returned None instead.
+2020-49-02 12:49:52-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-49-02 12:49:52-__init__-DEBUG-Using selector: SelectSelector
+2020-49-02 12:49:59-trigger_reload-INFO-D:\Study\School\e2e\server\backend\urls.py changed, reloading.
+2020-49-02 12:49:59-__init__-DEBUG-Using selector: SelectSelector
+2020-59-02 14:59:27-trigger_reload-INFO-D:\Study\School\e2e\server\server\settings.py changed, reloading.
+2020-59-02 14:59:27-__init__-DEBUG-Using selector: SelectSelector
+2020-59-02 14:59:30-trigger_reload-INFO-D:\Study\School\e2e\server\server\settings.py changed, reloading.
+2020-59-02 14:59:30-__init__-DEBUG-Using selector: SelectSelector
+2020-59-02 14:59:37-trigger_reload-INFO-D:\Study\School\e2e\server\server\settings.py changed, reloading.
+2020-59-02 14:59:37-__init__-DEBUG-Using selector: SelectSelector
+2020-59-02 14:59:41-trigger_reload-INFO-D:\Study\School\e2e\server\server\settings.py changed, reloading.
+2020-59-02 14:59:41-__init__-DEBUG-Using selector: SelectSelector
+2020-01-02 15:01:14-trigger_reload-INFO-D:\Study\School\e2e\server\server\settings.py changed, reloading.
+2020-01-02 15:01:14-__init__-DEBUG-Using selector: SelectSelector
+2020-01-02 15:01:35-trigger_reload-INFO-D:\Study\School\e2e\server\server\settings.py changed, reloading.
+2020-01-02 15:01:35-__init__-DEBUG-Using selector: SelectSelector
+2020-16-02 15:16:30-trigger_reload-INFO-D:\Study\School\e2e\server\server\settings.py changed, reloading.
+2020-16-02 15:16:30-__init__-DEBUG-Using selector: SelectSelector
+2020-33-02 15:33:53-__init__-DEBUG-Using selector: SelectSelector

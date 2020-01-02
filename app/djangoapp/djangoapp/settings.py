@@ -55,7 +55,26 @@ MIDDLEWARE = [
 CORS_ORIGIN_WHITELIST = (
     'http://127.0.0.1:8000',
     "http://127.0.0.1:8080",
-    "http://localhost:8080"
+    "http://localhost:8000",
+    "http://localhost:8080",
+)
+
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_HEADERS = (
+    'XMLHttpRequest',
+    'X_FILENAME',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+    'Pragma',
+    'logining_userid',
+    'csrftoken',
 )
 ROOT_URLCONF = 'djangoapp.urls'
 

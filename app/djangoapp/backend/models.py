@@ -45,6 +45,7 @@ class messages(models.Model):
 
 class friends(models.Model):
     userid = models.IntegerField(primary_key=True)
+    whosfriend = models.IntegerField()
     username = models.CharField(max_length=20, null=True)
     remark = models.CharField(max_length=20, null=True)
     status = models.IntegerField(default=1)  # 状态码，可以拉黑名单用

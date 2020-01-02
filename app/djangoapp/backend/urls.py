@@ -19,5 +19,7 @@ urlpatterns = [
     # 获取三对新的密钥
     path('create_new_keyspair/', views.create_new_keyspair),
     # 检测私钥格式是否正确
-    path("check_pri/", views.check_pri)
+    path("check_pri/", views.check_pri),
+    path("encrypt_message/", views.encrypt_message),
+    path("decrypt_message/", views.decrypt_message)
 ]

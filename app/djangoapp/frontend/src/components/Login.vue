@@ -87,11 +87,11 @@
     },
     // 查询是否有已登录的账号
     created: function () {
-      // this.$cookies.set("logining_userid", "test")
-      // var logging_cookie = this.$cookies.get("logining_userid");
-      // if (logging_cookie) {
-      //   this.$router.push("/index")
-      // }
+      this.$cookies.set("logining_userid", "82119217")
+      var logging_cookie = this.$cookies.get("logining_userid");
+      if (logging_cookie) {
+        this.$router.push("/")
+      }
     },
     methods: {
       login() {
@@ -109,12 +109,12 @@
         this.FormReg.password = ''
       },
       Login() {
-        axios.get("http://127.0.0.1:8000/apis/get_user/" + this.FormLogin.userid).then((response) => {
+        axios.get("http://localhost:8000/apis/get_user/" + this.FormLogin.userid).then((response) => {
           // console.log(response.data["code"]);
           if (response.data["code"] === 1) {
             const temp_data=response.data["data"][0]
             if (typeof temp_data["IdentityPri"] !== "undefined") {
-              axios.post("http://127.0.0.1:8888/apis/user/" + this.FormLogin.userid, {
+              axios.post("http://localhost:8888/apis/user/" + this.FormLogin.userid, {
                 "password": sha256(this.FormLogin.password),
               }).then((response) => {
                 // console.log(response.data)
@@ -140,7 +140,7 @@
       updated_pri() {
         this.dialogFormVisible = false
         // 先检查私钥的格式是否有误
-        axios.post("http://127.0.0.1:8000/apis/check_pri/", {
+        axios.post("http://localhost:8000/apis/check_pri/", {
           "IdentityPri": this.FormPrikey.IdentityPri,
           "SignedPri": this.FormPrikey.SignedPri,
           "OneTimePri": this.FormPrikey.OneTimePri
@@ -149,10 +149,10 @@
           if (response.data["code"] === 1) {
             // 返回的数据包括私钥字符串和公钥字符串
             this.keys = response.data["data"];
-            axios.get("http://127.0.0.1:8888/apis/user/" + this.FormLogin.userid).then((response) => {
+            axios.get("http://localhost:8888/apis/user/" + this.FormLogin.userid).then((response) => {
               if (response.data["code"] === 1) {
                 const username_t = response.data["data"]["username"];
-                axios.post("http://127.0.0.1:8000/apis/store_user", {
+                axios.post("http://localhost:8000/apis/store_user", {
                   userid: this.FormLogin.userid, username: username_t,
                   IdentityPub: this.keys["IdentityPub"], SignedPub: this.keys["SignedPub"],
                   OneTimePub: this.keys["OneTimePub"], ElephantPub: "",
@@ -191,7 +191,7 @@
         })
       },
       Register() {
-        axios.post("http://127.0.0.1:8000/apis/create_new_keyspair/", {
+        axios.post("http://localhost:8000/apis/create_new_keyspair/", {
           headers: {
             "Content-Type": "application/json",
           }
@@ -204,7 +204,7 @@
           this.FormReg.IdentityPri = pubs["IdentityPri"];
           this.FormReg.SignedPri = pubs["SignedPri"];
           this.FormReg.OneTimePri = pubs["OneTimePri"];
-          axios.post("http://127.0.0.1:8888/apis/user/", {
+          axios.post("http://localhost:8888/apis/user/", {
             "username": this.FormReg.username,
             "password": sha256(this.FormReg.password),
             "IdentityPub": this.FormReg.IdentityPub,
@@ -222,7 +222,7 @@
                 type: 'success',
                 duration: 0
               });
-              axios.post("http://127.0.0.1:8000/apis/store_user/", {
+              axios.post("http://localhost:8000/apis/store_user/", {
                 "userid": response.data["data"],
                 "username": this.FormReg.username,
                 "IdentityPub": this.FormReg.IdentityPub,

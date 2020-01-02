@@ -117,10 +117,18 @@ def store_user(request):
 @csrf_exempt
 def get_user(request, pk):
     try:
+        logining_userid = request.COOKIES["logining_userid"]
         user_temp = []
         user_temp_t = user.objects.filter(userid=pk)
         for i in user_temp_t:
-            user_temp.append(i.to_json())
+            user_temp_json = i.to_json()
+            # 如果是含有私钥的信息只能由已登录的用户查看
+            # is有点问题
+            if str(logining_userid) != str(user_temp_json["userid"]):
+                user_temp_json["IdentityPri"] = ""
+                user_temp_json["SignedPri"] = ""
+                user_temp_json["OneTimePri"] = ""
+            user_temp.append(user_temp_json)
     except user.DoesNotExist:
         result = {"code": -1, "result": "该用户不存在"}
         return JsonResponse(result)
@@ -143,10 +151,12 @@ def get_user(request, pk):
 @csrf_exempt
 def sotre_friend(request):
     if request.method == "POST":
-        post_data = request.POST.dict()
+        print(request.POST)
+        post_data = json.loads(request.body)
+        logining_userid = request.COOKIES["logining_userid"]
         try:
-            friends.objects.creat(userid=post_data["userid"], username=post_data["username"],
-                                  remark=post_data["remark"], status=post_data["status"])
+            friends.objects.create(userid=post_data["userid"], username=post_data["username"], whosfriend=logining_userid,
+                                   remark=post_data["remark"], status=post_data["status"])
             result = {"code": 1, "result": "添加成功！"}
             return JsonResponse(result)
         except:
@@ -161,9 +171,10 @@ def sotre_friend(request):
 @csrf_exempt
 def friends_list(request):
     try:
+        logining_userid = request.COOKIES["logining_userid"]
         friends_temp = []
-        friends_temp_t = friends.objects.all()
-        print(friends_temp_t)
+        friends_temp_t = friends.objects.filter(whosfriend=logining_userid)
+        # print(friends_temp_t)
         for i in friends_temp_t:
             friends_temp.append(i.to_json())
     except friends.DoesNotExist:
@@ -188,20 +199,26 @@ def friends_list(request):
 # 参数：对方的ID，对方发来的消息
 @csrf_exempt
 def decrypt_message(request):
-    if request.method == "GET":
+    if request.method == "POST":
         pass
     else:
-        pass
+        result = {"code": -1, "result": "请求方式有误!"}
+        return JsonResponse(result)
 
 
 # 返回加密药效
 # 参数：对方的ID，我要发送的消息
 @csrf_exempt
 def encrypt_message(request):
-    if request.method == "GET":
+    if request.method == "POST":
+        post_data = json.loads(request.body)
+        logining_userid = request.COOKIES["logining_userid"]
+        user.objects.get(userid=logining_userid)
+
         pass
     else:
-        pass
+        result = {"code": -1, "result": "请求方式有误!"}
+        return JsonResponse(result)
 
 
 # 登陆到服务器，获取好友列表即登陆IP信息。在初始化之前登陆。登录后初始化获取好友的存活信息。返回给前端列表,由于csrf的原因，登录和注册都交给前端完成，通过axios提交登录注册请求.
