@@ -55,7 +55,8 @@ def user_list(request):
                                 username=post_data["username"],
                                 IdentityPub=post_data["IdentityPub"],
                                 SignedPub=post_data["SignedPub"],
-                                OneTimePub=post_data["OneTimePub"])
+                                OneTimePub=post_data["OneTimePub"],
+                                ElephantPub=post_data["ElephantPub"])
 
             result = {"code": 1,
                       "data": post_data["userid"], "reuslt": "成功注册!"}

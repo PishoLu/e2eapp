@@ -11,6 +11,9 @@
         <el-form-item label="OneTimePri">
           <el-input v-model="FormPrikey.OneTimePri" autocomplete="off" required="required"/>
         </el-form-item>
+        <el-form-item label="ElephantPri">
+          <el-input v-model="FormPrikey.ElephantPri" autocomplete="off" required="required"/>
+        </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">取 消</el-button>
@@ -56,6 +59,18 @@
   import axios from "axios"
   import sha256 from "js-sha256"
 
+  
+  function getCookie(cookieName) {
+    var strCookie = document.cookie;
+    var arrCookie = strCookie.split("; ");
+    for(var i = 0; i < arrCookie.length; i++){
+      var arr = arrCookie[i].split("=");
+      if(cookieName == arr[0]){
+          return arr[1];
+      }
+    }
+    return "";
+  }
   export default {
     data() {
       return {
@@ -73,25 +88,32 @@
           IdentityPub: '',
           SignedPub: '',
           OneTimePub: '',
+          ElephantPub:'',
           IdentityPri: "",
           SignedPri: "",
-          OneTimePri: ""
+          OneTimePri: "",
+          ElephantPri:"",
         },
         FormPrikey: {
           IdentityPri: "",
           SignedPri: "",
           OneTimePri: "",
+          ElephantPri:""
         },
         keys: {},
+        csrftoken:"",
       }
     },
     // 查询是否有已登录的账号
     created: function () {
-      this.$cookies.set("logining_userid", "82119217")
+      // this.$cookies.set("logining_userid", "82119217")
       var logging_cookie = this.$cookies.get("logining_userid");
       if (logging_cookie) {
         this.$router.push("/")
       }
+      // axios.get("http://localhost:8000/apis/gettoken/")
+      // this.csrftoken=getCookie("csrftoken")
+      // console.log(this.csrftoken)
     },
     methods: {
       login() {
@@ -114,13 +136,16 @@
           if (response.data["code"] === 1) {
             const temp_data=response.data["data"][0]
             if (typeof temp_data["IdentityPri"] !== "undefined") {
-              axios.post("http://localhost:8888/apis/user/" + this.FormLogin.userid, {
+              axios.post("http://127.0.0.1:8888/apis/user/" + this.FormLogin.userid, {
                 "password": sha256(this.FormLogin.password),
+                headers:{
+                  // "X-CSRFToken":this.csrftoken
+                }
               }).then((response) => {
                 // console.log(response.data)
                 if (response.data["code"] === 1) {
                   this.$cookies.set("logining_userid",temp_data["userid"]);
-                  this.$router.push("/index")
+                  this.$router.push("/")
                 } else {
                   this.$notify.error({
                     title: '登录失败！',
@@ -143,21 +168,28 @@
         axios.post("http://localhost:8000/apis/check_pri/", {
           "IdentityPri": this.FormPrikey.IdentityPri,
           "SignedPri": this.FormPrikey.SignedPri,
-          "OneTimePri": this.FormPrikey.OneTimePri
+          "OneTimePri": this.FormPrikey.OneTimePri,
+          "ElephantPri":this.FormPrikey.ElephantPri,
+          headers:{
+            // "X-CSRFToken":this.csrftoken
+          }
         }).then((response) => {
           // console.log(response.data["data"])
           if (response.data["code"] === 1) {
             // 返回的数据包括私钥字符串和公钥字符串
             this.keys = response.data["data"];
-            axios.get("http://localhost:8888/apis/user/" + this.FormLogin.userid).then((response) => {
+            axios.get("http://127.0.0.1:8888/apis/user/" + this.FormLogin.userid).then((response) => {
               if (response.data["code"] === 1) {
                 const username_t = response.data["data"]["username"];
                 axios.post("http://localhost:8000/apis/store_user", {
                   userid: this.FormLogin.userid, username: username_t,
                   IdentityPub: this.keys["IdentityPub"], SignedPub: this.keys["SignedPub"],
-                  OneTimePub: this.keys["OneTimePub"], ElephantPub: "",
+                  OneTimePub: this.keys["OneTimePub"], ElephantPub: this.keys["ElephantPub"],
                   IdentityPri: this.keys["IdentityPri"], SignedPri: this.keys["SignedPri"],
-                  OneTimePri: this.keys["OneTimePri"], ElephantPri: ""
+                  OneTimePri: this.keys["OneTimePri"], ElephantPri: this.keys["ElephantPri"],
+                  headers:{
+                    // "X-CSRFToken":this.csrftoken
+                  }
                 }).then((response) => {
                   if (response.data["code"] === 1) {
                     this.$notify({
@@ -193,7 +225,7 @@
       Register() {
         axios.post("http://localhost:8000/apis/create_new_keyspair/", {
           headers: {
-            "Content-Type": "application/json",
+            // "X-CSRFToken":this.csrftoken,
           }
         }).then((response) => {
           var pubs = response.data["data"];
@@ -201,15 +233,21 @@
           this.FormReg.IdentityPub = pubs["IdentityPub"];
           this.FormReg.SignedPub = pubs["SignedPub"];
           this.FormReg.OneTimePub = pubs["OneTimePub"];
+          this.FormReg.ElephantPub=pubs["ElephantPub"];
           this.FormReg.IdentityPri = pubs["IdentityPri"];
           this.FormReg.SignedPri = pubs["SignedPri"];
           this.FormReg.OneTimePri = pubs["OneTimePri"];
-          axios.post("http://localhost:8888/apis/user/", {
+          this.FormReg.ElephantPri = pubs["ElephantPri"];
+          axios.post("http://127.0.0.1:8888/apis/user/", {
             "username": this.FormReg.username,
             "password": sha256(this.FormReg.password),
             "IdentityPub": this.FormReg.IdentityPub,
             "SignedPub": this.FormReg.SignedPub,
             "OneTimePub": this.FormReg.OneTimePub,
+            "ElephantPub": this.FormReg.ElephantPub,
+            headers:{
+              // "X-CSRFToken":this.csrftoken
+            }
           }).then((response) => {
             // console.log(response.data);
             if (response.data["code"]) {
@@ -228,11 +266,14 @@
                 "IdentityPub": this.FormReg.IdentityPub,
                 "SignedPub": this.FormReg.SignedPub,
                 "OneTimePub": this.FormReg.OneTimePub,
-                "ElephantPub": "",
+                "ElephantPub": this.FormReg.ElephantPub,
                 "IdentityPri": this.FormReg.IdentityPri,
                 "SignedPri": this.FormReg.SignedPri,
                 "OneTimePri": this.FormReg.OneTimePri,
-                "ElephantPri": "",
+                "ElephantPri": this.FormReg.ElephantPri,
+                headers:{
+                  // "X-CSRFToken":this.csrftoken
+                }
               });
               this.isreg = 0;
               this.FormLogin.userid = ''

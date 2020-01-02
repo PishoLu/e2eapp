@@ -30,7 +30,7 @@ class messages(models.Model):
     message_id = models.AutoField(primary_key=True)
     fromUserid = models.IntegerField()
     toUserid = models.IntegerField()
-
+    # 存的是对方发送的密文的临时公钥，使用这个公钥可以
     ElephantPub = models.CharField(max_length=64, null=True)
     date = models.DateTimeField(auto_now_add=True)
     plaintext = models.CharField(max_length=2048)

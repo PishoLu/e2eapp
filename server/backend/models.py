@@ -13,6 +13,7 @@ class user(models.Model):
     IdentityPub = models.CharField(max_length=64, null=True)
     SignedPub = models.CharField(max_length=64, null=True)
     OneTimePub = models.CharField(max_length=64, null=True)
+    ElephantPub = models.CharField(max_length=64, null=True)
 
     def to_json(self):
         dict = self.__dict__

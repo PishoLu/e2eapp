@@ -29,9 +29,14 @@
         <el-col :span="8">
           <div class="search_table_itme">{{item.username}}</div>
         </el-col>
-        <el-col :span="8" v-if="is_friend">
+        <el-col :span="8" v-if="is_friend===1">
           <div class="search_table_itme">
             <el-button type="primary" disabled>已经是好友了</el-button>
+          </div>
+        </el-col>
+        <el-col :span="8" v-else-if="is_friend===2">
+          <div class="search_table_itme">
+            <el-button type="primary" disabled>不能添加自己哦</el-button>
           </div>
         </el-col>
         <el-col :span="8" v-else>
@@ -85,9 +90,20 @@
 </template>
 
 <script>
-import axios from "axios"
-axios.defaults.withCredentials=true
+  import axios from "axios"
+  axios.defaults.withCredentials=true
 
+  // function getCookie(cookieName) {
+  //   var strCookie = document.cookie;
+  //   var arrCookie = strCookie.split("; ");
+  //   for(var i = 0; i < arrCookie.length; i++){
+  //     var arr = arrCookie[i].split("=");
+  //     if(cookieName == arr[0]){
+  //         return arr[1];
+  //     }
+  //   }
+  //   return "";
+  // }
   export default {
     name: 'friend',
     data() {
@@ -107,35 +123,36 @@ axios.defaults.withCredentials=true
         search_result: [],
         cruent_obj_id: 0,
         is_friend:0,
+        csrftoken:"",
       }
     },
-    created: function () {
-      axios.get("http://127.0.0.1:8000/apis/gettoken/")
+    created: function () { 
+      // this.csrftoken=getCookie("csrftoken")
       this.logining_userid = this.$cookies.get("logining_userid");
       // console.log(this.logining_userid)
       if(this.logining_userid){
+        // 获取好友列表
+        // 根据好友列表探查好友的存活
+        // 或许可以获取所有的消息记录
+        axios.get("http://localhost:8000/apis/friends_list/",{
+          headers:{
+            "logining_userid":this.logining_userid
+          }
+        }).then((response)=>{
+          if(response.data["code"]===1){
+            // console.log(response.data)
+            this.friends_list=response.data["data"]
+          }else{
+            this.$notify.error({
+              title: '获取好友列表失败，或者好友列表为空。',
+              message: '重启一下应用看看？',
+              // type: 'success'
+            });
+          }
+        })
       }else{
         this.$router.push("/login")
       }
-      // 获取好友列表
-      // 根据好友列表探查好友的存活
-      // 或许可以获取所有的消息记录
-      axios.get("http://127.0.0.1:8000/apis/friends_list/",{
-        headers:{
-          "logining_userid":this.logining_userid
-        }
-      }).then((response)=>{
-        if(response.data["code"]===1){
-          // console.log(response.data)
-          this.friends_list=response.data["data"]
-        }else{
-          this.$notify.error({
-            title: '获取好友列表失败，或者好友列表为空。',
-            message: '重启一下应用看看？',
-            // type: 'success'
-          });
-        }
-      })
     },
     computed: {
     },
@@ -150,7 +167,13 @@ axios.defaults.withCredentials=true
               "IdentityPub":get_data["IdentityPub"],
               "SignedPub":get_data["SignedPub"],
               "OneTimePub":get_data["OneTimePub"],
-              "toUserid":this.cruent_obj_id
+              "ElephantPub":get_data["ElephantPub"],
+              "toUserid":this.cruent_obj_id,
+              headers:{
+                // "X-CSRFToken":this.csrftoken
+              }
+            }).then((response)=>{
+              
             })
           }
         })
@@ -159,7 +182,7 @@ axios.defaults.withCredentials=true
       // 切换当前对话目标，获取该目标的消息
       excheng_obj(id) {
         // console.log(id)
-        axios.get("http://127.0.0.1:8000/apis/filter_messages/"+id).then((response)=>{
+        axios.get("http://localhost:8000/apis/filter_messages/"+id).then((response)=>{
 
         })
         this.cruent_obj_id = id
@@ -173,6 +196,11 @@ axios.defaults.withCredentials=true
             // console.log(response.data["data"])
             // 返回结果应该是只有一个
             this.search_result.push(response.data["data"])
+            if(this.search_result[0]["userid"]===parseInt(this.logining_userid)){
+              this.is_friend=2
+            }else{
+              this.is_friend=0
+            }
             for(var i=0;i<this.friends_list.length;i++){
               // console.log(this.search_result)
               if(this.friends_list[i]["userid"] === this.search_result[0]["userid"]){
@@ -192,7 +220,7 @@ axios.defaults.withCredentials=true
         this.dialogFormVisible = true
       },
       friends_list_flash(){
-        axios.get("http://127.0.0.1:8000/apis/friends_list/",{
+        axios.get("http://localhost:8000/apis/friends_list/",{
         headers:{
           "logining_userid":this.logining_userid
         }
@@ -212,11 +240,14 @@ axios.defaults.withCredentials=true
       // 对应搜索栏的结果添加好友操作
       add_friend(fri_item) {
         // console.log(fri_item)
-        axios.post("http://127.0.0.1:8000/apis/sotre_friend/",{
+        axios.post("http://localhost:8000/apis/sotre_friend/",{
           userid:fri_item.userid,
           username:fri_item.username,
           remark:"",
-          status:1
+          status:1,
+          headers:{
+            // "X-CSRFToken":this.csrftoken
+          }
         }).then((response)=>{
           if(response.data["code"]===1){
             this.dialogFormVisible = false

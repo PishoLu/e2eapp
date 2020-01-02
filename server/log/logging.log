@@ -920,3 +920,81 @@ ValueError: The view backend.views.message_list didn't return an HttpResponse ob
 2020-16-02 15:16:30-trigger_reload-INFO-D:\Study\School\e2e\server\server\settings.py changed, reloading.
 2020-16-02 15:16:30-__init__-DEBUG-Using selector: SelectSelector
 2020-33-02 15:33:53-__init__-DEBUG-Using selector: SelectSelector
+2020-44-02 16:44:41-trigger_reload-INFO-D:\Study\School\e2e\server\backend\models.py changed, reloading.
+2020-44-02 16:44:41-__init__-DEBUG-Using selector: SelectSelector
+2020-44-02 16:44:53-trigger_reload-INFO-D:\Study\School\e2e\server\backend\models.py changed, reloading.
+2020-44-02 16:44:53-__init__-DEBUG-Using selector: SelectSelector
+2020-45-02 16:45:21-trigger_reload-INFO-D:\Study\School\e2e\server\backend\models.py changed, reloading.
+2020-45-02 16:45:21-__init__-DEBUG-Using selector: SelectSelector
+2020-46-02 16:46:10-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-46-02 16:46:10-__init__-DEBUG-Using selector: SelectSelector
+2020-59-02 16:59:21-log_response-WARNING-Not Found: /
+2020-59-02 16:59:21-log_response-WARNING-Not Found: /favicon.ico
+2020-08-02 17:08:58-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-08-02 17:08:58-__init__-DEBUG-Using selector: SelectSelector
+2020-09-02 17:09:01-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-09-02 17:09:01-__init__-DEBUG-Using selector: SelectSelector
+2020-09-02 17:09:03-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-09-02 17:09:03-__init__-DEBUG-Using selector: SelectSelector
+2020-19-02 17:19:39-log_response-WARNING-Forbidden (CSRF cookie not set.): /apis/user/
+2020-20-02 17:20:59-log_response-WARNING-Forbidden (CSRF cookie not set.): /apis/user/
+2020-30-02 17:30:02-log_response-WARNING-Forbidden (CSRF cookie not set.): /apis/user/
+2020-36-02 17:36:32-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-36-02 17:36:32-__init__-DEBUG-Using selector: SelectSelector
+2020-37-02 17:37:51-log_response-ERROR-Internal Server Error: /apis/user/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\sqlite3\base.py", line 396, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: table backend_user has no column named ElephantPub
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 59, in user_list
+    ElephantPub=post_data["ElephantPub"])
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 433, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\base.py", line 746, in save
+    force_update=force_update, update_fields=update_fields)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\base.py", line 784, in save_base
+    force_update, using, update_fields,
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\base.py", line 886, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\base.py", line 925, in _do_insert
+    using=using, raw=raw,
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 1204, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\sql\compiler.py", line 1377, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\sqlite3\base.py", line 396, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: table backend_user has no column named ElephantPub
+2020-38-02 17:38:04-__init__-DEBUG-Using selector: SelectSelector
+2020-38-02 17:38:16-__init__-DEBUG-Using selector: SelectSelector
+2020-38-02 17:38:26-__init__-DEBUG-Using selector: SelectSelector

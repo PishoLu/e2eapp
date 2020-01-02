@@ -132,6 +132,12 @@ def get_user(request, pk):
     except user.DoesNotExist:
         result = {"code": -1, "result": "该用户不存在"}
         return JsonResponse(result)
+    except KeyError:
+        user_temp = []
+        user_temp_t = user.objects.filter(userid=pk)
+        for i in user_temp_t:
+            user_temp_json = i.to_json()
+            user_temp.append(user_temp_json)
 
     if request.method == 'GET':
         if len(user_temp):
@@ -153,14 +159,14 @@ def sotre_friend(request):
     if request.method == "POST":
         post_data = json.loads(request.body)
         logining_userid = request.COOKIES["logining_userid"]
-        # try:
-        friends.objects.create(userid=post_data["userid"], username=post_data["username"], whosfriend=logining_userid,
-                               remark=post_data["remark"], status=post_data["status"])
-        result = {"code": 1, "result": "添加成功！"}
-        return JsonResponse(result)
-        # except:
-        #     result = {"code": -1, "result": "添加失败！"}
-        #     return JsonResponse(result)
+        try:
+            friends.objects.create(userid=post_data["userid"], username=post_data["username"], whosfriend=logining_userid,
+                                   remark=post_data["remark"], status=post_data["status"])
+            result = {"code": 1, "result": "添加成功！"}
+            return JsonResponse(result)
+        except:
+            result = {"code": -1, "result": "添加失败！"}
+            return JsonResponse(result)
     else:
         result = {"code": -1, "result": "请求方式有误!"}
         return JsonResponse(result)
@@ -213,6 +219,12 @@ def encrypt_message(request):
         post_data = json.loads(request.body)
         logining_userid = request.COOKIES["logining_userid"]
         usertemp = user.objects.get(userid=logining_userid).to_json()
+        usertemp["IdentityPri"] = X25519PrivateKey.from_private_bytes(
+            usertemp["IdentityPri"])
+        usertemp["SignedPri"] = X25519PrivateKey.from_private_bytes(
+            usertemp["SignedPri"])
+        usertemp["OneTimePri"] = X25519PrivateKey.from_private_bytes(
+            usertemp["OneTimePri"])
         
         pass
     else:
@@ -235,6 +247,8 @@ def create_new_keyspair(request):
         pubs["SignedPub"] = pubs["SignedPri"].public_key()
         pubs["OneTimePri"] = X25519PrivateKey.generate()
         pubs["OneTimePub"] = pubs["OneTimePri"].public_key()
+        pubs["ElephantPri"] = X25519PrivateKey.generate()
+        pubs["ElephantPub"] = pubs["ElephantPri"].public_key()
         pubs["IdentityPri"] = binascii.hexlify(pubs["IdentityPri"].private_bytes(
             encoding=serialization.Encoding.Raw,
             format=serialization.PrivateFormat.Raw,
@@ -250,6 +264,11 @@ def create_new_keyspair(request):
             format=serialization.PrivateFormat.Raw,
             encryption_algorithm=serialization.NoEncryption()
         )).decode("unicode_escape")
+        pubs["ElephantPri"] = binascii.hexlify(pubs["ElephantPri"].private_bytes(
+            encoding=serialization.Encoding.Raw,
+            format=serialization.PrivateFormat.Raw,
+            encryption_algorithm=serialization.NoEncryption()
+        )).decode("unicode_escape")
         pubs["IdentityPub"] = binascii.hexlify(pubs["IdentityPub"].public_bytes(
             encoding=serialization.Encoding.Raw,
             format=serialization.PublicFormat.Raw
@@ -259,6 +278,10 @@ def create_new_keyspair(request):
             format=serialization.PublicFormat.Raw
         )).decode("unicode_escape")
         pubs["OneTimePub"] = binascii.hexlify(pubs["OneTimePub"].public_bytes(
+            encoding=serialization.Encoding.Raw,
+            format=serialization.PublicFormat.Raw
+        )).decode("unicode_escape")
+        pubs["ElephantPub"] = binascii.hexlify(pubs["ElephantPub"].public_bytes(
             encoding=serialization.Encoding.Raw,
             format=serialization.PublicFormat.Raw
         )).decode("unicode_escape")
@@ -287,12 +310,16 @@ def check_pri(request):
                 binascii.unhexlify(post_data["SignedPri"].encode("unicode_escape")))
             post_data_temp["OneTimePri"] = X25519PrivateKey.from_private_bytes(
                 binascii.unhexlify(post_data["OneTimePri"].encode("unicode_escape")))
+            post_data_temp["ElephantPri"] = X25519PrivateKey.from_private_bytes(
+                binascii.unhexlify(post_data["ElephantPri"].encode("unicode_escape")))
 
             post_data["IdentityPub"] = binascii.hexlify(post_data_temp["IdentityPri"].public_key().public_bytes(
                 encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape")
             post_data["SignedPub"] = binascii.hexlify(post_data_temp["SignedPri"].public_key().public_bytes(
                 encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape")
             post_data["OneTimePub"] = binascii.hexlify(post_data_temp["OneTimePri"].public_key().public_bytes(
+                encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape")
+            post_data["ElephantPub"] = binascii.hexlify(post_data_temp["ElephantPub"].public_key().public_bytes(
                 encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape")
             # print(post_data)
             # print(post_data_temp)
