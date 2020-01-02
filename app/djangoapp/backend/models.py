@@ -31,6 +31,7 @@ class messages(models.Model):
     fromUserid = models.IntegerField()
     toUserid = models.IntegerField()
 
+    ElephantPub = models.CharField(max_length=64, null=True)
     date = models.DateTimeField(auto_now_add=True)
     plaintext = models.CharField(max_length=2048)
 

@@ -98,17 +98,17 @@ def store_user(request):
     if request.method == "POST":
         post_data = json.loads(request.body)
         # print(post_data)
-        try:
-            user.objects.create(userid=post_data["userid"], username=post_data["username"],
-                                IdentityPub=post_data["IdentityPub"], SignedPub=post_data["SignedPub"],
-                                OneTimePub=post_data["OneTimePub"], ElephantPub=post_data["ElephantPub"],
-                                IdentityPri=post_data["IdentityPri"], SignedPri=post_data["SignedPri"],
-                                OneTimePri=post_data["OneTimePri"], ElephantPri=post_data["ElephantPri"])
-            result = {"code": 1, "result": "添加成功！"}
-            return JsonResponse(result)
-        except:
-            result = {"code": -1, "result": "添加失败！"}
-            return JsonResponse(result)
+        # try:
+        user.objects.create(userid=post_data["userid"], username=post_data["username"],
+                            IdentityPub=post_data["IdentityPub"], SignedPub=post_data["SignedPub"],
+                            OneTimePub=post_data["OneTimePub"], ElephantPub=post_data["ElephantPub"],
+                            IdentityPri=post_data["IdentityPri"], SignedPri=post_data["SignedPri"],
+                            OneTimePri=post_data["OneTimePri"], ElephantPri=post_data["ElephantPri"])
+        result = {"code": 1, "result": "添加成功！"}
+        return JsonResponse(result)
+        # except:
+        #     result = {"code": -1, "result": "添加失败！"}
+        #     return JsonResponse(result)
     else:
         result = {"code": -1, "result": "请求方式有误!"}
         return JsonResponse(result)
@@ -151,17 +151,16 @@ def get_user(request, pk):
 @csrf_exempt
 def sotre_friend(request):
     if request.method == "POST":
-        print(request.POST)
         post_data = json.loads(request.body)
         logining_userid = request.COOKIES["logining_userid"]
-        try:
-            friends.objects.create(userid=post_data["userid"], username=post_data["username"], whosfriend=logining_userid,
-                                   remark=post_data["remark"], status=post_data["status"])
-            result = {"code": 1, "result": "添加成功！"}
-            return JsonResponse(result)
-        except:
-            result = {"code": -1, "result": "添加失败！"}
-            return JsonResponse(result)
+        # try:
+        friends.objects.create(userid=post_data["userid"], username=post_data["username"], whosfriend=logining_userid,
+                               remark=post_data["remark"], status=post_data["status"])
+        result = {"code": 1, "result": "添加成功！"}
+        return JsonResponse(result)
+        # except:
+        #     result = {"code": -1, "result": "添加失败！"}
+        #     return JsonResponse(result)
     else:
         result = {"code": -1, "result": "请求方式有误!"}
         return JsonResponse(result)
@@ -213,8 +212,8 @@ def encrypt_message(request):
     if request.method == "POST":
         post_data = json.loads(request.body)
         logining_userid = request.COOKIES["logining_userid"]
-        user.objects.get(userid=logining_userid)
-
+        usertemp = user.objects.get(userid=logining_userid).to_json()
+        
         pass
     else:
         result = {"code": -1, "result": "请求方式有误!"}

@@ -142,10 +142,16 @@ axios.defaults.withCredentials=true
     methods: {
       // 发送明文给后端加密再发送到服务器
       send_message() {
-        axios.get("http://localhost:8888/apis/user/"+this.cruent_obj_id).then((response)=>{
+        axios.get("http://127.0.0.1:8888/apis/user/"+this.cruent_obj_id).then((response)=>{
           if(response.data["code"]==1){
             var get_data = response.data["data"]
-            axios.post()
+            axios.post("http://localhost:8000/apis/encrypt_message/",{
+              "text":this.inputmsg,
+              "IdentityPub":get_data["IdentityPub"],
+              "SignedPub":get_data["SignedPub"],
+              "OneTimePub":get_data["OneTimePub"],
+              "toUserid":this.cruent_obj_id
+            })
           }
         })
         this.inputmsg = ''
@@ -162,7 +168,7 @@ axios.defaults.withCredentials=true
       search_friend() {
         // console.log(this.search_result)
         this.search_result=[]
-        axios.get("http://localhost:8888/apis/user/"+this.search_input).then((response)=>{
+        axios.get("http://127.0.0.1:8888/apis/user/"+this.search_input).then((response)=>{
           if(response.data["code"]===1){
             // console.log(response.data["data"])
             // 返回结果应该是只有一个
@@ -206,48 +212,24 @@ axios.defaults.withCredentials=true
       // 对应搜索栏的结果添加好友操作
       add_friend(fri_item) {
         // console.log(fri_item)
-        axios.get("http://127.0.0.1:8000/apis/sotre_friend/",{
+        axios.post("http://127.0.0.1:8000/apis/sotre_friend/",{
           userid:fri_item.userid,
           username:fri_item.username,
           remark:"",
           status:1
-        })
-        axios.get("http://localhost:8888/apis/user/"+fri_item.userid).then((response)=>{
+        }).then((response)=>{
           if(response.data["code"]===1){
-            var get_data=response.data["data"]
-            axios.post("http://127.0.0.1:8000/apis/store_user/",{
-              userid:get_data["userid"], 
-              username:get_data["username"],
-              IdentityPub:get_data["IdentityPub"], 
-              SignedPub:get_data["SignedPub"],
-              OneTimePub:get_data["OneTimePub"], 
-              ElephantPub:"",
-              IdentityPri:"", 
-              SignedPri:"",
-              OneTimePri:"", 
-              ElephantPri:"",
-            }).then((response)=>{
-              if(response.data["code"]===1){
-                this.dialogFormVisible = false
-                this.$notify({
-                  title: '添加成功！',
-                  message: '已将好友添加到列表。',
-                  type: 'success'
-                });
-                friends_list_flash()
-              }else{
-                this.dialogFormVisible = false
-                this.$notify.error({
-                  title: '添加失败！',
-                  message: '请稍后重试。',
-                  // type: 'success'
-                });
-              }
-            })
+            this.dialogFormVisible = false
+            this.$notify({
+              title: '添加成功！',
+              message: '已将好友添加到列表。',
+              type: 'success'
+            });
+            friends_list_flash()
           }else{
             this.dialogFormVisible = false
             this.$notify.error({
-              title: '服务器出问题了！',
+              title: '添加失败！',
               message: '请稍后重试。',
               // type: 'success'
             });

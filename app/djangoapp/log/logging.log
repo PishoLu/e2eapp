@@ -1960,3 +1960,211 @@ django.http.request.RawPostDataException: You cannot access body after reading f
 2020-50-02 15:50:28-__init__-DEBUG-Using selector: SelectSelector
 2020-51-02 15:51:35-log_response-WARNING-Not Found: /favicon.ico
 2020-55-02 15:55:04-__init__-DEBUG-Using selector: SelectSelector
+2020-08-02 16:08:35-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\djangoapp\settings.py changed, reloading.
+2020-08-02 16:08:35-__init__-DEBUG-Using selector: SelectSelector
+2020-08-02 16:08:35-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\djangoapp\settings.py changed, reloading.
+2020-08-02 16:08:35-__init__-DEBUG-Using selector: SelectSelector
+2020-08-02 16:08:35-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\djangoapp\settings.py changed, reloading.
+2020-08-02 16:08:35-__init__-DEBUG-Using selector: SelectSelector
+2020-08-02 16:08:35-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\djangoapp\settings.py changed, reloading.
+2020-08-02 16:08:35-__init__-DEBUG-Using selector: SelectSelector
+2020-08-02 16:08:35-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\djangoapp\settings.py changed, reloading.
+2020-08-02 16:08:35-__init__-DEBUG-Using selector: SelectSelector
+2020-09-02 16:09:19-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-09-02 16:09:19-__init__-DEBUG-Using selector: SelectSelector
+2020-09-02 16:09:37-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\djangoapp\settings.py changed, reloading.
+2020-09-02 16:09:37-__init__-DEBUG-Using selector: SelectSelector
+2020-11-02 16:11:31-__init__-DEBUG-Using selector: SelectSelector
+2020-12-02 16:12:03-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-12-02 16:12:03-__init__-DEBUG-Using selector: SelectSelector
+2020-12-02 16:12:18-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-12-02 16:12:18-__init__-DEBUG-Using selector: SelectSelector
+2020-12-02 16:12:26-log_response-ERROR-Internal Server Error: /apis/sotre_friend/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\sqlite3\base.py", line 396, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: UNIQUE constraint failed: backend_friends.userid
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 158, in sotre_friend
+    remark=post_data["remark"], status=post_data["status"])
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 433, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\base.py", line 746, in save
+    force_update=force_update, update_fields=update_fields)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\base.py", line 784, in save_base
+    force_update, using, update_fields,
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\base.py", line 886, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\base.py", line 925, in _do_insert
+    using=using, raw=raw,
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 1204, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\sql\compiler.py", line 1377, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\sqlite3\base.py", line 396, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: UNIQUE constraint failed: backend_friends.userid
+2020-12-02 16:12:26-log_response-ERROR-Internal Server Error: /apis/store_user/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\sqlite3\base.py", line 396, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: UNIQUE constraint failed: backend_user.userid
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 106, in store_user
+    OneTimePri=post_data["OneTimePri"], ElephantPri=post_data["ElephantPri"])
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 433, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\base.py", line 746, in save
+    force_update=force_update, update_fields=update_fields)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\base.py", line 784, in save_base
+    force_update, using, update_fields,
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\base.py", line 886, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\base.py", line 925, in _do_insert
+    using=using, raw=raw,
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 1204, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\sql\compiler.py", line 1377, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\sqlite3\base.py", line 396, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: UNIQUE constraint failed: backend_user.userid
+2020-13-02 16:13:12-log_response-ERROR-Internal Server Error: /apis/store_user/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\sqlite3\base.py", line 396, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: UNIQUE constraint failed: backend_user.userid
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 106, in store_user
+    OneTimePri=post_data["OneTimePri"], ElephantPri=post_data["ElephantPri"])
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 433, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\base.py", line 746, in save
+    force_update=force_update, update_fields=update_fields)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\base.py", line 784, in save_base
+    force_update, using, update_fields,
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\base.py", line 886, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\base.py", line 925, in _do_insert
+    using=using, raw=raw,
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 1204, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\sql\compiler.py", line 1377, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\sqlite3\base.py", line 396, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: UNIQUE constraint failed: backend_user.userid
+2020-15-02 16:15:03-__init__-DEBUG-Using selector: SelectSelector
+2020-19-02 16:19:35-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-19-02 16:19:35-__init__-DEBUG-Using selector: SelectSelector
+2020-19-02 16:19:39-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-19-02 16:19:39-__init__-DEBUG-Using selector: SelectSelector
+2020-19-02 16:19:48-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-19-02 16:19:48-__init__-DEBUG-Using selector: SelectSelector
+2020-19-02 16:19:50-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-19-02 16:19:50-__init__-DEBUG-Using selector: SelectSelector
+2020-23-02 16:23:30-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-23-02 16:23:30-__init__-DEBUG-Using selector: SelectSelector
+2020-24-02 16:24:42-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-24-02 16:24:42-__init__-DEBUG-Using selector: SelectSelector
+2020-24-02 16:24:50-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-24-02 16:24:50-__init__-DEBUG-Using selector: SelectSelector
+2020-28-02 16:28:35-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-28-02 16:28:35-__init__-DEBUG-Using selector: SelectSelector
+2020-30-02 16:30:26-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\models.py changed, reloading.
+2020-30-02 16:30:26-__init__-DEBUG-Using selector: SelectSelector
+2020-30-02 16:30:28-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\models.py changed, reloading.
+2020-30-02 16:30:28-__init__-DEBUG-Using selector: SelectSelector
+2020-30-02 16:30:35-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\models.py changed, reloading.
+2020-30-02 16:30:35-__init__-DEBUG-Using selector: SelectSelector
+2020-30-02 16:30:41-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\models.py changed, reloading.
+2020-30-02 16:30:41-__init__-DEBUG-Using selector: SelectSelector
+2020-31-02 16:31:04-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\models.py changed, reloading.
+2020-31-02 16:31:04-__init__-DEBUG-Using selector: SelectSelector

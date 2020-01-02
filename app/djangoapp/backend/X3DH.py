@@ -140,21 +140,21 @@ def compare_bytes(A, B):
 if __name__ == '__main__':
     time_begin = time.time()
     mine = User()
-    print(binascii.hexlify(mine.IdentityPub.public_bytes(
-        encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape"))
-    print(binascii.hexlify(mine.SignedPub.public_bytes(
-        encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape"))
-    print(binascii.hexlify(mine.OneTimePub.public_bytes(
-        encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape"))
-    print(binascii.hexlify(mine.IdentityPri.private_bytes(encoding=serialization.Encoding.Raw,
-                                                          format=serialization.PrivateFormat.Raw,
-                                                          encryption_algorithm=serialization.NoEncryption())).decode("unicode_escape"))
-    print(binascii.hexlify(mine.SignedPri.private_bytes(encoding=serialization.Encoding.Raw,
-                                                        format=serialization.PrivateFormat.Raw,
-                                                        encryption_algorithm=serialization.NoEncryption())).decode("unicode_escape"))
-    print(binascii.hexlify(mine.OneTimePri.private_bytes(encoding=serialization.Encoding.Raw,
-                                                         format=serialization.PrivateFormat.Raw,
-                                                         encryption_algorithm=serialization.NoEncryption())).decode("unicode_escape"))
+    # print(binascii.hexlify(mine.IdentityPub.public_bytes(
+    #     encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape"))
+    # print(binascii.hexlify(mine.SignedPub.public_bytes(
+    #     encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape"))
+    # print(binascii.hexlify(mine.OneTimePub.public_bytes(
+    #     encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape"))
+    # print(binascii.hexlify(mine.IdentityPri.private_bytes(encoding=serialization.Encoding.Raw,
+    #                                                       format=serialization.PrivateFormat.Raw,
+    #                                                       encryption_algorithm=serialization.NoEncryption())).decode("unicode_escape"))
+    # print(binascii.hexlify(mine.SignedPri.private_bytes(encoding=serialization.Encoding.Raw,
+    #                                                     format=serialization.PrivateFormat.Raw,
+    #                                                     encryption_algorithm=serialization.NoEncryption())).decode("unicode_escape"))
+    # print(binascii.hexlify(mine.OneTimePri.private_bytes(encoding=serialization.Encoding.Raw,
+    #                                                      format=serialization.PrivateFormat.Raw,
+    #                                                      encryption_algorithm=serialization.NoEncryption())).decode("unicode_escape"))
 
     mine_DH = DH()
 
