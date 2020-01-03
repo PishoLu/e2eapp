@@ -11,8 +11,8 @@
         <el-form-item label="OneTimePri">
           <el-input v-model="FormPrikey.OneTimePri" autocomplete="off" required="required"/>
         </el-form-item>
-        <el-form-item label="ElephantPri">
-          <el-input v-model="FormPrikey.ElephantPri" autocomplete="off" required="required"/>
+        <el-form-item label="EphemeralPri">
+          <el-input v-model="FormPrikey.EphemeralPri" autocomplete="off" required="required"/>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -88,17 +88,17 @@
           IdentityPub: '',
           SignedPub: '',
           OneTimePub: '',
-          ElephantPub:'',
+          EphemeralPub:'',
           IdentityPri: "",
           SignedPri: "",
           OneTimePri: "",
-          ElephantPri:"",
+          EphemeralPri:"",
         },
         FormPrikey: {
           IdentityPri: "",
           SignedPri: "",
           OneTimePri: "",
-          ElephantPri:""
+          EphemeralPri:""
         },
         keys: {},
         csrftoken:"",
@@ -134,7 +134,7 @@
         axios.get("http://localhost:8000/apis/get_user/" + this.FormLogin.userid).then((response) => {
           // console.log(response.data["code"]);
           if (response.data["code"] === 1) {
-            const temp_data=response.data["data"][0]
+            var temp_data=response.data["data"][0]
             if (typeof temp_data["IdentityPri"] !== "undefined") {
               axios.post("http://127.0.0.1:8888/apis/user/" + this.FormLogin.userid, {
                 "password": sha256(this.FormLogin.password),
@@ -144,7 +144,7 @@
               }).then((response) => {
                 // console.log(response.data)
                 if (response.data["code"] === 1) {
-                  this.$cookies.set("logining_userid",temp_data["userid"]);
+                  this.$cookies.set("logining_userid",response.data["data"]["userid"]);
                   this.$router.push("/")
                 } else {
                   this.$notify.error({
@@ -169,7 +169,7 @@
           "IdentityPri": this.FormPrikey.IdentityPri,
           "SignedPri": this.FormPrikey.SignedPri,
           "OneTimePri": this.FormPrikey.OneTimePri,
-          "ElephantPri":this.FormPrikey.ElephantPri,
+          "EphemeralPri":this.FormPrikey.EphemeralPri,
           headers:{
             // "X-CSRFToken":this.csrftoken
           }
@@ -184,9 +184,9 @@
                 axios.post("http://localhost:8000/apis/store_user", {
                   userid: this.FormLogin.userid, username: username_t,
                   IdentityPub: this.keys["IdentityPub"], SignedPub: this.keys["SignedPub"],
-                  OneTimePub: this.keys["OneTimePub"], ElephantPub: this.keys["ElephantPub"],
+                  OneTimePub: this.keys["OneTimePub"], EphemeralPub: this.keys["EphemeralPub"],
                   IdentityPri: this.keys["IdentityPri"], SignedPri: this.keys["SignedPri"],
-                  OneTimePri: this.keys["OneTimePri"], ElephantPri: this.keys["ElephantPri"],
+                  OneTimePri: this.keys["OneTimePri"], EphemeralPri: this.keys["EphemeralPri"],
                   headers:{
                     // "X-CSRFToken":this.csrftoken
                   }
@@ -233,18 +233,18 @@
           this.FormReg.IdentityPub = pubs["IdentityPub"];
           this.FormReg.SignedPub = pubs["SignedPub"];
           this.FormReg.OneTimePub = pubs["OneTimePub"];
-          this.FormReg.ElephantPub=pubs["ElephantPub"];
+          this.FormReg.EphemeralPub=pubs["EphemeralPub"];
           this.FormReg.IdentityPri = pubs["IdentityPri"];
           this.FormReg.SignedPri = pubs["SignedPri"];
           this.FormReg.OneTimePri = pubs["OneTimePri"];
-          this.FormReg.ElephantPri = pubs["ElephantPri"];
+          this.FormReg.EphemeralPri = pubs["EphemeralPri"];
           axios.post("http://127.0.0.1:8888/apis/user/", {
             "username": this.FormReg.username,
             "password": sha256(this.FormReg.password),
             "IdentityPub": this.FormReg.IdentityPub,
             "SignedPub": this.FormReg.SignedPub,
             "OneTimePub": this.FormReg.OneTimePub,
-            "ElephantPub": this.FormReg.ElephantPub,
+            "EphemeralPub": this.FormReg.EphemeralPub,
             headers:{
               // "X-CSRFToken":this.csrftoken
             }
@@ -266,11 +266,11 @@
                 "IdentityPub": this.FormReg.IdentityPub,
                 "SignedPub": this.FormReg.SignedPub,
                 "OneTimePub": this.FormReg.OneTimePub,
-                "ElephantPub": this.FormReg.ElephantPub,
+                "EphemeralPub": this.FormReg.EphemeralPub,
                 "IdentityPri": this.FormReg.IdentityPri,
                 "SignedPri": this.FormReg.SignedPri,
                 "OneTimePri": this.FormReg.OneTimePri,
-                "ElephantPri": this.FormReg.ElephantPri,
+                "EphemeralPri": this.FormReg.EphemeralPri,
                 headers:{
                   // "X-CSRFToken":this.csrftoken
                 }

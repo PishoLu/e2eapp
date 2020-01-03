@@ -998,3 +998,12 @@ django.db.utils.OperationalError: table backend_user has no column named Elephan
 2020-38-02 17:38:04-__init__-DEBUG-Using selector: SelectSelector
 2020-38-02 17:38:16-__init__-DEBUG-Using selector: SelectSelector
 2020-38-02 17:38:26-__init__-DEBUG-Using selector: SelectSelector
+2020-07-03 14:07:02-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-07-03 14:07:02-__init__-DEBUG-Using selector: SelectSelector
+2020-07-03 14:07:04-trigger_reload-INFO-D:\Study\School\e2e\server\backend\models.py changed, reloading.
+2020-07-03 14:07:04-__init__-DEBUG-Using selector: SelectSelector
+2020-07-03 14:07:06-trigger_reload-INFO-D:\Study\School\e2e\server\backend\models.py changed, reloading.
+2020-07-03 14:07:06-__init__-DEBUG-Using selector: SelectSelector
+2020-07-03 14:07:34-__init__-DEBUG-Using selector: SelectSelector
+2020-07-03 14:07:41-__init__-DEBUG-Using selector: SelectSelector
+2020-07-03 14:07:47-__init__-DEBUG-Using selector: SelectSelector

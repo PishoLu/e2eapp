@@ -68,7 +68,7 @@
       </div>
     </div>
     <div id="right">
-      <div id="show_window" v-if="cruent_obj_id">
+      <div id="show_window" v-if="current_obj_id">
         <div id="show_message" >
           <el-row v-for="(item,index) in message_list" :key="index">
             <el-col :span="24" v-if="item.toUserid==logging_in"><div class="show_message_date">{{ item.date }}</div></el-col>
@@ -104,6 +104,24 @@
   //   }
   //   return "";
   // }
+  function friends_list_flash(){
+    axios.get("http://localhost:8000/apis/friends_list/",{
+    headers:{
+      "logining_userid":this.logining_userid
+    }
+    }).then((response)=>{
+      if(response.data["code"]===1){
+        // console.log(response.data)
+        this.friends_list=response.data["data"]
+      }else{
+        this.$notify.error({
+          title: '获取好友列表失败，或者好友列表为空。',
+          message: '重启一下应用看看？',
+          // type: 'success'
+        });
+      }
+    })
+  }
   export default {
     name: 'friend',
     data() {
@@ -121,7 +139,7 @@
         friends_list: [],
         // 搜索结果
         search_result: [],
-        cruent_obj_id: 0,
+        current_obj_id: 0,
         is_friend:0,
         csrftoken:"",
       }
@@ -159,25 +177,36 @@
     methods: {
       // 发送明文给后端加密再发送到服务器
       send_message() {
-        axios.get("http://127.0.0.1:8888/apis/user/"+this.cruent_obj_id).then((response)=>{
-          if(response.data["code"]==1){
-            var get_data = response.data["data"]
+        axios.get("http://localhost:8000/apis/friends_list/"+this.current_obj_id).then((response)=>{
+          if(response.data["code"]===1){
             axios.post("http://localhost:8000/apis/encrypt_message/",{
               "text":this.inputmsg,
-              "IdentityPub":get_data["IdentityPub"],
-              "SignedPub":get_data["SignedPub"],
-              "OneTimePub":get_data["OneTimePub"],
-              "ElephantPub":get_data["ElephantPub"],
-              "toUserid":this.cruent_obj_id,
-              headers:{
-                // "X-CSRFToken":this.csrftoken
-              }
+              "toUserid":this.current_obj_id,
             }).then((response)=>{
-              
+              console.log(response.data["data"])
             })
+          }else{
+            store_friend(this.current_obj_id)
           }
         })
         this.inputmsg = ''
+      },
+      store_friend(id){
+        axios.get("http://127.0.0.1:8888/apis/user/"+id).then((response)=>{
+          if(response.data["code"]===1){
+            var get_data = response.data["data"]
+            axios.post("http://localhost:8000/apis/store_friend/",{
+              userid:get_data["userid"],
+              username:get_data["username"],
+              remark:"",
+              status:1,
+              IdentityPub:get_data["IdentityPub"],
+              SignedPub:get_data["SignedPub"],
+              OneTimePub:get_data["OneTimePub"],
+              EphemeralPub:get_data["EphemeralPub"],
+            })
+          }
+        })
       },
       // 切换当前对话目标，获取该目标的消息
       excheng_obj(id) {
@@ -185,7 +214,7 @@
         axios.get("http://localhost:8000/apis/filter_messages/"+id).then((response)=>{
 
         })
-        this.cruent_obj_id = id
+        this.current_obj_id = id
       },
       // 对应搜索栏，启动搜索
       search_friend() {
@@ -219,32 +248,18 @@
         })
         this.dialogFormVisible = true
       },
-      friends_list_flash(){
-        axios.get("http://localhost:8000/apis/friends_list/",{
-        headers:{
-          "logining_userid":this.logining_userid
-        }
-        }).then((response)=>{
-          if(response.data["code"]===1){
-            // console.log(response.data)
-            this.friends_list=response.data["data"]
-          }else{
-            this.$notify.error({
-              title: '获取好友列表失败，或者好友列表为空。',
-              message: '重启一下应用看看？',
-              // type: 'success'
-            });
-          }
-        })
-      },
       // 对应搜索栏的结果添加好友操作
       add_friend(fri_item) {
         // console.log(fri_item)
-        axios.post("http://localhost:8000/apis/sotre_friend/",{
+        axios.post("http://localhost:8000/apis/store_friend/",{
           userid:fri_item.userid,
           username:fri_item.username,
           remark:"",
           status:1,
+          IdentityPub:fri_item.IdentityPub,
+          SignedPub:fri_item.SignedPub,
+          OneTimePub:fri_item.OneTimePub,
+          EphemeralPub:fri_item.EphemeralPub,
           headers:{
             // "X-CSRFToken":this.csrftoken
           }
@@ -269,7 +284,7 @@
       },
     },
     watch: {
-      cruent_obj_id: function (val, newval) {
+      current_obj_id: function (val, newval) {
         // console.log("watch me")
       }
     }

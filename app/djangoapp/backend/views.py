@@ -2,6 +2,7 @@ import binascii
 import json
 import logging
 import os
+import sqlite3
 
 import requests  # 最好不用这个，让前端作为两个后端的跳板
 from cryptography.hazmat.primitives import serialization
@@ -13,8 +14,7 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
 from .models import friends, messages, user
-import sqlite3
-
+from .X3DH import Signalkdf, compare_bytes
 
 wite_list = []  # 等待被添加的好友列表(只有双方在线的时候才能正常添加)
 
@@ -46,7 +46,7 @@ def start_X3DH(request):
 
 # 保存发送和接收的消息
 @csrf_exempt
-def sotre_message(request):
+def store_message(request):
     if request.method == "POST":
         post_data = request.POST.dict()
         try:
@@ -101,9 +101,9 @@ def store_user(request):
         # try:
         user.objects.create(userid=post_data["userid"], username=post_data["username"],
                             IdentityPub=post_data["IdentityPub"], SignedPub=post_data["SignedPub"],
-                            OneTimePub=post_data["OneTimePub"], ElephantPub=post_data["ElephantPub"],
+                            OneTimePub=post_data["OneTimePub"], EphemeralPub=post_data["EphemeralPub"],
                             IdentityPri=post_data["IdentityPri"], SignedPri=post_data["SignedPri"],
-                            OneTimePri=post_data["OneTimePri"], ElephantPri=post_data["ElephantPri"])
+                            OneTimePri=post_data["OneTimePri"], EphemeralPri=post_data["EphemeralPri"])
         result = {"code": 1, "result": "添加成功！"}
         return JsonResponse(result)
         # except:
@@ -155,13 +155,14 @@ def get_user(request, pk):
 
 # 保存friend类相关信息
 @csrf_exempt
-def sotre_friend(request):
+def store_friend(request):
     if request.method == "POST":
         post_data = json.loads(request.body)
         logining_userid = request.COOKIES["logining_userid"]
         try:
-            friends.objects.create(userid=post_data["userid"], username=post_data["username"], whosfriend=logining_userid,
-                                   remark=post_data["remark"], status=post_data["status"])
+            friends.objects.create(userid=post_data["userid"], username=post_data["username"], whosfriend=int(logining_userid),
+                                   remark=post_data["remark"], status=post_data["status"], IdentityPub=post_data["IdentityPub"],
+                                   SignedPub=post_data["SignedPub"], OneTimePub=post_data["OneTimePub"], EphemeralPub=post_data["EphemeralPub"])
             result = {"code": 1, "result": "添加成功！"}
             return JsonResponse(result)
         except:
@@ -178,7 +179,7 @@ def friends_list(request):
     try:
         logining_userid = request.COOKIES["logining_userid"]
         friends_temp = []
-        friends_temp_t = friends.objects.filter(whosfriend=logining_userid)
+        friends_temp_t = friends.objects.filter(whosfriend=int(logining_userid))
         # print(friends_temp_t)
         for i in friends_temp_t:
             friends_temp.append(i.to_json())
@@ -188,14 +189,35 @@ def friends_list(request):
 
     if request.method == 'GET':
         if len(friends_temp):
-            result = {"code": 1, "data": friends_temp,
-                      "result": "好友列表"}
+            result = {"code": 1, "data": friends_temp, "result": "好友列表"}
             return JsonResponse(result)
         else:
             result = {"code": -1, "result": "好友列表为空"}
             return JsonResponse(result)
         return JsonResponse(result)
-    elif request.method == 'POST':
+    else:
+        result = {"code": -1, "result": "请求方式有误!"}
+        return JsonResponse(result)
+
+# 获取详细好友信息
+@csrf_exempt
+def friend_detail(request, pk):
+    try:
+        logining_userid = request.COOKIES["logining_userid"]
+        friends_temp = friends.objects.get(
+            whosfriend=int(logining_userid), userid=pk).to_json()
+    except friends.DoesNotExist:
+        result = {"code": -1, "result": "该用户不存在"}
+        return JsonResponse(result)
+
+    if request.method == "GET":
+        if len(friends_temp):
+            result = {"code": 1, "data": friends_temp, "result": "好友详细信息"}
+            return JsonResponse(result)
+        else:
+            result = {"code": -1, "result": "该用户不存在"}
+            return JsonResponse(result)
+    else:
         result = {"code": -1, "result": "请求方式有误!"}
         return JsonResponse(result)
 
@@ -213,20 +235,103 @@ def decrypt_message(request):
 
 # 返回加密药效
 # 参数：对方的ID，我要发送的消息
+# DH1 = DH (IPK-B 私钥，SPK-A 公钥)
+# DH2 = DH (EPK-B 私钥，IPK-A 公钥)
+# DH3= DH (EPK-B 私钥，SPK-A 公钥)
+# DH4 = DH (IPK-B 私钥，OPK-A 公钥)
+# 作为发送方的DH初始化方法
 @csrf_exempt
 def encrypt_message(request):
     if request.method == "POST":
         post_data = json.loads(request.body)
         logining_userid = request.COOKIES["logining_userid"]
-        usertemp = user.objects.get(userid=logining_userid).to_json()
-        usertemp["IdentityPri"] = X25519PrivateKey.from_private_bytes(
-            usertemp["IdentityPri"])
-        usertemp["SignedPri"] = X25519PrivateKey.from_private_bytes(
-            usertemp["SignedPri"])
-        usertemp["OneTimePri"] = X25519PrivateKey.from_private_bytes(
-            usertemp["OneTimePri"])
-        
-        pass
+        print(logining_userid)
+        usertemp = user.objects.get(userid=int(logining_userid)).to_json()
+
+        if(usertemp):
+            usertemp["IdentityPri"] = X25519PrivateKey.from_private_bytes(
+                binascii.unhexlify(usertemp["IdentityPri"].encode("unicode_escape")))
+            usertemp["SignedPri"] = X25519PrivateKey.from_private_bytes(
+                binascii.unhexlify(usertemp["SignedPri"].encode("unicode_escape")))
+            usertemp["OneTimePri"] = X25519PrivateKey.from_private_bytes(
+                binascii.unhexlify(usertemp["OneTimePri"].encode("unicode_escape")))
+            usertemp["EphemeralPri"] = X25519PrivateKey.from_private_bytes(
+                binascii.unhexlify(usertemp["EphemeralPri"].encode("unicode_escape")))
+        user_send_to = friends.objects.get(
+            userid=post_data["toUserid"], whosfriend=logining_userid).to_json()
+        if(user_send_to):
+            user_send_to["IdentityPub"] = X25519PublicKey.from_public_bytes(
+                binascii.unhexlify(user_send_to["IdentityPub"].encode("unicode_escape")))
+            user_send_to["SignedPub"] = X25519PublicKey.from_public_bytes(
+                binascii.unhexlify(user_send_to["SignedPub"].encode("unicode_escape")))
+            user_send_to["OneTimePub"] = X25519PublicKey.from_public_bytes(
+                binascii.unhexlify(user_send_to["OneTimePub"].encode("unicode_escape")))
+            user_send_to["EphemeralPub"] = X25519PublicKey.from_public_bytes(
+                binascii.unhexlify(user_send_to["EphemeralPub"].encode("unicode_escape")))
+        never_send = 0
+        never_receive = 0
+        try:
+            last_messages_to = messages.objects.filter(
+                fromUserid=logining_userid, toUserid=post_data["toUserid"])
+            # 获取发给对象的所有消息的最后一个
+            if(len(last_messages_to)):
+                last_messages_to = last_messages_to[-1].to_json()
+            else:
+                # 没有向目标发送过消息
+                never_send = 1
+                pass
+            last_messages_from = messages.objects.filter(
+                toUserid=logining_userid, fromUserid=post_data["toUserid"])
+            # 获取对象回复的所有消息的最后一个
+            if(len(last_messages_from)):
+                last_messages_from = last_messages_from[-1].to_json()
+            else:
+                # 目标没有向我发送过消息
+                never_receive = 1
+        except:
+            pass    
+
+        if never_send and never_receive:
+            DH1 = usertemp["IdentityPri"].exchange(user_send_to["SignedPub"])
+            DH2 = usertemp["EphemeralPri"].exchange(user_send_to["IdentityPub"])
+            DH3 = usertemp["EphemeralPri"].exchange(user_send_to["SignedPub"])
+            DH4 = usertemp["IdentityPri"].exchange(user_send_to["OneTimePub"])
+            share_key=DH1+DH2+DH3+DH4
+            message_EphemeralPri = X25519PrivateKey.generate()
+            message_EphemeralPub = message_EphemeralPri.public_key()
+            salt=message_EphemeralPri.exchange(user_send_to["EphemeralPub"])
+
+            kdf_out=Signalkdf(share_key,salt)
+        elif never_send and not never_receive:
+            # 没有发过消息，但是接收过对方的消息，使用对方最新的Ephemeral公钥以及kdf
+            
+
+        print(share_key)
+        result = {"code": 1, "data": share_key, "result": "X3DH密钥"}
+        return JsonResponse(result)
+                # if(last_messages_from["date"] < last_messages_to["date"]):
+                #     pass
+
+                # usertemp["IdentityPri"] = X25519PrivateKey.from_private_bytes(
+                #     usertemp["IdentityPri"])
+                # usertemp["SignedPri"] = X25519PrivateKey.from_private_bytes(
+                #     usertemp["SignedPri"])
+                # usertemp["OneTimePri"] = X25519PrivateKey.from_private_bytes(
+                #     usertemp["OneTimePri"])
+                # DH1 = usertemp["IdentityPri"].exchange(post_data["SignedPub"])
+                # DH2 = usertemp["EphemeralPri"].exchange(post_data["IdentityPub"])
+                # DH3 = usertemp["EphemeralPri"].exchange(post_data["SignedPub"])
+                # DH4 = usertemp["IdentityPri"].exchange(post_data["OneTimePub"])
+                # X3DH密钥
+        # share_key = DH1+DH2+DH3+DH4
+        # message_EphemeralPri = X25519PrivateKey.generate()
+        # message_EphemeralPub = message_EphemeralPri.public_key()
+        # salt = message_EphemeralPri.exchange(post_data["EphemeralPub"])
+        # kdf_out = Signalkdf(share_key, salt)
+        # # 后32位为密钥
+        # message_key = kdf_out[32:]
+        # # 前32位为连贯对话的下一次的share_key
+        # kdf_next = kdf_out[:32]
     else:
         result = {"code": -1, "result": "请求方式有误!"}
         return JsonResponse(result)
@@ -247,8 +352,8 @@ def create_new_keyspair(request):
         pubs["SignedPub"] = pubs["SignedPri"].public_key()
         pubs["OneTimePri"] = X25519PrivateKey.generate()
         pubs["OneTimePub"] = pubs["OneTimePri"].public_key()
-        pubs["ElephantPri"] = X25519PrivateKey.generate()
-        pubs["ElephantPub"] = pubs["ElephantPri"].public_key()
+        pubs["EphemeralPri"] = X25519PrivateKey.generate()
+        pubs["EphemeralPub"] = pubs["EphemeralPri"].public_key()
         pubs["IdentityPri"] = binascii.hexlify(pubs["IdentityPri"].private_bytes(
             encoding=serialization.Encoding.Raw,
             format=serialization.PrivateFormat.Raw,
@@ -264,7 +369,7 @@ def create_new_keyspair(request):
             format=serialization.PrivateFormat.Raw,
             encryption_algorithm=serialization.NoEncryption()
         )).decode("unicode_escape")
-        pubs["ElephantPri"] = binascii.hexlify(pubs["ElephantPri"].private_bytes(
+        pubs["EphemeralPri"] = binascii.hexlify(pubs["EphemeralPri"].private_bytes(
             encoding=serialization.Encoding.Raw,
             format=serialization.PrivateFormat.Raw,
             encryption_algorithm=serialization.NoEncryption()
@@ -281,7 +386,7 @@ def create_new_keyspair(request):
             encoding=serialization.Encoding.Raw,
             format=serialization.PublicFormat.Raw
         )).decode("unicode_escape")
-        pubs["ElephantPub"] = binascii.hexlify(pubs["ElephantPub"].public_bytes(
+        pubs["EphemeralPub"] = binascii.hexlify(pubs["EphemeralPub"].public_bytes(
             encoding=serialization.Encoding.Raw,
             format=serialization.PublicFormat.Raw
         )).decode("unicode_escape")
@@ -310,8 +415,8 @@ def check_pri(request):
                 binascii.unhexlify(post_data["SignedPri"].encode("unicode_escape")))
             post_data_temp["OneTimePri"] = X25519PrivateKey.from_private_bytes(
                 binascii.unhexlify(post_data["OneTimePri"].encode("unicode_escape")))
-            post_data_temp["ElephantPri"] = X25519PrivateKey.from_private_bytes(
-                binascii.unhexlify(post_data["ElephantPri"].encode("unicode_escape")))
+            post_data_temp["EphemeralPri"] = X25519PrivateKey.from_private_bytes(
+                binascii.unhexlify(post_data["EphemeralPri"].encode("unicode_escape")))
 
             post_data["IdentityPub"] = binascii.hexlify(post_data_temp["IdentityPri"].public_key().public_bytes(
                 encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape")
@@ -319,7 +424,7 @@ def check_pri(request):
                 encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape")
             post_data["OneTimePub"] = binascii.hexlify(post_data_temp["OneTimePri"].public_key().public_bytes(
                 encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape")
-            post_data["ElephantPub"] = binascii.hexlify(post_data_temp["ElephantPub"].public_key().public_bytes(
+            post_data["EphemeralPub"] = binascii.hexlify(post_data_temp["EphemeralPub"].public_key().public_bytes(
                 encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape")
             # print(post_data)
             # print(post_data_temp)
@@ -331,46 +436,3 @@ def check_pri(request):
     else:
         result = {"code": -1, "result": "请求方式有误!"}
         return JsonResponse(result)
-
-# @api_view(["GET", "POST"])
-# def user_list(request):
-#     """
-#     API endpoint that allows users to be viewed or edited.
-#     """
-#     if request.method == 'GET':
-#         users = user.objects.all()
-#         serializer = UserSerializer(users, many=True)
-#         return Response(serializer.data)
-
-#     elif request.method == 'POST':
-#         serializer = UserSerializer(data=request.data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data, status=status.HTTP_201_CREATED)
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-# @api_view(['GET', 'PUT', 'DELETE'])
-# def user_detail(request, pk):
-#     """
-#     Retrieve, update or delete a code user.
-#     """
-#     try:
-#         user_temp = user.objects.get(userid=pk)
-#     except user.DoesNotExist:
-#         return Response(status=status.HTTP_404_NOT_FOUND)
-
-#     if request.method == 'GET':
-#         serializer = UserSerializer(user_temp)
-#         return Response(serializer.data)
-
-#     elif request.method == 'PUT':
-#         serializer = UserSerializer(user_temp, data=request.data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data)
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-#     elif request.method == 'DELETE':
-#         user_temp.delete()
-#         return Response(status=status.HTTP_204_NO_CONTENT)
