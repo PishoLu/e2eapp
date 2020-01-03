@@ -69,16 +69,15 @@ def store_message(request):
 def filter_messages(request, pk):
     try:
         logining_userid = int(request.COOKIES["logining_userid"])
-        messages_temp = []
-        # 这么写不一定能行
-        messages_temp_from = messages.objects.filter(
-            Q(fromUserid=pk), Q(toUserid=logining_userid) | Q(toUserid=pk), Q(fromUserid=logining_userid))
-        messages_temp_to = messages.objects.filter(
-        )
-        for i in messages_temp_to:
-            messages_temp.append(i.to_json())
-        for i in messages_temp_from:
-            messages_temp.append(i.to_json())
+        # 这么写不一定能行，行了
+        messages_temp = list(messages.objects.filter(
+            (Q(fromUserid=pk) and Q(toUserid=logining_userid)) | (Q(toUserid=pk) and Q(fromUserid=logining_userid))).order_by("date"))
+        for i in range(len(messages_temp)):
+            messages_temp[i] = messages_temp[i].to_json()
+        for i in messages_temp:
+            if i["fromUserid"] == logining_userid:
+                i["fromUserid"] = 1
+
     except messages.DoesNotExist:
         result = {"code": -1, "result": "该用户不存在"}
         return JsonResponse(result)
@@ -276,27 +275,32 @@ def encrypt_message(request):
                 binascii.unhexlify(user_send_to["EphemeralPub"].encode("unicode_escape")))
         never_send = 0
         never_receive = 0
-        try:
-            last_messages_to = messages.objects.filter(
-                fromUserid=logining_userid, toUserid=post_data["toUserid"])
-            # 获取发给对象的所有消息的最后一个
-            if(len(last_messages_to)):
-                last_messages_to = last_messages_to[-1].to_json()
-            else:
-                # 没有向目标发送过消息
-                never_send = 1
-                pass
-            last_messages_from = messages.objects.filter(
-                toUserid=logining_userid, fromUserid=post_data["toUserid"])
-            # 获取对象回复的所有消息的最后一个
-            if(len(last_messages_from)):
-                last_messages_from = last_messages_from[-1].to_json()
-            else:
-                # 目标没有向我发送过消息
-                never_receive = 1
-        except:
+        kdf_in = None
+        salt = None
+        # try:
+        last_messages_to = list(messages.objects.filter(
+            fromUserid=logining_userid, toUserid=post_data["toUserid"]))
+        # 获取发给对象的所有消息的最后一个
+        if(len(last_messages_to)):
+            last_messages_to = last_messages_to[-1].to_json()
+        else:
+            # 没有向目标发送过消息
+            never_send = 1
             pass
+        last_messages_from = messages.objects.filter(
+            toUserid=logining_userid, fromUserid=post_data["toUserid"])
+        # 获取对象回复的所有消息的最后一个
+        if(len(last_messages_from)):
+            last_messages_from = last_messages_from[-1].to_json()
+        else:
+            # 目标没有向我发送过消息
+            never_receive = 1
+        # except:
+        #     result = {"code": -1, "result": "获取数据库消息出错!"}
+        #     return JsonResponse(result)
 
+        message_EphemeralPri = X25519PrivateKey.generate()
+        message_EphemeralPub = message_EphemeralPri.public_key()
         if never_send and never_receive:
             # 没有发过消息也没有收到过对方的消息，生成初始化的kdf用作以后与对象的消息上。
             DH1 = usertemp["IdentityPri"].exchange(user_send_to["SignedPub"])
@@ -307,23 +311,18 @@ def encrypt_message(request):
             # 第一次的share_key长度有128位，但是后续需要的密钥长度只要32位，不过第一次后的kdf输出有64位，前32位为下一次的kdf输入，后32位为这次的加密密钥
             kdf_in = DH1+DH2+DH3+DH4
 
-            message_EphemeralPri = X25519PrivateKey.generate()
-            message_EphemeralPub = message_EphemeralPri.public_key()
             salt = message_EphemeralPri.exchange(user_send_to["EphemeralPub"])
         elif never_send and not never_receive:
             # 没有发过消息，但是接收过对方的消息，使用对方最新的Ephemeral公钥以及kdf，接收消息时将目标的临时公钥以及算出的kdf存入数据库
-            kdf_in = last_messages_from["kdf_next"]
+            kdf_in = binascii.hexlify(
+                last_messages_from["kdf_next"].encode("unicode_escape"))
 
-            message_EphemeralPri = X25519PrivateKey.generate()
-            message_EphemeralPub = message_EphemeralPri.public_key()
             salt = message_EphemeralPri.exchange(
                 last_messages_from["EphemeralPub"])
         elif not never_send and never_receive:
             # 发送过消息但是没有收到过回应，使用上一次发送时的kdf，使用对方的临时公钥
-            kdf_in = last_messages_to["kdf_next"]
-
-            message_EphemeralPri = X25519PrivateKey.generate()
-            message_EphemeralPub = message_EphemeralPri.public_key()
+            kdf_in = binascii.hexlify(
+                last_messages_to["kdf_next"].encode("unicode_escape"))
             salt = message_EphemeralPri.exchange(
                 user_send_to["EphemeralPub"])
         elif not never_send and not never_receive:
