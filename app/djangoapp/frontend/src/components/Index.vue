@@ -78,7 +78,7 @@
           </el-row>
         </div>
         <div id="input_box">
-          <textarea type="textarea" id="textarea_box" name="" cols="50" placeholder="在这里输入"
+          <textarea id="textarea_box" name="" cols="50" placeholder="在这里输入"
             v-model="msg_input" autofocus></textarea>
           <div id="submit_button">
             <el-button type="primary" id="button" @click="send_message()">发送</el-button>
@@ -179,34 +179,41 @@
       send_message() {
         axios.get("http://localhost:8000/apis/friends_list/"+this.current_obj_id).then((response)=>{
           if(response.data["code"]===1){
+              console.log(this.msg_input),
             axios.post("http://localhost:8000/apis/encrypt_message/",{
-              "text":this.inputmsg,
-              "toUserid":this.current_obj_id,
+              plaintext:this.msg_input,
+              toUserid:this.current_obj_id,
             }).then((response)=>{
               console.log(response.data["data"])
             })
           }else{
-            store_friend(this.current_obj_id)
-          }
-        })
-        this.inputmsg = ''
-      },
-      store_friend(id){
-        axios.get("http://127.0.0.1:8888/apis/user/"+id).then((response)=>{
-          if(response.data["code"]===1){
-            var get_data = response.data["data"]
-            axios.post("http://localhost:8000/apis/store_friend/",{
-              userid:get_data["userid"],
-              username:get_data["username"],
-              remark:"",
-              status:1,
-              IdentityPub:get_data["IdentityPub"],
-              SignedPub:get_data["SignedPub"],
-              OneTimePub:get_data["OneTimePub"],
-              EphemeralPub:get_data["EphemeralPub"],
+            axios.get("http://127.0.0.1:8888/apis/user/"+id).then((response)=>{
+              if(response.data["code"]===1){
+                var get_data = response.data["data"]
+                axios.post("http://localhost:8000/apis/store_friend/",{
+                  userid:get_data["userid"],
+                  username:get_data["username"],
+                  remark:"",
+                  status:1,
+                  IdentityPub:get_data["IdentityPub"],
+                  SignedPub:get_data["SignedPub"],
+                  OneTimePub:get_data["OneTimePub"],
+                  EphemeralPub:get_data["EphemeralPub"],
+                })
+              }
+            }).then((response)=>{
+              axios.post("http://localhost:8000/apis/encrypt_message/",{
+              plaintext:this.msg_input,
+              toUserid:this.current_obj_id,
+              }).then((response)=>{
+                console.log(response.data["data"])
+              })
             })
           }
         })
+        this.msg_input = ''
+      },
+      store_friend(id){
       },
       // 切换当前对话目标，获取该目标的消息
       excheng_obj(id) {

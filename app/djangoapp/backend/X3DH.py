@@ -184,7 +184,7 @@ if __name__ == '__main__':
         print("A第", i, "轮盐：", binascii.hexlify(self_salt))
         other_salt = other.EphemeralPri.exchange(mine.EphemeralPub)
         print("B第", i, "轮盐：", binascii.hexlify(other_salt))
-
+        print(len(mine_DH.share_key))
         kdf_output_self = Signalkdf(mine_DH.share_key, self_salt)
         kdf_output_other = Signalkdf(other_DH.share_key, other_salt)
         print("A第", i, "轮key：", binascii.hexlify(kdf_output_self[32:]))

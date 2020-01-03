@@ -2685,3 +2685,93 @@ TypeError: Object of type bytes is not JSON serializable
 2020-10-03 14:10:38-__init__-DEBUG-Using selector: SelectSelector
 2020-10-03 14:10:42-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
 2020-10-03 14:10:42-__init__-DEBUG-Using selector: SelectSelector
+2020-47-03 14:47:37-log_response-ERROR-Internal Server Error: /apis/encrypt_message/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 324, in encrypt_message
+    ct = chacha.encrypt(nonce, data, post_data["text"])
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 44, in encrypt
+    self._check_params(nonce, data, associated_data)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 61, in _check_params
+    utils._check_bytes("associated_data", associated_data)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\utils.py", line 31, in _check_bytes
+    raise TypeError("{} must be bytes".format(name))
+TypeError: associated_data must be bytes
+2020-47-03 14:47:53-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-47-03 14:47:53-__init__-DEBUG-Using selector: SelectSelector
+2020-48-03 14:48:11-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-48-03 14:48:11-__init__-DEBUG-Using selector: SelectSelector
+2020-48-03 14:48:55-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-48-03 14:48:55-__init__-DEBUG-Using selector: SelectSelector
+2020-49-03 14:49:04-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-49-03 14:49:04-__init__-DEBUG-Using selector: SelectSelector
+2020-49-03 14:49:18-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-49-03 14:49:18-__init__-DEBUG-Using selector: SelectSelector
+2020-50-03 14:50:05-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-50-03 14:50:05-__init__-DEBUG-Using selector: SelectSelector
+2020-50-03 14:50:12-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-50-03 14:50:12-__init__-DEBUG-Using selector: SelectSelector
+2020-50-03 14:50:18-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-50-03 14:50:18-__init__-DEBUG-Using selector: SelectSelector
+2020-51-03 14:51:34-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-51-03 14:51:34-__init__-DEBUG-Using selector: SelectSelector
+2020-51-03 14:51:52-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-51-03 14:51:52-__init__-DEBUG-Using selector: SelectSelector
+2020-52-03 14:52:26-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-52-03 14:52:26-__init__-DEBUG-Using selector: SelectSelector
+2020-52-03 14:52:35-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-52-03 14:52:35-__init__-DEBUG-Using selector: SelectSelector
+2020-52-03 14:52:45-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-52-03 14:52:45-__init__-DEBUG-Using selector: SelectSelector
+2020-55-03 14:55:15-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-55-03 14:55:15-__init__-DEBUG-Using selector: SelectSelector
+2020-55-03 14:55:56-__init__-DEBUG-Using selector: SelectSelector
+2020-57-03 14:57:29-__init__-DEBUG-Using selector: SelectSelector
+2020-58-03 14:58:17-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-58-03 14:58:17-__init__-DEBUG-Using selector: SelectSelector
+2020-58-03 14:58:24-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-58-03 14:58:24-__init__-DEBUG-Using selector: SelectSelector
+2020-58-03 14:58:36-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-58-03 14:58:36-__init__-DEBUG-Using selector: SelectSelector
+2020-59-03 14:59:58-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-59-03 14:59:58-__init__-DEBUG-Using selector: SelectSelector
+2020-00-03 15:00:06-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-00-03 15:00:06-__init__-DEBUG-Using selector: SelectSelector
+2020-00-03 15:00:34-__init__-DEBUG-Using selector: SelectSelector
+2020-00-03 15:00:49-log_response-ERROR-Internal Server Error: /apis/encrypt_message/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 324, in encrypt_message
+    print(post_data["plaintext"])
+KeyError: 'plaintext'
+2020-06-03 15:06:04-__init__-DEBUG-Using selector: SelectSelector
+2020-07-03 15:07:00-__init__-DEBUG-Using selector: SelectSelector
+2020-09-03 15:09:30-__init__-DEBUG-Using selector: SelectSelector
+2020-09-03 15:09:45-log_response-ERROR-Internal Server Error: /apis/encrypt_message/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 324, in encrypt_message
+    print(post_data["plaintext"])
+KeyError: 'plaintext'
+2020-11-03 15:11:24-__init__-DEBUG-Using selector: SelectSelector

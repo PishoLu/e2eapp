@@ -8,6 +8,7 @@ import requests  # 最好不用这个，让前端作为两个后端的跳板
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric.x25519 import (
     X25519PrivateKey, X25519PublicKey)
+from cryptography.hazmat.primitives.ciphers.aead import ChaCha20Poly1305
 from django.http import JsonResponse
 from django.middleware.csrf import get_token
 from django.shortcuts import render
@@ -245,7 +246,7 @@ def encrypt_message(request):
     if request.method == "POST":
         post_data = json.loads(request.body)
         logining_userid = request.COOKIES["logining_userid"]
-        print(logining_userid)
+        # print(logining_userid)
         usertemp = user.objects.get(userid=int(logining_userid)).to_json()
 
         if(usertemp):
@@ -292,22 +293,41 @@ def encrypt_message(request):
             pass    
 
         if never_send and never_receive:
+            # 没有发过消息也没有收到过对方的消息，生成初始化的kdf用作以后与对象的消息上。
             DH1 = usertemp["IdentityPri"].exchange(user_send_to["SignedPub"])
             DH2 = usertemp["EphemeralPri"].exchange(user_send_to["IdentityPub"])
             DH3 = usertemp["EphemeralPri"].exchange(user_send_to["SignedPub"])
             DH4 = usertemp["IdentityPri"].exchange(user_send_to["OneTimePub"])
-            share_key=DH1+DH2+DH3+DH4
-            message_EphemeralPri = X25519PrivateKey.generate()
-            message_EphemeralPub = message_EphemeralPri.public_key()
-            salt=message_EphemeralPri.exchange(user_send_to["EphemeralPub"])
-
-            kdf_out=Signalkdf(share_key,salt)
+            # 第一次的share_key长度有128位，但是后续需要的密钥长度只要32位，不过第一次后的kdf输出有64位，前32位为下一次的kdf输入，后32位为这次的加密密钥
+            kdf_in=DH1+DH2+DH3+DH4
         elif never_send and not never_receive:
-            # 没有发过消息，但是接收过对方的消息，使用对方最新的Ephemeral公钥以及kdf
-            
+            # 没有发过消息，但是接收过对方的消息，使用对方最新的Ephemeral公钥以及kdf，接收消息时将目标的临时公钥以及算出的kdf存入数据库
+            kdf_in = last_messages_from["kdf_next"]
+        elif not never_send and never_receive:
+            # 发送过消息但是没有收到过回应
+            kdf_in = last_messages_to["kdf_next"]
+        elif not never_send and not never_receive:
+            # 双方有来有回则根据最近时间是接收还是发送确定kdf输入
+            # 不能确定时间前后，先不写这个
+            pass
 
-        print(share_key)
-        result = {"code": 1, "data": share_key, "result": "X3DH密钥"}
+
+        # 不管之前是否与目标有过联系，只是kdf的输入有所不同，加密使用的新临时密钥是新生成的，对方的临时公钥是一直最新更新在数据库的。
+        message_EphemeralPri = X25519PrivateKey.generate()
+        message_EphemeralPub = message_EphemeralPri.public_key()
+        salt=message_EphemeralPri.exchange(user_send_to["EphemeralPub"])
+        kdf_out=Signalkdf(kdf_in,salt)
+
+        aad = b"a secret message"
+        chacha = ChaCha20Poly1305(kdf_out[32:])
+        nonce = os.urandom(12)
+        print(post_data["plaintext"])
+        ct = chacha.encrypt(nonce, post_data["plaintext"].encode("utf-8"), aad)
+        print(ct)
+        pt=chacha.decrypt(nonce, ct, aad)
+        print(pt)
+        
+        result = {"code": 1, "result": "X3DH密钥"}
         return JsonResponse(result)
                 # if(last_messages_from["date"] < last_messages_to["date"]):
                 #     pass
