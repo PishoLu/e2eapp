@@ -50,9 +50,9 @@ def start_X3DH(request):
 @csrf_exempt
 def store_message(request):
     if request.method == "POST":
-        post_data = request.POST.dict()
+        post_data = json.loads(request.body)
         try:
-            messages.objects.creat(
+            messages.objects.create(
                 fromUserid=post_data["fromUserid"], toUserid=post_data["toUserid"], kdf_next=post_data["kdf_next"], EphemeralPub=post_data["EphemeralPub"], plaintext=post_data["plaintext"])
             result = {"code": 1, "result": "添加成功"}
             return JsonResponse(result)

@@ -167,7 +167,8 @@
                       fromUserid:this.res_data["fromUserid"],
                       toUserid:this.res_data["toUserid"],
                       kdf_next:this.res_data["kdf_next"],
-                      plaintext:this.res_data["plaintext"]
+                      EphemeralPub:this.res_data["message"]["EphemeralPub"],
+                      plaintext:this.res_data["plaintext"],
                     }).then((response)=>{
                       if(response.data["code"]===1){
                         axios.get("http://localhost:8000/apis/filter_messages/" + this.current_obj_id, {

@@ -24,3 +24,41 @@
 2020-22-03 17:22:23-__init__-DEBUG-Using selector: SelectSelector
 2020-24-03 17:24:23-trigger_reload-INFO-D:\Study\School\e2e\server\server\settings.py changed, reloading.
 2020-24-03 17:24:23-__init__-DEBUG-Using selector: SelectSelector
+2020-38-03 17:38:19-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-38-03 17:38:19-__init__-DEBUG-Using selector: SelectSelector
+2020-38-03 17:38:32-log_response-ERROR-Internal Server Error: /apis/message/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 117, in message_detail
+    kdf_next=post_data["kdf_next"],
+KeyError: 'kdf_next'
+2020-39-03 17:39:23-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-39-03 17:39:23-__init__-DEBUG-Using selector: SelectSelector
+2020-39-03 17:39:26-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-39-03 17:39:26-__init__-DEBUG-Using selector: SelectSelector
+2020-40-03 17:40:36-log_response-ERROR-Internal Server Error: /apis/message/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 117, in message_detail
+    plaintext=post_data["plaintext"])
+KeyError: 'plaintext'
+2020-40-03 17:40:53-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-40-03 17:40:53-__init__-DEBUG-Using selector: SelectSelector
+2020-41-03 17:41:06-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-41-03 17:41:06-__init__-DEBUG-Using selector: SelectSelector
+2020-41-03 17:41:28-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-41-03 17:41:28-__init__-DEBUG-Using selector: SelectSelector

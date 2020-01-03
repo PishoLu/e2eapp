@@ -282,3 +282,49 @@ TypeError: Object of type bytes is not JSON serializable
 2020-49-03 16:49:11-__init__-DEBUG-Using selector: SelectSelector
 2020-57-03 16:57:40-__init__-DEBUG-Using selector: SelectSelector
 2020-26-03 17:26:40-__init__-DEBUG-Using selector: SelectSelector
+2020-36-03 17:36:35-log_response-WARNING-Not Found: /favicon.ico
+2020-43-03 17:43:38-__init__-DEBUG-Using selector: SelectSelector
+2020-44-03 17:44:07-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-44-03 17:44:07-__init__-DEBUG-Using selector: SelectSelector
+2020-44-03 17:44:15-log_response-ERROR-Internal Server Error: /apis/store_message/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 55, in store_message
+    messages.objects.creat(
+AttributeError: 'Manager' object has no attribute 'creat'
+2020-44-03 17:44:20-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-44-03 17:44:20-__init__-DEBUG-Using selector: SelectSelector
+2020-44-03 17:44:35-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-44-03 17:44:35-__init__-DEBUG-Using selector: SelectSelector
+2020-44-03 17:44:37-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-44-03 17:44:37-__init__-DEBUG-Using selector: SelectSelector
+2020-44-03 17:44:52-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-44-03 17:44:52-__init__-DEBUG-Using selector: SelectSelector
+2020-44-03 17:44:55-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-44-03 17:44:55-__init__-DEBUG-Using selector: SelectSelector
+2020-45-03 17:45:00-log_response-ERROR-Internal Server Error: /apis/store_message/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 56, in store_message
+    fromUserid=post_data["fromUserid"], toUserid=post_data["toUserid"], kdf_next=post_data["kdf_next"], EphemeralPub=post_data["EphemeralPub"], plaintext=post_data["plaintext"])
+KeyError: 'fromUserid'
+2020-45-03 17:45:41-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-45-03 17:45:41-__init__-DEBUG-Using selector: SelectSelector
+2020-45-03 17:45:45-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-45-03 17:45:45-__init__-DEBUG-Using selector: SelectSelector
+2020-46-03 17:46:09-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-46-03 17:46:09-__init__-DEBUG-Using selector: SelectSelector
