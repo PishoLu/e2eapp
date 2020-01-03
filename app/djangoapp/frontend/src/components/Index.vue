@@ -133,7 +133,7 @@
         // 该list只是对应目标的消息记录。通过侧边栏更新
         message_list: [],
         search_input: "",
-        msg_input: '',
+        msg_input: "",
         dialogFormVisible: false,
         // 好友列表
         friends_list: [],
