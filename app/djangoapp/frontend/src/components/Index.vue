@@ -79,7 +79,7 @@
         </div>
         <div id="input_box">
           <textarea id="textarea_box" name="" cols="50" placeholder="在这里输入"
-            v-model="msg_input" autofocus></textarea>
+            v-model="msg_input" autofocus required="required"></textarea>
           <div id="submit_button">
             <el-button type="primary" id="button" @click="send_message()">发送</el-button>
           </div>
@@ -92,36 +92,6 @@
 <script>
   import axios from "axios"
   axios.defaults.withCredentials=true
-
-  // function getCookie(cookieName) {
-  //   var strCookie = document.cookie;
-  //   var arrCookie = strCookie.split("; ");
-  //   for(var i = 0; i < arrCookie.length; i++){
-  //     var arr = arrCookie[i].split("=");
-  //     if(cookieName == arr[0]){
-  //         return arr[1];
-  //     }
-  //   }
-  //   return "";
-  // }
-  function friends_list_flash(){
-    axios.get("http://localhost:8000/apis/friends_list/",{
-    headers:{
-      "logining_userid":this.logining_userid
-    }
-    }).then((response)=>{
-      if(response.data["code"]===1){
-        // console.log(response.data)
-        this.friends_list=response.data["data"]
-      }else{
-        this.$notify.error({
-          title: '获取好友列表失败，或者好友列表为空。',
-          message: '重启一下应用看看？',
-          // type: 'success'
-        });
-      }
-    })
-  }
   export default {
     name: 'friend',
     data() {
@@ -142,6 +112,7 @@
         current_obj_id: 0,
         is_friend:0,
         csrftoken:"",
+        res_data:{}
       }
     },
     created: function () { 
@@ -152,15 +123,15 @@
         // 获取好友列表
         // 根据好友列表探查好友的存活
         // 或许可以获取所有的消息记录
-        axios.get("http://localhost:8000/apis/friends_list/",{
-          headers:{
-            "logining_userid":this.logining_userid
+        axios.get("http://localhost:8000/apis/friends_list/", {
+          headers: {
+            // "logining_userid":this.logining_userid
           }
-        }).then((response)=>{
-          if(response.data["code"]===1){
+        }).then((response) => {
+          if (response.data["code"] === 1) {
             // console.log(response.data)
-            this.friends_list=response.data["data"]
-          }else{
+            this.friends_list = response.data["data"]
+          } else {
             this.$notify.error({
               title: '获取好友列表失败，或者好友列表为空。',
               message: '重启一下应用看看？',
@@ -179,12 +150,66 @@
       send_message() {
         axios.get("http://localhost:8000/apis/friends_list/"+this.current_obj_id).then((response)=>{
           if(response.data["code"]===1){
-              console.log(this.msg_input),
+              // console.log(this.msg_input),
             axios.post("http://localhost:8000/apis/encrypt_message/",{
               plaintext:this.msg_input,
               toUserid:this.current_obj_id,
             }).then((response)=>{
-              console.log(response.data["data"])
+              if(response.data["code"]===1){
+                this.res_data=response.data["data"]
+                axios.post("http://127.0.0.1:8888/apis/message/",{
+                  fromUserid:this.res_data["fromUserid"],
+                  toUserid:this.res_data["toUserid"],
+                  ciphertext:this.res_data["message"]
+                }).then((response)=>{
+                  if(response.data["code"]===1){
+                    axios.post("http://localhost:8000/apis/store_message/",{
+                      fromUserid:this.res_data["fromUserid"],
+                      toUserid:this.res_data["toUserid"],
+                      kdf_next:this.res_data["kdf_next"],
+                      plaintext:this.res_data["plaintext"]
+                    }).then((response)=>{
+                      if(response.data["code"]===1){
+                        axios.get("http://localhost:8000/apis/filter_messages/" + this.current_obj_id, {
+                          headers: {
+                            // "logining_userid":this.logining_userid
+                          }
+                        }).then((response) => {
+                          if (response.data["code"] === 1) {
+                            // console.log(response.data)
+                            this.message_list = response.data["data"]
+                          } else {
+                            this.$notify.error({
+                              title: '获取历史记录失败，或者记录为空。',
+                              message: '刷新一下。',
+                              // type: 'success'
+                            });
+                          }
+                        })
+                      }else{
+                        this.$notify.error({
+                          title: '储存消息到本地失败。',
+                          message: '请重新发送消息。',
+                          // type: 'success'
+                        });
+                      }
+                    })
+                  }else{
+                    this.$notify.error({
+                      title: '上传消息到服务器失败。',
+                      message: '请重新发送消息。',
+                      // type: 'success'
+                    });
+                  }
+                })
+              }else{
+                this.$notify.error({
+                  title: '本地加密失败。',
+                  message: '请重新发送消息。',
+                  // type: 'success'
+                });
+              }
+              this.msg_input = ''
             })
           }else{
             axios.get("http://127.0.0.1:8888/apis/user/"+id).then((response)=>{
@@ -202,16 +227,14 @@
                 })
               }
             }).then((response)=>{
-              axios.post("http://localhost:8000/apis/encrypt_message/",{
-              plaintext:this.msg_input,
-              toUserid:this.current_obj_id,
-              }).then((response)=>{
-                console.log(response.data["data"])
-              })
+              this.$notify.error({
+                title: '已添加好友信息到数据库',
+                message: '请重新输入。',
+                // type: 'success'
+              });
             })
           }
         })
-        this.msg_input = ''
       },
       store_friend(id){
       },
@@ -278,7 +301,22 @@
               message: '已将好友添加到列表。',
               type: 'success'
             });
-            friends_list_flash()
+            axios.get("http://localhost:8000/apis/friends_list/", {
+              headers: {
+                // "logining_userid":this.logining_userid
+              }
+            }).then((response) => {
+              if (response.data["code"] === 1) {
+                // console.log(response.data)
+                this.friends_list = response.data["data"]
+              } else {
+                this.$notify.error({
+                  title: '获取好友列表失败，或者好友列表为空。',
+                  message: '重启一下应用看看？',
+                  // type: 'success'
+                });
+              }
+            })
           }else{
             this.dialogFormVisible = false
             this.$notify.error({
@@ -293,6 +331,22 @@
     watch: {
       current_obj_id: function (val, newval) {
         // console.log("watch me")
+        axios.get("http://localhost:8000/apis/filter_messages/" + this.current_obj_id, {
+          headers: {
+            // "logining_userid":this.logining_userid
+          }
+        }).then((response) => {
+          if (response.data["code"] === 1) {
+            // console.log(response.data)
+            this.message_list = response.data["data"]
+          } else {
+            this.$notify.error({
+              title: '获取历史记录失败，或者记录为空。',
+              message: '刷新一下。',
+              // type: 'success'
+            });
+          }
+        })
       }
     }
   }

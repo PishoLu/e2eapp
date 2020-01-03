@@ -34,6 +34,7 @@ class messages(models.Model):
     kdf_next = models.CharField(max_length=64, null=True)
     date = models.DateTimeField(auto_now_add=True)
     plaintext = models.CharField(max_length=2048)
+    EphemeralPub = models.CharField(max_length=64, null=True)
 
     def to_json(self):
         dict = self.__dict__

@@ -145,6 +145,7 @@
                 // console.log(response.data)
                 if (response.data["code"] === 1) {
                   this.$cookies.set("logining_userid",response.data["data"]["userid"]);
+                  this.$cookies.set("SameSite","Lax")
                   this.$router.push("/")
                 } else {
                   this.$notify.error({

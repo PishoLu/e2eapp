@@ -8,7 +8,7 @@ from django.middleware.csrf import get_token
 from django.utils.datastructures import MultiValueDictKeyError
 
 from django.views.decorators.csrf import csrf_exempt
-from .models import user
+from .models import user, messages
 
 # Create your views here.
 
@@ -110,12 +110,31 @@ def user_detail(request, pk):
 def message_detail(request):
     # 上传消息
     if request.method == "POST":
-        pass
+        try:
+            post_data = json.loads(request.body)
+            messages.objects.create(fromUserid=post_data["fromUserid"],
+                                    toUserid=post_data["toUserid"],
+                                    kdf_next=post_data["kdf_next"],
+                                    plaintext=post_data["plaintext"])
+        except:
+            result = {"code": -1, "result": "消息发送失败"}
+            return JsonResponse(result)
+        result = {"code": 1, "result": "消息发送成功！"}
+        return JsonResponse(result)
+
     # 获取自己的消息
     elif request.method == "GET":
-        logining_userid = request.COOKIES["logining_userid"]
-        print(logining_userid)
-        pass
+        logining_userid = int(request.COOKIES["logining_userid"])
+        try:
+            messages_temp = messages.objects.filter(toUserid=logining_userid)
+            for i in messages_temp:
+                messages_temp[i] = messages_temp[i].to_json()
+        except:
+            result = {"code": -1, "result": "消息获取失败"}
+            return JsonResponse(result)
+
+        result = {"code": -1, "data": messages_temp, "result": "请求方式有误!"}
+        return JsonResponse(result)
     else:
         result = {"code": -1, "result": "请求方式有误!"}
         return JsonResponse(result)
