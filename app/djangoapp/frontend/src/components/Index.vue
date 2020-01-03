@@ -92,6 +92,25 @@
     <div id="right">
       <div id="show_window" v-if="current_obj_id">
         <div id="show_message">
+          <el-row>
+            <el-col :span="24">
+              <div>
+                <el-button
+                  icon="el-icon-refresh-left"
+                  id="message_flash_button"
+                  v-if="!message_loading"
+                  @click="message_flash()"
+                >
+                </el-button>
+                <el-button
+                  v-else
+                  icon="el-icon-loading"
+                  id="message_flash_button"
+                >
+                </el-button>
+              </div>
+            </el-col>
+          </el-row>
           <el-row v-for="(item, index) in message_list" :key="index">
             <el-col :span="24" v-if="item.fromUserid === 1">
               <div class="show_message_date_self">{{ item.date }}</div>
@@ -136,33 +155,11 @@ export default {
   data() {
     return {
       count: 20,
+      message_loading: false,
       loading: false,
       logining_userid: 0,
       // 该list只是对应目标的消息记录。通过侧边栏更新
-      message_list: [
-        {
-          message_id: 1,
-          fromUserid: 18138754,
-          toUserid: 86580741,
-          kdf_next:
-            "86cd5b1fadac1a40106dfeb965ad42458dc03694e293afdc0738809e0ed23fb7",
-          date: "2020-01-03T09:45:56.186Z",
-          plaintext: "test",
-          EphemeralPub:
-            "c7e2c6e9cecaf9e5178912173606e502fc3a313aea2d8e831e0cb5f2bf90b65e"
-        },
-        {
-          message_id: 2,
-          fromUserid: 18138754,
-          toUserid: 86580741,
-          kdf_next:
-            "026d93dc97f0efde4f6ba46d7356f0acfd75756b5b237760cca52af392f60de9",
-          date: "2020-01-03T10:31:02.087Z",
-          plaintext: "test2",
-          EphemeralPub:
-            "5c1a1c13edf6ae3c84c26a9c06ec8908e5ecbf2af533b7b3c2017cc18949b65d"
-        }
-      ],
+      message_list: [],
       search_input: "",
       msg_input: "",
       dialogFormVisible: false,
@@ -317,6 +314,18 @@ export default {
               });
           }
         });
+    },
+    // 只能通过刷新消息列表来完成接收消息了
+    message_flash() {
+      this.message_loading = true;
+      axios.get("http://127.0.0.1:8888/apis/message/").then(response => {
+        if(response.data["code"]===1){
+          get_data=response.data["data"]
+          for(i=0;i<get_data.length;i++){
+            
+          }
+        }
+      });
     },
     // 切换当前对话目标，获取该目标的消息
     excheng_obj(id) {

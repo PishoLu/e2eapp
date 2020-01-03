@@ -64,3 +64,74 @@ KeyError: 'plaintext'
 2020-41-03 17:41:28-__init__-DEBUG-Using selector: SelectSelector
 2020-10-03 18:10:47-log_response-WARNING-Not Found: /apis/filter_messages/86580741
 2020-10-03 18:10:59-__init__-DEBUG-Using selector: SelectSelector
+2020-37-03 19:37:44-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-37-03 19:37:44-__init__-DEBUG-Using selector: SelectSelector
+2020-37-03 19:37:49-log_response-ERROR-Internal Server Error: /apis/message/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 130, in message_detail
+    messages_temp[i] = messages_temp[i].to_json()
+TypeError: 'QuerySet' object does not support item assignment
+2020-38-03 19:38:20-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-38-03 19:38:20-__init__-DEBUG-Using selector: SelectSelector
+2020-38-03 19:38:22-log_response-ERROR-Internal Server Error: /apis/message/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 131, in message_detail
+    messages_temp[i] = messages_temp[i].to_json()
+TypeError: 'QuerySet' object does not support item assignment
+2020-39-03 19:39:15-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-39-03 19:39:15-__init__-DEBUG-Using selector: SelectSelector
+2020-40-03 19:40:05-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-40-03 19:40:05-__init__-DEBUG-Using selector: SelectSelector
+2020-40-03 19:40:10-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-40-03 19:40:10-__init__-DEBUG-Using selector: SelectSelector
+2020-40-03 19:40:13-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-40-03 19:40:13-__init__-DEBUG-Using selector: SelectSelector
+2020-40-03 19:40:18-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-40-03 19:40:18-__init__-DEBUG-Using selector: SelectSelector
+2020-40-03 19:40:23-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-40-03 19:40:23-__init__-DEBUG-Using selector: SelectSelector
+2020-41-03 19:41:28-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-41-03 19:41:28-__init__-DEBUG-Using selector: SelectSelector
+2020-41-03 19:41:30-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-41-03 19:41:30-__init__-DEBUG-Using selector: SelectSelector
+2020-41-03 19:41:56-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-41-03 19:41:56-__init__-DEBUG-Using selector: SelectSelector
+2020-42-03 19:42:19-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-42-03 19:42:19-__init__-DEBUG-Using selector: SelectSelector
+2020-42-03 19:42:21-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-42-03 19:42:21-__init__-DEBUG-Using selector: SelectSelector
+2020-42-03 19:42:24-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-42-03 19:42:24-__init__-DEBUG-Using selector: SelectSelector
+2020-42-03 19:42:44-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-42-03 19:42:44-__init__-DEBUG-Using selector: SelectSelector
+2020-43-03 19:43:03-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-43-03 19:43:03-__init__-DEBUG-Using selector: SelectSelector
+2020-43-03 19:43:05-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-43-03 19:43:05-__init__-DEBUG-Using selector: SelectSelector
+2020-43-03 19:43:09-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-43-03 19:43:09-__init__-DEBUG-Using selector: SelectSelector
+2020-43-03 19:43:11-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-43-03 19:43:11-__init__-DEBUG-Using selector: SelectSelector
+2020-43-03 19:43:14-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-43-03 19:43:14-__init__-DEBUG-Using selector: SelectSelector
+2020-43-03 19:43:17-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-43-03 19:43:17-__init__-DEBUG-Using selector: SelectSelector
+2020-43-03 19:43:19-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-43-03 19:43:19-__init__-DEBUG-Using selector: SelectSelector
+2020-30-03 20:30:43-__init__-DEBUG-Using selector: SelectSelector

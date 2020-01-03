@@ -125,15 +125,25 @@ def message_detail(request):
     elif request.method == "GET":
         logining_userid = int(request.COOKIES["logining_userid"])
         try:
-            messages_temp = messages.objects.filter(toUserid=logining_userid)
-            for i in messages_temp:
+            messages_temp = list(
+                messages.objects.filter(toUserid=logining_userid))
+            for i in range(len(messages_temp)):
                 messages_temp[i] = messages_temp[i].to_json()
         except:
             result = {"code": -1, "result": "消息获取失败"}
             return JsonResponse(result)
 
-        result = {"code": -1, "data": messages_temp, "result": "请求方式有误!"}
-        return JsonResponse(result)
+        try:
+            messages.objects.filter(toUserid=logining_userid).delete()
+        except:
+            result = {"code": -1, "result": "服务器删除暂存数据失败"}
+            return JsonResponse(result)
+        if len(messages_temp):
+            result = {"code": 1, "data": messages_temp, "result": "服务器暂存的消息"}
+            return JsonResponse(result)
+        else:
+            result = {"code": -1, "result": "没有暂存数据"}
+            return JsonResponse(result)
     else:
         result = {"code": -1, "result": "请求方式有误!"}
         return JsonResponse(result)
