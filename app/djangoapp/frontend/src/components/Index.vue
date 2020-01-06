@@ -97,15 +97,15 @@
               <div>
                 <el-button
                   icon="el-icon-refresh-left"
-                  id="message_flash_button"
+                  id="message_get_button"
                   v-if="!message_loading"
-                  @click="message_flash()"
+                  @click="message_get()"
                 >
                 </el-button>
                 <el-button
                   v-else
                   icon="el-icon-loading"
-                  id="message_flash_button"
+                  id="message_get_button"
                 >
                 </el-button>
               </div>
@@ -181,24 +181,7 @@ export default {
       // 获取好友列表
       // 根据好友列表探查好友的存活
       // 或许可以获取所有的消息记录
-      axios
-        .get("http://localhost:8000/apis/friends_list/", {
-          headers: {
-            // "logining_userid":this.logining_userid
-          }
-        })
-        .then(response => {
-          if (response.data["code"] === 1) {
-            // console.log(response.data)
-            this.friends_list = response.data["data"];
-          } else {
-            this.$notify.error({
-              title: "获取好友列表失败，或者好友列表为空。",
-              message: "重启一下应用看看？"
-              // type: 'success'
-            });
-          }
-        });
+      this.friends_list_flash();
     } else {
       this.$router.push("/login");
     }
@@ -206,124 +189,103 @@ export default {
   computed: {},
   methods: {
     // 发送明文给后端加密再发送到服务器
+    // 发送消息之前需要先获取一次。防止加密顺序错乱。
     send_message() {
-      axios
-        .get("http://localhost:8000/apis/friends_list/" + this.current_obj_id)
-        .then(response => {
-          if (response.data["code"] === 1) {
-            // console.log(this.msg_input),
-            axios
-              .post("http://localhost:8000/apis/encrypt_message/", {
-                plaintext: this.msg_input,
-                toUserid: this.current_obj_id
-              })
-              .then(response => {
-                if (response.data["code"] === 1) {
-                  this.res_data = response.data["data"];
-                  axios
-                    .post("http://127.0.0.1:8888/apis/message/", {
-                      fromUserid: this.res_data["fromUserid"],
-                      toUserid: this.res_data["toUserid"],
-                      ciphertext: this.res_data["message"]
-                    })
-                    .then(response => {
-                      if (response.data["code"] === 1) {
-                        axios
-                          .post("http://localhost:8000/apis/store_message/", {
-                            fromUserid: this.res_data["fromUserid"],
-                            toUserid: this.res_data["toUserid"],
-                            kdf_next: this.res_data["kdf_next"],
-                            EphemeralPub: this.res_data["message"][
-                              "EphemeralPub"
-                            ],
-                            plaintext: this.res_data["plaintext"]
-                          })
-                          .then(response => {
-                            if (response.data["code"] === 1) {
-                              axios
-                                .get(
-                                  "http://localhost:8000/apis/filter_messages/" +
-                                    this.current_obj_id,
-                                  {
-                                    headers: {
-                                      // "logining_userid":this.logining_userid
-                                    }
-                                  }
-                                )
-                                .then(response => {
-                                  if (response.data["code"] === 1) {
-                                    console.log(response.data);
-                                    this.message_list = response.data["data"];
-                                  } else {
-                                    this.$notify.error({
-                                      title: "获取历史记录失败，或者记录为空。",
-                                      message: "刷新一下。"
-                                      // type: 'success'
-                                    });
-                                  }
+      this.message_get().then(
+        axios
+          .get("http://localhost:8000/apis/friends_list/" + this.current_obj_id)
+          .then(response => {
+            if (response.data["code"] === 1) {
+              // console.log(this.msg_input),
+              axios
+                .post("http://localhost:8000/apis/encrypt_message/", {
+                  plaintext: this.msg_input,
+                  toUserid: this.current_obj_id
+                })
+                .then(response => {
+                  if (response.data["code"] === 1) {
+                    this.res_data = response.data["data"];
+                    axios
+                      .post("http://127.0.0.1:8888/apis/message/", {
+                        fromUserid: this.res_data["fromUserid"],
+                        toUserid: this.res_data["toUserid"],
+                        ciphertext: this.res_data["message"]
+                      })
+                      .then(response => {
+                        if (response.data["code"] === 1) {
+                          axios
+                            .post("http://localhost:8000/apis/store_message/", {
+                              fromUserid: this.res_data["fromUserid"],
+                              toUserid: this.res_data["toUserid"],
+                              kdf_next: this.res_data["kdf_next"],
+                              EphemeralPub: this.res_data["message"][
+                                "EphemeralPub"
+                              ],
+                              plaintext: this.res_data["plaintext"]
+                            })
+                            .then(response => {
+                              if (response.data["code"] === 1) {
+                                this.message_list_flash();
+                              } else {
+                                this.$notify.error({
+                                  title: "储存消息到本地失败。",
+                                  message: "请重新发送消息。"
+                                  // type: 'success'
                                 });
-                            } else {
-                              this.$notify.error({
-                                title: "储存消息到本地失败。",
-                                message: "请重新发送消息。"
-                                // type: 'success'
-                              });
-                            }
+                              }
+                            });
+                        } else {
+                          this.$notify.error({
+                            title: "上传消息到服务器失败。",
+                            message: "请重新发送消息。"
+                            // type: 'success'
                           });
-                      } else {
-                        this.$notify.error({
-                          title: "上传消息到服务器失败。",
-                          message: "请重新发送消息。"
-                          // type: 'success'
-                        });
-                      }
+                        }
+                      });
+                  } else {
+                    this.$notify.error({
+                      title: "本地加密失败。",
+                      message: "请重新发送消息。"
+                      // type: 'success'
                     });
-                } else {
+                  }
+                  this.msg_input = "";
+                });
+            } else {
+              axios
+                .get("http://127.0.0.1:8888/apis/user/" + id)
+                .then(response => {
+                  if (response.data["code"] === 1) {
+                    var get_data = response.data["data"];
+                    axios.post("http://localhost:8000/apis/store_friend/", {
+                      userid: get_data["userid"],
+                      username: get_data["username"],
+                      remark: "",
+                      status: 1,
+                      IdentityPub: get_data["IdentityPub"],
+                      SignedPub: get_data["SignedPub"],
+                      OneTimePub: get_data["OneTimePub"],
+                      EphemeralPub: get_data["EphemeralPub"]
+                    });
+                  }
+                })
+                .then(response => {
                   this.$notify.error({
-                    title: "本地加密失败。",
-                    message: "请重新发送消息。"
+                    title: "已添加好友信息到数据库",
+                    message: "请重新输入。"
                     // type: 'success'
                   });
-                }
-                this.msg_input = "";
-              });
-          } else {
-            axios
-              .get("http://127.0.0.1:8888/apis/user/" + id)
-              .then(response => {
-                if (response.data["code"] === 1) {
-                  var get_data = response.data["data"];
-                  axios.post("http://localhost:8000/apis/store_friend/", {
-                    userid: get_data["userid"],
-                    username: get_data["username"],
-                    remark: "",
-                    status: 1,
-                    IdentityPub: get_data["IdentityPub"],
-                    SignedPub: get_data["SignedPub"],
-                    OneTimePub: get_data["OneTimePub"],
-                    EphemeralPub: get_data["EphemeralPub"]
-                  });
-                }
-              })
-              .then(response => {
-                this.$notify.error({
-                  title: "已添加好友信息到数据库",
-                  message: "请重新输入。"
-                  // type: 'success'
                 });
-              });
-          }
-        });
+            }
+          })
+      );
     },
     // 只能通过刷新消息列表来完成接收消息了
-    message_flash() {
+    message_get() {
       this.message_loading = true;
       axios.get("http://127.0.0.1:8888/apis/message/").then(response => {
-        if(response.data["code"]===1){
-          get_data=response.data["data"]
-          for(i=0;i<get_data.length;i++){
-            
-          }
+        if (response.data["code"] === 1) {
+          get_data = response.data["data"];
         }
       });
     },
@@ -331,6 +293,9 @@ export default {
     excheng_obj(id) {
       // console.log(id)
       this.current_obj_id = id;
+      this.message_list_flash();
+    },
+    message_list_flash() {
       axios
         .get(
           "http://localhost:8000/apis/filter_messages/" + this.current_obj_id,
@@ -393,6 +358,26 @@ export default {
         });
       this.dialogFormVisible = true;
     },
+    friends_list_flash() {
+      axios
+        .get("http://localhost:8000/apis/friends_list/", {
+          headers: {
+            // "logining_userid":this.logining_userid
+          }
+        })
+        .then(response => {
+          if (response.data["code"] === 1) {
+            // console.log(response.data)
+            this.friends_list = response.data["data"];
+          } else {
+            this.$notify.error({
+              title: "获取好友列表失败，或者好友列表为空。",
+              message: "重启一下应用看看？"
+              // type: 'success'
+            });
+          }
+        });
+    },
     // 对应搜索栏的结果添加好友操作
     add_friend(fri_item) {
       // console.log(fri_item)
@@ -418,24 +403,7 @@ export default {
               message: "已将好友添加到列表。",
               type: "success"
             });
-            axios
-              .get("http://localhost:8000/apis/friends_list/", {
-                headers: {
-                  // "logining_userid":this.logining_userid
-                }
-              })
-              .then(response => {
-                if (response.data["code"] === 1) {
-                  // console.log(response.data)
-                  this.friends_list = response.data["data"];
-                } else {
-                  this.$notify.error({
-                    title: "获取好友列表失败，或者好友列表为空。",
-                    message: "重启一下应用看看？"
-                    // type: 'success'
-                  });
-                }
-              });
+            this.friends_list_flash();
           } else {
             this.dialogFormVisible = false;
             this.$notify.error({
