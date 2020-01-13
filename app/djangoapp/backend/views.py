@@ -310,6 +310,7 @@ def encrypt_message(request):
                 binascii.unhexlify(usertemp["OneTimePri"].encode("unicode_escape")))
             usertemp["EphemeralPri"] = X25519PrivateKey.from_private_bytes(
                 binascii.unhexlify(usertemp["EphemeralPri"].encode("unicode_escape")))
+
         user_send_to = friends.objects.get(
             userid=post_data["toUserid"], whosfriend=logining_userid).to_json()
         if(user_send_to):
