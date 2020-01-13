@@ -286,6 +286,19 @@ export default {
       axios.get("http://127.0.0.1:8888/apis/message/").then(response => {
         if (response.data["code"] === 1) {
           get_data = response.data["data"];
+          axios
+            .post("http://127.0.0.1:8000/apis/message_parse/", {
+              server_data: get_data
+            })
+            .then(response => {
+
+            });
+        } else {
+          this.$notify.error({
+            title: "获取服务器记录失败。",
+            message: "请重新获取。"
+            // type: 'success'
+          });
         }
       });
     },

@@ -132,7 +132,6 @@ def message_detail(request):
         except:
             result = {"code": -1, "result": "消息获取失败"}
             return JsonResponse(result)
-
         try:
             messages.objects.filter(toUserid=logining_userid).delete()
         except:

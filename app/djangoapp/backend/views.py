@@ -232,7 +232,21 @@ def friend_detail(request, pk):
 @csrf_exempt
 def decrypt_message(request):
     if request.method == "POST":
-        pass
+        post_data = json.loads(request.body)
+
+    else:
+        result = {"code": -1, "result": "请求方式有误!"}
+        return JsonResponse(result)
+
+
+# 解析服务器返回的数据包。
+# 返回发送人的id信息
+# 通过 decrypt_message 解密。（不一定）
+@csrf_exempt
+def message_parse(request):
+    if request.method == "POST":
+        post_data = json.loads(request.body)
+
     else:
         result = {"code": -1, "result": "请求方式有误!"}
         return JsonResponse(result)
@@ -277,27 +291,26 @@ def encrypt_message(request):
         never_receive = 0
         kdf_in = None
         salt = None
-        # try:
-        last_messages_to = list(messages.objects.filter(
-            fromUserid=logining_userid, toUserid=post_data["toUserid"]))
-        # 获取发给对象的所有消息的最后一个
-        if(len(last_messages_to)):
-            last_messages_to = last_messages_to[-1].to_json()
-        else:
-            # 没有向目标发送过消息
-            never_send = 1
-            pass
-        last_messages_from = messages.objects.filter(
-            toUserid=logining_userid, fromUserid=post_data["toUserid"])
-        # 获取对象回复的所有消息的最后一个
-        if(len(last_messages_from)):
-            last_messages_from = last_messages_from[-1].to_json()
-        else:
-            # 目标没有向我发送过消息
-            never_receive = 1
-        # except:
-        #     result = {"code": -1, "result": "获取数据库消息出错!"}
-        #     return JsonResponse(result)
+        try:
+            last_messages_to = list(messages.objects.filter(
+                fromUserid=logining_userid, toUserid=post_data["toUserid"]))
+            # 获取发给对象的所有消息的最后一个
+            if(len(last_messages_to)):
+                last_messages_to = last_messages_to[-1].to_json()
+            else:
+                # 没有向目标发送过消息
+                never_send = 1
+            last_messages_from = messages.objects.filter(
+                toUserid=logining_userid, fromUserid=post_data["toUserid"])
+            # 获取对象回复的所有消息的最后一个
+            if(len(last_messages_from)):
+                last_messages_from = last_messages_from[-1].to_json()
+            else:
+                # 目标没有向我发送过消息
+                never_receive = 1
+        except:
+            result = {"code": -1, "result": "获取数据库消息出错!"}
+            return JsonResponse(result)
 
         message_EphemeralPri = X25519PrivateKey.generate()
         message_EphemeralPub = message_EphemeralPri.public_key()

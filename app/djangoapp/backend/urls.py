@@ -10,6 +10,7 @@ urlpatterns = [
     # message操作
     path("store_message/", views.store_message),
     path("filter_messages/<int:pk>", views.filter_messages),
+    path("message_parse/", views.message_parse),
     # user操作
     path("store_user/", views.store_user),
     path("get_user/<int:pk>", views.get_user),
