@@ -229,6 +229,7 @@ def friend_detail(request, pk):
 
 # 返回解密消息
 # 参数：对方的ID，对方发来的消息
+# 需要分析是否是第一次接收通话
 @csrf_exempt
 def decrypt_message(request):
     if request.method == "POST":
@@ -242,6 +243,8 @@ def decrypt_message(request):
 # 解析服务器返回的数据包。
 # 返回发送人的id信息
 # 通过 decrypt_message 解密。（不一定）
+# 分析是否是好友，是否之前有过聊天记录。如果有聊天记录就可以通过上次的kdf继续沿用，如果没有记录就让前端重新获取目的好友公钥，
+# 如果不是好友就返回给前端让前端决定是否添加为好友。
 @csrf_exempt
 def message_parse(request):
     if request.method == "POST":

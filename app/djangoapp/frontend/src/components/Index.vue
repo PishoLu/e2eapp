@@ -190,95 +190,95 @@ export default {
   methods: {
     // 发送明文给后端加密再发送到服务器
     // 发送消息之前需要先获取一次。防止加密顺序错乱。
-    send_message() {
-      this.message_get().then(
-        axios
-          .get("http://localhost:8000/apis/friends_list/" + this.current_obj_id)
-          .then(response => {
-            if (response.data["code"] === 1) {
-              // console.log(this.msg_input),
-              axios
-                .post("http://localhost:8000/apis/encrypt_message/", {
-                  plaintext: this.msg_input,
-                  toUserid: this.current_obj_id
-                })
-                .then(response => {
-                  if (response.data["code"] === 1) {
-                    this.res_data = response.data["data"];
-                    axios
-                      .post("http://127.0.0.1:8888/apis/message/", {
-                        fromUserid: this.res_data["fromUserid"],
-                        toUserid: this.res_data["toUserid"],
-                        ciphertext: this.res_data["message"]
-                      })
-                      .then(response => {
-                        if (response.data["code"] === 1) {
-                          axios
-                            .post("http://localhost:8000/apis/store_message/", {
-                              fromUserid: this.res_data["fromUserid"],
-                              toUserid: this.res_data["toUserid"],
-                              kdf_next: this.res_data["kdf_next"],
-                              EphemeralPub: this.res_data["message"][
-                                "EphemeralPub"
-                              ],
-                              plaintext: this.res_data["plaintext"]
-                            })
-                            .then(response => {
-                              if (response.data["code"] === 1) {
-                                this.message_list_flash();
-                              } else {
-                                this.$notify.error({
-                                  title: "储存消息到本地失败。",
-                                  message: "请重新发送消息。"
-                                  // type: 'success'
-                                });
-                              }
-                            });
-                        } else {
-                          this.$notify.error({
-                            title: "上传消息到服务器失败。",
-                            message: "请重新发送消息。"
-                            // type: 'success'
+    // 异步函数需要添加 async 来使用 await
+    async send_message() {
+      await this.message_get();
+      axios
+        .get("http://localhost:8000/apis/friends_list/" + this.current_obj_id)
+        .then(response => {
+          if (response.data["code"] === 1) {
+            // console.log(this.msg_input),
+            axios
+              .post("http://localhost:8000/apis/encrypt_message/", {
+                plaintext: this.msg_input,
+                toUserid: this.current_obj_id
+              })
+              .then(response => {
+                if (response.data["code"] === 1) {
+                  this.res_data = response.data["data"];
+                  axios
+                    .post("http://127.0.0.1:8888/apis/message/", {
+                      fromUserid: this.res_data["fromUserid"],
+                      toUserid: this.res_data["toUserid"],
+                      ciphertext: this.res_data["message"]
+                    })
+                    .then(response => {
+                      if (response.data["code"] === 1) {
+                        axios
+                          .post("http://localhost:8000/apis/store_message/", {
+                            fromUserid: this.res_data["fromUserid"],
+                            toUserid: this.res_data["toUserid"],
+                            kdf_next: this.res_data["kdf_next"],
+                            EphemeralPub: this.res_data["message"][
+                              "EphemeralPub"
+                            ],
+                            plaintext: this.res_data["plaintext"]
+                          })
+                          .then(response => {
+                            if (response.data["code"] === 1) {
+                              this.message_list_flash();
+                            } else {
+                              this.$notify.error({
+                                title: "储存消息到本地失败。",
+                                message: "请重新发送消息。"
+                                // type: 'success'
+                              });
+                            }
                           });
-                        }
-                      });
-                  } else {
-                    this.$notify.error({
-                      title: "本地加密失败。",
-                      message: "请重新发送消息。"
-                      // type: 'success'
+                      } else {
+                        this.$notify.error({
+                          title: "上传消息到服务器失败。",
+                          message: "请重新发送消息。"
+                          // type: 'success'
+                        });
+                      }
                     });
-                  }
-                  this.msg_input = "";
-                });
-            } else {
-              axios
-                .get("http://127.0.0.1:8888/apis/user/" + id)
-                .then(response => {
-                  if (response.data["code"] === 1) {
-                    var get_data = response.data["data"];
-                    axios.post("http://localhost:8000/apis/store_friend/", {
-                      userid: get_data["userid"],
-                      username: get_data["username"],
-                      remark: "",
-                      status: 1,
-                      IdentityPub: get_data["IdentityPub"],
-                      SignedPub: get_data["SignedPub"],
-                      OneTimePub: get_data["OneTimePub"],
-                      EphemeralPub: get_data["EphemeralPub"]
-                    });
-                  }
-                })
-                .then(response => {
+                } else {
                   this.$notify.error({
-                    title: "已添加好友信息到数据库",
-                    message: "请重新输入。"
+                    title: "本地加密失败。",
+                    message: "请重新发送消息。"
                     // type: 'success'
                   });
+                }
+                this.msg_input = "";
+              });
+          } else {
+            axios
+              .get("http://127.0.0.1:8888/apis/user/" + id)
+              .then(response => {
+                if (response.data["code"] === 1) {
+                  var get_data = response.data["data"];
+                  axios.post("http://localhost:8000/apis/store_friend/", {
+                    userid: get_data["userid"],
+                    username: get_data["username"],
+                    remark: "",
+                    status: 1,
+                    IdentityPub: get_data["IdentityPub"],
+                    SignedPub: get_data["SignedPub"],
+                    OneTimePub: get_data["OneTimePub"],
+                    EphemeralPub: get_data["EphemeralPub"]
+                  });
+                }
+              })
+              .then(response => {
+                this.$notify.error({
+                  title: "已添加好友信息到数据库",
+                  message: "请重新输入。"
+                  // type: 'success'
                 });
-            }
-          })
-      );
+              });
+          }
+        });
     },
     // 只能通过刷新消息列表来完成接收消息了
     message_get() {
@@ -290,9 +290,7 @@ export default {
             .post("http://127.0.0.1:8000/apis/message_parse/", {
               server_data: get_data
             })
-            .then(response => {
-
-            });
+            .then(response => {});
         } else {
           this.$notify.error({
             title: "获取服务器记录失败。",

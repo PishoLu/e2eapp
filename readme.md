@@ -36,12 +36,14 @@ Django 关闭 Debug 模式后可能会找不到静态文件
 
 ## 服务器接口
 
-| 接口名  | 方法 | 字段                   | 返回值                               | 备注           |
-| ------- | ---- | ---------------------- | ------------------------------------ | -------------- |
-| user/pk | GET  | 无                     | 返回该 userid 下的可被他人访问的信息 | 返回是否为好友 |
-| user/pk | POST | password               | 对比 password 返回结果               | 登录接口       |
-| user/   | POST | username,password,pubs | 注册结果                             | 注册接口       |
-| user/pk | PUT  | username,pubs          | 更新 username，pub                   |                |
+| 接口名         | 方法 | 字段                           | 返回值                               | 备注           |
+| -------------- | ---- | ------------------------------ | ------------------------------------ | -------------- |
+| user/pk        | GET  | 无                             | 返回该 userid 下的可被他人访问的信息 | 返回是否为好友 |
+| user/pk        | POST | password                       | 对比 password 返回结果               | 登录接口       |
+| user/          | POST | username,password,pubs         | 注册结果                             | 注册接口       |
+| user/pk        | PUT  | username,pubs                  | 更新 username，pub                   |                |
+| message_detail | POST | fromUserid,toUserid,ciphertext | 是否保存成功                         | 消息上传接口   |
+| message_detail | GET  | logining_userid                | 查询是否有已登录用户的消息暂存记录   | 获取自己的消息 |
 
 ## 前端逻辑
 
@@ -65,4 +67,22 @@ Django 关闭 Debug 模式后可能会找不到静态文件
 
 好友：
 
-- 获取好友列表：服务器/apis/user
+- 在本地获取好友列表。
+- 添加好友通过服务器搜索结果并添加好友的公钥到数据库。
+
+发送消息：
+
+- 查询是否有该好友的公钥信息
+- 通过 encrypt_message 接口加密信息
+- 上传到服务器
+- 保存到本地数据库
+
+接收消息：
+
+- 从服务器获取自己的暂存信息
+- 给后端解析分析是否是好友
+- 前端决定是否添加为好友
+- 解密消息返回
+- 保存到数据库
+
+
