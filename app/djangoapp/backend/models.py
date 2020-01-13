@@ -50,8 +50,8 @@ class friends(models.Model):
     whosfriend = models.IntegerField()
     username = models.CharField(max_length=20, null=True)
     remark = models.CharField(max_length=20, null=True)
-    status = models.IntegerField(default=1)  # 状态码，可以拉黑名单用
-    # 好友列表使用的是根据消息进程转换的公钥，EphemeralPub是随时会变的。
+    # 状态码，可以拉黑名单用，为0表示并不是好友，但是对方向自己发送过消息。
+    status = models.IntegerField(default=1)
     IdentityPub = models.CharField(max_length=64, null=True)
     SignedPub = models.CharField(max_length=64, null=True)
     OneTimePub = models.CharField(max_length=64, null=True)

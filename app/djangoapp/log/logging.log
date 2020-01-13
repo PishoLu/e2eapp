@@ -771,3 +771,10 @@ TypeError: Object of type messages is not JSON serializable
 2020-00-03 19:00:04-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
 2020-00-03 19:00:04-__init__-DEBUG-Using selector: SelectSelector
 2020-01-03 19:01:08-__init__-DEBUG-Using selector: SelectSelector
+2020-34-13 15:34:51-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-34-13 15:34:51-__init__-DEBUG-Using selector: SelectSelector
+2020-35-13 15:35:13-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-35-13 15:35:13-__init__-DEBUG-Using selector: SelectSelector
+2020-44-13 15:44:28-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-44-13 15:44:28-__init__-DEBUG-Using selector: SelectSelector
+2020-08-13 16:08:43-log_response-WARNING-Not Found: /apis/frilends_list/

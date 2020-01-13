@@ -79,8 +79,37 @@
                 :key="index"
               >
                 <el-menu-item
+                  v-if="item.status"
                   class="friend-item"
                   @click="excheng_obj(item.userid)"
+                  >{{ item.username }}
+                </el-menu-item>
+                <el-menu-item
+                  v-else-if="
+                    not_firend_active === item.userid && item.status === 0
+                  "
+                  class="friend-item"
+                  @click="show_friend_option(item.userid)"
+                >
+                  <el-button
+                    type="success"
+                    icon="el-icon-check"
+                    class="not_friend"
+                    circle
+                    @click="update_friend(item.userid)"
+                  ></el-button>
+                  <el-button
+                    type="danger"
+                    icon="el-icon-delete"
+                    class="not_friend"
+                    circle
+                    @click="delete_friend(item.userid)"
+                  ></el-button>
+                </el-menu-item>
+                <el-menu-item
+                  v-else-if="not_friend_active !== item.userid"
+                  class="friend-item"
+                  @click="show_friend_option(item.userid)"
                   >{{ item.username }}
                 </el-menu-item>
               </el-menu-item-group>
@@ -164,13 +193,37 @@ export default {
       msg_input: "",
       dialogFormVisible: false,
       // 好友列表
-      friends_list: [],
+      friends_list: [
+        {
+          id: 8,
+          userid: 18138754,
+          username: "usertest_not_friend",
+          remark: "",
+          status: 0
+        },
+        {
+          id: 8,
+          userid: 18138755,
+          username: "usertest_not_friend2",
+          remark: "",
+          status: 0
+        },
+        {
+          id: 8,
+          userid: 18138754,
+          username: "usertest1",
+          remark: "",
+          status: 1
+        }
+      ],
       // 搜索结果
       search_result: [],
       current_obj_id: 0,
       is_friend: 0,
       csrftoken: "",
-      res_data: {}
+      res_data: {},
+      not_firend_active: 0,
+      temp_fromUserid: 0
     };
   },
   created: function() {
@@ -286,11 +339,42 @@ export default {
       axios.get("http://127.0.0.1:8888/apis/message/").then(response => {
         if (response.data["code"] === 1) {
           get_data = response.data["data"];
-          axios
-            .post("http://127.0.0.1:8000/apis/message_parse/", {
-              server_data: get_data
-            })
-            .then(response => {});
+          for (var i = 0; i < get_data.length; i++) {
+            // 返回的列表中的数据的某一个数据包的来源
+            this.temp_fromUserid = get_data[i][fromUserid];
+            axios
+              .get(
+                "http://localhost:8000/apis/friends_list" + int(temp_fromUserid)
+              )
+              .then(response => {
+                if (response.data["code"] === 1) {
+                  // 说明消息来源是好友
+                } else {
+                  // 消息来源不是好友
+                  // 添加到数据库，但是status为0
+                  axios
+                    .get("http://127.0.0.1:8888/user/" + int(temp_fromUserid))
+                    .then(response => {
+                      if (response.data["code"] === 1) {
+                        // 获取目标服务器信息
+                      } else {
+                        this.$notify.error({
+                          title: "获取服务器记录失败。",
+                          message: "请重新获取。"
+                          // type: 'success'
+                        });
+                      }
+                    });
+                }
+              });
+          }
+          // axios
+          //   .post("http://127.0.0.1:8000/apis/message_parse/", {
+          //     server_data: get_data
+          //   })
+          //   .then(response => {
+
+          //   });
         } else {
           this.$notify.error({
             title: "获取服务器记录失败。",
@@ -304,6 +388,7 @@ export default {
     excheng_obj(id) {
       // console.log(id)
       this.current_obj_id = id;
+      this.not_firend_active = 0;
       this.message_list_flash();
     },
     message_list_flash() {
@@ -389,6 +474,12 @@ export default {
           }
         });
     },
+    show_friend_option(index) {
+      this.not_firend_active = index;
+      this.current_obj_id = 0;
+      console.log(index);
+      // document.getElementById("not_friend");
+    },
     // 对应搜索栏的结果添加好友操作
     add_friend(fri_item) {
       // console.log(fri_item)
@@ -425,6 +516,16 @@ export default {
           }
         });
     }
+  },
+  update_friend(userid) {
+    axios.put("http://localhost:8000/apis/store_friend/", {
+      userid: userid
+    });
+  },
+  delete_friend(userid) {
+    axios.delete("http://localhost:8000/apis/store_friend/", {
+      userid: userid
+    });
   },
   watch: {
     current_obj_id: function(val, newval) {

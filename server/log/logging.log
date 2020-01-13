@@ -176,3 +176,16 @@ Traceback (most recent call last):
   File "D:\Study\School\e2e\server\backend\views.py", line 126, in message_detail
     logining_userid = int(request.COOKIES["logining_userid"])
 KeyError: 'logining_userid'
+2020-28-13 15:28:36-log_response-ERROR-Internal Server Error: /apis/message/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 126, in message_detail
+    logining_userid = int(request.COOKIES["logining_userid"])
+KeyError: 'logining_userid'

@@ -160,9 +160,14 @@ def get_user(request, pk):
 # 保存friend类相关信息
 @csrf_exempt
 def store_friend(request):
-    if request.method == "POST":
+    try:
         post_data = json.loads(request.body)
         logining_userid = int(request.COOKIES["logining_userid"])
+    except:
+        result = {"code": -1, "result": "获取cookie出错"}
+        return JsonResponse(result)
+
+    if request.method == "POST":
         try:
             friends.objects.create(userid=post_data["userid"], username=post_data["username"], whosfriend=logining_userid,
                                    remark=post_data["remark"], status=post_data["status"], IdentityPub=post_data["IdentityPub"],
@@ -171,6 +176,29 @@ def store_friend(request):
             return JsonResponse(result)
         except:
             result = {"code": -1, "result": "添加失败！"}
+            return JsonResponse(result)
+    elif request.method == "PUT":
+        try:
+            temp_friend = friends.objects.get(
+                userid=post_data["userid"], whosfriend=logining_userid)
+            temp_friend.status = 1
+            temp_friend.save()
+            result = {"code": 1, "result": "更新成功！"}
+            return JsonResponse(result)
+
+        except:
+            result = {"code": -1, "result": "更新失败！"}
+            return JsonResponse(result)
+    elif request.method == "DELETE":
+        try:
+            temp_friend = friends.objects.get(
+                userid=post_data["userid"], whosfriend=logining_userid)
+            temp_friend.delete()
+            result = {"code": 1, "result": "删除成功！"}
+            return JsonResponse(result)
+
+        except:
+            result = {"code": -1, "result": "删除失败！"}
             return JsonResponse(result)
     else:
         result = {"code": -1, "result": "请求方式有误!"}
@@ -248,8 +276,10 @@ def decrypt_message(request):
 @csrf_exempt
 def message_parse(request):
     if request.method == "POST":
+        result
         post_data = json.loads(request.body)
-
+        for i in post_data:
+            pass
     else:
         result = {"code": -1, "result": "请求方式有误!"}
         return JsonResponse(result)

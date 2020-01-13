@@ -149,3 +149,9 @@
 }
 
 /* #message_get_button {} */
+.el-button.is-circle {
+  border-radius: 50%;
+  padding: 12px;
+  height: 50px;
+  width: 50px;
+}
