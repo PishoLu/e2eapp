@@ -339,6 +339,7 @@ export default {
       axios.get("http://127.0.0.1:8888/apis/message/").then(response => {
         if (response.data["code"] === 1) {
           get_data = response.data["data"];
+          // 循环解析数据包，判断消息源是否为好友并处理
           for (var i = 0; i < get_data.length; i++) {
             // 返回的列表中的数据的某一个数据包的来源
             this.temp_fromUserid = get_data[i][fromUserid];
@@ -349,6 +350,7 @@ export default {
               .then(response => {
                 if (response.data["code"] === 1) {
                   // 说明消息来源是好友
+                  // 是好友的话就可以直接解密了
                 } else {
                   // 消息来源不是好友
                   // 添加到数据库，但是status为0
@@ -357,6 +359,33 @@ export default {
                     .then(response => {
                       if (response.data["code"] === 1) {
                         // 获取目标服务器信息
+                        var post_data = response.data["data"];
+                        axios
+                          .post("http://localhost:8000/apis/sotre_friend/", {
+                            userid: post_data["userid"],
+                            username: post_data["username"],
+                            remark: "",
+                            status: 0,
+                            IdentityPub: post_data["IdentityPub"],
+                            SignedPub: post_data["SignedPub"],
+                            OneTimePub: post_data["OneTimePub"],
+                            EphemeralPub: post_data["EphemeralPub"]
+                          })
+                          .then(response => {
+                            if (response.data["code"] === 1) {
+                              this.$notify({
+                                title: "待定好友添加成功",
+                                // message: "请重新获取。",
+                                type: "success"
+                              });
+                            } else {
+                              this.$notify.error({
+                                title: "待定好友添加失败。",
+                                message: "请重新获取。"
+                                // type: 'success'
+                              });
+                            }
+                          });
                       } else {
                         this.$notify.error({
                           title: "获取服务器记录失败。",
@@ -367,6 +396,11 @@ export default {
                     });
                 }
               });
+          }
+          // 好友已经都添加了
+          // 这里两个for循环我觉得应该不属于异步。前面for循环能跑完不哦
+          for (var i = 0; i < post_data.length; i++) {
+            // 开始解密，单个数据包传给 decrypt_message
           }
           // axios
           //   .post("http://127.0.0.1:8000/apis/message_parse/", {
@@ -518,14 +552,46 @@ export default {
     }
   },
   update_friend(userid) {
-    axios.put("http://localhost:8000/apis/store_friend/", {
-      userid: userid
-    });
+    axios
+      .put("http://localhost:8000/apis/store_friend/", {
+        userid: userid
+      })
+      .then(response => {
+        if (response.data["code"] === 1) {
+          this.$notify({
+            title: "添加成功！",
+            // message: "请稍后重试"
+            type: "success"
+          });
+        } else {
+          this.$notify.error({
+            title: "添加失败！",
+            message: "请稍后重试。"
+            // type: 'success'
+          });
+        }
+      });
   },
   delete_friend(userid) {
-    axios.delete("http://localhost:8000/apis/store_friend/", {
-      userid: userid
-    });
+    axios
+      .delete("http://localhost:8000/apis/store_friend/", {
+        userid: userid
+      })
+      .then(response => {
+        if (response.data["code"] === 1) {
+          this.$notify({
+            title: "删除成功！",
+            // message: "请稍后重试"
+            type: "success"
+          });
+        } else {
+          this.$notify.error({
+            title: "删除失败！",
+            message: "请稍后重试。"
+            // type: 'success'
+          });
+        }
+      });
   },
   watch: {
     current_obj_id: function(val, newval) {

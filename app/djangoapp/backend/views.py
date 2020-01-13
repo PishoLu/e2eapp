@@ -273,16 +273,17 @@ def decrypt_message(request):
 # 通过 decrypt_message 解密。（不一定）
 # 分析是否是好友，是否之前有过聊天记录。如果有聊天记录就可以通过上次的kdf继续沿用，如果没有记录就让前端重新获取目的好友公钥，
 # 如果不是好友就返回给前端让前端决定是否添加为好友。
-@csrf_exempt
-def message_parse(request):
-    if request.method == "POST":
-        result
-        post_data = json.loads(request.body)
-        for i in post_data:
-            pass
-    else:
-        result = {"code": -1, "result": "请求方式有误!"}
-        return JsonResponse(result)
+# 解析功能交给前端。
+# @csrf_exempt
+# def message_parse(request):
+#     if request.method == "POST":
+#         result
+#         post_data = json.loads(request.body)
+#         for i in post_data:
+#             pass
+#     else:
+#         result = {"code": -1, "result": "请求方式有误!"}
+#         return JsonResponse(result)
 
 
 # 返回加密药效
