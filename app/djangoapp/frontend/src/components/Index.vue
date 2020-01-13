@@ -360,6 +360,7 @@ export default {
                       if (response.data["code"] === 1) {
                         // 获取目标服务器信息
                         var post_data = response.data["data"];
+                        // 保存到好友数据库并设置status为0
                         axios
                           .post("http://localhost:8000/apis/sotre_friend/", {
                             userid: post_data["userid"],
@@ -511,7 +512,7 @@ export default {
     show_friend_option(index) {
       this.not_firend_active = index;
       this.current_obj_id = 0;
-      console.log(index);
+      // console.log(index);
       // document.getElementById("not_friend");
     },
     // 对应搜索栏的结果添加好友操作
