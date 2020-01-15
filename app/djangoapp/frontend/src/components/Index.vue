@@ -94,14 +94,12 @@
                   <el-button
                     type="success"
                     icon="el-icon-check"
-                    class="not_friend"
                     circle
                     @click="update_friend(item.userid)"
                   ></el-button>
                   <el-button
                     type="danger"
                     icon="el-icon-delete"
-                    class="not_friend"
                     circle
                     @click="delete_friend(item.userid)"
                   ></el-button>
@@ -228,6 +226,8 @@ export default {
   },
   created: function() {
     // this.csrftoken=getCookie("csrftoken")
+    this.$cookies.set("logining_userid", "82119217");
+
     this.logining_userid = this.$cookies.get("logining_userid");
     // console.log(this.logining_userid)
     if (this.logining_userid) {
@@ -358,7 +358,7 @@ export default {
                     .get("http://127.0.0.1:8888/user/" + int(temp_fromUserid))
                     .then(response => {
                       if (response.data["code"] === 1) {
-                        // 获取目标服务器信息
+                        // 获取目标服务器信息9-***
                         var post_data = response.data["data"];
                         // 保存到好友数据库并设置status为0
                         axios
@@ -399,7 +399,7 @@ export default {
               });
           }
           // 好友已经都添加了
-          // 这里两个for循环我觉得应该不属于异步。前面for循环能跑完不哦
+          // 这里两个for循环应该是可以错开的。
           for (var i = 0; i < post_data.length; i++) {
             // 开始解密，单个数据包传给 decrypt_message
           }
