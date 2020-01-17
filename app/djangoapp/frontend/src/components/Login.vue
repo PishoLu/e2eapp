@@ -131,7 +131,7 @@
         this.FormReg.password = ''
       },
       Login() {
-        axios.get("http://localhost:8000/apis/get_user/" + this.FormLogin.userid).then((response) => {
+        axios.get("http://localhost:8000/apis/getUser/" + this.FormLogin.userid).then((response) => {
           // console.log(response.data["code"]);
           if (response.data["code"] === 1) {
             var temp_data=response.data["data"][0]
@@ -166,7 +166,7 @@
       updated_pri() {
         this.dialogFormVisible = false
         // 先检查私钥的格式是否有误
-        axios.post("http://localhost:8000/apis/check_pri/", {
+        axios.post("http://localhost:8000/apis/checkPri/", {
           "IdentityPri": this.FormPrikey.IdentityPri,
           "SignedPri": this.FormPrikey.SignedPri,
           "OneTimePri": this.FormPrikey.OneTimePri,
@@ -182,7 +182,7 @@
             axios.get("http://127.0.0.1:8888/apis/user/" + this.FormLogin.userid).then((response) => {
               if (response.data["code"] === 1) {
                 const username_t = response.data["data"]["username"];
-                axios.post("http://localhost:8000/apis/store_user", {
+                axios.post("http://localhost:8000/apis/storeUser", {
                   userid: this.FormLogin.userid, username: username_t,
                   IdentityPub: this.keys["IdentityPub"], SignedPub: this.keys["SignedPub"],
                   OneTimePub: this.keys["OneTimePub"], EphemeralPub: this.keys["EphemeralPub"],
@@ -224,7 +224,7 @@
         })
       },
       Register() {
-        axios.post("http://localhost:8000/apis/create_new_keyspair/", {
+        axios.post("http://localhost:8000/apis/createNewKeyspair/", {
           headers: {
             // "X-CSRFToken":this.csrftoken,
           }
@@ -261,7 +261,7 @@
                 type: 'success',
                 duration: 0
               });
-              axios.post("http://localhost:8000/apis/store_user/", {
+              axios.post("http://localhost:8000/apis/storeUser/", {
                 "userid": response.data["data"],
                 "username": this.FormReg.username,
                 "IdentityPub": this.FormReg.IdentityPub,

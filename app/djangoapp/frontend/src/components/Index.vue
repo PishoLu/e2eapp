@@ -63,7 +63,7 @@
           clearable
         ></el-input>
       </div>
-      <div id="friends_list">
+      <div id="friendsList">
         <el-row class="tac">
           <el-col :span="24">
             <el-menu
@@ -75,7 +75,7 @@
               active-text-color="#ffd04b"
             >
               <el-menu-item-group
-                v-for="(item, index) in friends_list"
+                v-for="(item, index) in friendsList"
                 :key="index"
               >
                 <el-menu-item
@@ -191,7 +191,7 @@ export default {
       msg_input: "",
       dialogFormVisible: false,
       // 好友列表
-      friends_list: [
+      friendsList: [
         {
           id: 8,
           userid: 18138754,
@@ -226,7 +226,7 @@ export default {
   },
   created: function() {
     // this.csrftoken=getCookie("csrftoken")
-    this.$cookies.set("logining_userid", "82119217");
+    // this.$cookies.set("logining_userid", "82119217");
 
     this.logining_userid = this.$cookies.get("logining_userid");
     // console.log(this.logining_userid)
@@ -234,7 +234,7 @@ export default {
       // 获取好友列表
       // 根据好友列表探查好友的存活
       // 或许可以获取所有的消息记录
-      this.friends_list_flash();
+      this.friendsList_flash();
     } else {
       this.$router.push("/login");
     }
@@ -247,12 +247,12 @@ export default {
     async send_message() {
       await this.message_get();
       axios
-        .get("http://localhost:8000/apis/friends_list/" + this.current_obj_id)
+        .get("http://localhost:8000/apis/friendsList/" + this.current_obj_id)
         .then(response => {
           if (response.data["code"] === 1) {
             // console.log(this.msg_input),
             axios
-              .post("http://localhost:8000/apis/encrypt_message/", {
+              .post("http://localhost:8000/apis/encryptMessage/", {
                 plaintext: this.msg_input,
                 toUserid: this.current_obj_id
               })
@@ -268,7 +268,7 @@ export default {
                     .then(response => {
                       if (response.data["code"] === 1) {
                         axios
-                          .post("http://localhost:8000/apis/store_message/", {
+                          .post("http://localhost:8000/apis/storeMessage/", {
                             fromUserid: this.res_data["fromUserid"],
                             toUserid: this.res_data["toUserid"],
                             kdf_next: this.res_data["kdf_next"],
@@ -311,7 +311,7 @@ export default {
               .then(response => {
                 if (response.data["code"] === 1) {
                   var get_data = response.data["data"];
-                  axios.post("http://localhost:8000/apis/store_friend/", {
+                  axios.post("http://localhost:8000/apis/storeFriend/", {
                     userid: get_data["userid"],
                     username: get_data["username"],
                     remark: "",
@@ -345,7 +345,7 @@ export default {
             this.temp_fromUserid = get_data[i][fromUserid];
             axios
               .get(
-                "http://localhost:8000/apis/friends_list" + int(temp_fromUserid)
+                "http://localhost:8000/apis/friendsList" + int(temp_fromUserid)
               )
               .then(response => {
                 if (response.data["code"] === 1) {
@@ -401,7 +401,7 @@ export default {
           // 好友已经都添加了
           // 这里两个for循环应该是可以错开的。
           for (var i = 0; i < post_data.length; i++) {
-            // 开始解密，单个数据包传给 decrypt_message
+            // 开始解密，单个数据包传给 decryptMessage
           }
           // axios
           //   .post("http://127.0.0.1:8000/apis/message_parse/", {
@@ -429,7 +429,7 @@ export default {
     message_list_flash() {
       axios
         .get(
-          "http://localhost:8000/apis/filter_messages/" + this.current_obj_id,
+          "http://localhost:8000/apis/filterMessages/" + this.current_obj_id,
           {
             headers: {
               // "logining_userid":this.logining_userid
@@ -468,10 +468,10 @@ export default {
             } else {
               this.is_friend = 0;
             }
-            for (var i = 0; i < this.friends_list.length; i++) {
+            for (var i = 0; i < this.friendsList.length; i++) {
               // console.log(this.search_result)
               if (
-                this.friends_list[i]["userid"] ===
+                this.friendsList[i]["userid"] ===
                 this.search_result[0]["userid"]
               ) {
                 this.is_friend = 1;
@@ -489,9 +489,9 @@ export default {
         });
       this.dialogFormVisible = true;
     },
-    friends_list_flash() {
+    friendsList_flash() {
       axios
-        .get("http://localhost:8000/apis/friends_list/", {
+        .get("http://localhost:8000/apis/friendsList/", {
           headers: {
             // "logining_userid":this.logining_userid
           }
@@ -499,7 +499,7 @@ export default {
         .then(response => {
           if (response.data["code"] === 1) {
             // console.log(response.data)
-            this.friends_list = response.data["data"];
+            this.friendsList = response.data["data"];
           } else {
             this.$notify.error({
               title: "获取好友列表失败，或者好友列表为空。",
@@ -519,7 +519,7 @@ export default {
     add_friend(fri_item) {
       // console.log(fri_item)
       axios
-        .post("http://localhost:8000/apis/store_friend/", {
+        .post("http://localhost:8000/apis/storeFriend/", {
           userid: fri_item.userid,
           username: fri_item.username,
           remark: "",
@@ -540,7 +540,7 @@ export default {
               message: "已将好友添加到列表。",
               type: "success"
             });
-            this.friends_list_flash();
+            this.friendsList_flash();
           } else {
             this.dialogFormVisible = false;
             this.$notify.error({
@@ -554,7 +554,7 @@ export default {
   },
   update_friend(userid) {
     axios
-      .put("http://localhost:8000/apis/store_friend/", {
+      .put("http://localhost:8000/apis/storeFriend/", {
         userid: userid
       })
       .then(response => {
@@ -575,7 +575,7 @@ export default {
   },
   delete_friend(userid) {
     axios
-      .delete("http://localhost:8000/apis/store_friend/", {
+      .delete("http://localhost:8000/apis/storeFriend/", {
         userid: userid
       })
       .then(response => {

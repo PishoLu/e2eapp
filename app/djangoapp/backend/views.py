@@ -38,17 +38,9 @@ class Logger():
 logger = Logger()
 
 
-# 开始连接，将连接对象存到列表中，如果没有两个kdf就开始X3DH获取到kdf初始值。
-def start_X3DH(request):
-    if request.method == "GET":
-        pass
-    else:
-        pass
-
-
 # 保存发送和接收的消息
 @csrf_exempt
-def store_message(request):
+def storeMessage(request):
     if request.method == "POST":
         post_data = json.loads(request.body)
         try:
@@ -66,7 +58,7 @@ def store_message(request):
 
 # 从数据库过滤消息
 @csrf_exempt
-def filter_messages(request, pk):
+def filterMessages(request, pk):
     try:
         logining_userid = int(request.COOKIES["logining_userid"])
         # 这么写不一定能行，行了
@@ -98,7 +90,7 @@ def filter_messages(request, pk):
 
 # 保存user类相关信息
 @csrf_exempt
-def store_user(request):
+def storeUser(request):
     if request.method == "POST":
         post_data = json.loads(request.body)
         # print(post_data)
@@ -119,7 +111,7 @@ def store_user(request):
 
 
 @csrf_exempt
-def get_user(request, pk):
+def getUser(request, pk):
     try:
         logining_userid = request.COOKIES["logining_userid"]
         user_temp = []
@@ -159,7 +151,7 @@ def get_user(request, pk):
 
 # 保存friend类相关信息
 @csrf_exempt
-def store_friend(request):
+def storeFriend(request):
     try:
         post_data = json.loads(request.body)
         logining_userid = int(request.COOKIES["logining_userid"])
@@ -207,7 +199,7 @@ def store_friend(request):
 
 # 获取好友列表
 @csrf_exempt
-def friends_list(request):
+def friendsList(request):
     try:
         logining_userid = int(request.COOKIES["logining_userid"])
         friends_temp = []
@@ -294,7 +286,7 @@ def decrypt_message(request):
 # DH4 = DH (IPK-B 私钥，OPK-A 公钥)
 # 作为发送方的DH初始化方法
 @csrf_exempt
-def encrypt_message(request):
+def encryptMessage(request):
     if request.method == "POST":
         post_data = json.loads(request.body)
         logining_userid = int(request.COOKIES["logining_userid"])
@@ -433,7 +425,7 @@ def encrypt_message(request):
 # 这里的登录是前端将登录成功的userid发送过来完成密钥初始化的。
 # 登录是先账号密码服务器验证登录，然后后端生成新的密钥对返回给前端，前端再将服务器上的密钥对更新完成登录。
 @csrf_exempt
-def create_new_keyspair(request):
+def createNewKeyspair(request):
     if request.method == "GET":
         pass
     else:
@@ -496,7 +488,7 @@ def gettoken(request):
 
 
 @csrf_exempt
-def check_pri(request):
+def checkPri(request):
     if request.method == "POST":
         post_data = json.loads(request.body)
         post_data_temp = post_data.copy()

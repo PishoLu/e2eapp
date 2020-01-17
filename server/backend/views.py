@@ -107,7 +107,7 @@ def user_detail(request, pk):
 
 # 获取已登录用户的消息（获取后删除服务器数据）
 @csrf_exempt
-def message_detail(request):
+def messageDetail(request):
     # 上传消息
     if request.method == "POST":
         try:

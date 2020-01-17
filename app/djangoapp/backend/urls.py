@@ -8,20 +8,20 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name="index.html")),
     path("gettoken/", views.gettoken),
     # message操作
-    path("store_message/", views.store_message),
-    path("filter_messages/<int:pk>", views.filter_messages),
-    path("message_parse/", views.message_parse),
+    path("storeMessage/", views.storeMessage),
+    path("filterMessages/<int:pk>", views.filterMessages),
+    # path("message_parse/", views.message_parse),
     # user操作
-    path("store_user/", views.store_user),
-    path("get_user/<int:pk>", views.get_user),
+    path("storeUser/", views.storeUser),
+    path("getUser/<int:pk>", views.getUser),
     # friends操作
-    path("store_friend/", views.store_friend),
-    path("friends_list/", views.friends_list),
-    path("friends_list/<int:pk>", views.friend_detail),
+    path("storeFriend/", views.storeFriend),
+    path("friendsList/", views.friendsList),
+    path("friendsList/<int:pk>", views.friend_detail),
     # 获取三对新的密钥
-    path('create_new_keyspair/', views.create_new_keyspair),
+    path('createNewKeyspair/', views.createNewKeyspair),
     # 检测私钥格式是否正确
-    path("check_pri/", views.check_pri),
-    path("encrypt_message/", views.encrypt_message),
-    path("decrypt_message/", views.decrypt_message)
+    path("checkPri/", views.checkPri),
+    path("encryptMessage/", views.encryptMessage),
+    path("decryptMessage/", views.decryptMessage)
 ]
