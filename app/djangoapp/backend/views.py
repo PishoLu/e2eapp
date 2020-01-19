@@ -60,14 +60,14 @@ def storeMessage(request):
 @csrf_exempt
 def filterMessages(request, pk):
     try:
-        logining_userid = int(request.COOKIES["logining_userid"])
+        loginingUserid = int(request.COOKIES["loginingUserid"])
         # 这么写不一定能行，行了
         messages_temp = list(messages.objects.filter(
-            (Q(fromUserid=pk) and Q(toUserid=logining_userid)) | (Q(toUserid=pk) and Q(fromUserid=logining_userid))).order_by("date"))
+            (Q(fromUserid=pk) and Q(toUserid=loginingUserid)) | (Q(toUserid=pk) and Q(fromUserid=loginingUserid))).order_by("date"))
         for i in range(len(messages_temp)):
             messages_temp[i] = messages_temp[i].to_json()
         for i in messages_temp:
-            if i["fromUserid"] == logining_userid:
+            if i["fromUserid"] == loginingUserid:
                 i["fromUserid"] = 1
 
     except messages.DoesNotExist:
@@ -113,14 +113,14 @@ def storeUser(request):
 @csrf_exempt
 def getUser(request, pk):
     try:
-        logining_userid = request.COOKIES["logining_userid"]
+        loginingUserid = request.COOKIES["loginingUserid"]
         user_temp = []
         user_temp_t = user.objects.filter(userid=pk)
         for i in user_temp_t:
             user_temp_json = i.to_json()
             # 如果是含有私钥的信息只能由已登录的用户查看
             # is有点问题
-            if str(logining_userid) != str(user_temp_json["userid"]):
+            if str(loginingUserid) != str(user_temp_json["userid"]):
                 user_temp_json["IdentityPri"] = ""
                 user_temp_json["SignedPri"] = ""
                 user_temp_json["OneTimePri"] = ""
@@ -154,14 +154,14 @@ def getUser(request, pk):
 def storeFriend(request):
     try:
         post_data = json.loads(request.body)
-        logining_userid = int(request.COOKIES["logining_userid"])
+        loginingUserid = int(request.COOKIES["loginingUserid"])
     except:
         result = {"code": -1, "result": "获取cookie出错"}
         return JsonResponse(result)
 
     if request.method == "POST":
         try:
-            friends.objects.create(userid=post_data["userid"], username=post_data["username"], whosfriend=logining_userid,
+            friends.objects.create(userid=post_data["userid"], username=post_data["username"], whosfriend=loginingUserid,
                                    remark=post_data["remark"], status=post_data["status"], IdentityPub=post_data["IdentityPub"],
                                    SignedPub=post_data["SignedPub"], OneTimePub=post_data["OneTimePub"], EphemeralPub=post_data["EphemeralPub"])
             result = {"code": 1, "result": "添加成功！"}
@@ -172,7 +172,7 @@ def storeFriend(request):
     elif request.method == "PUT":
         try:
             temp_friend = friends.objects.get(
-                userid=post_data["userid"], whosfriend=logining_userid)
+                userid=post_data["userid"], whosfriend=loginingUserid)
             temp_friend.status = 1
             temp_friend.save()
             result = {"code": 1, "result": "更新成功！"}
@@ -184,7 +184,7 @@ def storeFriend(request):
     elif request.method == "DELETE":
         try:
             temp_friend = friends.objects.get(
-                userid=post_data["userid"], whosfriend=logining_userid)
+                userid=post_data["userid"], whosfriend=loginingUserid)
             temp_friend.delete()
             result = {"code": 1, "result": "删除成功！"}
             return JsonResponse(result)
@@ -201,10 +201,10 @@ def storeFriend(request):
 @csrf_exempt
 def friendsList(request):
     try:
-        logining_userid = int(request.COOKIES["logining_userid"])
+        loginingUserid = int(request.COOKIES["loginingUserid"])
         friends_temp = []
         friends_temp_t = friends.objects.filter(
-            whosfriend=logining_userid)
+            whosfriend=loginingUserid)
         # print(friends_temp_t)
         for i in friends_temp_t:
             friends_temp.append(i.to_json())
@@ -228,9 +228,9 @@ def friendsList(request):
 @csrf_exempt
 def friend_detail(request, pk):
     try:
-        logining_userid = int(request.COOKIES["logining_userid"])
+        loginingUserid = int(request.COOKIES["loginingUserid"])
         friends_temp = friends.objects.get(
-            whosfriend=logining_userid, userid=pk).to_json()
+            whosfriend=loginingUserid, userid=pk).to_json()
     except friends.DoesNotExist:
         result = {"code": -1, "result": "该用户不存在"}
         return JsonResponse(result)
@@ -251,7 +251,7 @@ def friend_detail(request, pk):
 # 参数：对方的ID，对方发来的消息
 # 需要分析是否是第一次接收通话
 @csrf_exempt
-def decrypt_message(request):
+def decryptMessage(request):
     if request.method == "POST":
         post_data = json.loads(request.body)
 
@@ -289,9 +289,10 @@ def decrypt_message(request):
 def encryptMessage(request):
     if request.method == "POST":
         post_data = json.loads(request.body)
-        logining_userid = int(request.COOKIES["logining_userid"])
-        # print(logining_userid)
-        usertemp = user.objects.get(userid=logining_userid).to_json()
+        # print(post_data["plaintext"])
+        loginingUserid = int(request.COOKIES["loginingUserid"])
+        # print(loginingUserid)
+        usertemp = user.objects.get(userid=loginingUserid).to_json()
 
         if(usertemp):
             usertemp["IdentityPri"] = X25519PrivateKey.from_private_bytes(
@@ -304,7 +305,7 @@ def encryptMessage(request):
                 binascii.unhexlify(usertemp["EphemeralPri"].encode("unicode_escape")))
 
         user_send_to = friends.objects.get(
-            userid=post_data["toUserid"], whosfriend=logining_userid).to_json()
+            userid=post_data["toUserid"], whosfriend=loginingUserid).to_json()
         if(user_send_to):
             user_send_to["IdentityPub"] = X25519PublicKey.from_public_bytes(
                 binascii.unhexlify(user_send_to["IdentityPub"].encode("unicode_escape")))
@@ -319,19 +320,25 @@ def encryptMessage(request):
         kdf_in = None
         salt = None
         try:
-            last_messages_to = list(messages.objects.filter(
-                fromUserid=logining_userid, toUserid=post_data["toUserid"]))
+            last_messages_to = messages.objects.filter(
+                fromUserid=loginingUserid, toUserid=post_data["toUserid"]).order_by("-date")
             # 获取发给对象的所有消息的最后一个
+            # print(len(last_messages_to))
             if(len(last_messages_to)):
-                last_messages_to = last_messages_to[-1].to_json()
+                last_messages_to = last_messages_to[0].to_json()
+                last_messages_to["EphemeralPub"] = X25519PublicKey.from_public_bytes(
+                    binascii.unhexlify(last_messages_to["EphemeralPub"].encode("unicode_escape")))
             else:
                 # 没有向目标发送过消息
                 never_send = 1
             last_messages_from = messages.objects.filter(
-                toUserid=logining_userid, fromUserid=post_data["toUserid"])
+                toUserid=loginingUserid, fromUserid=post_data["toUserid"]).order_by("-date")
             # 获取对象回复的所有消息的最后一个
+            print(last_messages_from)
             if(len(last_messages_from)):
-                last_messages_from = last_messages_from[-1].to_json()
+                last_messages_from = last_messages_from[0].to_json()
+                last_messages_from["EphemeralPub"] = X25519PublicKey.from_public_bytes(
+                    binascii.unhexlify(last_messages_from["EphemeralPub"].encode("unicode_escape")))
             else:
                 # 目标没有向我发送过消息
                 never_receive = 1
@@ -379,7 +386,7 @@ def encryptMessage(request):
         ct = chacha.encrypt(nonce, post_data["plaintext"].encode("utf-8"), aad)
         pt = chacha.decrypt(nonce, ct, aad)
         result_data = {
-            "fromUserid": logining_userid,
+            "fromUserid": loginingUserid,
             "toUserid": post_data["toUserid"],
             "kdf_next": binascii.hexlify(kdf_out[:32]).decode("unicode_escape"),
             "message": {
@@ -492,31 +499,32 @@ def checkPri(request):
     if request.method == "POST":
         post_data = json.loads(request.body)
         post_data_temp = post_data.copy()
-        try:
-            post_data_temp["IdentityPri"] = X25519PrivateKey.from_private_bytes(
-                binascii.unhexlify(post_data["IdentityPri"].encode("unicode_escape")))
-            post_data_temp["SignedPri"] = X25519PrivateKey.from_private_bytes(
-                binascii.unhexlify(post_data["SignedPri"].encode("unicode_escape")))
-            post_data_temp["OneTimePri"] = X25519PrivateKey.from_private_bytes(
-                binascii.unhexlify(post_data["OneTimePri"].encode("unicode_escape")))
-            post_data_temp["EphemeralPri"] = X25519PrivateKey.from_private_bytes(
-                binascii.unhexlify(post_data["EphemeralPri"].encode("unicode_escape")))
+        post_data_temp2 = post_data.copy()
+        # try:
+        post_data_temp["IdentityPri"] = X25519PrivateKey.from_private_bytes(
+            binascii.unhexlify(post_data["IdentityPri"].encode("unicode_escape")))
+        post_data_temp["SignedPri"] = X25519PrivateKey.from_private_bytes(
+            binascii.unhexlify(post_data["SignedPri"].encode("unicode_escape")))
+        post_data_temp["OneTimePri"] = X25519PrivateKey.from_private_bytes(
+            binascii.unhexlify(post_data["OneTimePri"].encode("unicode_escape")))
+        post_data_temp["EphemeralPri"] = X25519PrivateKey.from_private_bytes(
+            binascii.unhexlify(post_data["EphemeralPri"].encode("unicode_escape")))
 
-            post_data["IdentityPub"] = binascii.hexlify(post_data_temp["IdentityPri"].public_key().public_bytes(
-                encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape")
-            post_data["SignedPub"] = binascii.hexlify(post_data_temp["SignedPri"].public_key().public_bytes(
-                encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape")
-            post_data["OneTimePub"] = binascii.hexlify(post_data_temp["OneTimePri"].public_key().public_bytes(
-                encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape")
-            post_data["EphemeralPub"] = binascii.hexlify(post_data_temp["EphemeralPub"].public_key().public_bytes(
-                encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape")
-            # print(post_data)
-            # print(post_data_temp)
-            result = {"code": 1, "data": post_data, "result": "私钥格式正常！"}
-            return JsonResponse(result)
-        except:
-            result = {"code": -1, "result": "私钥格式有误！"}
-            return JsonResponse(result)
+        post_data_temp2["IdentityPub"] = binascii.hexlify(post_data_temp["IdentityPri"].public_key().public_bytes(
+            encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape")
+        post_data_temp2["SignedPub"] = binascii.hexlify(post_data_temp["SignedPri"].public_key().public_bytes(
+            encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape")
+        post_data_temp2["OneTimePub"] = binascii.hexlify(post_data_temp["OneTimePri"].public_key().public_bytes(
+            encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape")
+        post_data_temp2["EphemeralPub"] = binascii.hexlify(post_data_temp["EphemeralPri"].public_key().public_bytes(
+            encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape")
+        # print(post_data)
+        # print(post_data_temp)
+        result = {"code": 1, "data": post_data_temp2, "result": "私钥格式正常！"}
+        return JsonResponse(result)
+        # except:
+        #     result = {"code": -1, "result": "私钥格式有误！"}
+        #     return JsonResponse(result)
     else:
         result = {"code": -1, "result": "请求方式有误!"}
         return JsonResponse(result)

@@ -65,6 +65,7 @@
   padding: 10px;
   overflow-y: scroll;
   overflow-x: hidden;
+  background-color: rgb(250, 250, 250);
 }
 
 .show_message_date {
@@ -122,14 +123,21 @@
   position: relative;
   margin: 5px;
   padding: 5px;
-
+  background-color: rgb(245, 245, 245);
 }
 
 #textarea_box {
   width: 100%;
-  height: 80%;
+  height: 100%;
   resize: none;
   position: relative;
+  background-color: rgb(245, 245, 245);
+
+
+}
+
+#textarea_box:focus {
+  background-color: rgb(255, 255, 255);
 }
 
 #submit_button {
@@ -156,3 +164,7 @@
   width: 50px;
 }
 
+.textarea_form {
+  height: 100%;
+  width: 100%;
+}

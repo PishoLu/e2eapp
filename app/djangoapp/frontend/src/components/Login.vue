@@ -1,327 +1,473 @@
 <template>
   <div class="login-container">
-    <el-dialog title="没有私钥信息，请输入私钥信息！" :visible.sync="dialogFormVisible">
-      <el-form :model="FormPrikey">
+    <el-dialog
+      title="没有私钥信息，请输入私钥信息！"
+      :visible.sync="dialogFormVisible"
+    >
+      <el-form :model="formPrikey">
         <el-form-item label="IdentityPri">
-          <el-input v-model="FormPrikey.IdentityPri" autocomplete="off" required="required"/>
+          <el-input
+            v-model="formPrikey.IdentityPri"
+            autocomplete="off"
+            required="required"
+          />
         </el-form-item>
         <el-form-item label="SignedPri">
-          <el-input v-model="FormPrikey.SignedPri" autocomplete="off" required="required"/>
+          <el-input
+            v-model="formPrikey.SignedPri"
+            autocomplete="off"
+            required="required"
+          />
         </el-form-item>
         <el-form-item label="OneTimePri">
-          <el-input v-model="FormPrikey.OneTimePri" autocomplete="off" required="required"/>
+          <el-input
+            v-model="formPrikey.OneTimePri"
+            autocomplete="off"
+            required="required"
+          />
         </el-form-item>
         <el-form-item label="EphemeralPri">
-          <el-input v-model="FormPrikey.EphemeralPri" autocomplete="off" required="required"/>
+          <el-input
+            v-model="formPrikey.EphemeralPri"
+            autocomplete="off"
+            required="required"
+          />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="updated_pri()">确 定</el-button>
+        <el-button type="primary" @click="updatedPri()">确 定</el-button>
       </div>
     </el-dialog>
-    <el-form :model="FormLogin" status-icon ref="ruleForm2" label-position="left" label-width="0px"
-             class="demo-ruleForm login-page" v-if="!isreg">
-      <el-button type="primary" class="login-button-left" @click.native="login">登录</el-button>
-      <el-button type="primary" class="login-button-right" @click.native="regis">注册</el-button>
+    <el-form
+      :model="formLogin"
+      :rules="formLoginRule"
+      ref="formLogin"
+      status-icon
+      label-position="left"
+      label-width="0px"
+      class="demo-ruleForm login-page"
+      v-if="!isreg"
+    >
+      <el-button
+        type="primary"
+        class="login-button-left"
+        @click.native="changeLogin()"
+        >登录
+      </el-button>
+      <el-button
+        type="primary"
+        class="login-button-right"
+        @click.native="changeRegis()"
+        >注册
+      </el-button>
       <el-form-item prop="userid">
-        <el-input type="text" v-model="FormLogin.userid" auto-complete="off" placeholder="请使用注册成功的ID登录"
-                  required="required"/>
+        <el-input
+          type="text"
+          v-model="formLogin.userid"
+          auto-complete="off"
+          placeholder="请使用注册成功的ID登录"
+          required="required"
+        />
       </el-form-item>
       <el-form-item prop="password">
-        <el-input type="password" v-model="FormLogin.password" auto-complete="off" placeholder="密码"
-                  required="required"/>
+        <el-input
+          type="password"
+          v-model="formLogin.password"
+          auto-complete="off"
+          placeholder="密码"
+          required="required"
+        />
       </el-form-item>
       <el-form-item style="width:100%;">
-        <el-button type="primary" style="width:100%;" @click="Login">登录</el-button>
+        <el-button
+          type="primary"
+          style="width:100%;"
+          @click="Login('formLogin')"
+          >登录
+        </el-button>
       </el-form-item>
     </el-form>
-    <el-form :model="FormReg" status-icon ref="ruleForm2" label-position="left" label-width="0px"
-             class="demo-ruleForm login-page" v-else>
-      <el-button type="primary" class="login-button-left" @click="login">登录</el-button>
-      <el-button type="primary" class="login-button-right" @click="regis">注册</el-button>
+    <el-form
+      :model="formReg"
+      :rules="formRegRule"
+      ref="formReg"
+      status-icon
+      label-position="left"
+      label-width="0px"
+      class="demo-ruleForm login-page"
+      v-else
+    >
+      <el-button type="primary" class="login-button-left" @click="changeLogin()"
+        >登录
+      </el-button>
+      <el-button
+        type="primary"
+        class="login-button-right"
+        @click="changRregis()"
+        >注册
+      </el-button>
       <el-form-item prop="username">
-        <el-input type="text" v-model="FormReg.username" auto-complete="off" placeholder="用户名"
-                  required="required"/>
+        <el-input
+          type="text"
+          v-model="formReg.username"
+          auto-complete="off"
+          placeholder="用户名"
+        />
       </el-form-item>
       <el-form-item prop="password">
-        <el-input type="password" v-model="FormReg.password" auto-complete="off" placeholder="密码"
-                  required="required"/>
+        <el-input
+          type="password"
+          v-model="formReg.password"
+          auto-complete="off"
+          placeholder="密码"
+        />
       </el-form-item>
       <el-form-item style="width:100%;">
-        <el-button type="primary" style="width:100%;" @click="Register">注册</el-button>
+        <el-button
+          type="primary"
+          style="width:100%;"
+          @click="Register('formReg')"
+          >注册
+        </el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
-  import axios from "axios"
-  import sha256 from "js-sha256"
+import axios from "axios";
+import sha256 from "js-sha256";
 
-  
-  function getCookie(cookieName) {
-    var strCookie = document.cookie;
-    var arrCookie = strCookie.split("; ");
-    for(var i = 0; i < arrCookie.length; i++){
-      var arr = arrCookie[i].split("=");
-      if(cookieName == arr[0]){
-          return arr[1];
-      }
+function getCookie(cookieName) {
+  var strCookie = document.cookie;
+  var arrCookie = strCookie.split("; ");
+  for (var i = 0; i < arrCookie.length; i++) {
+    var arr = arrCookie[i].split("=");
+    if (cookieName == arr[0]) {
+      return arr[1];
     }
-    return "";
   }
-  export default {
-    data() {
-      return {
-        dialogFormVisible: false,
-        // server_csrf: "",
-        // client_csrf: "",
-        isreg: 0,
-        FormLogin: {
-          userid: '',
-          password: '',
-        },
-        FormReg: {
-          username: '',
-          password: '',
-          IdentityPub: '',
-          SignedPub: '',
-          OneTimePub: '',
-          EphemeralPub:'',
-          IdentityPri: "",
-          SignedPri: "",
-          OneTimePri: "",
-          EphemeralPri:"",
-        },
-        FormPrikey: {
-          IdentityPri: "",
-          SignedPri: "",
-          OneTimePri: "",
-          EphemeralPri:""
-        },
-        keys: {},
-        csrftoken:"",
-      }
-    },
-    // 查询是否有已登录的账号
-    created: function () {
-      // this.$cookies.set("logining_userid", "82119217")
-      var logging_cookie = this.$cookies.get("logining_userid");
-      if (logging_cookie) {
-        this.$router.push("/")
-      }
-      // axios.get("http://localhost:8000/apis/gettoken/")
-      // this.csrftoken=getCookie("csrftoken")
-      // console.log(this.csrftoken)
-    },
-    methods: {
-      login() {
-        this.isreg = 0;
-        this.FormReg.username = '';
-        this.FormReg.password = '';
-        this.FormLogin.userid = '';
-        this.FormLogin.password = ''
+  return "";
+}
+function isengnum(rule, value, callback) {
+  const reg = /^[_a-zA-Z0-9]+$/;
+  if (value == "" || value == undefined || value == null) {
+    callback();
+  } else {
+    if (!reg.test(value)) {
+      callback(new Error("仅由英文字母，数字以及下划线组成"));
+    } else {
+      callback();
+    }
+  }
+}
+export default {
+  data() {
+    return {
+      dialogFormVisible: false,
+      // server_csrf: "",
+      // client_csrf: "",
+      isreg: 0,
+      formLogin: {
+        userid: "",
+        password: ""
       },
-      regis() {
-        this.isreg = 1;
-        this.FormLogin.userid = '';
-        this.FormLogin.password = '';
-        this.FormReg.username = '';
-        this.FormReg.password = ''
+      formLoginRule: {
+        userid: [{ required: true, message: "请输入用户id", trigger: "blur" }],
+        password: [{ required: true, message: "请输入密码", trigger: "blur" }]
       },
-      Login() {
-        axios.get("http://localhost:8000/apis/getUser/" + this.FormLogin.userid).then((response) => {
-          // console.log(response.data["code"]);
-          if (response.data["code"] === 1) {
-            var temp_data=response.data["data"][0]
-            if (typeof temp_data["IdentityPri"] !== "undefined") {
-              axios.post("http://127.0.0.1:8888/apis/user/" + this.FormLogin.userid, {
-                "password": sha256(this.FormLogin.password),
-                headers:{
-                  // "X-CSRFToken":this.csrftoken
-                }
-              }).then((response) => {
-                // console.log(response.data)
-                if (response.data["code"] === 1) {
-                  this.$cookies.set("logining_userid",response.data["data"]["userid"]);
-                  this.$cookies.set("SameSite","Lax")
-                  this.$router.push("/")
+      formRegRule: {
+        username: [
+          {
+            required: true,
+            message: "请输入不包含空格符的英文字符串",
+            trigger: "blur"
+          },
+          { validator: isengnum, trigger: "blur" }
+        ],
+        password: [{ required: true, message: "请输入密码", trigger: "blur" }]
+      },
+      formReg: {
+        username: "",
+        password: "",
+        IdentityPub: "",
+        SignedPub: "",
+        OneTimePub: "",
+        EphemeralPub: "",
+        IdentityPri: "",
+        SignedPri: "",
+        OneTimePri: "",
+        EphemeralPri: ""
+      },
+      formPrikey: {
+        IdentityPri: "",
+        SignedPri: "",
+        OneTimePri: "",
+        EphemeralPri: ""
+      },
+      keys: {},
+      csrftoken: ""
+    };
+  },
+  // 查询是否有已登录的账号
+  created: function() {
+    // this.$cookies.set("loginingUserid", "82119217")
+    var logging_cookie = this.$cookies.get("loginingUserid");
+    if (logging_cookie) {
+      this.$router.push("/");
+    }
+    // axios.get("http://localhost:8000/apis/gettoken/")
+    // this.csrftoken=getCookie("csrftoken")
+    // console.log(this.csrftoken)
+  },
+  methods: {
+    changeLogin() {
+      this.isreg = 0;
+      this.formReg.username = "";
+      this.formReg.password = "";
+      this.formLogin.userid = "";
+      this.formLogin.password = "";
+    },
+    changeRegis() {
+      this.isreg = 1;
+      this.formLogin.userid = "";
+      this.formLogin.password = "";
+      this.formReg.username = "";
+      this.formReg.password = "";
+    },
+    Login(formLogin) {
+      this.$refs["formLogin"].validate(valid => {
+        if (valid) {
+          axios
+            .get("http://localhost:8000/apis/getUser/" + this.formLogin.userid)
+            .then(response => {
+              // console.log(response.data["code"]);
+              if (response.data["code"] === 1) {
+                var temp_data = response.data["data"][0];
+                if (typeof temp_data["IdentityPri"] !== "undefined") {
+                  axios
+                    .post(
+                      "http://127.0.0.1:8888/apis/user/" +
+                        this.formLogin.userid,
+                      {
+                        password: sha256(this.formLogin.password),
+                        headers: {
+                          // "X-CSRFToken":this.csrftoken
+                        }
+                      }
+                    )
+                    .then(response => {
+                      // console.log(response.data)
+                      if (response.data["code"] === 1) {
+                        this.$cookies.set(
+                          "loginingUserid",
+                          response.data["data"]["userid"]
+                        );
+                        this.$cookies.set("SameSite", "Lax");
+                        this.$router.push("/");
+                      } else {
+                        this.$notify.error({
+                          title: "登录失败！",
+                          message: "请重新登录"
+                          // type: 'success'
+                        });
+                      }
+                    });
                 } else {
-                  this.$notify.error({
-                    title: '登录失败！',
-                    message: '请重新登录',
-                    // type: 'success'
-                  });
+                  this.dialogFormVisible = true;
                 }
-              })
-            } else {
-              this.dialogFormVisible = true
-            }
-          } else {
-            this.dialogFormVisible = true
-          }
-        })
-      },
-      updated_pri() {
-        this.dialogFormVisible = false
-        // 先检查私钥的格式是否有误
-        axios.post("http://localhost:8000/apis/checkPri/", {
-          "IdentityPri": this.FormPrikey.IdentityPri,
-          "SignedPri": this.FormPrikey.SignedPri,
-          "OneTimePri": this.FormPrikey.OneTimePri,
-          "EphemeralPri":this.FormPrikey.EphemeralPri,
-          headers:{
+              } else {
+                this.dialogFormVisible = true;
+              }
+            });
+        } else {
+          return false;
+        }
+      });
+    },
+    updatedPri() {
+      this.dialogFormVisible = false;
+      // 先检查私钥的格式是否有误
+      axios
+        .post("http://localhost:8000/apis/checkPri/", {
+          IdentityPri: this.formPrikey.IdentityPri,
+          SignedPri: this.formPrikey.SignedPri,
+          OneTimePri: this.formPrikey.OneTimePri,
+          EphemeralPri: this.formPrikey.EphemeralPri,
+          headers: {
             // "X-CSRFToken":this.csrftoken
           }
-        }).then((response) => {
+        })
+        .then(response => {
+          console.log(response);
           // console.log(response.data["data"])
           if (response.data["code"] === 1) {
             // 返回的数据包括私钥字符串和公钥字符串
             this.keys = response.data["data"];
-            axios.get("http://127.0.0.1:8888/apis/user/" + this.FormLogin.userid).then((response) => {
-              if (response.data["code"] === 1) {
-                const username_t = response.data["data"]["username"];
-                axios.post("http://localhost:8000/apis/storeUser", {
-                  userid: this.FormLogin.userid, username: username_t,
-                  IdentityPub: this.keys["IdentityPub"], SignedPub: this.keys["SignedPub"],
-                  OneTimePub: this.keys["OneTimePub"], EphemeralPub: this.keys["EphemeralPub"],
-                  IdentityPri: this.keys["IdentityPri"], SignedPri: this.keys["SignedPri"],
-                  OneTimePri: this.keys["OneTimePri"], EphemeralPri: this.keys["EphemeralPri"],
-                  headers:{
-                    // "X-CSRFToken":this.csrftoken
-                  }
-                }).then((response) => {
-                  if (response.data["code"] === 1) {
-                    this.$notify({
-                      title: '已将当前用户添加到数据库',
-                      message: '请重新登录',
-                      type: 'success'
+            axios
+              .get("http://127.0.0.1:8888/apis/user/" + this.formLogin.userid)
+              .then(response => {
+                if (response.data["code"] === 1) {
+                  const username_t = response.data["data"]["username"];
+                  axios
+                    .post("http://localhost:8000/apis/storeUser", {
+                      userid: this.formLogin.userid,
+                      username: username_t,
+                      IdentityPub: this.keys["IdentityPub"],
+                      SignedPub: this.keys["SignedPub"],
+                      OneTimePub: this.keys["OneTimePub"],
+                      EphemeralPub: this.keys["EphemeralPub"],
+                      IdentityPri: this.keys["IdentityPri"],
+                      SignedPri: this.keys["SignedPri"],
+                      OneTimePri: this.keys["OneTimePri"],
+                      EphemeralPri: this.keys["EphemeralPri"],
+                      headers: {
+                        // "X-CSRFToken":this.csrftoken
+                      }
+                    })
+                    .then(response => {
+                      if (response.data["code"] === 1) {
+                        this.$notify({
+                          title: "已将当前用户添加到数据库",
+                          message: "请重新登录",
+                          type: "success"
+                        });
+                      } else {
+                        this.$notify.error({
+                          title: "保存用户密钥出错！",
+                          message: "请重新登录"
+                          // type: 'success'
+                        });
+                      }
                     });
-                  } else {
-                    this.$notify.error({
-                      title: '保存用户密钥出错！',
-                      message: '请重新登录',
-                      // type: 'success'
-                    });
-                  }
-                })
-              } else {
-                this.$notify.error({
-                  title: '服务器获取用户信息失败！',
-                  message: '请重新登录',
-                  // type: 'success'
-                });
-              }
-            });
+                } else {
+                  this.$notify.error({
+                    title: "服务器获取用户信息失败！",
+                    message: "请重新登录"
+                    // type: 'success'
+                  });
+                }
+              });
           } else {
             this.$notify.error({
-              title: '私钥格式有误！',
-              message: '请重新登录',
+              title: "私钥格式有误！",
+              message: "请重新登录"
               // type: 'success'
             });
           }
-        })
-      },
-      Register() {
-        axios.post("http://localhost:8000/apis/createNewKeyspair/", {
-          headers: {
-            // "X-CSRFToken":this.csrftoken,
-          }
-        }).then((response) => {
-          var pubs = response.data["data"];
-          // console.log(response.data["data"]);
-          this.FormReg.IdentityPub = pubs["IdentityPub"];
-          this.FormReg.SignedPub = pubs["SignedPub"];
-          this.FormReg.OneTimePub = pubs["OneTimePub"];
-          this.FormReg.EphemeralPub=pubs["EphemeralPub"];
-          this.FormReg.IdentityPri = pubs["IdentityPri"];
-          this.FormReg.SignedPri = pubs["SignedPri"];
-          this.FormReg.OneTimePri = pubs["OneTimePri"];
-          this.FormReg.EphemeralPri = pubs["EphemeralPri"];
-          axios.post("http://127.0.0.1:8888/apis/user/", {
-            "username": this.FormReg.username,
-            "password": sha256(this.FormReg.password),
-            "IdentityPub": this.FormReg.IdentityPub,
-            "SignedPub": this.FormReg.SignedPub,
-            "OneTimePub": this.FormReg.OneTimePub,
-            "EphemeralPub": this.FormReg.EphemeralPub,
-            headers:{
-              // "X-CSRFToken":this.csrftoken
-            }
-          }).then((response) => {
-            // console.log(response.data);
-            if (response.data["code"]) {
-              const h = this.$createElement;
-              this.$notify({
-                title: '注册成功的ID:',
-                message: h('i', {
-                  style: 'color: teal'
-                }, response.data["data"]),
-                type: 'success',
-                duration: 0
-              });
-              axios.post("http://localhost:8000/apis/storeUser/", {
-                "userid": response.data["data"],
-                "username": this.FormReg.username,
-                "IdentityPub": this.FormReg.IdentityPub,
-                "SignedPub": this.FormReg.SignedPub,
-                "OneTimePub": this.FormReg.OneTimePub,
-                "EphemeralPub": this.FormReg.EphemeralPub,
-                "IdentityPri": this.FormReg.IdentityPri,
-                "SignedPri": this.FormReg.SignedPri,
-                "OneTimePri": this.FormReg.OneTimePri,
-                "EphemeralPri": this.FormReg.EphemeralPri,
-                headers:{
-                  // "X-CSRFToken":this.csrftoken
-                }
-              });
-              this.isreg = 0;
-              this.FormLogin.userid = ''
-              this.FormLogin.password = ''
-              this.FormReg.username = ''
-              this.FormReg.password = ''
-            } else {
-              this.$notify.error({
-                title: '注册失败！',
-                message: '请重新注册',
-                // type: 'success'
-              });
-            }
-          })
-        })
-      }
+        });
+    },
+    Register(formReg) {
+      this.$refs["formReg"].validate(valid => {
+        if (valid) {
+          axios
+            .post("http://localhost:8000/apis/createNewKeyspair/", {
+              headers: {
+                // "X-CSRFToken":this.csrftoken,
+              }
+            })
+            .then(response => {
+              var pubs = response.data["data"];
+              // console.log(response.data["data"]);
+              this.formReg.IdentityPub = pubs["IdentityPub"];
+              this.formReg.SignedPub = pubs["SignedPub"];
+              this.formReg.OneTimePub = pubs["OneTimePub"];
+              this.formReg.EphemeralPub = pubs["EphemeralPub"];
+              this.formReg.IdentityPri = pubs["IdentityPri"];
+              this.formReg.SignedPri = pubs["SignedPri"];
+              this.formReg.OneTimePri = pubs["OneTimePri"];
+              this.formReg.EphemeralPri = pubs["EphemeralPri"];
+              axios
+                .post("http://127.0.0.1:8888/apis/user/", {
+                  username: this.formReg.username,
+                  password: sha256(this.formReg.password),
+                  IdentityPub: this.formReg.IdentityPub,
+                  SignedPub: this.formReg.SignedPub,
+                  OneTimePub: this.formReg.OneTimePub,
+                  EphemeralPub: this.formReg.EphemeralPub,
+                  headers: {
+                    // "X-CSRFToken":this.csrftoken
+                  }
+                })
+                .then(response => {
+                  // console.log(response.data);
+                  if (response.data["code"]) {
+                    const h = this.$createElement;
+                    this.$notify({
+                      title: "注册成功的ID:",
+                      message: h(
+                        "i",
+                        {
+                          style: "color: teal"
+                        },
+                        response.data["data"]
+                      ),
+                      type: "success",
+                      duration: 0
+                    });
+                    axios.post("http://localhost:8000/apis/storeUser/", {
+                      userid: response.data["data"],
+                      username: this.formReg.username,
+                      IdentityPub: this.formReg.IdentityPub,
+                      SignedPub: this.formReg.SignedPub,
+                      OneTimePub: this.formReg.OneTimePub,
+                      EphemeralPub: this.formReg.EphemeralPub,
+                      IdentityPri: this.formReg.IdentityPri,
+                      SignedPri: this.formReg.SignedPri,
+                      OneTimePri: this.formReg.OneTimePri,
+                      EphemeralPri: this.formReg.EphemeralPri,
+                      headers: {
+                        // "X-CSRFToken":this.csrftoken
+                      }
+                    });
+                    this.isreg = 0;
+                    this.formLogin.userid = "";
+                    this.formLogin.password = "";
+                    this.formReg.username = "";
+                    this.formReg.password = "";
+                  } else {
+                    this.$notify.error({
+                      title: "注册失败！",
+                      message: "请重新注册"
+                      // type: 'success'
+                    });
+                  }
+                });
+            });
+        } else {
+          return false;
+        }
+      });
     }
-  };
-
+  }
+};
 </script>
 
 <style scoped>
-  .login-container {
-    width: 100%;
-    height: 100%;
-  }
+.login-container {
+  width: 100%;
+  height: 100%;
+}
 
-  .login-page {
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    margin: 180px auto 0px auto;
-    width: 350px;
-    padding: 35px 35px 15px;
-    background: #fff;
-    border: 1px solid #eaeaea;
-    box-shadow: 0 0 25px #cac6c6;
-  }
+.login-page {
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  margin: 180px auto 0px auto;
+  width: 350px;
+  padding: 35px 35px 15px;
+  background: #fff;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 0 25px #cac6c6;
+}
 
+.login-button-left {
+  width: 165px;
+  margin: 0px 5px 10px 0px;
+}
 
-  .login-button-left {
-    width: 165px;
-    margin: 0px 5px 10px 0px;
-  }
-
-  .login-button-right {
-    width: 165px;
-    margin: 0px 0px 10px 5px;
-  }
-
+.login-button-right {
+  width: 165px;
+  margin: 0px 0px 10px 5px;
+}
 </style>

@@ -123,17 +123,17 @@ def messageDetail(request):
 
     # 获取自己的消息
     elif request.method == "GET":
-        logining_userid = int(request.COOKIES["logining_userid"])
+        loginingUserid = int(request.COOKIES["loginingUserid"])
         try:
             messages_temp = list(
-                messages.objects.filter(toUserid=logining_userid))
+                messages.objects.filter(toUserid=loginingUserid))
             for i in range(len(messages_temp)):
                 messages_temp[i] = messages_temp[i].to_json()
         except:
             result = {"code": -1, "result": "消息获取失败"}
             return JsonResponse(result)
         try:
-            messages.objects.filter(toUserid=logining_userid).delete()
+            messages.objects.filter(toUserid=loginingUserid).delete()
         except:
             result = {"code": -1, "result": "服务器删除暂存数据失败"}
             return JsonResponse(result)
