@@ -692,3 +692,100 @@ json.decoder.JSONDecodeError: Invalid \escape: line 5 column 52 (char 130)
 2020-31-20 15:31:51-__init__-DEBUG-Using selector: SelectSelector
 2020-32-20 15:32:01-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
 2020-32-20 15:32:01-__init__-DEBUG-Using selector: SelectSelector
+2020-06-20 16:06:01-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\models.py changed, reloading.
+2020-06-20 16:06:01-__init__-DEBUG-Using selector: SelectSelector
+2020-06-20 16:06:07-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\models.py changed, reloading.
+2020-06-20 16:06:07-__init__-DEBUG-Using selector: SelectSelector
+2020-06-20 16:06:28-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-06-20 16:06:28-__init__-DEBUG-Using selector: SelectSelector
+2020-06-20 16:06:36-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-06-20 16:06:36-__init__-DEBUG-Using selector: SelectSelector
+2020-06-20 16:06:39-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-06-20 16:06:39-__init__-DEBUG-Using selector: SelectSelector
+2020-06-20 16:06:50-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-06-20 16:06:50-__init__-DEBUG-Using selector: SelectSelector
+2020-07-20 16:07:00-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-07-20 16:07:00-__init__-DEBUG-Using selector: SelectSelector
+2020-07-20 16:07:23-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-07-20 16:07:23-__init__-DEBUG-Using selector: SelectSelector
+2020-07-20 16:07:34-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-07-20 16:07:34-__init__-DEBUG-Using selector: SelectSelector
+2020-07-20 16:07:36-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-07-20 16:07:36-__init__-DEBUG-Using selector: SelectSelector
+2020-07-20 16:07:53-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-07-20 16:07:53-__init__-DEBUG-Using selector: SelectSelector
+2020-07-20 16:07:55-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-07-20 16:07:55-__init__-DEBUG-Using selector: SelectSelector
+2020-07-20 16:07:58-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-07-20 16:07:58-__init__-DEBUG-Using selector: SelectSelector
+2020-08-20 16:08:00-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-08-20 16:08:00-__init__-DEBUG-Using selector: SelectSelector
+2020-08-20 16:08:10-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-08-20 16:08:10-__init__-DEBUG-Using selector: SelectSelector
+2020-08-20 16:08:13-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-08-20 16:08:13-__init__-DEBUG-Using selector: SelectSelector
+2020-08-20 16:08:16-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-08-20 16:08:16-__init__-DEBUG-Using selector: SelectSelector
+2020-08-20 16:08:39-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-08-20 16:08:39-__init__-DEBUG-Using selector: SelectSelector
+2020-09-20 16:09:38-log_response-ERROR-Internal Server Error: /apis/filterMessages/86580741
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\sqlite3\base.py", line 396, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such column: backend_messages.belongUserid
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 67, in filterMessages
+    (Q(fromUserid=pk) and Q(toUserid=loginingUserid)) | (Q(toUserid=pk) and Q(fromUserid=loginingUserid)) & (Q(belongUserid=loginingUserid))).order_by("date"))
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 276, in __iter__
+    self._fetch_all()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 1261, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 57, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\sql\compiler.py", line 1137, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\utils.py", line 86, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\backends\sqlite3\base.py", line 396, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such column: backend_messages.belongUserid
+2020-09-20 16:09:49-__init__-DEBUG-Using selector: SelectSelector
+2020-09-20 16:09:55-__init__-DEBUG-Using selector: SelectSelector
+2020-10-20 16:10:05-__init__-DEBUG-Using selector: SelectSelector
+2020-10-20 16:10:42-__init__-DEBUG-Using selector: SelectSelector
+2020-10-20 16:10:45-__init__-DEBUG-Using selector: SelectSelector
+2020-15-20 16:15:26-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-15-20 16:15:26-__init__-DEBUG-Using selector: SelectSelector
+2020-15-20 16:15:48-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-15-20 16:15:48-__init__-DEBUG-Using selector: SelectSelector
+2020-15-20 16:15:58-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-15-20 16:15:58-__init__-DEBUG-Using selector: SelectSelector
+2020-16-20 16:16:01-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-16-20 16:16:01-__init__-DEBUG-Using selector: SelectSelector
+2020-16-20 16:16:03-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-16-20 16:16:03-__init__-DEBUG-Using selector: SelectSelector
+2020-16-20 16:16:57-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-16-20 16:16:57-__init__-DEBUG-Using selector: SelectSelector

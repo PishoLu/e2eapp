@@ -46,7 +46,7 @@ def storeMessage(request):
         postData = json.loads(request.body)
         try:
             messages.objects.create(
-                fromUserid=postData["fromUserid"], toUserid=postData["toUserid"], kdf_next=postData["kdf_next"], EphemeralPub=postData["EphemeralPub"], plaintext=postData["plaintext"], EphemeralPri=postData["EphemeralPri"])
+                belongUserid=postData["belongUserid"], fromUserid=postData["fromUserid"], toUserid=postData["toUserid"], kdf_next=postData["kdf_next"], EphemeralPub=postData["EphemeralPub"], plaintext=postData["plaintext"], EphemeralPri=postData["EphemeralPri"])
             result = {"code": 1, "result": "添加成功"}
             return JsonResponse(result)
         except:
@@ -64,7 +64,7 @@ def filterMessages(request, pk):
         loginingUserid = int(request.COOKIES["loginingUserid"])
         # 这么写不一定能行，行了
         messagesTemp = list(messages.objects.filter(
-            (Q(fromUserid=pk) and Q(toUserid=loginingUserid)) | (Q(toUserid=pk) and Q(fromUserid=loginingUserid))).order_by("date"))
+            (Q(fromUserid=pk) and Q(toUserid=loginingUserid)) | (Q(toUserid=pk) and Q(fromUserid=loginingUserid)) ,(Q(belongUserid=loginingUserid))).order_by("date"))
         for i in range(len(messagesTemp)):
             messagesTemp[i] = messagesTemp[i].to_json()
         for i in messagesTemp:

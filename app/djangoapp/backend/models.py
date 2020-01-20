@@ -30,6 +30,7 @@ class user(models.Model):
 
 class messages(models.Model):
     message_id = models.AutoField(primary_key=True)
+    belongUserid = models.IntegerField()
     fromUserid = models.IntegerField()
     toUserid = models.IntegerField()
     kdf_next = models.CharField(max_length=64, null=True)

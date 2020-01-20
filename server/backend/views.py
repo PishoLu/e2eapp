@@ -81,7 +81,8 @@ def user_detail(request, pk):
         try:
             password = json.loads(request.body)["password"]
             if user_temp.check_password(password):
-                result = {"code": 1, "result": "登录成功"}
+                result = {"code": 1, "data": {
+                    "userid": user_temp.userid}, "result": "登录成功"}
                 request.session["loginingUserid"] = user_temp.userid
                 return JsonResponse(result)
             else:

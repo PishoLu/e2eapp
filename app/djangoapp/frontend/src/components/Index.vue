@@ -275,7 +275,8 @@ export default {
                                     "EphemeralPub"
                                   ],
                                   EphemeralPri: this.resData["EphemeralPri"],
-                                  plaintext: this.resData["plaintext"]
+                                  plaintext: this.resData["plaintext"],
+                                  belongUserid: this.loginingUserid
                                 }
                               )
                               .then(response => {
