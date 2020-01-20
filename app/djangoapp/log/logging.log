@@ -789,3 +789,4 @@ django.db.utils.OperationalError: no such column: backend_messages.belongUserid
 2020-16-20 16:16:03-__init__-DEBUG-Using selector: SelectSelector
 2020-16-20 16:16:57-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
 2020-16-20 16:16:57-__init__-DEBUG-Using selector: SelectSelector
+2020-19-20 16:19:08-__init__-DEBUG-Using selector: SelectSelector
