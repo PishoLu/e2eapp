@@ -3,12 +3,14 @@ import json
 import logging
 import os
 import sqlite3
+import time
 
 import requests  # 最好不用这个，让前端作为两个后端的跳板
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric.x25519 import (
     X25519PrivateKey, X25519PublicKey)
 from cryptography.hazmat.primitives.ciphers.aead import ChaCha20Poly1305
+from django.db.models import Q
 from django.http import JsonResponse
 from django.middleware.csrf import get_token
 from django.shortcuts import render
@@ -16,7 +18,6 @@ from django.views.decorators.csrf import csrf_exempt
 
 from .models import friends, messages, user
 from .X3DH import Signalkdf, compare_bytes
-from django.db.models import Q
 
 wite_list = []  # 等待被添加的好友列表(只有双方在线的时候才能正常添加)
 
@@ -45,7 +46,7 @@ def storeMessage(request):
         postData = json.loads(request.body)
         try:
             messages.objects.create(
-                fromUserid=postData["fromUserid"], toUserid=postData["toUserid"], kdf_next=postData["kdf_next"], EphemeralPub=postData["EphemeralPub"], plaintext=postData["plaintext"])
+                fromUserid=postData["fromUserid"], toUserid=postData["toUserid"], kdf_next=postData["kdf_next"], EphemeralPub=postData["EphemeralPub"], plaintext=postData["plaintext"], EphemeralPri=postData["EphemeralPri"])
             result = {"code": 1, "result": "添加成功"}
             return JsonResponse(result)
         except:
@@ -255,13 +256,30 @@ def decryptMessage(request):
     if request.method == "POST":
         loginingUserid = int(request.COOKIES["loginingUserid"])
         postData = json.loads(request.body)
-        try:
-            fromUserid = postData["fromUserid"]
-            tempFromUser = friends.objects.get(
-                userid=fromUserid, whosfriend=loginingUserid)
-        except:
-            result = {"code": -1, "result": "未找到该好友!"}
-            return JsonResponse(result)
+
+        usertemp = user.objects.get(userid=loginingUserid).to_json()
+        if(usertemp):
+            usertemp["IdentityPri"] = X25519PrivateKey.from_private_bytes(
+                binascii.unhexlify(usertemp["IdentityPri"].encode("unicode_escape")))
+            usertemp["SignedPri"] = X25519PrivateKey.from_private_bytes(
+                binascii.unhexlify(usertemp["SignedPri"].encode("unicode_escape")))
+            usertemp["OneTimePri"] = X25519PrivateKey.from_private_bytes(
+                binascii.unhexlify(usertemp["OneTimePri"].encode("unicode_escape")))
+            usertemp["EphemeralPri"] = X25519PrivateKey.from_private_bytes(
+                binascii.unhexlify(usertemp["EphemeralPri"].encode("unicode_escape")))
+
+        userReceiveFrom = friends.objects.get(
+            userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+        if(userReceiveFrom):
+            userReceiveFrom["IdentityPub"] = X25519PublicKey.from_public_bytes(
+                binascii.unhexlify(userReceiveFrom["IdentityPub"].encode("unicode_escape")))
+            userReceiveFrom["SignedPub"] = X25519PublicKey.from_public_bytes(
+                binascii.unhexlify(userReceiveFrom["SignedPub"].encode("unicode_escape")))
+            userReceiveFrom["OneTimePub"] = X25519PublicKey.from_public_bytes(
+                binascii.unhexlify(userReceiveFrom["OneTimePub"].encode("unicode_escape")))
+            userReceiveFrom["EphemeralPub"] = X25519PublicKey.from_public_bytes(
+                binascii.unhexlify(postData["message"]["EphemeralPub"].encode("unicode_escape")))
+
         # 通过消息记录来获取上一次对话的kdf
 
         neverSend = 0
@@ -276,13 +294,15 @@ def decryptMessage(request):
             # print(len(lastMessagesTo))
             if(len(lastMessagesTo)):
                 lastMessagesTo = lastMessagesTo[0].to_json()
+                lastMessagesTo["EphemeralPri"] = X25519PrivateKey.from_private_bytes(
+                    binascii.unhexlify(lastMessagesTo["EphemeralPri"].encode("unicode_escape")))
                 lastMessagesTo["EphemeralPub"] = X25519PublicKey.from_public_bytes(
                     binascii.unhexlify(lastMessagesTo["EphemeralPub"].encode("unicode_escape")))
             else:
                 # 没有向目标发送过消息
                 neverSend = 1
             lastMessagesFrom = messages.objects.filter(
-                toUserid=loginingUserid, fromUserid=postData["toUserid"]).order_by("-date")
+                toUserid=loginingUserid, fromUserid=postData["fromUserid"]).order_by("-date")
             # 获取对象回复的所有消息的最后一个
             print(lastMessagesFrom)
             if(len(lastMessagesFrom)):
@@ -295,7 +315,63 @@ def decryptMessage(request):
         except:
             result = {"code": -1, "result": "获取数据库消息出错!"}
             return JsonResponse(result)
+        # 第一次收到信息解密的话使用user的私钥以及对方发送过来的公钥
+        if neverReceive and neverSend:
+            DH1 = usertemp["IdentityPri"].exchange(
+                userReceiveFrom["SignedPub"])
+            DH2 = usertemp["EphemeralPri"].exchange(
+                userReceiveFrom["IdentityPub"])
+            DH3 = usertemp["EphemeralPri"].exchange(
+                userReceiveFrom["SignedPub"])
+            DH4 = usertemp["IdentityPri"].exchange(
+                userReceiveFrom["OneTimePub"])
+            # 第一次的share_key长度有128位，但是后续需要的密钥长度只要32位，不过第一次后的kdf输出有64位，前32位为下一次的kdf输入，后32位为这次的加密密钥
+            kdf_in = DH1+DH2+DH3+DH4
 
+            salt = usertemp["EphemeralPri"].exchange(
+                userReceiveFrom["EphemeralPub"])
+        # 不是第一次收到信息但是没有发送过消息，解密使用上一次的kdf以及自己的私钥，以及对方发送过来的公钥。
+        elif neverSend and not neverReceive:
+            kdf_in = lastMessagesFrom["kdf_next"]
+            salt = usertemp["EphemeralPri"].exchange(
+                userReceiveFrom["EphemeralPub"])
+        # 没有收到过消息，但是发送过消息，即这是第一次收到对方的消息，使用上一次发送的kdf以及自己的私钥，使用对方发送来的公钥解密。
+        elif neverReceive and not neverSend:
+            kdf_in = lastMessagesTo["kdf_next"]
+            salt = lastMessagesTo["EphemeralPri"].exchange(
+                userReceiveFrom["EphemeralPub"])
+        # 之前的消息有来有往，使用上一次自己发送消息的私钥,以及对方当前使用的公钥。kdf通过对比时间戳来选取最近的一个。
+        else:
+            lastTimeSend = time.strptime(
+                lastMessagesTo["date"], "%Y-%m-%d %H:%M:%S")
+            lastTimeReceive = time.strptime(
+                lastMessagesFrom["date"], "%Y-%m-%d %H:%M:%S")
+            if(lastTimeReceive < lastTimeSend):
+                kdf_in = lastMessagesTo["kdf_next"]
+            else:
+                kdf_in = lastMessagesFrom["kdf_next"]
+            salt = lastMessagesTo["EphemeralPri"].exchange(
+                lastMessagesFrom["EphemeralPub"])
+
+        # 解密过程
+        kdf_out = Signalkdf(kdf_in, salt)
+        aad = postData["message"]["aad"].encode("utf-8")
+        chacha = ChaCha20Poly1305(kdf_out[32:])
+        nonce = postData["message"]["nonce"].encode("unicode_escape")
+        ct = postData["message"]["ciphertext"].encode("unicode_escape")
+        pt = chacha.decrypt(nonce, ct, aad)
+        print(pt)
+        resultData = {
+            "plaintext": pt,
+            "kdf_next": binascii.hexlify(kdf_out[:32].decode("unicode_escape")),
+            "fromUserid": postData["fromUserid"],
+            "toUserid": postData["toUserid"],
+            "EphemeralPub": postData["message"]["EphemeralPub"],
+            "date": postData["date"]
+        }
+
+        result = {"code": 1, "data": resultData, "result": "X3DH密钥"}
+        return JsonResponse(result)
     else:
         result = {"code": -1, "result": "请求方式有误!"}
         return JsonResponse(result)
@@ -345,17 +421,17 @@ def encryptMessage(request):
             usertemp["EphemeralPri"] = X25519PrivateKey.from_private_bytes(
                 binascii.unhexlify(usertemp["EphemeralPri"].encode("unicode_escape")))
 
-        user_send_to = friends.objects.get(
+        userSendTo = friends.objects.get(
             userid=postData["toUserid"], whosfriend=loginingUserid).to_json()
-        if(user_send_to):
-            user_send_to["IdentityPub"] = X25519PublicKey.from_public_bytes(
-                binascii.unhexlify(user_send_to["IdentityPub"].encode("unicode_escape")))
-            user_send_to["SignedPub"] = X25519PublicKey.from_public_bytes(
-                binascii.unhexlify(user_send_to["SignedPub"].encode("unicode_escape")))
-            user_send_to["OneTimePub"] = X25519PublicKey.from_public_bytes(
-                binascii.unhexlify(user_send_to["OneTimePub"].encode("unicode_escape")))
-            user_send_to["EphemeralPub"] = X25519PublicKey.from_public_bytes(
-                binascii.unhexlify(user_send_to["EphemeralPub"].encode("unicode_escape")))
+        if(userSendTo):
+            userSendTo["IdentityPub"] = X25519PublicKey.from_public_bytes(
+                binascii.unhexlify(userSendTo["IdentityPub"].encode("unicode_escape")))
+            userSendTo["SignedPub"] = X25519PublicKey.from_public_bytes(
+                binascii.unhexlify(userSendTo["SignedPub"].encode("unicode_escape")))
+            userSendTo["OneTimePub"] = X25519PublicKey.from_public_bytes(
+                binascii.unhexlify(userSendTo["OneTimePub"].encode("unicode_escape")))
+            userSendTo["EphemeralPub"] = X25519PublicKey.from_public_bytes(
+                binascii.unhexlify(userSendTo["EphemeralPub"].encode("unicode_escape")))
         neverSend = 0
         neverReceive = 0
         kdf_in = None
@@ -375,7 +451,7 @@ def encryptMessage(request):
             lastMessagesFrom = messages.objects.filter(
                 toUserid=loginingUserid, fromUserid=postData["toUserid"]).order_by("-date")
             # 获取对象回复的所有消息的最后一个
-            print(lastMessagesFrom)
+            # print(lastMessagesFrom)
             if(len(lastMessagesFrom)):
                 lastMessagesFrom = lastMessagesFrom[0].to_json()
                 lastMessagesFrom["EphemeralPub"] = X25519PublicKey.from_public_bytes(
@@ -391,15 +467,15 @@ def encryptMessage(request):
         message_EphemeralPub = message_EphemeralPri.public_key()
         if neverSend and neverReceive:
             # 没有发过消息也没有收到过对方的消息，生成初始化的kdf用作以后与对象的消息上。
-            DH1 = usertemp["IdentityPri"].exchange(user_send_to["SignedPub"])
+            DH1 = usertemp["IdentityPri"].exchange(userSendTo["SignedPub"])
             DH2 = usertemp["EphemeralPri"].exchange(
-                user_send_to["IdentityPub"])
-            DH3 = usertemp["EphemeralPri"].exchange(user_send_to["SignedPub"])
-            DH4 = usertemp["IdentityPri"].exchange(user_send_to["OneTimePub"])
+                userSendTo["IdentityPub"])
+            DH3 = usertemp["EphemeralPri"].exchange(userSendTo["SignedPub"])
+            DH4 = usertemp["IdentityPri"].exchange(userSendTo["OneTimePub"])
             # 第一次的share_key长度有128位，但是后续需要的密钥长度只要32位，不过第一次后的kdf输出有64位，前32位为下一次的kdf输入，后32位为这次的加密密钥
             kdf_in = DH1+DH2+DH3+DH4
 
-            salt = message_EphemeralPri.exchange(user_send_to["EphemeralPub"])
+            salt = message_EphemeralPri.exchange(userSendTo["EphemeralPub"])
         elif neverSend and not neverReceive:
             # 没有发过消息，但是接收过对方的消息，使用对方最新的Ephemeral公钥以及kdf，接收消息时将目标的临时公钥以及算出的kdf存入数据库
             kdf_in = binascii.hexlify(
@@ -412,26 +488,43 @@ def encryptMessage(request):
             kdf_in = binascii.hexlify(
                 lastMessagesTo["kdf_next"].encode("unicode_escape"))
             salt = message_EphemeralPri.exchange(
-                user_send_to["EphemeralPub"])
+                userSendTo["EphemeralPub"])
         elif not neverSend and not neverReceive:
             # 双方有来有回则根据最近时间是接收还是发送确定kdf输入
             # 不能确定时间前后，先不写这个
-            pass
+            lastTimeSend = time.strptime(
+                lastMessagesTo["date"], "%Y-%m-%d %H:%M:%S")
+            lastTimeReceive = time.strptime(
+                lastMessagesFrom["date"], "%Y-%m-%d %H:%M:%S")
+            if(lastMessagesTo > lastMessagesFrom):
+                kdf_in = binascii.hexlify(
+                    lastMessagesTo["kdf_next"].encode("unicode_escape"))
+                salt = message_EphemeralPri.exchange(
+                    lastMessagesFrom["EphemeralPub"])
+            else:
+                kdf_in = binascii.hexlify(
+                    lastMessagesFrom["kdf_next"].encode("unicode_escape"))
+                salt = message_EphemeralPri.exchange(
+                    lastMessagesFrom["EphemeralPub"])
+                # 不管之前是否与目标有过联系，只是kdf的输入和对方的临时公钥有所不同，加密使用的新临时密钥是新生成的，对方的临时公钥是一直最新更新在消息数据库的。
 
-        # 不管之前是否与目标有过联系，只是kdf的输入和对方的临时公钥有所不同，加密使用的新临时密钥是新生成的，对方的临时公钥是一直最新更新在消息数据库的。
+        # 加密过程
         kdf_out = Signalkdf(kdf_in, salt)
-
         aad = b"a secret message"
         chacha = ChaCha20Poly1305(kdf_out[32:])
         nonce = os.urandom(12)
         ct = chacha.encrypt(nonce, postData["plaintext"].encode("utf-8"), aad)
         pt = chacha.decrypt(nonce, ct, aad)
-        result_data = {
+        resultData = {
             "fromUserid": loginingUserid,
             "toUserid": postData["toUserid"],
             "kdf_next": binascii.hexlify(kdf_out[:32]).decode("unicode_escape"),
+            "EphemeralPri": binascii.hexlify(message_EphemeralPri.private_bytes(encoding=serialization.Encoding.Raw,
+                                                                                format=serialization.PrivateFormat.Raw,
+                                                                                encryption_algorithm=serialization.NoEncryption())).decode("unicode_escape"),
             "message": {
                 "aad": aad.decode("utf-8"),
+                "nonce": nonce.decode("unicode_escape"),
                 "EphemeralPub": binascii.hexlify(message_EphemeralPub.public_bytes(
                     encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape"),
                 "ciphertext": str(ct),
@@ -439,7 +532,7 @@ def encryptMessage(request):
             "plaintext": postData["plaintext"]
         }
 
-        result = {"code": 1, "data": result_data, "result": "X3DH密钥"}
+        result = {"code": 1, "data": resultData, "result": "X3DH密钥"}
         return JsonResponse(result)
         # if(lastMessagesFrom["date"] < lastMessagesTo["date"]):
         #     pass

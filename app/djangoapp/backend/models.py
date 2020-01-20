@@ -37,6 +37,7 @@ class messages(models.Model):
         "%Y-%m-%d %H:%M:%S", time.localtime()))
     plaintext = models.CharField(max_length=2048)
     EphemeralPub = models.CharField(max_length=64, null=True)
+    EphemeralPri = models.CharField(max_length=64, null=True)
 
     def to_json(self):
         dict = self.__dict__

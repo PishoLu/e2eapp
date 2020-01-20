@@ -114,7 +114,7 @@ def messageDetail(request):
             post_data = json.loads(request.body)
             messages.objects.create(fromUserid=post_data["fromUserid"],
                                     toUserid=post_data["toUserid"],
-                                    ciphertext=post_data["ciphertext"])
+                                    message=post_data["message"])
         except:
             result = {"code": -1, "result": "消息发送失败"}
             return JsonResponse(result)

@@ -61,7 +61,7 @@ CORS_ORIGIN_WHITELIST = (
 )
 
 CORS_ALLOW_CREDENTIALS = True
-CSRF_COOKIE_SAMESITE = True
+# CSRF_COOKIE_SAMESITE = True
 CORS_ALLOW_HEADERS = (
     'XMLHttpRequest',
     'X_FILENAME',
@@ -74,7 +74,7 @@ CORS_ALLOW_HEADERS = (
     'x-csrftoken',
     'x-requested-with',
     'Pragma',
-    'logining_userid',
+    'loginingUserid',
     'csrftoken',
 )
 ROOT_URLCONF = 'server.urls'
@@ -139,7 +139,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)

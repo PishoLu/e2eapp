@@ -35,7 +35,7 @@ class messages(models.Model):
     toUserid = models.IntegerField()
     date = models.DateTimeField(default=time.strftime(
         "%Y-%m-%d %H:%M:%S", time.localtime()))
-    ciphertext = models.CharField(max_length=2048)
+    message = models.CharField(max_length=2048)
 
     def to_json(self):
         dict = self.__dict__

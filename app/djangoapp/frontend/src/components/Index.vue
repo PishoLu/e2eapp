@@ -259,7 +259,7 @@ export default {
                         .post("http://127.0.0.1:8888/apis/message/", {
                           fromUserid: this.resData["fromUserid"],
                           toUserid: this.resData["toUserid"],
-                          ciphertext: this.resData["message"]
+                          message: this.resData["message"]
                         })
                         .then(response => {
                           // console.log(response);
@@ -274,6 +274,7 @@ export default {
                                   EphemeralPub: this.resData["message"][
                                     "EphemeralPub"
                                   ],
+                                  EphemeralPri: this.resData["EphemeralPri"],
                                   plaintext: this.resData["plaintext"]
                                 }
                               )
@@ -356,7 +357,6 @@ export default {
                 if (response.data["code"] === 1) {
                   // 说明消息来源是好友
                   // 是好友的话就可以直接解密了
-                  continue;
                 } else {
                   // 消息来源不是好友
                   // 添加到数据库，但是status为0
@@ -413,10 +413,11 @@ export default {
                 fromUserid: getData["fromUserid"],
                 toUserid: getData["toUserid"],
                 date: getData["date"],
-                ciphertext: getData["ciphertext"]
+                message: getData["message"]
               })
               .then(response => {});
           }
+          this.messageLoading = false;
           // axios
           //   .post("http://127.0.0.1:8000/apis/decryptMessage/", {
           //     server_data: getData
@@ -430,6 +431,7 @@ export default {
             message: "请重新获取。"
             // type: 'success'
           });
+          this.messageLoading = false;
         }
       });
     },
@@ -449,7 +451,7 @@ export default {
         })
         .then(response => {
           if (response.data["code"] === 1) {
-            // console.log(response.data);
+            console.log(response.data);
             this.messageList = response.data["data"];
             // console.log(this.messageList);
           } else {

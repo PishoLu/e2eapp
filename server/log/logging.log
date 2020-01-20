@@ -1,2 +1,56 @@
 2020-46-20 12:46:22-__init__-DEBUG-Using selector: SelectSelector
 2020-46-20 12:46:25-__init__-DEBUG-Using selector: SelectSelector
+2020-08-20 14:08:32-trigger_reload-INFO-D:\Study\School\e2e\server\backend\models.py changed, reloading.
+2020-08-20 14:08:32-__init__-DEBUG-Using selector: SelectSelector
+2020-08-20 14:08:36-__init__-DEBUG-Using selector: SelectSelector
+2020-08-20 14:08:42-__init__-DEBUG-Using selector: SelectSelector
+2020-08-20 14:08:54-__init__-DEBUG-Using selector: SelectSelector
+2020-20-20 14:20:13-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-20-20 14:20:13-__init__-DEBUG-Using selector: SelectSelector
+2020-20-20 14:20:17-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-20-20 14:20:17-__init__-DEBUG-Using selector: SelectSelector
+2020-21-20 14:21:44-trigger_reload-INFO-D:\Study\School\e2e\server\server\settings.py changed, reloading.
+2020-21-20 14:21:44-__init__-DEBUG-Using selector: SelectSelector
+2020-51-20 14:51:09-log_response-ERROR-Internal Server Error: /apis/message/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 126, in messageDetail
+    loginingUserid = int(request.COOKIES["loginingUserid"])
+KeyError: 'loginingUserid'
+2020-51-20 14:51:53-log_response-ERROR-Internal Server Error: /apis/message/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 126, in messageDetail
+    loginingUserid = int(request.COOKIES["loginingUserid"])
+KeyError: 'loginingUserid'
+2020-57-20 14:57:45-trigger_reload-INFO-D:\Study\School\e2e\server\server\settings.py changed, reloading.
+2020-57-20 14:57:45-__init__-DEBUG-Using selector: SelectSelector
+2020-58-20 14:58:22-log_response-ERROR-Internal Server Error: /apis/message/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 126, in messageDetail
+    loginingUserid = int(request.COOKIES["loginingUserid"])
+KeyError: 'loginingUserid'
+2020-58-20 14:58:48-trigger_reload-INFO-D:\Study\School\e2e\server\server\settings.py changed, reloading.
+2020-58-20 14:58:48-__init__-DEBUG-Using selector: SelectSelector
