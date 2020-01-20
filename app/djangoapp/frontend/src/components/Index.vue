@@ -182,7 +182,7 @@
 
 <script>
 import axios from "axios";
-axios.defaults.withCredentials = true;
+
 export default {
   name: "friend",
   data() {
@@ -220,7 +220,7 @@ export default {
   created: function() {
     // this.csrftoken=getCookie("csrftoken")
     // this.$cookies.set("loginingUserid", "82119217");
-
+    axios.defaults.withCredentials = true;
     this.loginingUserid = this.$cookies.get("loginingUserid");
     // console.log(this.loginingUserid)
     if (this.loginingUserid) {

@@ -264,7 +264,6 @@ export default {
                           "loginingUserid",
                           response.data["data"]["userid"]
                         );
-                        this.$cookies.set("SameSite", "Lax");
                         this.$router.push("/");
                       } else {
                         this.$notify.error({

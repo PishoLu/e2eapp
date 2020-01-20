@@ -54,10 +54,10 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_WHITELIST = (
-    'http://localhost:8080',
-    'http://localhost:8000',
     'http://127.0.0.1:8000',
-    'http://127.0.0.1:8080'
+    "http://127.0.0.1:8080",
+    "http://localhost:8000",
+    "http://localhost:8080",
 )
 
 CORS_ALLOW_CREDENTIALS = True
@@ -65,19 +65,20 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_HEADERS = (
     'XMLHttpRequest',
     'X_FILENAME',
+    "X-CSRFToken",
     'accept-encoding',
     'authorization',
     'content-type',
     'dnt',
     'origin',
     'user-agent',
-    'x-csrftoken',
     'x-requested-with',
     'Pragma',
     'loginingUserid',
     'csrftoken',
 )
 ROOT_URLCONF = 'server.urls'
+
 
 TEMPLATES = [
     {

@@ -203,6 +203,7 @@ def storeFriend(request):
 def friendsList(request):
     try:
         loginingUserid = int(request.COOKIES["loginingUserid"])
+        # print(loginingUserid)
         friendsTemp = []
         friendsTemp_t = friends.objects.filter(
             whosfriend=loginingUserid)
@@ -255,6 +256,7 @@ def friend_detail(request, pk):
 def decryptMessage(request):
     if request.method == "POST":
         loginingUserid = int(request.COOKIES["loginingUserid"])
+        print(request.body)
         postData = json.loads(request.body)
 
         usertemp = user.objects.get(userid=loginingUserid).to_json()

@@ -81,8 +81,8 @@ def user_detail(request, pk):
         try:
             password = json.loads(request.body)["password"]
             if user_temp.check_password(password):
-                result = {"code": 1, "data": user_temp.to_json(),
-                          "result": "登录成功"}
+                result = {"code": 1, "result": "登录成功"}
+                request.session["loginingUserid"] = user_temp.userid
                 return JsonResponse(result)
             else:
                 result = {"code": -1, "result": "登录失败"}
@@ -123,8 +123,10 @@ def messageDetail(request):
 
     # 获取自己的消息
     elif request.method == "GET":
-        loginingUserid = int(request.COOKIES["loginingUserid"])
+        loginingUserid = request.session.get("loginingUserid", default=None)
+        print(loginingUserid)
         try:
+            loginingUserid = int(loginingUserid)
             messages_temp = list(
                 messages.objects.filter(toUserid=loginingUserid))
             for i in range(len(messages_temp)):
