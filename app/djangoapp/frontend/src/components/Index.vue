@@ -310,16 +310,16 @@ export default {
                   .get("http://127.0.0.1:8888/apis/user/" + id)
                   .then(response => {
                     if (response.data["code"] === 1) {
-                      var get_data = response.data["data"];
+                      var getData = response.data["data"];
                       axios.post("http://localhost:8000/apis/storeFriend/", {
-                        userid: get_data["userid"],
-                        username: get_data["username"],
+                        userid: getData["userid"],
+                        username: getData["username"],
                         remark: "",
                         status: 1,
-                        IdentityPub: get_data["IdentityPub"],
-                        SignedPub: get_data["SignedPub"],
-                        OneTimePub: get_data["OneTimePub"],
-                        EphemeralPub: get_data["EphemeralPub"]
+                        IdentityPub: getData["IdentityPub"],
+                        SignedPub: getData["SignedPub"],
+                        OneTimePub: getData["OneTimePub"],
+                        EphemeralPub: getData["EphemeralPub"]
                       });
                     }
                   })
@@ -342,11 +342,12 @@ export default {
       this.messageLoading = true;
       axios.get("http://127.0.0.1:8888/apis/message/").then(response => {
         if (response.data["code"] === 1) {
-          get_data = response.data["data"];
+          var getData = response.data["data"];
           // 循环解析数据包，判断消息源是否为好友并处理
-          for (var i = 0; i < get_data.length; i++) {
+          console.log(getData);
+          for (var i = 0; i < getData.length; i++) {
             // 返回的列表中的数据的某一个数据包的来源
-            this.tempFromUserid = get_data[i][fromUserid];
+            this.tempFromUserid = getData[i][fromUserid];
             axios
               .get(
                 "http://localhost:8000/apis/friendsList" + int(tempFromUserid)
@@ -355,6 +356,7 @@ export default {
                 if (response.data["code"] === 1) {
                   // 说明消息来源是好友
                   // 是好友的话就可以直接解密了
+                  continue;
                 } else {
                   // 消息来源不是好友
                   // 添加到数据库，但是status为0
@@ -363,18 +365,18 @@ export default {
                     .then(response => {
                       if (response.data["code"] === 1) {
                         // 获取目标服务器信息9-***
-                        var post_data = response.data["data"];
+                        var postData = response.data["data"];
                         // 保存到好友数据库并设置status为0
                         axios
                           .post("http://localhost:8000/apis/sotre_friend/", {
-                            userid: post_data["userid"],
-                            username: post_data["username"],
+                            userid: postData["userid"],
+                            username: postData["username"],
                             remark: "",
                             status: 0,
-                            IdentityPub: post_data["IdentityPub"],
-                            SignedPub: post_data["SignedPub"],
-                            OneTimePub: post_data["OneTimePub"],
-                            EphemeralPub: post_data["EphemeralPub"]
+                            IdentityPub: postData["IdentityPub"],
+                            SignedPub: postData["SignedPub"],
+                            OneTimePub: postData["OneTimePub"],
+                            EphemeralPub: postData["EphemeralPub"]
                           })
                           .then(response => {
                             if (response.data["code"] === 1) {
@@ -404,12 +406,20 @@ export default {
           }
           // 好友已经都添加了
           // 这里两个for循环应该是可以错开的。
-          for (var i = 0; i < post_data.length; i++) {
+          for (var i = 0; i < getData.length; i++) {
             // 开始解密，单个数据包传给 decryptMessage
+            axios
+              .post("http://localhost:8000/apis/decryptMessage/", {
+                fromUserid: getData["fromUserid"],
+                toUserid: getData["toUserid"],
+                date: getData["date"],
+                ciphertext: getData["ciphertext"]
+              })
+              .then(response => {});
           }
           // axios
-          //   .post("http://127.0.0.1:8000/apis/message_parse/", {
-          //     server_data: get_data
+          //   .post("http://127.0.0.1:8000/apis/decryptMessage/", {
+          //     server_data: getData
           //   })
           //   .then(response => {
 

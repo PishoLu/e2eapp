@@ -1,5 +1,6 @@
 from django.db import models
 import json
+import time
 
 # Create your models here.
 
@@ -32,7 +33,8 @@ class messages(models.Model):
     fromUserid = models.IntegerField()
     toUserid = models.IntegerField()
     kdf_next = models.CharField(max_length=64, null=True)
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(default=time.strftime(
+        "%Y-%m-%d %H:%M:%S", time.localtime()))
     plaintext = models.CharField(max_length=2048)
     EphemeralPub = models.CharField(max_length=64, null=True)
 
