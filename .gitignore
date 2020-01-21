@@ -11,3 +11,4 @@ env/
 app/djangoapp/backend/migrations/
 server/envserver/
 migrations/
+app/djangoapp/frontend/src/components/test.html

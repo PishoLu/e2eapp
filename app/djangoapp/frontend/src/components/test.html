@@ -1,26 +1,15 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <title>Editable [pseudo]select</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
 </head>
 
 <body>
-  <label for="myDate">When are you available this summer?</label>
-  <input type="date" name="myDate" min="2013-06-01" max="2013-08-31" id="myDate">
+
 </body>
-<script>
-  var beans = document.querySelector('#beans');
-  var count = document.querySelector('.beancount');
-
-  count.textContent = beans.value;
-
-  beans.oninput = function () {
-    count.textContent = beans.value;
-  }
-
-</script>
 
 </html>
