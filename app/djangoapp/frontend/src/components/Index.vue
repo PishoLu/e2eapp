@@ -184,7 +184,6 @@
 import axios from "axios";
 
 export default {
-  name: "friend",
   data() {
     return {
       count: 20,
