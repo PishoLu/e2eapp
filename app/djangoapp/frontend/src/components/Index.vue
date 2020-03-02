@@ -153,7 +153,9 @@
 
 <script>
 import axios from "axios";
-
+// todo 后续会修改promise成async形式。
+// todo 组件划分更加细化。
+// todo 关于本地浏览器存储和身份认证还是挺有问题的。
 export default {
   data() {
     return {
