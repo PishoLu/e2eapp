@@ -64,7 +64,7 @@ def filterMessages(request, pk):
         loginingUserid = int(request.COOKIES["loginingUserid"])
         # 这么写不一定能行，行了
         messagesTemp = list(messages.objects.filter(
-            (Q(fromUserid=pk) and Q(toUserid=loginingUserid)) | (Q(toUserid=pk) and Q(fromUserid=loginingUserid)) ,(Q(belongUserid=loginingUserid))).order_by("date"))
+            (Q(fromUserid=pk) and Q(toUserid=loginingUserid)) | (Q(toUserid=pk) and Q(fromUserid=loginingUserid)), (Q(belongUserid=loginingUserid))).order_by("date"))
         for i in range(len(messagesTemp)):
             messagesTemp[i] = messagesTemp[i].to_json()
         for i in messagesTemp:

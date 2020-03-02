@@ -1,10 +1,6 @@
 <template>
   <div id="app">
-    <el-dialog
-      title="搜索结果"
-      :visible.sync="dialogFormVisible"
-      :modal-append-to-body="false"
-    >
+    <el-dialog title="搜索结果" :visible.sync="dialogFormVisible" :modal-append-to-body="false">
       <el-row v-if="!searchResult.length">
         <el-col :span="24">
           <div class="search_table_title">没有该用户相关信息</div>
@@ -74,20 +70,16 @@
               text-color="#fff"
               active-text-color="#ffd04b"
             >
-              <el-menu-item-group
-                v-for="(item, index) in friendsList"
-                :key="index"
-              >
+              <el-menu-item-group v-for="(item, index) in friendsList" :key="index">
                 <el-menu-item
                   v-if="item.status"
                   class="friend-item"
                   @click="exchengObj(item.userid)"
-                  >{{ item.username }}
-                </el-menu-item>
+                >{{ item.username }}</el-menu-item>
                 <el-menu-item
                   v-else-if="
-                    notFriendActive === item.userid && item.status === 0
-                  "
+					notFriendActive === item.userid && item.status === 0
+				  "
                   class="friend-item"
                   @click="showFriendOption(item.userid)"
                 >
@@ -108,8 +100,7 @@
                   v-else-if="notFriendActive !== item.userid"
                   class="friend-item"
                   @click="showFriendOption(item.userid)"
-                  >{{ item.username }}
-                </el-menu-item>
+                >{{ item.username }}</el-menu-item>
               </el-menu-item-group>
             </el-menu>
           </el-col>
@@ -127,14 +118,8 @@
                   id="message_get_button"
                   v-if="!messageLoading"
                   @click="messageGet()"
-                >
-                </el-button>
-                <el-button
-                  v-else
-                  icon="el-icon-loading"
-                  id="message_get_button"
-                >
-                </el-button>
+                ></el-button>
+                <el-button v-else icon="el-icon-loading" id="message_get_button"></el-button>
               </div>
             </el-col>
           </el-row>
@@ -154,24 +139,10 @@
           </el-row>
         </div>
         <div id="input_box">
-          <el-form
-            :rules="formMsgRule"
-            ref="formMsg"
-            id="textarea_form"
-            :model="formMsg"
-          >
-            <textarea
-              id="textarea_box"
-              placeholder="在这里输入"
-              v-model="formMsg.msgInput"
-            ></textarea>
+          <el-form :rules="formMsgRule" ref="formMsg" id="textarea_form" :model="formMsg">
+            <textarea id="textarea_box" placeholder="在这里输入" v-model="formMsg.msgInput"></textarea>
             <div id="submit_button">
-              <el-button
-                type="primary"
-                id="button"
-                @click="sendMessage('formMsg')"
-                >发送
-              </el-button>
+              <el-button type="primary" id="button" @click="sendMessage('formMsg')">发送</el-button>
             </div>
           </el-form>
         </div>
@@ -210,7 +181,11 @@ export default {
       tempFromUserid: 0,
       formMsgRule: {
         msgInput: [
-          { required: true, message: "发送内容不能为空", trigger: "blur" }
+          {
+            required: true,
+            message: "发送内容不能为空",
+            trigger: "blur"
+          }
         ]
       },
       textareaLines: 20

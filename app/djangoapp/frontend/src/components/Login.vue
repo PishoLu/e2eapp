@@ -1,37 +1,18 @@
 <template>
   <div class="login-container">
-    <el-dialog
-      title="没有私钥信息，请输入私钥信息！"
-      :visible.sync="dialogFormVisible"
-    >
+    <el-dialog title="没有私钥信息，请输入私钥信息！" :visible.sync="dialogFormVisible">
       <el-form :model="formPrikey">
         <el-form-item label="IdentityPri">
-          <el-input
-            v-model="formPrikey.IdentityPri"
-            autocomplete="off"
-            required="required"
-          />
+          <el-input v-model="formPrikey.IdentityPri" autocomplete="off" required="required" />
         </el-form-item>
         <el-form-item label="SignedPri">
-          <el-input
-            v-model="formPrikey.SignedPri"
-            autocomplete="off"
-            required="required"
-          />
+          <el-input v-model="formPrikey.SignedPri" autocomplete="off" required="required" />
         </el-form-item>
         <el-form-item label="OneTimePri">
-          <el-input
-            v-model="formPrikey.OneTimePri"
-            autocomplete="off"
-            required="required"
-          />
+          <el-input v-model="formPrikey.OneTimePri" autocomplete="off" required="required" />
         </el-form-item>
         <el-form-item label="EphemeralPri">
-          <el-input
-            v-model="formPrikey.EphemeralPri"
-            autocomplete="off"
-            required="required"
-          />
+          <el-input v-model="formPrikey.EphemeralPri" autocomplete="off" required="required" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -49,18 +30,8 @@
       class="demo-ruleForm login-page"
       v-if="!isreg"
     >
-      <el-button
-        type="primary"
-        class="login-button-left"
-        @click.native="changeLogin()"
-        >登录
-      </el-button>
-      <el-button
-        type="primary"
-        class="login-button-right"
-        @click.native="changeRegis()"
-        >注册
-      </el-button>
+      <el-button type="primary" class="login-button-left" @click.native="changeLogin()">登录</el-button>
+      <el-button type="primary" class="login-button-right" @click.native="changeRegis()">注册</el-button>
       <el-form-item prop="userid">
         <el-input
           type="text"
@@ -80,12 +51,7 @@
         />
       </el-form-item>
       <el-form-item style="width:100%;">
-        <el-button
-          type="primary"
-          style="width:100%;"
-          @click="Login('formLogin')"
-          >登录
-        </el-button>
+        <el-button type="primary" style="width:100%;" @click="Login('formLogin')">登录</el-button>
       </el-form-item>
     </el-form>
     <el-form
@@ -98,38 +64,16 @@
       class="demo-ruleForm login-page"
       v-else
     >
-      <el-button type="primary" class="login-button-left" @click="changeLogin()"
-        >登录
-      </el-button>
-      <el-button
-        type="primary"
-        class="login-button-right"
-        @click="changRregis()"
-        >注册
-      </el-button>
+      <el-button type="primary" class="login-button-left" @click="changeLogin()">登录</el-button>
+      <el-button type="primary" class="login-button-right" @click="changRregis()">注册</el-button>
       <el-form-item prop="username">
-        <el-input
-          type="text"
-          v-model="formReg.username"
-          auto-complete="off"
-          placeholder="用户名"
-        />
+        <el-input type="text" v-model="formReg.username" auto-complete="off" placeholder="用户名" />
       </el-form-item>
       <el-form-item prop="password">
-        <el-input
-          type="password"
-          v-model="formReg.password"
-          auto-complete="off"
-          placeholder="密码"
-        />
+        <el-input type="password" v-model="formReg.password" auto-complete="off" placeholder="密码" />
       </el-form-item>
       <el-form-item style="width:100%;">
-        <el-button
-          type="primary"
-          style="width:100%;"
-          @click="Register('formReg')"
-          >注册
-        </el-button>
+        <el-button type="primary" style="width:100%;" @click="Register('formReg')">注册</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -251,10 +195,7 @@ export default {
                       "http://127.0.0.1:8888/apis/user/" +
                         this.formLogin.userid,
                       {
-                        password: sha256(this.formLogin.password),
-                        headers: {
-                          // "X-CSRFToken":this.csrftoken
-                        }
+                        password: sha256(this.formLogin.password)
                       }
                     )
                     .then(response => {
@@ -269,7 +210,6 @@ export default {
                         this.$notify.error({
                           title: "登录失败！",
                           message: "请重新登录"
-                          // type: 'success'
                         });
                       }
                     });
@@ -279,6 +219,11 @@ export default {
               } else {
                 this.dialogFormVisible = true;
               }
+            })
+            .catch(() => {
+              this.$notify.error({
+                title: "与服务器或本地后端连接出错！"
+              });
             });
         } else {
           return false;
@@ -293,10 +238,7 @@ export default {
           IdentityPri: this.formPrikey.IdentityPri,
           SignedPri: this.formPrikey.SignedPri,
           OneTimePri: this.formPrikey.OneTimePri,
-          EphemeralPri: this.formPrikey.EphemeralPri,
-          headers: {
-            // "X-CSRFToken":this.csrftoken
-          }
+          EphemeralPri: this.formPrikey.EphemeralPri
         })
         .then(response => {
           console.log(response);
@@ -320,10 +262,7 @@ export default {
                       IdentityPri: this.keys["IdentityPri"],
                       SignedPri: this.keys["SignedPri"],
                       OneTimePri: this.keys["OneTimePri"],
-                      EphemeralPri: this.keys["EphemeralPri"],
-                      headers: {
-                        // "X-CSRFToken":this.csrftoken
-                      }
+                      EphemeralPri: this.keys["EphemeralPri"]
                     })
                     .then(response => {
                       if (response.data["code"] === 1) {
@@ -336,7 +275,6 @@ export default {
                         this.$notify.error({
                           title: "保存用户密钥出错！",
                           message: "请重新登录"
-                          // type: 'success'
                         });
                       }
                     });
@@ -344,7 +282,6 @@ export default {
                   this.$notify.error({
                     title: "服务器获取用户信息失败！",
                     message: "请重新登录"
-                    // type: 'success'
                   });
                 }
               });
@@ -352,20 +289,20 @@ export default {
             this.$notify.error({
               title: "私钥格式有误！",
               message: "请重新登录"
-              // type: 'success'
             });
           }
+        })
+        .catch(() => {
+          this.$notify.error({
+            title: "与服务器或本地后端连接出错！"
+          });
         });
     },
     Register(formReg) {
       this.$refs["formReg"].validate(valid => {
         if (valid) {
           axios
-            .post("http://localhost:8000/apis/createNewKeyspair/", {
-              headers: {
-                // "X-CSRFToken":this.csrftoken,
-              }
-            })
+            .post("http://localhost:8000/apis/createNewKeyspair/")
             .then(response => {
               var pubs = response.data["data"];
               // console.log(response.data["data"]);
@@ -384,10 +321,7 @@ export default {
                   IdentityPub: this.formReg.IdentityPub,
                   SignedPub: this.formReg.SignedPub,
                   OneTimePub: this.formReg.OneTimePub,
-                  EphemeralPub: this.formReg.EphemeralPub,
-                  headers: {
-                    // "X-CSRFToken":this.csrftoken
-                  }
+                  EphemeralPub: this.formReg.EphemeralPub
                 })
                 .then(response => {
                   // console.log(response.data);
@@ -415,10 +349,7 @@ export default {
                       IdentityPri: this.formReg.IdentityPri,
                       SignedPri: this.formReg.SignedPri,
                       OneTimePri: this.formReg.OneTimePri,
-                      EphemeralPri: this.formReg.EphemeralPri,
-                      headers: {
-                        // "X-CSRFToken":this.csrftoken
-                      }
+                      EphemeralPri: this.formReg.EphemeralPri
                     });
                     this.isreg = 0;
                     this.formLogin.userid = "";
@@ -429,10 +360,14 @@ export default {
                     this.$notify.error({
                       title: "注册失败！",
                       message: "请重新注册"
-                      // type: 'success'
                     });
                   }
                 });
+            })
+            .catch(() => {
+              this.$notify.error({
+                title: "与服务器或本地后端连接出错！"
+              });
             });
         } else {
           return false;
