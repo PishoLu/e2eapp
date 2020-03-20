@@ -62,6 +62,13 @@ CORS_ORIGIN_WHITELIST = (
 
 CORS_ALLOW_CREDENTIALS = True
 # CSRF_COOKIE_SAMESITE = True
+CORS_ALLOW_METHODS = (
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'POST',
+    'PUT',
+)
 CORS_ALLOW_HEADERS = (
     'XMLHttpRequest',
     'X_FILENAME',
@@ -78,7 +85,6 @@ CORS_ALLOW_HEADERS = (
     'csrftoken',
 )
 ROOT_URLCONF = 'server.urls'
-
 
 TEMPLATES = [
     {

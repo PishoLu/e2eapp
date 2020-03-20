@@ -439,3 +439,104 @@ TypeError: int() argument must be a string, a bytes-like object or a number, not
 2020-13-20 16:13:44-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
 2020-13-20 16:13:44-__init__-DEBUG-Using selector: SelectSelector
 2020-21-20 16:21:49-__init__-DEBUG-Using selector: SelectSelector
+2020-35-20 16:35:43-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-35-20 16:35:43-__init__-DEBUG-Using selector: SelectSelector
+2020-35-20 16:35:55-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-35-20 16:35:55-__init__-DEBUG-Using selector: SelectSelector
+2020-36-20 16:36:00-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-36-20 16:36:00-__init__-DEBUG-Using selector: SelectSelector
+2020-36-20 16:36:21-log_response-ERROR-Internal Server Error: /apis/message/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 127, in messageDetail
+    get_data = json.loads(request.body)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2020-37-20 16:37:59-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-37-20 16:37:59-__init__-DEBUG-Using selector: SelectSelector
+2020-38-20 16:38:14-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-38-20 16:38:14-__init__-DEBUG-Using selector: SelectSelector
+2020-38-20 16:38:32-log_response-ERROR-Internal Server Error: /apis/message/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 127, in messageDetail
+    get_data = json.loads(request.GET)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\json\__init__.py", line 341, in loads
+    raise TypeError(f'the JSON object must be str, bytes or bytearray, '
+TypeError: the JSON object must be str, bytes or bytearray, not QueryDict
+2020-38-20 16:38:52-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-38-20 16:38:52-__init__-DEBUG-Using selector: SelectSelector
+2020-40-20 16:40:09-log_response-WARNING-Not Found: /apis/message/86580741
+2020-41-20 16:41:26-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-41-20 16:41:26-__init__-DEBUG-Using selector: SelectSelector
+2020-41-20 16:41:33-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-41-20 16:41:33-__init__-DEBUG-Using selector: SelectSelector
+2020-41-20 16:41:37-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-41-20 16:41:37-__init__-DEBUG-Using selector: SelectSelector
+2020-41-20 16:41:39-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-41-20 16:41:39-__init__-DEBUG-Using selector: SelectSelector
+2020-42-20 16:42:32-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-42-20 16:42:32-__init__-DEBUG-Using selector: SelectSelector
+2020-01-20 17:01:17-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-01-20 17:01:17-__init__-DEBUG-Using selector: SelectSelector
+2020-06-20 17:06:39-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-06-20 17:06:39-__init__-DEBUG-Using selector: SelectSelector
+2020-06-20 17:06:44-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-06-20 17:06:44-__init__-DEBUG-Using selector: SelectSelector
+2020-06-20 17:06:46-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-06-20 17:06:46-__init__-DEBUG-Using selector: SelectSelector
+2020-12-20 17:12:44-log_response-WARNING-Not Found: /user/86580741
+2020-15-20 17:15:57-log_response-WARNING-Not Found: /user/86580741
+2020-16-20 17:16:39-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-16-20 17:16:39-__init__-DEBUG-Using selector: SelectSelector
+2020-16-20 17:16:49-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-16-20 17:16:49-__init__-DEBUG-Using selector: SelectSelector
+2020-17-20 17:17:08-log_response-WARNING-Not Found: /user/86580741
+2020-17-20 17:17:47-log_response-WARNING-Not Found: /user/86580741
+2020-17-20 17:17:52-log_response-WARNING-Not Found: /user/86580741/
+2020-18-20 17:18:26-log_response-WARNING-Not Found: /user/86580741
+2020-18-20 17:18:33-log_response-WARNING-Not Found: /user/86580741/
+2020-18-20 17:18:58-trigger_reload-INFO-D:\Study\School\e2e\server\backend\urls.py changed, reloading.
+2020-18-20 17:18:58-__init__-DEBUG-Using selector: SelectSelector
+2020-19-20 17:19:01-log_response-WARNING-Not Found: /user/86580741/
+2020-19-20 17:19:09-trigger_reload-INFO-D:\Study\School\e2e\server\backend\urls.py changed, reloading.
+2020-19-20 17:19:09-__init__-DEBUG-Using selector: SelectSelector
+2020-19-20 17:19:11-log_response-WARNING-Not Found: /user/86580741/
+2020-19-20 17:19:48-log_response-WARNING-Not Found: /user/
+2020-19-20 17:19:51-log_response-WARNING-Not Found: /user
+2020-39-20 17:39:27-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-39-20 17:39:27-__init__-DEBUG-Using selector: SelectSelector
+2020-39-20 17:39:46-log_response-ERROR-Internal Server Error: /apis/message/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\server\backend\views.py", line 116, in messageDetail
+    messages.objects.create(fromUserid=post_data["fromUserid"],
+KeyError: 'fromUserid'
+2020-39-20 17:39:57-trigger_reload-INFO-D:\Study\School\e2e\server\backend\views.py changed, reloading.
+2020-39-20 17:39:57-__init__-DEBUG-Using selector: SelectSelector

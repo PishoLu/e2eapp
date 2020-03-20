@@ -111,21 +111,23 @@ def user_detail(request, pk):
 def messageDetail(request):
     # 上传消息
     if request.method == "POST":
-        try:
-            post_data = json.loads(request.body)
-            messages.objects.create(fromUserid=post_data["fromUserid"],
-                                    toUserid=post_data["toUserid"],
-                                    message=post_data["message"])
-        except:
-            result = {"code": -1, "result": "消息发送失败"}
-            return JsonResponse(result)
+        # try:
+        post_data = json.loads(request.body)
+        messages.objects.create(fromUserid=post_data["fromUserid"],
+                                toUserid=post_data["toUserid"],
+                                message=post_data["message"])
+        # except:
+        #     result = {"code": -1, "result": "消息发送失败"}
+        #     return JsonResponse(result)
         result = {"code": 1, "result": "消息发送成功！"}
         return JsonResponse(result)
 
     # 获取自己的消息
-    elif request.method == "GET":
-        loginingUserid = request.session.get("loginingUserid", default=None)
-        print(loginingUserid)
+    elif request.method == "PUT":
+        get_data = json.loads(request.body)
+        loginingUserid = get_data["loginingUserid"]
+        # loginingUserid = request.session.get("loginingUserid", default=None)
+        # print(loginingUserid)
         try:
             loginingUserid = int(loginingUserid)
             messages_temp = list(

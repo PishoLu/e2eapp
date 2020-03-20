@@ -30,6 +30,8 @@ class user(models.Model):
 
 class messages(models.Model):
     message_id = models.AutoField(primary_key=True)
+    # * 由登录账号发送的和接收到的信息才能算是属于他的信息，才能进行读取和操作。
+    # * 在数据库存储中，仅有成功发出消息和成功接收并解密消息，才能添加进数据库并添加belongUserid属性
     belongUserid = models.IntegerField()
     fromUserid = models.IntegerField()
     toUserid = models.IntegerField()
