@@ -180,7 +180,8 @@ export default {
       csrftoken: "",
       resData: {},
       notFriendActive: 0,
-      tempFromUserid: 0,
+      tempFromUserid: [],
+      tempGetData: null,
       formMsgRule: {
         msgInput: [
           {
@@ -232,8 +233,10 @@ export default {
                     // console.log(response);
                     if (response.data["code"] === 1) {
                       this.resData = response.data["data"];
+                      console.log(this.resData);
                       axios
                         .post("http://127.0.0.1:8888/apis/message/", {
+                          date: this.resData["date"],
                           fromUserid: this.resData["fromUserid"],
                           toUserid: this.resData["toUserid"],
                           message: this.resData["message"]
@@ -251,6 +254,7 @@ export default {
                                   EphemeralPub: this.resData["message"][
                                     "EphemeralPub"
                                   ],
+                                  date: this.resData["date"],
                                   EphemeralPri: this.resData["EphemeralPri"],
                                   plaintext: this.resData["plaintext"],
                                   belongUserid: this.loginingUserid
@@ -324,32 +328,48 @@ export default {
           loginingUserid: this.loginingUserid
         })
         .then(response => {
-          console.log(response);
           if (response.data["code"] === 1) {
-            var getData = response.data["data"];
-            // 循环解析数据包，判断消息源是否为好友并处理
-            console.log(getData);
-            for (var i = 0; i < getData.length; i++) {
-              // 返回的列表中的数据的某一个数据包的来源
-              this.tempFromUserid = getData[i]["fromUserid"];
+            this.tempGetData = response.data["data"];
+            return Promise.resolve("获取到服务器暂存消息");
+          } else {
+            this.$notify({
+              title: "服务器没有暂存消息。",
+              message: "请重新获取。",
+              type: "success"
+            });
+            this.messageLoading = false;
+            return Promise.reject("服务器没有暂存消息。");
+          }
+        })
+        .then(response => {
+          // this.tempGetData.forEach(element => {
+          //   if (this.tempFromUserid.indexOf(element) === -1) {
+          //     this.tempFromUserid.push(element["fromUserid"]);
+          //   }
+          // });
+          Promise.all(
+            this.tempGetData.map(item => {
+              if (this.tempFromUserid.indexOf(item["fromUserid"]) === -1) {
+                this.tempFromUserid.push(item["fromUserid"]);
+              }
+            })
+          );
+          return Promise.resolve("提取出待定好友列表");
+        })
+        .then(response => {
+          Promise.all(
+            this.tempFromUserid.map(item => {
               axios
-                .get(
-                  "http://localhost:8000/apis/friendsList/" +
-                    Number(this.tempFromUserid)
-                )
+                .get("http://localhost:8000/apis/friendsList/" + Number(item))
                 .then(response => {
                   if (response.data["code"] === 1) {
-                    // 说明消息来源是好友
-                    // 是好友的话就可以直接解密了
-                    for (var i = 0; i < getData.length; i++) {
-                      // 开始解密，单个数据包传给 decryptMessage
-                      console.log(getData);
+                    this.tempGetData.map(item => {
                       axios
                         .post("http://localhost:8000/apis/decryptMessage/", {
-                          fromUserid: getData[i]["fromUserid"],
-                          toUserid: getData[i]["toUserid"],
-                          date: getData[i]["date"],
-                          message: getData[i]["message"]
+                          fromUserid: item["fromUserid"],
+                          toUserid: item["toUserid"],
+                          date: item["date"],
+                          message: item["message"]
                         })
                         .then(response => {
                           console.log(response);
@@ -366,20 +386,14 @@ export default {
                               belongUserid: this.loginingUserid
                             }
                           );
+                          return Promise.resolve("解密完成。");
                         });
-                    }
-                    this.messageLoading = false;
+                    });
                   } else {
-                    // 消息来源不是好友
-                    // 添加到数据库，但是status为0
                     axios
-                      .get(
-                        "http://127.0.0.1:8888/apis/user/" +
-                          Number(this.tempFromUserid)
-                      )
+                      .get("http://127.0.0.1:8888/apis/user/" + Number(item))
                       .then(response => {
                         if (response.data["code"] === 1) {
-                          // 获取目标服务器信息9-***
                           var postData = response.data["data"];
                           // 保存到好友数据库并设置status为0
                           axios
@@ -401,6 +415,41 @@ export default {
                                   type: "success"
                                 });
                                 this.friendsListFlash();
+                                this.tempGetData.map(item => {
+                                  axios
+                                    .post(
+                                      "http://localhost:8000/apis/decryptMessage/",
+                                      {
+                                        fromUserid: item["fromUserid"],
+                                        toUserid: item["toUserid"],
+                                        date: item["date"],
+                                        message: item["message"]
+                                      }
+                                    )
+                                    .then(response => {
+                                      console.log(response);
+                                      axios.post(
+                                        "http://localhost:8000/apis/storeMessage/",
+                                        {
+                                          fromUserid:
+                                            response.data["data"]["fromUserid"],
+                                          toUserid:
+                                            response.data["data"]["toUserid"],
+                                          kdf_next:
+                                            response.data["data"]["kdf_next"],
+                                          EphemeralPub:
+                                            response.data["data"][
+                                              "EphemeralPub"
+                                            ],
+                                          EphemeralPri: "",
+                                          plaintext:
+                                            response.data["data"]["plaintext"],
+                                          belongUserid: this.loginingUserid
+                                        }
+                                      );
+                                      return Promise.resolve("解密完成。");
+                                    });
+                                });
                               } else {
                                 this.$notify.error({
                                   title: "待定好友添加失败。",
@@ -408,75 +457,28 @@ export default {
                                   // type: 'success'
                                 });
                               }
-                            })
-                            .then(response => {
-                              for (var i = 0; i < getData.length; i++) {
-                                // 开始解密，单个数据包传给 decryptMessage
-                                console.log(getData);
-                                axios
-                                  .post(
-                                    "http://localhost:8000/apis/decryptMessage/",
-                                    {
-                                      fromUserid: getData[i]["fromUserid"],
-                                      toUserid: getData[i]["toUserid"],
-                                      date: getData[i]["date"],
-                                      message: getData[i]["message"]
-                                    }
-                                  )
-                                  .then(response => {
-                                    console.log(response);
-                                    axios.post(
-                                      "http://localhost:8000/apis/storeMessage/",
-                                      {
-                                        fromUserid:
-                                          response.data["data"]["fromUserid"],
-                                        toUserid:
-                                          response.data["data"]["toUserid"],
-                                        kdf_next:
-                                          response.data["data"]["kdf_next"],
-                                        EphemeralPub:
-                                          response.data["data"]["EphemeralPub"],
-                                        EphemeralPri: "",
-                                        plaintext:
-                                          response.data["data"]["plaintext"],
-                                        belongUserid: this.loginingUserid
-                                      }
-                                    );
-                                  });
-                              }
-                              this.messageLoading = false;
                             });
-                        } else {
-                          this.$notify.error({
-                            title: "获取服务器记录失败。",
-                            message: "请重新获取。"
-                            // type: 'success'
-                          });
                         }
                       });
                   }
                 });
-            }
-            // 好友已经都添加了
-            // 这里两个for循环应该是可以错开的。
-
-            // axios
-            //   .post("http://127.0.0.1:8000/apis/decryptMessage/", {
-            //     server_data: getData
-            //   })
-            //   .then(response => {
-
-            //   });
-          } else {
-            this.$notify.error({
-              title: "获取服务器记录失败。",
-              message: "请重新获取。"
-              // type: 'success'
-            });
-            this.messageLoading = false;
-          }
+            })
+          );
+          return Promise.resolve("待定好友添加完成");
+          // this.tempFromUserid.forEach(element => {
+          //   axios
+          //     .get("http://localhost:8000/apis/friendsList/" + Number(element))
+          //     .then(response => {
+          //       if (response.data["code"] === 1) {
+          //         return Promise.resolve("目标已经是好友了。");
+          //       } else {
+          //         axios
+          //           .get("http://127.0.0.1:8888/apis/user/" + Number(element))
+          //           .then(response => {});
+          //       }
+          //     });
+          // });
         });
-
       this.messageLoading = false;
     },
     // 切换当前对话目标，获取该目标的消息

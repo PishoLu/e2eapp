@@ -46,7 +46,7 @@ def storeMessage(request):
         postData = json.loads(request.body)
         try:
             messages.objects.create(
-                belongUserid=postData["belongUserid"], fromUserid=postData["fromUserid"], toUserid=postData["toUserid"], kdf_next=postData["kdf_next"], EphemeralPub=postData["EphemeralPub"], plaintext=postData["plaintext"], EphemeralPri=postData["EphemeralPri"])
+                date=postData["date"], belongUserid=postData["belongUserid"], fromUserid=postData["fromUserid"], toUserid=postData["toUserid"], kdf_next=postData["kdf_next"], EphemeralPub=postData["EphemeralPub"], plaintext=postData["plaintext"], EphemeralPri=postData["EphemeralPri"])
             result = {"code": 1, "result": "添加成功"}
             return JsonResponse(result)
         except:
@@ -561,7 +561,8 @@ def encryptMessage(request):
                     encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape"),
                 'ciphertext': bytes2list(ct),
             },
-            "plaintext": postData["plaintext"]
+            "plaintext": postData["plaintext"],
+            "date": time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         }
 
         result = {"code": 1, "data": resultData, "result": "X3DH密钥"}

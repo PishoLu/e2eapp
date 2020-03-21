@@ -113,7 +113,8 @@ def messageDetail(request):
     if request.method == "POST":
         # try:
         post_data = json.loads(request.body)
-        messages.objects.create(fromUserid=post_data["fromUserid"],
+        messages.objects.create(date=post_data["date"],
+                                fromUserid=post_data["fromUserid"],
                                 toUserid=post_data["toUserid"],
                                 message=post_data["message"])
         # except:

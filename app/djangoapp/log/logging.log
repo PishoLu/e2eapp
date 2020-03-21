@@ -3147,3 +3147,525 @@ Traceback (most recent call last):
 cryptography.exceptions.InvalidTag
 2020-07-20 21:07:04-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
 2020-07-20 21:07:04-__init__-DEBUG-Using selector: SelectSelector
+2020-25-21 20:25:48-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 422, in get
+    num if not limit or num < limit else 'more than %s' % (limit - 1),
+backend.models.friends.MultipleObjectsReturned: get() returned more than one friends -- it returned 2!
+2020-25-21 20:25:48-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 422, in get
+    num if not limit or num < limit else 'more than %s' % (limit - 1),
+backend.models.friends.MultipleObjectsReturned: get() returned more than one friends -- it returned 2!
+2020-25-21 20:25:48-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 422, in get
+    num if not limit or num < limit else 'more than %s' % (limit - 1),
+backend.models.friends.MultipleObjectsReturned: get() returned more than one friends -- it returned 2!
+2020-25-21 20:25:48-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 422, in get
+    num if not limit or num < limit else 'more than %s' % (limit - 1),
+backend.models.friends.MultipleObjectsReturned: get() returned more than one friends -- it returned 2!
+2020-30-21 20:30:27-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 422, in get
+    num if not limit or num < limit else 'more than %s' % (limit - 1),
+backend.models.friends.MultipleObjectsReturned: get() returned more than one friends -- it returned 2!
+2020-30-21 20:30:27-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 422, in get
+    num if not limit or num < limit else 'more than %s' % (limit - 1),
+backend.models.friends.MultipleObjectsReturned: get() returned more than one friends -- it returned 2!
+2020-30-21 20:30:27-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 422, in get
+    num if not limit or num < limit else 'more than %s' % (limit - 1),
+backend.models.friends.MultipleObjectsReturned: get() returned more than one friends -- it returned 2!
+2020-30-21 20:30:27-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 422, in get
+    num if not limit or num < limit else 'more than %s' % (limit - 1),
+backend.models.friends.MultipleObjectsReturned: get() returned more than one friends -- it returned 2!
+2020-16-21 22:16:15-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-16-21 22:16:15-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-18-21 22:18:14-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 392, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-21-21 22:21:01-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 392, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-33-21 22:33:11-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-33-21 22:33:11-__init__-DEBUG-Using selector: SelectSelector
+2020-35-21 22:35:17-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 393, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-35-21 22:35:17-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 393, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-35-21 22:35:17-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 393, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-35-21 22:35:17-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 393, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-35-21 22:35:17-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 393, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-35-21 22:35:17-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 393, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-39-21 22:39:24-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 393, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-39-21 22:39:24-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 393, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-39-21 22:39:24-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 393, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-39-21 22:39:24-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 393, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-39-21 22:39:24-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 393, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-39-21 22:39:24-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 393, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-41-21 22:41:54-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 393, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-41-21 22:41:54-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 393, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-41-21 22:41:54-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 393, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-41-21 22:41:54-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 393, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-41-21 22:41:55-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 393, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-41-21 22:41:55-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 393, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-45-21 22:45:25-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-45-21 22:45:25-__init__-DEBUG-Using selector: SelectSelector
+2020-45-21 22:45:34-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-45-21 22:45:34-__init__-DEBUG-Using selector: SelectSelector
+2020-45-21 22:45:51-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-45-21 22:45:51-__init__-DEBUG-Using selector: SelectSelector
+2020-46-21 22:46:04-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-46-21 22:46:04-__init__-DEBUG-Using selector: SelectSelector
+2020-46-21 22:46:07-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-46-21 22:46:07-__init__-DEBUG-Using selector: SelectSelector
