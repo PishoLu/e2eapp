@@ -29,8 +29,12 @@ log_path = BASE_DIR+"/log/"
 # 日志类
 class Logger():
     def __init__(self):
-        logging.basicConfig(filename=log_path+"logging.log", filemode="a",
-                            format="%(asctime)s-%(funcName)s-%(levelname)s-%(message)s", datefmt="%Y-%M-%d %H:%M:%S", level=logging.DEBUG)
+        logging.basicConfig(
+            filename=log_path+"logging.log",
+            filemode="a",
+            format="%(asctime)s-%(funcName)s-%(levelname)s-%(message)s",
+            datefmt="%Y-%M-%d %H:%M:%S",
+            level=logging.DEBUG)
         self.logger = logging.getLogger()
 
     def getlogger(self):
@@ -45,14 +49,21 @@ logger = Logger()
 def storeMessage(request):
     if request.method == "POST":
         postData = json.loads(request.body)
-        # try:
-        messages.objects.create(
-            date=postData["date"], belongUserid=postData["belongUserid"], fromUserid=postData["fromUserid"], toUserid=postData["toUserid"], kdf_next=postData["kdf_next"], EphemeralPub=postData["EphemeralPub"], plaintext=postData["plaintext"], EphemeralPri=postData["EphemeralPri"])
-        result = {"code": 1, "result": "添加成功"}
-        return JsonResponse(result)
-        # except:
-        #     result = {"code": -1, "result": "添加失败！"}
-        #     return JsonResponse(result)
+        try:
+            messages.objects.create(
+                date=postData["date"],
+                belongUserid=postData["belongUserid"],
+                fromUserid=postData["fromUserid"],
+                toUserid=postData["toUserid"],
+                kdf_next=postData["kdf_next"],
+                EphemeralPub=postData["EphemeralPub"],
+                plaintext=postData["plaintext"],
+                EphemeralPri=postData["EphemeralPri"])
+            result = {"code": 1, "result": "添加成功"}
+            return JsonResponse(result)
+        except:
+            result = {"code": -1, "result": "添加失败！"}
+            return JsonResponse(result)
     else:
         result = {"code": -1, "result": "请求方式有误!"}
         return JsonResponse(result)
@@ -99,17 +110,17 @@ def storeUser(request):
     if request.method == "POST":
         postData = json.loads(request.body)
         # print(postData)
-        # try:
-        user.objects.create(userid=postData["userid"], username=postData["username"],
-                            IdentityPub=postData["IdentityPub"], SignedPub=postData["SignedPub"],
-                            OneTimePub=postData["OneTimePub"], EphemeralPub=postData["EphemeralPub"],
-                            IdentityPri=postData["IdentityPri"], SignedPri=postData["SignedPri"],
-                            OneTimePri=postData["OneTimePri"], EphemeralPri=postData["EphemeralPri"])
-        result = {"code": 1, "result": "添加成功！"}
-        return JsonResponse(result)
-        # except:
-        #     result = {"code": -1, "result": "添加失败！"}
-        #     return JsonResponse(result)
+        try:
+            user.objects.create(userid=postData["userid"], username=postData["username"],
+                                IdentityPub=postData["IdentityPub"], SignedPub=postData["SignedPub"],
+                                OneTimePub=postData["OneTimePub"], EphemeralPub=postData["EphemeralPub"],
+                                IdentityPri=postData["IdentityPri"], SignedPri=postData["SignedPri"],
+                                OneTimePri=postData["OneTimePri"], EphemeralPri=postData["EphemeralPri"])
+            result = {"code": 1, "result": "添加成功！"}
+            return JsonResponse(result)
+        except:
+            result = {"code": -1, "result": "添加失败！"}
+            return JsonResponse(result)
     else:
         result = {"code": -1, "result": "请求方式有误!"}
         return JsonResponse(result)
@@ -163,7 +174,6 @@ def storeFriend(request):
     except:
         result = {"code": -1, "result": "获取cookie出错"}
         return JsonResponse(result)
-
     if request.method == "POST":
         try:
             friends.objects.create(userid=postData["userid"], username=postData["username"], whosfriend=loginingUserid,
@@ -182,7 +192,6 @@ def storeFriend(request):
             tempFriend.save()
             result = {"code": 1, "result": "更新成功！"}
             return JsonResponse(result)
-
         except:
             result = {"code": -1, "result": "更新失败！"}
             return JsonResponse(result)
@@ -193,7 +202,6 @@ def storeFriend(request):
             tempFriend.dee()
             result = {"code": 1, "result": "删除成功！"}
             return JsonResponse(result)
-
         except:
             result = {"code": -1, "result": "删除失败！"}
             return JsonResponse(result)
@@ -232,7 +240,7 @@ def friendsList(request):
 
 # 获取详细好友信息
 @csrf_exempt
-def friend_detail(request, pk):
+def friendDetail(request, pk):
     try:
         loginingUserid = int(request.COOKIES["loginingUserid"])
         friendsTemp = friends.objects.get(
@@ -672,31 +680,31 @@ def checkPri(request):
         postData = json.loads(request.body)
         postData_temp = postData.copy()
         postData_temp2 = postData.copy()
-        # try:
-        postData_temp["IdentityPri"] = X25519PrivateKey.from_private_bytes(
-            binascii.unhexlify(postData["IdentityPri"].encode("unicode_escape")))
-        postData_temp["SignedPri"] = X25519PrivateKey.from_private_bytes(
-            binascii.unhexlify(postData["SignedPri"].encode("unicode_escape")))
-        postData_temp["OneTimePri"] = X25519PrivateKey.from_private_bytes(
-            binascii.unhexlify(postData["OneTimePri"].encode("unicode_escape")))
-        postData_temp["EphemeralPri"] = X25519PrivateKey.from_private_bytes(
-            binascii.unhexlify(postData["EphemeralPri"].encode("unicode_escape")))
+        try:
+            postData_temp["IdentityPri"] = X25519PrivateKey.from_private_bytes(
+                binascii.unhexlify(postData["IdentityPri"].encode("unicode_escape")))
+            postData_temp["SignedPri"] = X25519PrivateKey.from_private_bytes(
+                binascii.unhexlify(postData["SignedPri"].encode("unicode_escape")))
+            postData_temp["OneTimePri"] = X25519PrivateKey.from_private_bytes(
+                binascii.unhexlify(postData["OneTimePri"].encode("unicode_escape")))
+            postData_temp["EphemeralPri"] = X25519PrivateKey.from_private_bytes(
+                binascii.unhexlify(postData["EphemeralPri"].encode("unicode_escape")))
 
-        postData_temp2["IdentityPub"] = binascii.hexlify(postData_temp["IdentityPri"].public_key().public_bytes(
-            encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape")
-        postData_temp2["SignedPub"] = binascii.hexlify(postData_temp["SignedPri"].public_key().public_bytes(
-            encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape")
-        postData_temp2["OneTimePub"] = binascii.hexlify(postData_temp["OneTimePri"].public_key().public_bytes(
-            encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape")
-        postData_temp2["EphemeralPub"] = binascii.hexlify(postData_temp["EphemeralPri"].public_key().public_bytes(
-            encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape")
-        # print(postData)
-        # print(postData_temp)
-        result = {"code": 1, "data": postData_temp2, "result": "私钥格式正常！"}
-        return JsonResponse(result)
-        # except:
-        #     result = {"code": -1, "result": "私钥格式有误！"}
-        #     return JsonResponse(result)
+            postData_temp2["IdentityPub"] = binascii.hexlify(postData_temp["IdentityPri"].public_key().public_bytes(
+                encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape")
+            postData_temp2["SignedPub"] = binascii.hexlify(postData_temp["SignedPri"].public_key().public_bytes(
+                encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape")
+            postData_temp2["OneTimePub"] = binascii.hexlify(postData_temp["OneTimePri"].public_key().public_bytes(
+                encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape")
+            postData_temp2["EphemeralPub"] = binascii.hexlify(postData_temp["EphemeralPri"].public_key().public_bytes(
+                encoding=serialization.Encoding.Raw, format=serialization.PublicFormat.Raw)).decode("unicode_escape")
+            # print(postData)
+            # print(postData_temp)
+            result = {"code": 1, "data": postData_temp2, "result": "私钥格式正常！"}
+            return JsonResponse(result)
+        except:
+            result = {"code": -1, "result": "私钥格式有误！"}
+            return JsonResponse(result)
     else:
         result = {"code": -1, "result": "请求方式有误!"}
         return JsonResponse(result)

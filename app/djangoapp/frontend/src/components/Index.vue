@@ -360,7 +360,7 @@ export default {
       }
       console.log(this.tempFromUserid);
       for (let i = 0; i < this.tempFromUserid.length; i++) {
-        console.log(this.tempFromUserid[i]);
+        // console.log(this.tempFromUserid[i]);
         await axios
           .get(
             "http://localhost:8000/apis/friendsList/" +
@@ -411,7 +411,7 @@ export default {
       setTimeout(async () => {
         for (let i = 0; i < this.tempGetData.length; i++) {
           // console.log(item);
-          console.log("开始解密：" + this.tempGetData[i]);
+          console.log("开始解密");
           await axios
             .post("http://localhost:8000/apis/decryptMessage/", {
               fromUserid: this.tempGetData[i]["fromUserid"],
@@ -421,7 +421,7 @@ export default {
             })
             .then(response => {
               if (response.data["code"] === 1) {
-                console.log(response);
+                console.log(response.data["result"]);
                 console.log("开始保存消息。");
                 axios
                   .post("http://localhost:8000/apis/storeMessage/", {
@@ -435,7 +435,14 @@ export default {
                     belongUserid: this.loginingUserid
                   })
                   .then(response => {
-                    console.log(response);
+                    if (response.data["code"] === 1) {
+                      console.log("消息添加成功。");
+                    } else {
+                      this.$notify.error({
+                        title: "消息添加失败。请检查代码。"
+                        // type: 'success'
+                      });
+                    }
                   });
               } else {
                 this.$notify.error({
@@ -447,8 +454,6 @@ export default {
           // await this.wait(1000);
         }
       }, 2000);
-
-      console.log("解密完成");
       this.messageLoading = false;
     },
     async wait(time) {
