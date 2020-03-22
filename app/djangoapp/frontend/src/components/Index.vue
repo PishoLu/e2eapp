@@ -216,7 +216,7 @@ export default {
     // 发送消息之前需要先获取一次。防止加密顺序错乱。
     // 异步函数需要添加 async 来使用 await
     async sendMessage(formMsg) {
-      // await this.messageGet();
+      await this.messageGet();
       this.$refs["formMsg"].validate(valid => {
         if (valid) {
           axios
@@ -293,7 +293,7 @@ export default {
                   .get("http://127.0.0.1:8888/apis/user/" + id)
                   .then(response => {
                     if (response.data["code"] === 1) {
-                      var getData = response.data["data"];
+                      let getData = response.data["data"];
                       axios.post("http://localhost:8000/apis/storeFriend/", {
                         userid: getData["userid"],
                         username: getData["username"],
@@ -321,16 +321,16 @@ export default {
       });
     },
     // 只能通过刷新消息列表来完成接收消息了
-    messageGet() {
+    async messageGet() {
       this.messageLoading = true;
-      axios
+      let messcode = await axios
         .put("http://127.0.0.1:8888/apis/message/", {
           loginingUserid: this.loginingUserid
         })
         .then(response => {
           if (response.data["code"] === 1) {
             this.tempGetData = response.data["data"];
-            return Promise.resolve("获取到服务器暂存消息");
+            return Promise.resolve(1);
           } else {
             this.$notify({
               title: "服务器没有暂存消息。",
@@ -338,148 +338,121 @@ export default {
               type: "success"
             });
             this.messageLoading = false;
-            return Promise.reject("服务器没有暂存消息。");
+            return Promise.resolve(0);
           }
         })
         .then(response => {
-          // this.tempGetData.forEach(element => {
-          //   if (this.tempFromUserid.indexOf(element) === -1) {
-          //     this.tempFromUserid.push(element["fromUserid"]);
-          //   }
-          // });
-          Promise.all(
-            this.tempGetData.map(item => {
-              if (this.tempFromUserid.indexOf(item["fromUserid"]) === -1) {
-                this.tempFromUserid.push(item["fromUserid"]);
-              }
-            })
-          );
-          return Promise.resolve("提取出待定好友列表");
-        })
-        .then(response => {
-          Promise.all(
-            this.tempFromUserid.map(item => {
+          if (response !== 1) {
+            return Promise.resolve(0);
+          }
+          for (let i = 0; i < this.tempGetData.length; i++) {
+            if (
+              this.tempFromUserid.indexOf(this.tempGetData[i]["fromUserid"]) ===
+              -1
+            ) {
+              this.tempFromUserid.push(this.tempGetData[i]["fromUserid"]);
+            }
+          }
+          return Promise.resolve(1);
+        });
+      if (messcode === 0) {
+        return 0;
+      }
+      console.log(this.tempFromUserid);
+      for (let i = 0; i < this.tempFromUserid.length; i++) {
+        console.log(this.tempFromUserid[i]);
+        await axios
+          .get(
+            "http://localhost:8000/apis/friendsList/" +
+              Number(this.tempFromUserid[i])
+          )
+          .then(response => {
+            if (response.data["code"] !== 1) {
               axios
-                .get("http://localhost:8000/apis/friendsList/" + Number(item))
+                .get(
+                  "http://127.0.0.1:8888/apis/user/" +
+                    Number(this.tempFromUserid[i])
+                )
                 .then(response => {
+                  console.log("开始添加待定好友。");
                   if (response.data["code"] === 1) {
-                    this.tempGetData.map(item => {
-                      axios
-                        .post("http://localhost:8000/apis/decryptMessage/", {
-                          fromUserid: item["fromUserid"],
-                          toUserid: item["toUserid"],
-                          date: item["date"],
-                          message: item["message"]
-                        })
-                        .then(response => {
-                          console.log(response);
-                          axios.post(
-                            "http://localhost:8000/apis/storeMessage/",
-                            {
-                              fromUserid: response.data["data"]["fromUserid"],
-                              toUserid: response.data["data"]["toUserid"],
-                              kdf_next: response.data["data"]["kdf_next"],
-                              EphemeralPub:
-                                response.data["data"]["EphemeralPub"],
-                              EphemeralPri: "",
-                              plaintext: response.data["data"]["plaintext"],
-                              belongUserid: this.loginingUserid
-                            }
-                          );
-                          return Promise.resolve("解密完成。");
-                        });
-                    });
-                  } else {
+                    let postData = response.data["data"];
+                    // 保存到好友数据库并设置status为0
                     axios
-                      .get("http://127.0.0.1:8888/apis/user/" + Number(item))
+                      .post("http://localhost:8000/apis/storeFriend/", {
+                        userid: postData["userid"],
+                        username: postData["username"],
+                        remark: "",
+                        status: 0,
+                        IdentityPub: postData["IdentityPub"],
+                        SignedPub: postData["SignedPub"],
+                        OneTimePub: postData["OneTimePub"],
+                        EphemeralPub: postData["EphemeralPub"]
+                      })
                       .then(response => {
+                        console.log("保存好友成功。");
                         if (response.data["code"] === 1) {
-                          var postData = response.data["data"];
-                          // 保存到好友数据库并设置status为0
-                          axios
-                            .post("http://localhost:8000/apis/storeFriend/", {
-                              userid: postData["userid"],
-                              username: postData["username"],
-                              remark: "",
-                              status: 0,
-                              IdentityPub: postData["IdentityPub"],
-                              SignedPub: postData["SignedPub"],
-                              OneTimePub: postData["OneTimePub"],
-                              EphemeralPub: postData["EphemeralPub"]
-                            })
-                            .then(response => {
-                              if (response.data["code"] === 1) {
-                                this.$notify({
-                                  title: "待定好友添加成功",
-                                  // message: "请重新获取。",
-                                  type: "success"
-                                });
-                                this.friendsListFlash();
-                                this.tempGetData.map(item => {
-                                  axios
-                                    .post(
-                                      "http://localhost:8000/apis/decryptMessage/",
-                                      {
-                                        fromUserid: item["fromUserid"],
-                                        toUserid: item["toUserid"],
-                                        date: item["date"],
-                                        message: item["message"]
-                                      }
-                                    )
-                                    .then(response => {
-                                      console.log(response);
-                                      axios.post(
-                                        "http://localhost:8000/apis/storeMessage/",
-                                        {
-                                          fromUserid:
-                                            response.data["data"]["fromUserid"],
-                                          toUserid:
-                                            response.data["data"]["toUserid"],
-                                          kdf_next:
-                                            response.data["data"]["kdf_next"],
-                                          EphemeralPub:
-                                            response.data["data"][
-                                              "EphemeralPub"
-                                            ],
-                                          EphemeralPri: "",
-                                          plaintext:
-                                            response.data["data"]["plaintext"],
-                                          belongUserid: this.loginingUserid
-                                        }
-                                      );
-                                      return Promise.resolve("解密完成。");
-                                    });
-                                });
-                              } else {
-                                this.$notify.error({
-                                  title: "待定好友添加失败。",
-                                  message: "请重新获取。"
-                                  // type: 'success'
-                                });
-                              }
-                            });
+                          this.$notify({
+                            title: "待定好友添加成功",
+                            // message: "请重新获取。",
+                            type: "success"
+                          });
                         }
                       });
                   }
                 });
+            }
+          });
+      }
+      setTimeout(() => {
+        this.friendsListFlash();
+        console.log("好友列表刷新完成");
+      }, 1000);
+      setTimeout(async () => {
+        for (let i = 0; i < this.tempGetData.length; i++) {
+          // console.log(item);
+          console.log("开始解密：" + this.tempGetData[i]);
+          await axios
+            .post("http://localhost:8000/apis/decryptMessage/", {
+              fromUserid: this.tempGetData[i]["fromUserid"],
+              toUserid: this.tempGetData[i]["toUserid"],
+              date: this.tempGetData[i]["date"],
+              message: this.tempGetData[i]["message"]
             })
-          );
-          return Promise.resolve("待定好友添加完成");
-          // this.tempFromUserid.forEach(element => {
-          //   axios
-          //     .get("http://localhost:8000/apis/friendsList/" + Number(element))
-          //     .then(response => {
-          //       if (response.data["code"] === 1) {
-          //         return Promise.resolve("目标已经是好友了。");
-          //       } else {
-          //         axios
-          //           .get("http://127.0.0.1:8888/apis/user/" + Number(element))
-          //           .then(response => {});
-          //       }
-          //     });
-          // });
-        });
+            .then(response => {
+              if (response.data["code"] === 1) {
+                console.log(response);
+                console.log("开始保存消息。");
+                axios
+                  .post("http://localhost:8000/apis/storeMessage/", {
+                    fromUserid: response.data["data"]["fromUserid"],
+                    toUserid: response.data["data"]["toUserid"],
+                    kdf_next: response.data["data"]["kdf_next"],
+                    EphemeralPub: response.data["data"]["EphemeralPub"],
+                    EphemeralPri: "",
+                    date: response.data["data"]["date"],
+                    plaintext: response.data["data"]["plaintext"],
+                    belongUserid: this.loginingUserid
+                  })
+                  .then(response => {
+                    console.log(response);
+                  });
+              } else {
+                this.$notify.error({
+                  title: "解密出错，连续多条消息解密有误"
+                  // type: 'success'
+                });
+              }
+            });
+          // await this.wait(1000);
+        }
+      }, 2000);
+
+      console.log("解密完成");
       this.messageLoading = false;
+    },
+    async wait(time) {
+      await new Promise(resolve => setTimeout(resolve, time));
     },
     // 切换当前对话目标，获取该目标的消息
     exchengObj(id) {
@@ -525,7 +498,7 @@ export default {
             // console.log(
             // this.searchResult[0]["userid"] === parseInt(this.loginingUserid)
             // );
-            for (var i = 0; i < this.friendsList.length; i++) {
+            for (let i = 0; i < this.friendsList.length; i++) {
               // console.log(this.searchResult)
               if (
                 this.friendsList[i]["userid"] === this.searchResult[0]["userid"]
@@ -558,7 +531,6 @@ export default {
         })
         .then(response => {
           if (response.data["code"] === 1) {
-            // console.log(response.data)
             this.friendsList = response.data["data"];
           } else {
             this.$notify.error({

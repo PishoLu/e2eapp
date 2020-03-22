@@ -36,8 +36,7 @@ class messages(models.Model):
     fromUserid = models.IntegerField()
     toUserid = models.IntegerField()
     kdf_next = models.CharField(max_length=64, null=True)
-    date = models.DateTimeField(default=time.strftime(
-        "%Y-%m-%d %H:%M:%S", time.localtime()))
+    date = models.DateTimeField()
     plaintext = models.CharField(max_length=2048)
     EphemeralPub = models.CharField(max_length=64, null=True)
     EphemeralPri = models.CharField(max_length=64, null=True)

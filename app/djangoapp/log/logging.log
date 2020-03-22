@@ -3669,3 +3669,1951 @@ cryptography.exceptions.InvalidTag
 2020-46-21 22:46:04-__init__-DEBUG-Using selector: SelectSelector
 2020-46-21 22:46:07-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
 2020-46-21 22:46:07-__init__-DEBUG-Using selector: SelectSelector
+2020-49-21 22:49:15-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-49-21 22:49:15-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-49-21 22:49:15-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-49-21 22:49:15-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-51-21 22:51:05-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-51-21 22:51:05-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-51-21 22:51:05-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-51-21 22:51:05-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-51-21 22:51:06-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 392, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-51-21 22:51:06-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 392, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-51-21 22:51:06-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 392, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-51-21 22:51:06-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 392, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-53-21 22:53:42-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-53-21 22:53:42-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-53-21 22:53:42-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 392, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-53-21 22:53:44-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 392, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-53-21 22:53:45-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 392, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-31-21 23:31:06-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-31-21 23:31:19-log_response-WARNING-Not Found: /favicon.ico
+2020-33-21 23:33:21-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-36-21 23:36:34-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-36-21 23:36:34-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-36-21 23:36:35-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-36-21 23:36:35-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-36-21 23:36:56-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-36-21 23:36:56-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-36-21 23:36:56-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-36-21 23:36:56-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-38-21 23:38:52-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-38-21 23:38:52-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-38-21 23:38:52-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-38-21 23:38:52-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-45-21 23:45:40-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-45-21 23:45:40-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-45-21 23:45:40-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-45-21 23:45:40-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-48-21 23:48:41-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-48-21 23:48:41-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-48-21 23:48:41-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-48-21 23:48:41-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-50-21 23:50:21-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-50-21 23:50:21-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-50-21 23:50:21-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-50-21 23:50:21-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-51-21 23:51:52-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-51-21 23:51:52-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-51-21 23:51:52-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-51-21 23:51:52-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-53-21 23:53:08-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-53-21 23:53:08-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-53-21 23:53:08-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-53-21 23:53:08-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-56-21 23:56:42-__init__-DEBUG-Using selector: SelectSelector
+2020-57-21 23:57:08-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-57-21 23:57:08-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-57-21 23:57:08-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-57-21 23:57:08-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-54-22 08:54:12-__init__-DEBUG-Using selector: SelectSelector
+2020-56-22 08:56:22-__init__-DEBUG-Using selector: SelectSelector
+2020-57-22 08:57:57-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 392, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-11-22 09:11:17-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 392, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-13-22 09:13:15-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 392, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-13-22 09:13:15-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 392, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-17-22 09:17:29-log_response-WARNING-Not Found: /favicon.ico
+2020-21-22 09:21:35-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 290, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-01-22 10:01:08-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 299, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-03-22 10:03:29-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 299, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-06-22 10:06:02-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 401, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-06-22 10:06:02-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 401, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-07-22 10:07:25-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 401, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-07-22 10:07:25-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 401, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-11-22 10:11:41-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 299, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-11-22 10:11:41-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 299, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-11-22 10:11:41-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 299, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-11-22 10:11:41-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 299, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-11-22 10:11:41-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 299, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-11-22 10:11:41-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 299, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-11-22 10:11:41-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 299, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-11-22 10:11:41-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 299, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-11-22 10:11:41-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 299, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-11-22 10:11:41-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 299, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-11-22 10:11:41-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 299, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-11-22 10:11:41-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 299, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-11-22 10:11:41-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 299, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-11-22 10:11:42-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 299, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-11-22 10:11:42-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 299, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-11-22 10:11:42-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 299, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-22-22 10:22:19-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 401, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-22-22 10:22:19-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 401, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-24-22 10:24:07-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 401, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-24-22 10:24:09-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 401, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-25-22 10:25:13-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 401, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-26-22 10:26:24-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 401, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-26-22 10:26:26-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 401, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-31-22 10:31:37-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 401, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-34-22 10:34:12-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 299, in decryptMessage
+    userid=postData["fromUserid"], whosfriend=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.friends.DoesNotExist: friends matching query does not exist.
+2020-38-22 10:38:33-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 401, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-38-22 10:38:33-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 401, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-49-22 10:49:01-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 401, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-49-22 10:49:01-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 401, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-50-22 10:50:43-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 401, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-50-22 10:50:43-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 401, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-55-22 10:55:11-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 401, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-56-22 10:56:02-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 401, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-57-22 10:57:30-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 401, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-58-22 10:58:47-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 401, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-00-22 11:00:28-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 401, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-02-22 11:02:55-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 401, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-04-22 11:04:23-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\djangoapp\settings.py changed, reloading.
+2020-04-22 11:04:23-__init__-DEBUG-Using selector: SelectSelector
+2020-04-22 11:04:28-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\djangoapp\settings.py changed, reloading.
+2020-04-22 11:04:28-__init__-DEBUG-Using selector: SelectSelector
+2020-08-22 11:08:24-__init__-DEBUG-Using selector: SelectSelector
+2020-08-22 11:08:52-__init__-DEBUG-Using selector: SelectSelector
+2020-09-22 11:09:13-__init__-DEBUG-Using selector: SelectSelector
+2020-10-22 11:10:07-__init__-DEBUG-Using selector: SelectSelector
+2020-10-22 11:10:16-__init__-DEBUG-Using selector: SelectSelector
+2020-10-22 11:10:55-__init__-DEBUG-Using selector: SelectSelector
+2020-14-22 11:14:21-__init__-DEBUG-Using selector: SelectSelector
+2020-14-22 11:14:46-__init__-DEBUG-Using selector: SelectSelector
+2020-16-22 11:16:07-__init__-DEBUG-Using selector: SelectSelector
+2020-16-22 11:16:22-__init__-DEBUG-Using selector: SelectSelector
+2020-20-22 11:20:49-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 287, in decryptMessage
+    usertemp = user.objects.get(userid=loginingUserid).to_json()
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\db\models\query.py", line 417, in get
+    self.model._meta.object_name
+backend.models.user.DoesNotExist: user matching query does not exist.
+2020-22-22 11:22:20-log_response-WARNING-Not Found: /apis/getUser/usertest3
+2020-22-22 11:22:27-log_response-WARNING-Not Found: /apis/getUser/usertest3
+2020-13-22 15:13:20-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 401, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-15-22 15:15:48-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\contextlib.py", line 74, in inner
+    return func(*args, **kwds)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 401, in decryptMessage
+    pt = chacha.decrypt(nonce, ct, aad)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-16-22 15:16:44-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-16-22 15:16:44-__init__-DEBUG-Using selector: SelectSelector
+2020-16-22 15:16:48-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-16-22 15:16:48-__init__-DEBUG-Using selector: SelectSelector
+2020-16-22 15:16:54-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-16-22 15:16:54-__init__-DEBUG-Using selector: SelectSelector
+2020-17-22 15:17:23-log_response-ERROR-Internal Server Error: /apis/decryptMessage/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Roaming\Python\Python37\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 398, in decryptMessage
+    "toUserid": postData["toUserid"],
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\primitives\ciphers\aead.py", line 55, in decrypt
+    backend, self, nonce, data, associated_data, 16
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python37\lib\site-packages\cryptography\hazmat\backends\openssl\aead.py", line 160, in _decrypt
+    raise InvalidTag
+cryptography.exceptions.InvalidTag
+2020-18-22 15:18:38-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-18-22 15:18:38-__init__-DEBUG-Using selector: SelectSelector
+2020-18-22 15:18:43-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-18-22 15:18:43-__init__-DEBUG-Using selector: SelectSelector
+2020-19-22 15:19:08-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-19-22 15:19:08-__init__-DEBUG-Using selector: SelectSelector
+2020-19-22 15:19:12-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-19-22 15:19:12-__init__-DEBUG-Using selector: SelectSelector
+2020-22-22 15:22:25-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-22-22 15:22:25-__init__-DEBUG-Using selector: SelectSelector

@@ -578,3 +578,9 @@ KeyError: 'date'
 2020-46-21 22:46:26-__init__-DEBUG-Using selector: SelectSelector
 2020-46-21 22:46:29-trigger_reload-INFO-D:\Study\School\e2e\server\backend\models.py changed, reloading.
 2020-46-21 22:46:29-__init__-DEBUG-Using selector: SelectSelector
+2020-05-22 11:05:40-trigger_reload-INFO-D:\Study\School\e2e\server\server\settings.py changed, reloading.
+2020-05-22 11:05:40-__init__-DEBUG-Using selector: SelectSelector
+2020-05-22 11:05:44-trigger_reload-INFO-D:\Study\School\e2e\server\server\settings.py changed, reloading.
+2020-05-22 11:05:44-__init__-DEBUG-Using selector: SelectSelector
+2020-05-22 11:05:49-__init__-DEBUG-Using selector: SelectSelector
+2020-12-22 11:12:16-__init__-DEBUG-Using selector: SelectSelector

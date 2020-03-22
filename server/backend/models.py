@@ -33,9 +33,8 @@ class user(models.Model):
 class messages(models.Model):
     fromUserid = models.IntegerField()
     toUserid = models.IntegerField()
-    date = models.DateTimeField(default=time.strftime(
-        "%Y-%m-%d %H:%M:%S", time.localtime()))
     message = models.CharField(max_length=2048)
+    date = models.DateTimeField()
 
     def to_json(self):
         dict = self.__dict__

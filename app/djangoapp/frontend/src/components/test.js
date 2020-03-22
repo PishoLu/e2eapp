@@ -1,20 +1,13 @@
-a = [{
-    id: 1,
-    message: "{'id':'1.1'}"
-}, {
-    id: 2,
-    message: "{'id':'2.1'}"
-}]
-b = []
-Promise.all(a.map(item => {
-    if (b.indexOf(item["id"]) === -1) {
-        b.push(item["id"])
-    }
-})).then(res => {
-    b.map(item => {
-        setTimeout(() => {
-            console.log(item)
-        }, 2000);
-    })
-    console.log("OK")
-})
+let a = Array(10)
+
+async function wait(time) {
+    await new Promise(resolve => setTimeout(resolve, time));
+}
+function test(a) {
+    setTimeout(async () => {
+        for (let i = 0; i < a.length; i++) {
+            await wait(2000)
+            console.log(i)
+        }
+    }, 2000);
+}

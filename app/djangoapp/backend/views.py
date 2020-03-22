@@ -10,6 +10,7 @@ from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric.x25519 import (
     X25519PrivateKey, X25519PublicKey)
 from cryptography.hazmat.primitives.ciphers.aead import ChaCha20Poly1305
+from django.db import transaction
 from django.db.models import Q
 from django.http import JsonResponse
 from django.middleware.csrf import get_token
@@ -44,14 +45,14 @@ logger = Logger()
 def storeMessage(request):
     if request.method == "POST":
         postData = json.loads(request.body)
-        try:
-            messages.objects.create(
-                date=postData["date"], belongUserid=postData["belongUserid"], fromUserid=postData["fromUserid"], toUserid=postData["toUserid"], kdf_next=postData["kdf_next"], EphemeralPub=postData["EphemeralPub"], plaintext=postData["plaintext"], EphemeralPri=postData["EphemeralPri"])
-            result = {"code": 1, "result": "添加成功"}
-            return JsonResponse(result)
-        except:
-            result = {"code": -1, "result": "添加失败！"}
-            return JsonResponse(result)
+        # try:
+        messages.objects.create(
+            date=postData["date"], belongUserid=postData["belongUserid"], fromUserid=postData["fromUserid"], toUserid=postData["toUserid"], kdf_next=postData["kdf_next"], EphemeralPub=postData["EphemeralPub"], plaintext=postData["plaintext"], EphemeralPri=postData["EphemeralPri"])
+        result = {"code": 1, "result": "添加成功"}
+        return JsonResponse(result)
+        # except:
+        #     result = {"code": -1, "result": "添加失败！"}
+        #     return JsonResponse(result)
     else:
         result = {"code": -1, "result": "请求方式有误!"}
         return JsonResponse(result)
@@ -189,7 +190,7 @@ def storeFriend(request):
         try:
             tempFriend = friends.objects.get(
                 userid=postData["userid"], whosfriend=loginingUserid, status=0)
-            tempFriend.delete()
+            tempFriend.dee()
             result = {"code": 1, "result": "删除成功！"}
             return JsonResponse(result)
 
@@ -389,7 +390,11 @@ def decryptMessage(request):
         chacha = ChaCha20Poly1305(kdf_out[32:])
         nonce = list2bytes(postData["message"]["nonce"])
         ct = list2bytes(postData["message"]["ciphertext"])
-        pt = chacha.decrypt(nonce, ct, aad)
+        try:
+            pt = chacha.decrypt(nonce, ct, aad)
+        except:
+            result = {"code": -1, "result": "解密出错。"}
+            return JsonResponse(result)
         resultData = {
             "plaintext": pt.decode('utf-8'),
             "kdf_next": binascii.hexlify(kdf_out[:32]).decode("unicode_escape"),
