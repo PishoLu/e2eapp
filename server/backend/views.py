@@ -49,7 +49,6 @@ def user_list(request):
         # print(post_data)
         if (len(post_data["password"]) == 64):
             post_data["userid"] = random.randint(10000000, 100000000)
-
             user.objects.create(userid=post_data["userid"],
                                 password=post_data["password"],
                                 username=post_data["username"],
@@ -111,15 +110,15 @@ def user_detail(request, pk):
 def messageDetail(request):
     # 上传消息
     if request.method == "POST":
-        # try:
-        post_data = json.loads(request.body)
-        messages.objects.create(date=post_data["date"],
-                                fromUserid=post_data["fromUserid"],
-                                toUserid=post_data["toUserid"],
-                                message=post_data["message"])
-        # except:
-        #     result = {"code": -1, "result": "消息发送失败"}
-        #     return JsonResponse(result)
+        try:
+            post_data = json.loads(request.body)
+            messages.objects.create(date=post_data["date"],
+                                    fromUserid=post_data["fromUserid"],
+                                    toUserid=post_data["toUserid"],
+                                    message=post_data["message"])
+        except:
+            result = {"code": -1, "result": "消息发送失败"}
+            return JsonResponse(result)
         result = {"code": 1, "result": "消息发送成功！"}
         return JsonResponse(result)
 
