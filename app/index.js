@@ -7,15 +7,15 @@ const {
 function createWindow() {
     let win = new BrowserWindow({
         show: false,
-        Width: 800,
-        Height: 600,
-        minWidth: 800,
-        minHeight: 600,
+        Width: 870,
+        Height: 660,
+        minWidth: 870,
+        minHeight: 660,
     })
     win.show()
     win.loadURL("http://127.0.0.1:8080")
 
-    win.webContents.openDevTools()
+    // win.webContents.openDevTools()
 }
 
 

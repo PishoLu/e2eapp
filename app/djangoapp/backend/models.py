@@ -1,6 +1,4 @@
 from django.db import models
-import json
-import time
 
 # Create your models here.
 
