@@ -5,7 +5,6 @@ import os
 import sqlite3
 import time
 
-import requests  # 最好不用这个，让前端作为两个后端的跳板
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric.x25519 import (
     X25519PrivateKey, X25519PublicKey)
