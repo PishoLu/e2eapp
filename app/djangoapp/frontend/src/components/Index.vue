@@ -217,6 +217,7 @@ export default {
     // 异步函数需要添加 async 来使用 await
     async sendMessage(formMsg) {
       await this.messageGet();
+      // * 这里一大串就是加密消息和发送消息，通过axios的then操作形成Promise链。
       this.$refs["formMsg"].validate(valid => {
         if (valid) {
           axios
@@ -358,6 +359,7 @@ export default {
       if (messcode === 0) {
         return 0;
       }
+      // * 从这里开始是需要在for循环内部让程序同步进行的，但是由于 axios 本质上是一个异步，所以for循环是不会等待axios跑完的，使用await操作符等待axios
       console.log(this.tempFromUserid);
       for (let i = 0; i < this.tempFromUserid.length; i++) {
         // console.log(this.tempFromUserid[i]);
@@ -404,6 +406,7 @@ export default {
             }
           });
       }
+      // * 由于运行friendsListFlash函数需要一定时间，而且要等上面的最后一个for循环跑完，所以这里延后一秒执行，再算上friendsListFlash的运行时间，将后面的for循环延后2秒执行
       setTimeout(() => {
         this.friendsListFlash();
         console.log("好友列表刷新完成");
@@ -455,9 +458,6 @@ export default {
         }
       }, 2000);
       this.messageLoading = false;
-    },
-    async wait(time) {
-      await new Promise(resolve => setTimeout(resolve, time));
     },
     // 切换当前对话目标，获取该目标的消息
     exchengObj(id) {
