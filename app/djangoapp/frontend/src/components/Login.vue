@@ -1,18 +1,37 @@
 <template>
   <div class="login-container">
-    <el-dialog title="没有私钥信息，请输入私钥信息！" :visible.sync="dialogFormVisible">
+    <el-dialog
+      title="没有私钥信息，请输入私钥信息！"
+      :visible.sync="dialogFormVisible"
+    >
       <el-form :model="formPrikey">
         <el-form-item label="IdentityPri">
-          <el-input v-model="formPrikey.IdentityPri" autocomplete="off" required="required" />
+          <el-input
+            v-model="formPrikey.IdentityPri"
+            autocomplete="off"
+            required="required"
+          />
         </el-form-item>
         <el-form-item label="SignedPri">
-          <el-input v-model="formPrikey.SignedPri" autocomplete="off" required="required" />
+          <el-input
+            v-model="formPrikey.SignedPri"
+            autocomplete="off"
+            required="required"
+          />
         </el-form-item>
         <el-form-item label="OneTimePri">
-          <el-input v-model="formPrikey.OneTimePri" autocomplete="off" required="required" />
+          <el-input
+            v-model="formPrikey.OneTimePri"
+            autocomplete="off"
+            required="required"
+          />
         </el-form-item>
         <el-form-item label="EphemeralPri">
-          <el-input v-model="formPrikey.EphemeralPri" autocomplete="off" required="required" />
+          <el-input
+            v-model="formPrikey.EphemeralPri"
+            autocomplete="off"
+            required="required"
+          />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -30,8 +49,18 @@
       class="demo-ruleForm login-page"
       v-if="!isreg"
     >
-      <el-button type="primary" class="login-button-left" @click.native="changeLogin()">登录</el-button>
-      <el-button type="primary" class="login-button-right" @click.native="changeRegis()">注册</el-button>
+      <el-button
+        type="primary"
+        class="login-button-left"
+        @click.native="changeLogin()"
+        >登录</el-button
+      >
+      <el-button
+        type="primary"
+        class="login-button-right"
+        @click.native="changeRegis()"
+        >注册</el-button
+      >
       <el-form-item prop="userid">
         <el-input
           type="text"
@@ -51,7 +80,12 @@
         />
       </el-form-item>
       <el-form-item style="width:100%;">
-        <el-button type="primary" style="width:100%;" @click="Login('formLogin')">登录</el-button>
+        <el-button
+          type="primary"
+          style="width:100%;"
+          @click="Login('formLogin')"
+          >登录</el-button
+        >
       </el-form-item>
     </el-form>
     <el-form
@@ -64,16 +98,38 @@
       class="demo-ruleForm login-page"
       v-else
     >
-      <el-button type="primary" class="login-button-left" @click="changeLogin()">登录</el-button>
-      <el-button type="primary" class="login-button-right" @click="changRregis()">注册</el-button>
+      <el-button type="primary" class="login-button-left" @click="changeLogin()"
+        >登录</el-button
+      >
+      <el-button
+        type="primary"
+        class="login-button-right"
+        @click="changRregis()"
+        >注册</el-button
+      >
       <el-form-item prop="username">
-        <el-input type="text" v-model="formReg.username" auto-complete="off" placeholder="用户名" />
+        <el-input
+          type="text"
+          v-model="formReg.username"
+          auto-complete="off"
+          placeholder="用户名"
+        />
       </el-form-item>
       <el-form-item prop="password">
-        <el-input type="password" v-model="formReg.password" auto-complete="off" placeholder="密码" />
+        <el-input
+          type="password"
+          v-model="formReg.password"
+          auto-complete="off"
+          placeholder="密码"
+        />
       </el-form-item>
       <el-form-item style="width:100%;">
-        <el-button type="primary" style="width:100%;" @click="Register('formReg')">注册</el-button>
+        <el-button
+          type="primary"
+          style="width:100%;"
+          @click="Register('formReg')"
+          >注册</el-button
+        >
       </el-form-item>
     </el-form>
   </div>
@@ -186,6 +242,7 @@ export default {
           axios
             .get("http://localhost:8000/apis/getUser/" + this.formLogin.userid)
             .then(response => {
+              console.log(response);
               // console.log(response.data["code"]);
               if (response.data["code"] === 1) {
                 var temp_data = response.data["data"][0];
@@ -199,6 +256,7 @@ export default {
                       }
                     )
                     .then(response => {
+                      console.log(response);
                       // console.log(response.data)
                       if (response.data["code"] === 1) {
                         this.$cookies.set(
@@ -249,6 +307,7 @@ export default {
             axios
               .get("http://127.0.0.1:8888/apis/user/" + this.formLogin.userid)
               .then(response => {
+                console.log(response);
                 if (response.data["code"] === 1) {
                   const username_t = response.data["data"]["username"];
                   axios
@@ -265,6 +324,7 @@ export default {
                       EphemeralPri: this.keys["EphemeralPri"]
                     })
                     .then(response => {
+                      console.log(response);
                       if (response.data["code"] === 1) {
                         this.$notify({
                           title: "已将当前用户添加到数据库",
@@ -304,6 +364,7 @@ export default {
           axios
             .post("http://localhost:8000/apis/createNewKeyspair/")
             .then(response => {
+              console.log(response);
               var pubs = response.data["data"];
               // console.log(response.data["data"]);
               this.formReg.IdentityPub = pubs["IdentityPub"];
@@ -324,6 +385,7 @@ export default {
                   EphemeralPub: this.formReg.EphemeralPub
                 })
                 .then(response => {
+                  console.log(response);
                   // console.log(response.data);
                   if (response.data["code"]) {
                     const h = this.$createElement;
@@ -339,18 +401,22 @@ export default {
                       type: "success",
                       duration: 0
                     });
-                    axios.post("http://localhost:8000/apis/storeUser/", {
-                      userid: response.data["data"],
-                      username: this.formReg.username,
-                      IdentityPub: this.formReg.IdentityPub,
-                      SignedPub: this.formReg.SignedPub,
-                      OneTimePub: this.formReg.OneTimePub,
-                      EphemeralPub: this.formReg.EphemeralPub,
-                      IdentityPri: this.formReg.IdentityPri,
-                      SignedPri: this.formReg.SignedPri,
-                      OneTimePri: this.formReg.OneTimePri,
-                      EphemeralPri: this.formReg.EphemeralPri
-                    });
+                    axios
+                      .post("http://localhost:8000/apis/storeUser/", {
+                        userid: response.data["data"],
+                        username: this.formReg.username,
+                        IdentityPub: this.formReg.IdentityPub,
+                        SignedPub: this.formReg.SignedPub,
+                        OneTimePub: this.formReg.OneTimePub,
+                        EphemeralPub: this.formReg.EphemeralPub,
+                        IdentityPri: this.formReg.IdentityPri,
+                        SignedPri: this.formReg.SignedPri,
+                        OneTimePri: this.formReg.OneTimePri,
+                        EphemeralPri: this.formReg.EphemeralPri
+                      })
+                      .then(response => {
+                        console.log(response);
+                      });
                     this.isreg = 0;
                     this.formLogin.userid = "";
                     this.formLogin.password = "";

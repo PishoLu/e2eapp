@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <el-dialog title="搜索结果" :visible.sync="dialogFormVisible" :modal-append-to-body="false">
+    <el-dialog
+      title="搜索结果"
+      :visible.sync="dialogFormVisible"
+      :modal-append-to-body="false"
+    >
       <el-row v-if="!searchResult.length">
         <el-col :span="24">
           <div class="search_table_title">没有该用户相关信息</div>
@@ -57,7 +61,8 @@
           @keyup.enter.native="searchFriend('formSearch')"
           required="required"
           clearable
-        ></el-input>
+        >
+        </el-input>
       </div>
       <div id="friendsList">
         <el-row class="tac">
@@ -70,16 +75,21 @@
               text-color="#fff"
               active-text-color="#ffd04b"
             >
-              <el-menu-item-group v-for="(item, index) in friendsList" :key="index">
+              <el-menu-item-group
+                v-for="(item, index) in friendsList"
+                :key="index"
+              >
                 <el-menu-item
                   v-if="item.status"
                   class="friend-item"
                   @click="exchengObj(item.userid)"
-                >{{ item.username }}</el-menu-item>
+                >
+                  {{ item.username }}
+                </el-menu-item>
                 <el-menu-item
                   v-else-if="
-					notFriendActive === item.userid && item.status === 0
-				  "
+                    notFriendActive === item.userid && item.status === 0
+                  "
                   class="friend-item"
                   @click="showFriendOption(item.userid)"
                 >
@@ -100,7 +110,8 @@
                   v-else-if="notFriendActive !== item.userid"
                   class="friend-item"
                   @click="showFriendOption(item.userid)"
-                >{{ item.username }}</el-menu-item>
+                  >{{ item.username }}</el-menu-item
+                >
               </el-menu-item-group>
             </el-menu>
           </el-col>
@@ -119,7 +130,11 @@
                   v-if="!messageLoading"
                   @click="messageGet()"
                 ></el-button>
-                <el-button v-else icon="el-icon-loading" id="message_get_button"></el-button>
+                <el-button
+                  v-else
+                  icon="el-icon-loading"
+                  id="message_get_button"
+                ></el-button>
               </div>
             </el-col>
           </el-row>
@@ -139,10 +154,24 @@
           </el-row>
         </div>
         <div id="input_box">
-          <el-form :rules="formMsgRule" ref="formMsg" id="textarea_form" :model="formMsg">
-            <textarea id="textarea_box" placeholder="在这里输入" v-model="formMsg.msgInput"></textarea>
+          <el-form
+            :rules="formMsgRule"
+            ref="formMsg"
+            id="textarea_form"
+            :model="formMsg"
+          >
+            <textarea
+              id="textarea_box"
+              placeholder="在这里输入"
+              v-model="formMsg.msgInput"
+            ></textarea>
             <div id="submit_button">
-              <el-button type="primary" id="button" @click="sendMessage('formMsg')">发送</el-button>
+              <el-button
+                type="primary"
+                id="button"
+                @click="sendMessage('formMsg')"
+                >发送</el-button
+              >
             </div>
           </el-form>
         </div>
@@ -223,6 +252,7 @@ export default {
           axios
             .get("http://localhost:8000/apis/friendsList/" + this.currentObjID)
             .then(response => {
+              console.log(response);
               if (response.data["code"] === 1) {
                 // console.log(this.formMsg.msgInput);
                 axios
@@ -231,6 +261,7 @@ export default {
                     toUserid: this.currentObjID
                   })
                   .then(response => {
+                    console.log(response);
                     // console.log(response);
                     if (response.data["code"] === 1) {
                       this.resData = response.data["data"];
@@ -262,6 +293,7 @@ export default {
                                 }
                               )
                               .then(response => {
+                                console.log(response);
                                 if (response.data["code"] === 1) {
                                   this.messageListFlash();
                                 } else {
@@ -293,6 +325,7 @@ export default {
                 axios
                   .get("http://127.0.0.1:8888/apis/user/" + id)
                   .then(response => {
+                    console.log(response);
                     if (response.data["code"] === 1) {
                       let getData = response.data["data"];
                       axios.post("http://localhost:8000/apis/storeFriend/", {
@@ -308,6 +341,7 @@ export default {
                     }
                   })
                   .then(response => {
+                    console.log(response);
                     this.$notify.error({
                       title: "已添加好友信息到数据库",
                       message: "请重新输入。"
@@ -329,6 +363,7 @@ export default {
           loginingUserid: this.loginingUserid
         })
         .then(response => {
+          console.log(response);
           if (response.data["code"] === 1) {
             this.tempGetData = response.data["data"];
             return Promise.resolve(1);
@@ -343,6 +378,7 @@ export default {
           }
         })
         .then(response => {
+          console.log(response);  
           if (response !== 1) {
             return Promise.resolve(0);
           }
@@ -369,6 +405,7 @@ export default {
               Number(this.tempFromUserid[i])
           )
           .then(response => {
+            console.log(response);
             if (response.data["code"] !== 1) {
               axios
                 .get(
@@ -376,6 +413,7 @@ export default {
                     Number(this.tempFromUserid[i])
                 )
                 .then(response => {
+                  console.log(response);
                   console.log("开始添加待定好友。");
                   if (response.data["code"] === 1) {
                     let postData = response.data["data"];
@@ -392,7 +430,8 @@ export default {
                         EphemeralPub: postData["EphemeralPub"]
                       })
                       .then(response => {
-                        console.log("保存好友成功。");
+                        console.log(response);
+                        // console.log("保存好友成功。");
                         if (response.data["code"] === 1) {
                           this.$notify({
                             title: "待定好友添加成功",
@@ -423,6 +462,7 @@ export default {
               message: this.tempGetData[i]["message"]
             })
             .then(response => {
+              console.log(response);
               if (response.data["code"] === 1) {
                 console.log(response.data["result"]);
                 console.log("开始保存消息。");
@@ -438,6 +478,7 @@ export default {
                     belongUserid: this.loginingUserid
                   })
                   .then(response => {
+                    console.log(response);
                     if (response.data["code"] === 1) {
                       console.log("消息添加成功。");
                     } else {
@@ -475,6 +516,7 @@ export default {
           }
         })
         .then(response => {
+          console.log(response);
           if (response.data["code"] === 1) {
             console.log(response.data);
             this.messageList = response.data["data"];
@@ -496,6 +538,7 @@ export default {
       axios
         .get("http://127.0.0.1:8888/apis/user/" + this.formSearch.searchInput)
         .then(response => {
+          console.log(response);
           if (response.data["code"] === 1) {
             // console.log(response.data["data"]);
             // 返回结果应该是只有一个
@@ -535,6 +578,7 @@ export default {
           }
         })
         .then(response => {
+          console.log(response);
           if (response.data["code"] === 1) {
             this.friendsList = response.data["data"];
           } else {
@@ -570,6 +614,7 @@ export default {
           }
         })
         .then(response => {
+          console.log(response);
           if (response.data["code"] === 1) {
             this.dialogFormVisible = false;
             this.$notify({
@@ -594,6 +639,7 @@ export default {
           userid: userid
         })
         .then(response => {
+          console.log(response);
           if (response.data["code"] === 1) {
             this.$notify({
               title: "添加成功！",
@@ -616,6 +662,7 @@ export default {
           userid: userid
         })
         .then(response => {
+          console.log(response);
           if (response.data["code"] === 1) {
             this.$notify({
               title: "删除成功！",

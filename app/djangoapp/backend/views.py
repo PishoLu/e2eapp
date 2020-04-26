@@ -95,7 +95,7 @@ def filterMessages(request, pk):
                       "result": "与该用户的来往记录。"}
             return JsonResponse(result)
         else:
-            result = {"code": -1, "result": "该用户不存在"}
+            result = {"code": -1, "result": "没有消息记录"}
             return JsonResponse(result)
         return JsonResponse(result)
     elif request.method == 'POST':
@@ -253,7 +253,7 @@ def friendDetail(request, pk):
             result = {"code": 1, "data": friendsTemp, "result": "好友详细信息"}
             return JsonResponse(result)
         else:
-            result = {"code": -1, "result": "该用户不存在"}
+            result = {"code": -1, "result": "该用户不存在于好友里列表中"}
             return JsonResponse(result)
     else:
         result = {"code": -1, "result": "请求方式有误!"}
@@ -579,29 +579,6 @@ def encryptMessage(request):
 
         result = {"code": 1, "data": resultData, "result": "X3DH密钥"}
         return JsonResponse(result)
-        # if(lastMessagesFrom["date"] < lastMessagesTo["date"]):
-        #     pass
-
-        # usertemp["IdentityPri"] = X25519PrivateKey.from_private_bytes(
-        #     usertemp["IdentityPri"])
-        # usertemp["SignedPri"] = X25519PrivateKey.from_private_bytes(
-        #     usertemp["SignedPri"])
-        # usertemp["OneTimePri"] = X25519PrivateKey.from_private_bytes(
-        #     usertemp["OneTimePri"])
-        # DH1 = usertemp["IdentityPri"].exchange(postData["SignedPub"])
-        # DH2 = usertemp["EphemeralPri"].exchange(postData["IdentityPub"])
-        # DH3 = usertemp["EphemeralPri"].exchange(postData["SignedPub"])
-        # DH4 = usertemp["IdentityPri"].exchange(postData["OneTimePub"])
-        # X3DH密钥
-        # share_key = DH1+DH2+DH3+DH4
-        # message_EphemeralPri = X25519PrivateKey.generate()
-        # message_EphemeralPub = message_EphemeralPri.public_key()
-        # salt = message_EphemeralPri.exchange(postData["EphemeralPub"])
-        # kdf_out = Signalkdf(share_key, salt)
-        # # 后32位为密钥
-        # message_key = kdf_out[32:]
-        # # 前32位为连贯对话的下一次的share_key
-        # kdf_next = kdf_out[:32]
     else:
         result = {"code": -1, "result": "请求方式有误!"}
         return JsonResponse(result)

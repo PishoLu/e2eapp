@@ -16,7 +16,7 @@ urlpatterns = [
     path("getUser/<int:pk>", views.getUser),
     # friends操作
     path("storeFriend/", views.storeFriend),
-    # path("friendsList/", views.friendsList),
+    path("friendsList/", views.friendsList),
     path("friendsList/<int:pk>", views.friendDetail),
     # 获取三对新的密钥
     path('createNewKeyspair/', views.createNewKeyspair),
