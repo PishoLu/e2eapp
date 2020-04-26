@@ -161,6 +161,17 @@ function isengnum(rule, value, callback) {
       callback();
     }
   }
+}function isnum(rule, value, callback) {
+  const reg = /^[0-9]+$/;
+  if (value == "" || value == undefined || value == null) {
+    callback();
+  } else {
+    if (!reg.test(value)) {
+      callback(new Error("用户ID仅由数字组成"));
+    } else {
+      callback();
+    }
+  }
 }
 export default {
   data() {
@@ -174,7 +185,10 @@ export default {
         password: ""
       },
       formLoginRule: {
-        userid: [{ required: true, message: "请输入用户id", trigger: "blur" }],
+        userid: [
+          { required: true, message: "请输入用户id", trigger: "blur" },
+          { validator: isnum, trigger: "blur" }
+        ],
         password: [{ required: true, message: "请输入密码", trigger: "blur" }]
       },
       formRegRule: {

@@ -244,6 +244,7 @@ def friendDetail(request, pk):
         loginingUserid = int(request.COOKIES["loginingUserid"])
         friendsTemp = friends.objects.get(
             whosfriend=loginingUserid, userid=pk).to_json()
+
     except friends.DoesNotExist:
         result = {"code": -1, "result": "该用户不存在"}
         return JsonResponse(result)
@@ -253,7 +254,7 @@ def friendDetail(request, pk):
             result = {"code": 1, "data": friendsTemp, "result": "好友详细信息"}
             return JsonResponse(result)
         else:
-            result = {"code": -1, "result": "该用户不存在于好友里列表中"}
+            result = {"code": -1, "result": "该用户不存在于好友列表中"}
             return JsonResponse(result)
     else:
         result = {"code": -1, "result": "请求方式有误!"}

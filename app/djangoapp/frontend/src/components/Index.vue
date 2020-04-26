@@ -87,9 +87,7 @@
                   {{ item.username }}
                 </el-menu-item>
                 <el-menu-item
-                  v-else-if="
-                    notFriendActive === item.userid && item.status === 0
-                  "
+                  v-else-if="notFriendActive === item.userid && item.status === 0"
                   class="friend-item"
                   @click="showFriendOption(item.userid)"
                 >
@@ -378,7 +376,7 @@ export default {
           }
         })
         .then(response => {
-          console.log(response);  
+          console.log(response);
           if (response !== 1) {
             return Promise.resolve(0);
           }
@@ -536,7 +534,7 @@ export default {
 
       this.searchResult = [];
       axios
-        .get("http://127.0.0.1:8888/apis/user/" + this.formSearch.searchInput)
+        .get("http://127.0.0.1:8888/apis/user/" + this.formSearch.searchInput.replace(/[^0-9]/ig,""))
         .then(response => {
           console.log(response);
           if (response.data["code"] === 1) {
