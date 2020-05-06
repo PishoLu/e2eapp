@@ -87,7 +87,9 @@
                   {{ item.username }}
                 </el-menu-item>
                 <el-menu-item
-                  v-else-if="notFriendActive === item.userid && item.status === 0"
+                  v-else-if="
+                    notFriendActive === item.userid && item.status === 0
+                  "
                   class="friend-item"
                   @click="showFriendOption(item.userid)"
                 >
@@ -534,7 +536,10 @@ export default {
 
       this.searchResult = [];
       axios
-        .get("http://127.0.0.1:8888/apis/user/" + this.formSearch.searchInput.replace(/[^0-9]/ig,""))
+        .get(
+          "http://127.0.0.1:8888/apis/user/" +
+            this.formSearch.searchInput.replace(/[^0-9]/gi, "")
+        )
         .then(response => {
           console.log(response);
           if (response.data["code"] === 1) {
@@ -676,11 +681,6 @@ export default {
             });
           }
         });
-    }
-  },
-  watch: {
-    currentObjID: function(val, newval) {
-      // console.log("watch me")
     }
   }
 };
