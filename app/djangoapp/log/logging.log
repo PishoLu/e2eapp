@@ -55,3 +55,66 @@
 2020-00-26 21:00:30-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
 2020-00-26 21:00:30-__init__-DEBUG-Using proactor: IocpProactor
 2020-19-26 21:19:18-__init__-DEBUG-Using proactor: IocpProactor
+2020-36-07 23:36:50-log_response-WARNING-Not Found: /favicon.ico
+2020-37-07 23:37:11-log_response-ERROR-Internal Server Error: /apis/friendsList/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python38-32\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python38-32\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python38-32\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python38-32\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 216, in friendsList
+    loginingUserid = int(request.COOKIES["loginingUserid"])
+KeyError: 'loginingUserid'
+2020-37-07 23:37:50-log_response-ERROR-Internal Server Error: /apis/friendsList/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python38-32\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python38-32\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python38-32\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python38-32\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 216, in friendsList
+    loginingUserid = int(request.COOKIES["loginingUserid"])
+KeyError: 'loginingUserid'
+2020-39-07 23:39:06-log_response-ERROR-Internal Server Error: /apis/friendsList/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python38-32\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python38-32\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python38-32\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python38-32\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 216, in friendsList
+    loginingUserid = int(request.COOKIES["loginingUserid"])
+KeyError: 'loginingUserid'
+2020-40-07 23:40:10-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-40-07 23:40:10-__init__-DEBUG-Using proactor: IocpProactor
+2020-40-07 23:40:24-log_response-ERROR-Internal Server Error: /apis/friendsList/
+Traceback (most recent call last):
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python38-32\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python38-32\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python38-32\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pisho\AppData\Local\Programs\Python\Python38-32\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "D:\Study\School\e2e\app\djangoapp\backend\views.py", line 217, in friendsList
+    loginingUserid = int(request.COOKIES["loginingUserid"])
+KeyError: 'loginingUserid'
+2020-42-07 23:42:20-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-42-07 23:42:20-__init__-DEBUG-Using proactor: IocpProactor
+2020-42-07 23:42:36-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-42-07 23:42:36-__init__-DEBUG-Using proactor: IocpProactor
+2020-42-07 23:42:43-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-42-07 23:42:43-__init__-DEBUG-Using proactor: IocpProactor
+2020-42-07 23:42:49-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-42-07 23:42:49-__init__-DEBUG-Using proactor: IocpProactor

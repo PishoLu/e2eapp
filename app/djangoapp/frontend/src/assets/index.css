@@ -119,7 +119,7 @@
 
 #input_box {
   width: auto;
-  height: 35%;
+  height: 40%;
   position: relative;
   margin: 5px;
   padding: 5px;
@@ -132,8 +132,6 @@
   resize: none;
   position: relative;
   background-color: rgb(245, 245, 245);
-
-
 }
 
 #textarea_box:focus {

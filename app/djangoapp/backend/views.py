@@ -213,6 +213,7 @@ def storeFriend(request):
 @csrf_exempt
 def friendsList(request):
     try:
+        # print(request.COOKIES)
         loginingUserid = int(request.COOKIES["loginingUserid"])
         # print(loginingUserid)
         friendsTemp = []
@@ -391,8 +392,8 @@ def decryptMessage(request):
                 tempReceiveFromNextEphPub)
 
         # 解密过程
-        print(kdf_in)
-        print(salt)
+        # print(kdf_in)
+        # print(salt)
         kdf_out = Signalkdf(kdf_in, salt)
         aad = postData["message"]["aad"].encode("utf-8")
         chacha = ChaCha20Poly1305(kdf_out[32:])
@@ -552,8 +553,8 @@ def encryptMessage(request):
                 # 不管之前是否与目标有过联系，只是kdf的输入和对方的临时公钥有所不同，加密使用的新临时密钥是新生成的，对方的临时公钥是一直最新更新在消息数据库的。
 
         # 加密过程
-        print(kdf_in)
-        print(salt)
+        # print(kdf_in)
+        # print(salt)
         kdf_out = Signalkdf(kdf_in, salt)
         aad = b"a secret message"
         chacha = ChaCha20Poly1305(kdf_out[32:])
