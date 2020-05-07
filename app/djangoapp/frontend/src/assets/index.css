@@ -128,7 +128,7 @@
 
 #textarea_box {
   width: 100%;
-  height: 100%;
+  height: 345px;
   resize: none;
   position: relative;
   background-color: rgb(245, 245, 245);
