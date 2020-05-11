@@ -37,6 +37,7 @@ class messages(models.Model):
     date = models.DateTimeField()
     plaintext = models.CharField(max_length=2048)
     EphemeralPub = models.CharField(max_length=64, null=True)
+    # 私钥字段可以不要，只是为了测试
     EphemeralPri = models.CharField(max_length=64, null=True)
 
     def to_json(self):

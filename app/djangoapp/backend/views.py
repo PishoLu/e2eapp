@@ -322,11 +322,12 @@ def decryptMessage(request):
             # 获取发给对象的所有消息的最后一个
             # print(len(lastMessagesTo))
             if(len(lastMessagesTo)):
-                lastMessagesTo = lastMessagesTo[0].to_json()
-                lastMessagesTo["EphemeralPri"] = X25519PrivateKey.from_private_bytes(
-                    binascii.unhexlify(lastMessagesTo["EphemeralPri"].encode("unicode_escape")))
-                lastMessagesTo["EphemeralPub"] = X25519PublicKey.from_public_bytes(
-                    binascii.unhexlify(lastMessagesTo["EphemeralPub"].encode("unicode_escape")))
+                lastMessagesToJson = lastMessagesTo[0].to_json()
+                lastMessagesTo.update(kdf_next="该密钥已被删除")
+                lastMessagesToJson["EphemeralPri"] = X25519PrivateKey.from_private_bytes(
+                    binascii.unhexlify(lastMessagesToJson["EphemeralPri"].encode("unicode_escape")))
+                lastMessagesToJson["EphemeralPub"] = X25519PublicKey.from_public_bytes(
+                    binascii.unhexlify(lastMessagesToJson["EphemeralPub"].encode("unicode_escape")))
             else:
                 # 没有向目标发送过消息
                 neverSend = 1
@@ -334,9 +335,10 @@ def decryptMessage(request):
                 toUserid=loginingUserid, fromUserid=postData["fromUserid"], belongUserid=loginingUserid).order_by("-date")
             # 获取对象回复的所有消息的最后一个
             if(len(lastMessagesFrom)):
-                lastMessagesFrom = lastMessagesFrom[0].to_json()
-                lastMessagesFrom["EphemeralPub"] = X25519PublicKey.from_public_bytes(
-                    binascii.unhexlify(lastMessagesFrom["EphemeralPub"].encode("unicode_escape")))
+                lastMessagesFromJson = lastMessagesFrom[0].to_json()
+                lastMessagesFrom.update(kdf_next="该密钥已被删除")
+                lastMessagesFromJson["EphemeralPub"] = X25519PublicKey.from_public_bytes(
+                    binascii.unhexlify(lastMessagesFromJson["EphemeralPub"].encode("unicode_escape")))
             else:
                 # 目标没有向我发送过消息
                 neverReceive = 1
@@ -366,34 +368,34 @@ def decryptMessage(request):
         elif neverSend and not neverReceive:
             print("没有发送过消息但是接收到过消息。")
             kdf_in = binascii.hexlify(
-                lastMessagesFrom["kdf_next"].encode("unicode_escape"))
+                lastMessagesFromJson["kdf_next"].encode("unicode_escape"))
             salt = usertemp["EphemeralPri"].exchange(tempReceiveFromNextEphPub)
         # 没有收到过消息，但是发送过消息，即这是第一次收到对方的消息，使用上一次发送的kdf以及自己的私钥，使用对方发送来的公钥解密。
         elif neverReceive and not neverSend:
             print("发送过消息但是没有接收过消息。")
             kdf_in = binascii.hexlify(
-                lastMessagesTo["kdf_next"].encode("unicode_escape"))
-            salt = lastMessagesTo["EphemeralPri"].exchange(
+                lastMessagesToJson["kdf_next"].encode("unicode_escape"))
+            salt = lastMessagesToJson["EphemeralPri"].exchange(
                 tempReceiveFromNextEphPub)
         # 之前的消息有来有往，使用上一次自己发送消息的私钥,以及对方当前使用的公钥。kdf通过对比时间戳来选取最近的一个。
         else:
             print("发送过也接收到过消息。")
             lastTimeSend = time.strptime(
-                str(lastMessagesTo["date"]), "%Y-%m-%d %H:%M:%S")
+                str(lastMessagesToJson["date"]), "%Y-%m-%d %H:%M:%S")
             lastTimeReceive = time.strptime(
-                str(lastMessagesFrom["date"]), "%Y-%m-%d %H:%M:%S")
+                str(lastMessagesFromJson["date"]), "%Y-%m-%d %H:%M:%S")
             if(lastTimeReceive < lastTimeSend):
                 kdf_in = binascii.hexlify(
-                    lastMessagesTo["kdf_next"].encode("unicode_escape"))
+                    lastMessagesToJson["kdf_next"].encode("unicode_escape"))
             else:
                 kdf_in = binascii.hexlify(
-                    lastMessagesFrom["kdf_next"].encode("unicode_escape"))
-            salt = lastMessagesTo["EphemeralPri"].exchange(
+                    lastMessagesFromJson["kdf_next"].encode("unicode_escape"))
+            salt = lastMessagesToJson["EphemeralPri"].exchange(
                 tempReceiveFromNextEphPub)
 
         # 解密过程
-        # print(kdf_in)
-        # print(salt)
+        print(kdf_in)
+        print(salt)
         kdf_out = Signalkdf(kdf_in, salt)
         aad = postData["message"]["aad"].encode("utf-8")
         chacha = ChaCha20Poly1305(kdf_out[32:])
@@ -479,9 +481,11 @@ def encryptMessage(request):
             # 获取发给对象的所有消息的最后一个
             # print(len(lastMessagesTo))
             if(len(lastMessagesTo)):
-                lastMessagesTo = lastMessagesTo[0].to_json()
-                lastMessagesTo["EphemeralPub"] = X25519PublicKey.from_public_bytes(
-                    binascii.unhexlify(lastMessagesTo["EphemeralPub"].encode("unicode_escape")))
+                lastMessagesToJson = lastMessagesTo[0].to_json()
+                lastMessagesTo.update(EphemeralPri="该密钥已被删除")
+                lastMessagesTo.update(kdf_next="该密钥已被删除")
+                lastMessagesToJson["EphemeralPub"] = X25519PublicKey.from_public_bytes(
+                    binascii.unhexlify(lastMessagesToJson["EphemeralPub"].encode("unicode_escape")))
             else:
                 # 没有向目标发送过消息
                 neverSend = 1
@@ -490,9 +494,11 @@ def encryptMessage(request):
             # 获取对象回复的所有消息的最后一个
             # print(lastMessagesFrom)
             if(len(lastMessagesFrom)):
-                lastMessagesFrom = lastMessagesFrom[0].to_json()
-                lastMessagesFrom["EphemeralPub"] = X25519PublicKey.from_public_bytes(
-                    binascii.unhexlify(lastMessagesFrom["EphemeralPub"].encode("unicode_escape")))
+                lastMessagesFromJson = lastMessagesFrom[0].to_json()
+                lastMessagesFrom.update(EphemeralPri="该密钥已被删除")
+                lastMessagesTo.update(kdf_next="该密钥已被删除")
+                lastMessagesFromJson["EphemeralPub"] = X25519PublicKey.from_public_bytes(
+                    binascii.unhexlify(lastMessagesFromJson["EphemeralPub"].encode("unicode_escape")))
             else:
                 # 目标没有向我发送过消息
                 neverReceive = 1
@@ -522,14 +528,14 @@ def encryptMessage(request):
             # 没有发过消息，但是接收过对方的消息，使用对方最新的Ephemeral公钥以及kdf，接收消息时将目标的临时公钥以及算出的kdf存入数据库
             print("没有发送过消息但是接收过消息。")
             kdf_in = binascii.hexlify(
-                lastMessagesFrom["kdf_next"].encode("unicode_escape"))
+                lastMessagesFromJson["kdf_next"].encode("unicode_escape"))
             salt = message_EphemeralPri.exchange(
-                lastMessagesFrom["EphemeralPub"])
+                lastMessagesFromJson["EphemeralPub"])
         elif not neverSend and neverReceive:
             # 发送过消息但是没有收到过回应，使用上一次发送时的kdf，使用对方的临时公钥
             print("发送过消息但是没有收到过消息。")
             kdf_in = binascii.hexlify(
-                lastMessagesTo["kdf_next"].encode("unicode_escape"))
+                lastMessagesToJson["kdf_next"].encode("unicode_escape"))
             salt = message_EphemeralPri.exchange(
                 userSendTo["EphemeralPub"])
         elif not neverSend and not neverReceive:
@@ -537,19 +543,19 @@ def encryptMessage(request):
             # 不能确定时间前后，先不写这个
             print("接收到也发送过消息。")
             lastTimeSend = time.strptime(
-                str(lastMessagesTo["date"]), "%Y-%m-%d %H:%M:%S")
+                str(lastMessagesToJson["date"]), "%Y-%m-%d %H:%M:%S")
             lastTimeReceive = time.strptime(
-                str(lastMessagesFrom["date"]), "%Y-%m-%d %H:%M:%S")
+                str(lastMessagesFromJson["date"]), "%Y-%m-%d %H:%M:%S")
             if(lastTimeSend > lastTimeReceive):
                 kdf_in = binascii.hexlify(
-                    lastMessagesTo["kdf_next"].encode("unicode_escape"))
+                    lastMessagesToJson["kdf_next"].encode("unicode_escape"))
                 salt = message_EphemeralPri.exchange(
-                    lastMessagesFrom["EphemeralPub"])
+                    lastMessagesFromJson["EphemeralPub"])
             else:
                 kdf_in = binascii.hexlify(
-                    lastMessagesFrom["kdf_next"].encode("unicode_escape"))
+                    lastMessagesFromJson["kdf_next"].encode("unicode_escape"))
                 salt = message_EphemeralPri.exchange(
-                    lastMessagesFrom["EphemeralPub"])
+                    lastMessagesFromJson["EphemeralPub"])
                 # 不管之前是否与目标有过联系，只是kdf的输入和对方的临时公钥有所不同，加密使用的新临时密钥是新生成的，对方的临时公钥是一直最新更新在消息数据库的。
 
         # 加密过程
