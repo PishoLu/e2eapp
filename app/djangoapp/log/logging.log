@@ -335,3 +335,13 @@ TypeError: QuerySet indices must be integers or slices, not str.
 2020-27-11 17:27:07-__init__-DEBUG-Using proactor: IocpProactor
 2020-28-11 17:28:50-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
 2020-28-11 17:28:50-__init__-DEBUG-Using proactor: IocpProactor
+2020-31-11 17:31:47-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-31-11 17:31:47-__init__-DEBUG-Using proactor: IocpProactor
+2020-31-11 17:31:53-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-31-11 17:31:53-__init__-DEBUG-Using proactor: IocpProactor
+2020-32-11 17:32:06-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-32-11 17:32:06-__init__-DEBUG-Using proactor: IocpProactor
+2020-32-11 17:32:11-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-32-11 17:32:11-__init__-DEBUG-Using proactor: IocpProactor
+2020-32-11 17:32:19-trigger_reload-INFO-D:\Study\School\e2e\app\djangoapp\backend\views.py changed, reloading.
+2020-32-11 17:32:19-__init__-DEBUG-Using proactor: IocpProactor

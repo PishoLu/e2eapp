@@ -361,25 +361,25 @@ def decryptMessage(request):
             DH4 = usertemp["OneTimePri"].exchange(
                 userReceiveFrom["IdentityPub"])
             # 第一次的share_key长度有128位，但是后续需要的密钥长度只要32位，不过第一次后的kdf输出有64位，前32位为下一次的kdf输入，后32位为这次的加密密钥
-            print("没有发送也没有接收过消息。")
+            # print("没有发送也没有接收过消息。")
             kdf_in = DH1+DH2+DH3+DH4
             salt = usertemp["EphemeralPri"].exchange(tempReceiveFromNextEphPub)
         # 不是第一次收到信息但是没有发送过消息，解密使用上一次的kdf以及自己的私钥，以及对方发送过来的公钥。
         elif neverSend and not neverReceive:
-            print("没有发送过消息但是接收到过消息。")
+            # print("没有发送过消息但是接收到过消息。")
             kdf_in = binascii.hexlify(
                 lastMessagesFromJson["kdf_next"].encode("unicode_escape"))
             salt = usertemp["EphemeralPri"].exchange(tempReceiveFromNextEphPub)
         # 没有收到过消息，但是发送过消息，即这是第一次收到对方的消息，使用上一次发送的kdf以及自己的私钥，使用对方发送来的公钥解密。
         elif neverReceive and not neverSend:
-            print("发送过消息但是没有接收过消息。")
+            # print("发送过消息但是没有接收过消息。")
             kdf_in = binascii.hexlify(
                 lastMessagesToJson["kdf_next"].encode("unicode_escape"))
             salt = lastMessagesToJson["EphemeralPri"].exchange(
                 tempReceiveFromNextEphPub)
         # 之前的消息有来有往，使用上一次自己发送消息的私钥,以及对方当前使用的公钥。kdf通过对比时间戳来选取最近的一个。
         else:
-            print("发送过也接收到过消息。")
+            # print("发送过也接收到过消息。")
             lastTimeSend = time.strptime(
                 str(lastMessagesToJson["date"]), "%Y-%m-%d %H:%M:%S")
             lastTimeReceive = time.strptime(
@@ -394,8 +394,8 @@ def decryptMessage(request):
                 tempReceiveFromNextEphPub)
 
         # 解密过程
-        print(kdf_in)
-        print(salt)
+        # print(kdf_in)
+        # print(salt)
         kdf_out = Signalkdf(kdf_in, salt)
         aad = postData["message"]["aad"].encode("utf-8")
         chacha = ChaCha20Poly1305(kdf_out[32:])
@@ -521,19 +521,19 @@ def encryptMessage(request):
             DH3 = usertemp["EphemeralPri"].exchange(userSendTo["SignedPub"])
             DH4 = usertemp["IdentityPri"].exchange(userSendTo["OneTimePub"])
             # 第一次的share_key长度有128位，但是后续需要的密钥长度只要32位，不过第一次后的kdf输出有64位，前32位为下一次的kdf输入，后32位为这次的加密密钥
-            print("没有接收过也没有发送过消息。")
+            # print("没有接收过也没有发送过消息。")
             kdf_in = DH1+DH2+DH3+DH4
             salt = message_EphemeralPri.exchange(userSendTo["EphemeralPub"])
         elif neverSend and not neverReceive:
             # 没有发过消息，但是接收过对方的消息，使用对方最新的Ephemeral公钥以及kdf，接收消息时将目标的临时公钥以及算出的kdf存入数据库
-            print("没有发送过消息但是接收过消息。")
+            # print("没有发送过消息但是接收过消息。")
             kdf_in = binascii.hexlify(
                 lastMessagesFromJson["kdf_next"].encode("unicode_escape"))
             salt = message_EphemeralPri.exchange(
                 lastMessagesFromJson["EphemeralPub"])
         elif not neverSend and neverReceive:
             # 发送过消息但是没有收到过回应，使用上一次发送时的kdf，使用对方的临时公钥
-            print("发送过消息但是没有收到过消息。")
+            # print("发送过消息但是没有收到过消息。")
             kdf_in = binascii.hexlify(
                 lastMessagesToJson["kdf_next"].encode("unicode_escape"))
             salt = message_EphemeralPri.exchange(
@@ -541,7 +541,7 @@ def encryptMessage(request):
         elif not neverSend and not neverReceive:
             # 双方有来有回则根据最近时间是接收还是发送确定kdf输入
             # 不能确定时间前后，先不写这个
-            print("接收到也发送过消息。")
+            # print("接收到也发送过消息。")
             lastTimeSend = time.strptime(
                 str(lastMessagesToJson["date"]), "%Y-%m-%d %H:%M:%S")
             lastTimeReceive = time.strptime(
